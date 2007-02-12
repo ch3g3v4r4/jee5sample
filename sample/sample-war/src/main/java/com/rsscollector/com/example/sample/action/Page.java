@@ -1,4 +1,4 @@
-package com.rsscollector;
+package com.example.sample.action;
 
 public class Page {
 

@@ -8,7 +8,7 @@
   <managed-bean>
     <managed-bean-name>page</managed-bean-name>
     <managed-bean-class>
-      com.rsscollector.Page
+      com.example.sample.action.Page
     </managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
