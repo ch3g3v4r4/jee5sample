@@ -13,36 +13,8 @@
   <version>${project.parent.version}</version>
   <build>
     <finalName>${project.parent.artifactId}-war</finalName>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
-  <repositories>
-    <repository>
-      <id>java.net</id>
-      <url>https://maven-repository.dev.java.net/nonav/repository</url>
-      <layout>legacy</layout>
-    </repository>
-  </repositories>
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javaee</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>5</version>
-      <scope>provided</scope>
-    </dependency>
     <dependency>
       <groupId>${project.parent.groupId}</groupId>
       <artifactId>${project.parent.artifactId}-ejb</artifactId>
@@ -58,15 +30,9 @@
     </dependency>
     <dependency>
       <groupId>javax.faces</groupId>
-      <artifactId>jsf-api</artifactId>
-      <version>1.2_03</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.faces</groupId>
       <artifactId>jsf-impl</artifactId>
       <version>1.2_03</version>
-      <scope>runtime</scope>
+      <scope>provided</scope>
     </dependency>
-  </dependencies>  
+  </dependencies>
 </project>

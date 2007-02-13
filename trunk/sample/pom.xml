@@ -13,6 +13,14 @@
     <module>sample-ejb</module>
     <module>sample-ear</module>
   </modules>
+  
+  <repositories>
+    <repository>
+      <id>java.net</id>
+      <url>https://maven-repository.dev.java.net/nonav/repository</url>
+      <layout>legacy</layout>
+    </repository>
+  </repositories>
 
   <build>
     <plugins>
@@ -46,5 +54,14 @@
       </plugin>
     </plugins>
   </build>
+  
+  <dependencies>
+    <dependency>
+      <groupId>javaee</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>5</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
   
 </project>
