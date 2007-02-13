@@ -34,3 +34,7 @@ Note: a sample data source file for JBoss is below:
 </datasources>
 ------------------------------
 
+3. Generate project files for IDEs (Eclipse, IDEA)
+> cd sample
+> mvn eclipse:eclipse
+> mvn idea:idea
