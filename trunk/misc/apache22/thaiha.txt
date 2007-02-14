@@ -1,0 +1,8 @@
+1. copy to d:\programs\apache22
+2. Set PATH=D:\programs\apache22\php-5.2.1-Win32.zip;%PATH%
+and restart computer (for services to read new PATH)
+2. Config Glassfish/SunAppServer9 to allow AJP protocol:
+- Copy 3 jars from tomcat to <SERVER>/lib/ (see  http://weblogs.java.net/blog/jfarcand/archive/2006/03/running_glassfi_1.html)
+- Use asadmin.bat to login and create-jvm-options -Dcom.sun.enterprise.web.connector.enableJK=8009
+- Restart server
+(httpd.conf is already configured to enable mod_proxy_ajp)
