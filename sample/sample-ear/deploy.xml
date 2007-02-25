@@ -1,4 +1,5 @@
 <project name="sampleEAR" default="deploy" basedir=".">
+  <property file="${user.home}/build.properties"/>
   <property file="deploy.properties"/>
   <target name="deploy">
 		<exec executable="${asadmin.cmd}" failonerror="false">
