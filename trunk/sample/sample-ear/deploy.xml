@@ -1,0 +1,11 @@
+<project name="sampleEAR" default="deploy" basedir=".">
+  <property file="deploy.properties"/>
+  <target name="deploy">
+		<exec executable="${asadmin.cmd}" failonerror="false">
+			<arg line="deploy"/>
+			<arg line="--user ${admin.user}"/>
+			<arg line="--passwordfile ${admin.password.file}"/>
+			<arg line="${application}"/>
+		</exec>
+  </target>
+</project>

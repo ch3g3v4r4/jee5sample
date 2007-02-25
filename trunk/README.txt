@@ -59,7 +59,7 @@ by
   <installed facet="jst.java" version="5.0"/>
   <installed facet="jst.ejb" version="3.0"/>
 </faceted-project>
-d. Search and replace in sample-web\.settings\
+d. Search and replace in sample-war\.settings\
 <faceted-project>
   <fixed facet="jst.java"/>
   <fixed facet="jst.web"/>
@@ -74,8 +74,30 @@ by
   <installed facet="jst.web" version="2.4"/>
   <installed facet="jst.java" version="5.0"/>
 </faceted-project>
-e. Update sample-web\.settings\org.eclipse.wst.common.component to add 2 dependency modules (JSF libs)
-f. Add sample-web\.metadata from a JSF 1.2 project
+
+e. Update sample-war\.settings\org.eclipse.wst.common.component to add 2 dependency modules (JSF libs). Below is a sample
+
+<project-modules id="moduleCoreId" project-version="1.5.0">
+  <wb-module deploy-name="sample-war">
+    <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+    <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/javax/faces/jsf-api/1.2_02/jsf-api-1.2_02.jar">
+	<dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/javax/faces/jsf-impl/1.2_02/jsf-impl-1.2_02.jar">
+	<dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/jstl/jstl/1.2/jstl-1.2.jar">
+	<dependency-type>uses</dependency-type>
+    </dependent-module>
+    <property name="context-root" value="sample-war"/>
+    <property name="java-output-path" value="target/classes"/>
+  </wb-module>
+</project-modules>
+
+If in J2EE perspective, the Deployment Descriptor doesn't show up, remove sample-war project then import it into workspace again. And also try to configure the Web App Libraries entries (just click OK)
+
 
 4. Use NetBeans IDE:
 Install Mevenide2-Netbeans plugin (http://mevenide.codehaus.org/m2-site/index.html) to NetBeans IDE and open the project directly from NetBeans.
