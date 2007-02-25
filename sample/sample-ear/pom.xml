@@ -24,7 +24,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- Deploy EAR file to Glassfish -->
+			<!-- AutoDeploy EAR file by copying to a folder -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
