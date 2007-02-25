@@ -1,0 +1,12 @@
+<project name="sampleEAR" default="deploy" basedir=".">
+  <property file="${user.home}/build.properties"/>
+  <property file="autodeploy.properties"/>
+  <target name="deploy">
+		<echo message="Deploying to appserver..."/>
+		<copy file="target/sample.ear"
+			 tofile="target/sample-${pom.version}.ear.copy"/>
+		<move
+			 file="target/sample-${pom.version}.ear.copy"
+			 tofile="${autodeploy.dir}/sample.ear"/>
+  </target>
+</project>
