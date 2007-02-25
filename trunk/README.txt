@@ -14,7 +14,7 @@ The sample.ear file will be created at sample/sample-ear/target/
 Configure a data source with JNDI name: jdbc/SampleDS
 Copy sample.ear to deploy directory (or using command mvn install from sample/ directory - remember to update sample/sample-ear/autodeploy.properties)
 
-Note: For JBoss 5.0.0beta1, jta-data-source in persistence.xml in EAR file must be updated to java:/jdbc/SampleDS
+Note: For JBoss 5.0.0beta1, jta-data-source in persistence.xml in EAR file must be updated to java:/jdbc/SampleDS (a bug of JBoss?)
 
 Note: a sample data source file for JBoss is below:
 
