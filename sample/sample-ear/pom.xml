@@ -32,7 +32,10 @@
 						<phase>install</phase>
 						<configuration>
 							<tasks>
-								<ant antfile="${basedir}/autodeploy.xml" dir="${basedir}"/>
+								<ant antfile="${basedir}/autodeploy.xml" dir="${basedir}">
+									<property name="project.build.finalName" value="${project.build.finalName}"/>
+									<property name="src.ear.file" value="${basedir}/target/${project.build.finalName}.ear"/>
+								</ant>
 							</tasks>
 						</configuration>
 						<goals>
