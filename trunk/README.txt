@@ -76,3 +76,6 @@ by
 </faceted-project>
 e. Update sample-web\.settings\org.eclipse.wst.common.component to add 2 dependency modules (JSF libs)
 f. Add sample-web\.metadata from a JSF 1.2 project
+
+4. Use NetBeans IDE:
+Install Mevenide2-Netbeans plugin (http://mevenide.codehaus.org/m2-site/index.html) to NetBeans IDE and open the project directly from NetBeans.
