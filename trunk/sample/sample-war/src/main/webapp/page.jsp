@@ -9,10 +9,10 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSF Page</title>
+    <title>Home</title>
   </head>
   <body>
-  <h1>JSF Page</h1>
+  <h1>Home</h1>
   <f:view>
     <h:form>
       <h:outputText value="Name: "/>

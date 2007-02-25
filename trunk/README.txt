@@ -12,7 +12,7 @@ The sample.ear file will be created at sample/sample-ear/target/
 
 * Required: sample.ear, JEE5 server (JBoss 5/Sun JEE SDK/Glassfish...)
 Configure a data source with JNDI name: jdbc/SampleDS
-Copy sample.ear to deploy directory 
+Copy sample.ear to deploy directory (or using command mvn install from sample/ directory)
 
 Note: For JBoss 5.0.0beta1, jta-data-source in persistence.xml in EAR file must be updated to java:/jdbc/SampleDS
 
