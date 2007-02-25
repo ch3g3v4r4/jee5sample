@@ -11,7 +11,7 @@
 	<packaging>ear</packaging>
 	<name>EAR Module for Java EE 5</name>
 	<version>${project.parent.version}</version>
-  
+
 	<build>
 		<finalName>${project.parent.artifactId}</finalName>
 		<plugins>
@@ -26,24 +26,24 @@
 
 			<!-- Deploy EAR file to Glassfish -->
 			<plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>install</phase>
-                        <configuration>
-                            <tasks>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
 								<ant antfile="${basedir}/autodeploy.xml" dir="${basedir}"/>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-  
+
 	<dependencies>
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
