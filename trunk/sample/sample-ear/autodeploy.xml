@@ -1,4 +1,4 @@
-<project name="sampleEAR" default="deploy" basedir=".">
+<project name="deployment" default="deploy" basedir=".">
 	<property file="${user.home}/build.properties"/>
 	<property file="autodeploy.properties"/>
 	<target name="deploy">
