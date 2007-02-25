@@ -32,7 +32,7 @@
                         <phase>install</phase>
                         <configuration>
                             <tasks>
-								<ant antfile="${basedir}/deploy.xml" dir="${basedir}"/>
+								<ant antfile="${basedir}/autodeploy.xml" dir="${basedir}"/>
                             </tasks>
                         </configuration>
                         <goals>
