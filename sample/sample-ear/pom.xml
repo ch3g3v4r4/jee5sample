@@ -23,6 +23,24 @@
 					<defaultLibBundleDir>lib/</defaultLibBundleDir>
 				</configuration>
 			</plugin>
+
+			<!-- Deploy EAR file to Glassfish -->
+			<plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+								<ant antfile="${basedir}/deploy.xml" dir="${basedir}"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
   
