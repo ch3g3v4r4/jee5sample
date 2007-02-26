@@ -71,7 +71,7 @@ by
   <fixed facet="jst.java"/>
   <fixed facet="jst.web"/>
   <installed facet="jst.jsf" version="1.2"/>
-  <installed facet="jst.web" version="2.4"/>
+  <installed facet="jst.web" version="2.5"/>
   <installed facet="jst.java" version="5.0"/>
 </faceted-project>
 
@@ -82,10 +82,10 @@ e. Update sample-war\.settings\org.eclipse.wst.common.component to add 2 depende
     <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-    <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/javax/faces/jsf-api/1.2_02/jsf-api-1.2_02.jar">
+    <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/javax/faces/jsf-api/1.2_03/jsf-api-1.2_03.jar">
 	<dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/javax/faces/jsf-impl/1.2_02/jsf-impl-1.2_02.jar">
+    <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/javax/faces/jsf-impl/1.2_03/jsf-impl-1.2_03.jar">
 	<dependency-type>uses</dependency-type>
     </dependent-module>
     <dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Documents and Settings/Thai Ha/.m2/repository/jstl/jstl/1.2/jstl-1.2.jar">
