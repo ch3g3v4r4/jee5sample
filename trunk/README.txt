@@ -98,6 +98,7 @@ e. Update sample-war\.settings\org.eclipse.wst.common.component to add 2 depende
 
 If in J2EE perspective, the Deployment Descriptor doesn't show up, remove sample-war project then import it into workspace again. And also try to configure the Web App Libraries entries (just click OK)
 
+f. Configure Maven command (mvn install) as External Program Builder for Auto Builds
 
 4. Use NetBeans IDE:
 Install Mevenide2-Netbeans plugin (http://mevenide.codehaus.org/m2-site/index.html) to NetBeans IDE and open the project directly from NetBeans.
