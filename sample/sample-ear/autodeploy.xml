@@ -1,6 +1,4 @@
 <project name="deployment" default="deploy" basedir=".">
-	<property file="${user.home}/build.properties"/>
-	<property file="autodeploy.properties"/>
 	<target name="deploy">
 		<echo message="Deploying to application server..."/>
 		<dirname property="tmp.dir" file="${autodeploy.dir}"/>
