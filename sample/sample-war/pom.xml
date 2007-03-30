@@ -11,9 +11,25 @@
 	<packaging>war</packaging>
 	<name>WAR Module for Java EE 5</name>
 	<version>${project.parent.version}</version>
+
 	<build>
 		<finalName>${project.parent.artifactId}-war</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.4-SNAPSHOT</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<wtpversion>1.5</wtpversion>
+					<additionalProjectFacets>
+						<jst.jsf>1.2</jst.jsf>
+					</additionalProjectFacets>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
@@ -65,8 +81,5 @@
 			<type>ejb-client</type>
 			<scope>provided</scope>
 		</dependency>
-		
-
-		
 	</dependencies>
 </project>
