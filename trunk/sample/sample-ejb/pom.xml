@@ -11,7 +11,7 @@
 	<packaging>ejb</packaging>
 	<name>EJB Module for Java EE 5</name>
 	<version>${project.parent.version}</version>
-  
+
 	<build>
 		<finalName>${project.parent.artifactId}-ejb</finalName>
 		<plugins>
@@ -23,9 +23,21 @@
 					<generateClient>true</generateClient>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.4-SNAPSHOT</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<wtpversion>1.5</wtpversion>
+					<additionalProjectFacets>
+						<jst.jpa>1.0</jst.jpa>
+					</additionalProjectFacets>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-  
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>

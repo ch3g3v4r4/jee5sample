@@ -47,8 +47,15 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 	<dependencies>
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>5</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>${project.parent.artifactId}-ejb</artifactId>
@@ -62,4 +69,14 @@
 			<type>war</type>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>java.net</id>
+			<name>java.net Maven Repository</name>
+			<url>https://maven-repository.dev.java.net/nonav/repository</url>
+			<layout>legacy</layout>
+		</repository>
+	</repositories>
+
 </project>
