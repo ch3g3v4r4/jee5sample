@@ -3,8 +3,8 @@
 * Required: Maven 2, JDK 5+
 Commands:
 > cd sample
-> mvn -N install
-> mvn package install
+> mvn -N -U install
+> mvn -U package install
 
 The sample.ear file will be created at sample/sample-ear/target/
 
