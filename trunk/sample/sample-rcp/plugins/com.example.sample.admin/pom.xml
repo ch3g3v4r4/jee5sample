@@ -2,24 +2,31 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>test.pde_maven_plugin</groupId>
-	<artifactId>simple_application</artifactId>
-	<packaging>zip</packaging>
-	<name>Simple Product PDE Example</name>
+	<groupId>com.example.sample</groupId>
+	<artifactId>admin</artifactId>
+	<packaging>pom</packaging>
+	<name>Admin RCP</name>
 	<version>1.0-SNAPSHOT</version>
-	<description>A Simple Product PDE Example</description>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>pde-maven-plugin</artifactId>
 				<version>1.0-alpha-1-SNAPSHOT</version>
-				<extensions>true</extensions>
 				<configuration>
-					<eclipseInstall>D:\programs\eclipse</eclipseInstall>
+					<eclipseInstall>${eclipseInstall}</eclipseInstall>
 					<pdeProductFilename>admin.product</pdeProductFilename>
-					<pdeBuildVersion>3.3.0.v20070322</pdeBuildVersion>
+					<pdeBuildVersion>${pdeBuildVersion}</pdeBuildVersion>
 				</configuration>
+				<executions>
+					<execution>
+						<id>build-pde</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>attach</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
