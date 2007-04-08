@@ -14,9 +14,10 @@
 				<artifactId>pde-maven-plugin</artifactId>
 				<version>1.0-alpha-1-SNAPSHOT</version>
 				<configuration>
-					<eclipseInstall>${eclipseInstall}</eclipseInstall>
+					<eclipseInstall>${pde.eclipseInstall}</eclipseInstall>
 					<pdeProductFilename>admin.product</pdeProductFilename>
-					<pdeBuildVersion>${pdeBuildVersion}</pdeBuildVersion>
+					<pdeBuildVersion>${pde.pdeBuildVersion}</pdeBuildVersion>
+					<archivePrefix>${pde.archivePrefix}</archivePrefix>
 				</configuration>
 				<executions>
 					<execution>
