@@ -17,7 +17,11 @@
 					<eclipseInstall>${pde.eclipseInstall}</eclipseInstall>
 					<pdeProductFilename>admin.product</pdeProductFilename>
 					<pdeBuildVersion>${pde.pdeBuildVersion}</pdeBuildVersion>
-					<archivePrefix>${pde.archivePrefix}</archivePrefix>
+					<buildProperties>
+						<product>${pde.ant.product}</product>
+						<archivePrefix>${pde.ant.archivePrefix}</archivePrefix>
+						<configs>${pde.ant.configs}</configs>
+					</buildProperties>
 				</configuration>
 				<executions>
 					<execution>

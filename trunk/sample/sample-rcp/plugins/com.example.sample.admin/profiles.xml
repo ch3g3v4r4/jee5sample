@@ -1,13 +1,16 @@
 <profiles>
-  <profile>
-      <id>default</id>
-	  <activation>
-		  <activeByDefault>true</activeByDefault>
-	  </activation>
-      <properties>
-        <pde.eclipseInstall>D:\programs\eclipse</pde.eclipseInstall>
-		<pde.pdeBuildVersion>3.3.0.v20070322</pde.pdeBuildVersion>
-		<pde.archivePrefix>xyz</pde.archivePrefix>
-	  </properties>
-  </profile>
+	<profile>
+		<id>default</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+		<properties>
+			<pde.eclipseInstall>D:\programs\eclipse</pde.eclipseInstall>
+			<pde.pdeBuildVersion>3.3.0.v20070322</pde.pdeBuildVersion>
+			<pde.ant.product>/com.example.sample.admin/admin.product</pde.ant.product>
+			<pde.ant.archivePrefix>admin</pde.ant.archivePrefix>
+			<pde.ant.configs>win32,win32,x86</pde.ant.configs>
+			<pde.ant.base>D:/projects/target</pde.ant.base>
+		</properties>
+	</profile>
 </profiles>
