@@ -1,0 +1,12 @@
+<profiles>
+  <profile>
+      <id>default</id>
+	  <activation>
+		  <activeByDefault>true</activeByDefault>
+	  </activation>
+      <properties>
+        <eclipseInstall>D:\programs\eclipse</eclipseInstall>
+		<pdeBuildVersion>3.3.0.v20070322</pdeBuildVersion>
+      </properties>
+  </profile>
+</profiles>
