@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Admin Plug-in
+Bundle-SymbolicName: com.example.sample.admin; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: EXAMPLE
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.apache.axis,
+ org.eclipse.ui.forms
