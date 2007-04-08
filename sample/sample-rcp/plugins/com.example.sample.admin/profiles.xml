@@ -5,8 +5,9 @@
 		  <activeByDefault>true</activeByDefault>
 	  </activation>
       <properties>
-        <eclipseInstall>D:\programs\eclipse</eclipseInstall>
-		<pdeBuildVersion>3.3.0.v20070322</pdeBuildVersion>
-      </properties>
+        <pde.eclipseInstall>D:\programs\eclipse</pde.eclipseInstall>
+		<pde.pdeBuildVersion>3.3.0.v20070322</pde.pdeBuildVersion>
+		<pde.archivePrefix>xyz</pde.archivePrefix>
+	  </properties>
   </profile>
 </profiles>
