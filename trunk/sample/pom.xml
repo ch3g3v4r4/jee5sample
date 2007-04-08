@@ -99,6 +99,9 @@
       </plugin>
       <plugin>
         <artifactId>maven-pmd-plugin</artifactId>
+		  <configuration>
+			  <targetJdk>1.5</targetJdk>
+		  </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-changes-plugin</artifactId>
