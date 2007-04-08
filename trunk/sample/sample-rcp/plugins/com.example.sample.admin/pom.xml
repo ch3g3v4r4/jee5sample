@@ -33,6 +33,13 @@
 						</goals>
 					</execution>
 					<execution>
+						<id>test-pde</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+					<execution>
 						<id>clean-pde</id>
 						<phase>clean</phase>
 						<goals>
