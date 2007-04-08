@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.1"?>
 
-<product name="Sample Manager" id="com.example.sample.admin.product" application="com.example.sample.admin.application" useFeatures="false">
+<product name="Sample Manager" id="com.example.sample.admin.product" application="com.example.sample.admin.application" useFeatures="true">
+
 
    <configIni use="default"/>
 
@@ -10,12 +11,14 @@
 
    <windowImages i16="icons/alt_window_16.gif" i32="icons/alt_window_32.gif"/>
 
+
    <launcher name="SampleManager">
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -56,5 +59,9 @@
       <plugin id="org.eclipse.ui.forms"/>
       <plugin id="org.eclipse.ui.workbench"/>
    </plugins>
+
+   <features>
+      <feature id="com.example.sample.admin.feature" version="1.0.0"/>
+   </features>
 
 </product>

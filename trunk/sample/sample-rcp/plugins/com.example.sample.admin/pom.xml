@@ -21,6 +21,7 @@
 						<product>${pde.ant.product}</product>
 						<archivePrefix>${pde.ant.archivePrefix}</archivePrefix>
 						<configs>${pde.ant.configs}</configs>
+						<base>${pde.ant.base}</base>
 					</buildProperties>
 				</configuration>
 				<executions>
