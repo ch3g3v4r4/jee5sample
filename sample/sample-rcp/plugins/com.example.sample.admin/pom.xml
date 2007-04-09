@@ -12,7 +12,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>pde-maven-plugin</artifactId>
-				<version>1.0-alpha-1-SNAPSHOT</version>
+				<version>1.0-alpha-1</version>
 				<configuration>
 					<eclipseInstall>${pde.eclipseInstall}</eclipseInstall>
 					<pdeProductFilename>admin.product</pdeProductFilename>
@@ -50,17 +50,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus.org</id>
-			<name>CodeHaus Plugin Snapshots</name>
-			<url>http://snapshots.repository.codehaus.org</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
