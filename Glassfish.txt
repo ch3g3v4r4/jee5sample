@@ -1,0 +1,12 @@
+Development with Glassfish
+
+1. Install Glassfish:
+- Download glassfish-installer-v1_ur1-p01-b02.jar. Run java -jar glassfish-installer-v1_ur1-p01-b02.jar
+- Open folder glassfish. Run ant -f setup.xml
+Default admin password: adminadmin
+
+2. Deploy folder:
+asadmin deploydir D:\programs\apache-tomcat-5.5.20\webapps\servlets-examples
+
+3. Redeploy (request reload)
+Update file D:\programs\apache-tomcat-5.5.20\webapps\servlets-examples\.reload and the app will be reload (scan time: 2s)
