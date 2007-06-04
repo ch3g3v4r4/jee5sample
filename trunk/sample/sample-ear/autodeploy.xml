@@ -1,9 +1,0 @@
-<project name="deployment" default="deploy" basedir=".">
-	<target name="deploy">
-		<echo message="Deploying to application server..."/>
-		<dirname property="tmp.dir" file="${autodeploy.dir}"/>
-		<property name="tmp.ear.file" value="${tmp.dir}/${project.build.finalName}.ear.copy"/>
-		<copy file="${src.ear.file}" tofile="${tmp.ear.file}"/>
-		<move file="${tmp.ear.file}" tofile="${autodeploy.dir}/${project.build.finalName}.ear"/>
-	</target>
-</project>

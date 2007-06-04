@@ -8,8 +8,8 @@ import com.example.sample.model.vo.User;
 
 @Stateless
 public class SampleBean implements Sample {
-    @PersistenceContext
-    private EntityManager em;
+    //@PersistenceContext
+    //private EntityManager em;
     
     public SampleBean() {
         // empty
@@ -20,6 +20,6 @@ public class SampleBean implements Sample {
     }
 
 	public User getUser(Long userId) {
-		return em.find(User.class, userId);
+		return null;//em.find(User.class, userId);
 	}
 }
