@@ -23,28 +23,6 @@
 					<defaultLibBundleDir>lib/</defaultLibBundleDir>
 				</configuration>
 			</plugin>
-
-			<!-- AutoDeploy EAR file by copying to a folder -->
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<configuration>
-							<tasks>
-								<ant antfile="${basedir}/autodeploy.xml" dir="${basedir}">
-									<property name="project.build.finalName" value="${project.build.finalName}"/>
-									<property name="src.ear.file" value="${basedir}/target/${project.build.finalName}.ear"/>
-									<property name="autodeploy.dir" value="${autodeploy.dir}"/>
-								</ant>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 	
