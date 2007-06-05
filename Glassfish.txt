@@ -14,3 +14,5 @@ Update file D:\programs\apache-tomcat-5.5.20\webapps\servlets-examples\.reload a
 4. Use FileSync plugin to sync file (.class, .jsp, .xml,..):
 
 http://andrei.gmxhome.de/eclipse/
+
+5. Config touch.exe <path to .reload file> to run when EJB project is built automatically
