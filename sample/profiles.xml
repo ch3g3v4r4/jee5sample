@@ -1,8 +1,0 @@
-<profiles>
-  <profile>
-      <id>appserverConfig</id>
-      <properties>
-        <autodeploy.dir>D:/programs/Sun/AppServer/domains/domain1/autodeploy</autodeploy.dir>
-      </properties>
-  </profile>
-</profiles>
