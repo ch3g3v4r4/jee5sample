@@ -5,7 +5,7 @@
   <artifactId>sample</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Multi modules for Java EE 5</name>
+  <name>Sample</name>
 
   <modules>
     <module>sample-ejb</module>
@@ -64,22 +64,9 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-<!--
-  <pluginRepositories>
-    <pluginRepository>
-      <id>snapshots</id>
-      <url>http://people.apache.org/repo/m2-snapshot-repository</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
--->
+
   <scm>
-    <connection>scm:svn:https://jee5sample.googlecode.com/svn/trunk</connection>
+    <connection>scm:svn:https://jee5sample.googlecode.com/svn/trunk/sample</connection>
   </scm>
 
   <reporting>
