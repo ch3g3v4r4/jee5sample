@@ -80,7 +80,7 @@
   </pluginRepositories>
 
   <scm>
-    <connection>scm:svn:https://jee5sample.googlecode.com/svn/trunk/sample</connection>
+    <connection>scm:svn:https://eseller.googlecode.com/svn/trunk</connection>
   </scm>
 
   <reporting>
