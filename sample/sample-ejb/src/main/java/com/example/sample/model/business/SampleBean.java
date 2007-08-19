@@ -16,7 +16,7 @@ public class SampleBean implements Sample {
     }
 
     public String sayHello(String name) {
-        return "Hello, " + name + "!";
+        return "How do you do! " + name + "!";
     }
 
 	public User getUser(Long userId) {
