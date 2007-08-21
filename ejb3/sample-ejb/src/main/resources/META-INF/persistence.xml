@@ -6,12 +6,14 @@
 
     <persistence-unit name="manager1" transaction-type="JTA">
         <jta-data-source>jdbc/SampleDS</jta-data-source>
+        <class>
+        com.example.sample.model.entities.Project</class>
 		<!-- For JBoss 5.0.0beta1, the prefix java:/ must be used
         <jta-data-source>java:/jdbc/SampleDS</jta-data-source>
 			For compliant JEE5 servers, don't use prefix java:/ 
 		<jta-data-source>jdbc/SampleDS</jta-data-source>
 		-->
-		<class>com.example.sample.model.entities.Project</class>
+		<exclude-unlisted-classes/>
         <properties>        	
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="toplink.ddl-generation" value="create-tables"/> 
