@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>sample-ear</name>
+	<comment></comment>
+	<projects>
+		<project>sample-war</project>
+		<project>sample-ejb</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>de.loskutov.FileSync.FSBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>
