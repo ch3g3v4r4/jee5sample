@@ -1,4 +1,4 @@
-<%@page import="javax.naming.InitialContext, com.example.sample.model.business.*, java.util.*"%>
+<%@page import="javax.naming.InitialContext, com.example.sample.model.business.*"%>
 
 <%
 InitialContext ctx = new InitialContext();
