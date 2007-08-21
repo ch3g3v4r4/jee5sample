@@ -1,0 +1,8 @@
+#Tue Aug 21 20:55:56 ICT 2007
+WARNING=DO NOT MODIFY THIS FILE IF YOU DON'T UNDERSTAND
+defaultDestination=
+defaultVariables=
+eclipse.preferences.version=1
+map|0=src/main/webapp|D\:/programs/glassfish/domains/domain1/applications/j2ee-apps/sample/sample-war_war|**/*.jsp|,|,
+map|1=target/classes|D\:/programs/glassfish/domains/domain1/applications/j2ee-apps/sample/sample-war_war/WEB-INF/classes|,|,|,
+useCurrentDateForDestinationFiles=false
