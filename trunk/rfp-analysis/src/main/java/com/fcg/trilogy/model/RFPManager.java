@@ -76,7 +76,6 @@ public class RFPManager {
 		return result;
 	}
 
-
 	public Collection<RFP> search(Map<String, String> criteria) {
 
 		EntityManager em = getEntityManager();

@@ -68,7 +68,11 @@
 			<artifactId>poi</artifactId>
 			<version>3.0.1-FINAL</version>
 		</dependency>
-
+		<dependency>
+			<groupId>OpenForecast</groupId>
+			<artifactId>OpenForecast</artifactId>
+			<version>0.4.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
