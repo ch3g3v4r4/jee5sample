@@ -19,12 +19,13 @@ import com.fcg.trilogy.model.RFPManager;
 public class Analyzer {
 
 	public static void main(String[] args) throws Exception {
-
+/*
 		String inputDirectory = "\\\\trilogy-svr\\Trilogy";
 		RFPManager manager = new RFPManager();
 		InputLoader.load(new File(inputDirectory), manager);
 
-		ModelAnalyzer.analyze(manager);
+		ModelAnalyzer.analyze(manager);*/
+		RFPClassifier.test();
 	}
 
 	public static void main2(String[] args) {
