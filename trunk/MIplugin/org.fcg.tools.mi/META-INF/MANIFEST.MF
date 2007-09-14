@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Mi Plug-in
+Bundle-SymbolicName: org.fcg.tools.mi; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.fcg.tools.mi.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.console
+Eclipse-LazyStart: true

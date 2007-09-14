@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.IPackageFragment"
+            id="org.fcg.tools.mi.contribution1">
+         <action
+               label="Maintainability Index"
+               class="org.fcg.tools.mi.popup.actions.MaintainabilityIndexAction"
+               enablesFor="1"
+               id="org.fcg.tools.mi.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
