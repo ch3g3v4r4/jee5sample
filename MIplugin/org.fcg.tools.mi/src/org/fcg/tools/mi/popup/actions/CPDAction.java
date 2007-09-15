@@ -108,6 +108,7 @@ public class CPDAction implements IObjectActionDelegate {
         detectCmd.setReportName(fileName);
         detectCmd.setUserInitiated(true);
         detectCmd.addPropertyListener(view);
+        detectCmd.setPackages(packages);
         try {
 			detectCmd.performExecute();
 		} catch (CommandException e) {

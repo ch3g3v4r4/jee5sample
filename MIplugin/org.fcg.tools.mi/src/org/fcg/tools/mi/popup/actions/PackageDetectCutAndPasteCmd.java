@@ -214,7 +214,7 @@ public class PackageDetectCutAndPasteCmd extends AbstractDefaultCommand {
 					IJavaElement javaElement = elems[i];
 					if (javaElement instanceof ICompilationUnit) {
 						ICompilationUnit unit = (ICompilationUnit) javaElement;
-						result.add(unit.getPath().toFile());
+						result.add(new File(unit.getUnderlyingResource().getLocation().toOSString()));
 					}
 				}
 			}
