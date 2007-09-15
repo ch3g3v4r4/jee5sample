@@ -8,10 +8,16 @@
             objectClass="org.eclipse.jdt.core.IPackageFragment"
             id="org.fcg.tools.mi.contribution1">
          <action
-               label="Maintainability Index"
+               label="FCG MI"
                class="org.fcg.tools.mi.popup.actions.MaintainabilityIndexAction"
                enablesFor="1"
-               id="org.fcg.tools.mi.newAction">
+               id="org.fcg.tools.mi.miAction">
+         </action>
+         <action
+               label="FCG CPD"
+               class="org.fcg.tools.mi.popup.actions.CPDAction"
+               enablesFor="+"
+               id="org.fcg.tools.mi.cpdAction">
          </action>
       </objectContribution>
    </extension>
