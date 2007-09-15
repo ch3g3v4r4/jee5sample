@@ -86,6 +86,9 @@ public class MaintainabilityIndexAction implements IObjectActionDelegate {
 	        Process child = Runtime.getRuntime().exec(commands);
 	        child.waitFor();
 
+	        // remove temp file
+	        listFile.delete();
+
 	        // Analyze the files
 	        // undjava -db myproject.udj -rebuild
 	        commands = new String[]{undjavaCmd, "-rebuild", "-db", project.getAbsolutePath()};
@@ -106,7 +109,10 @@ public class MaintainabilityIndexAction implements IObjectActionDelegate {
 	        in.close();
 	        child.waitFor();
 
-			MessageConsole myConsole = findConsole("Maintainability Index Console");
+	        // remove temp file
+	        project.delete();
+
+	        MessageConsole myConsole = findConsole("Maintainability Index Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println(output.toString());
 			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
