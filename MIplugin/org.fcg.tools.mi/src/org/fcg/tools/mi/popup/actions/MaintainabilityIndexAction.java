@@ -3,7 +3,6 @@ package org.fcg.tools.mi.popup.actions;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,7 +19,6 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
@@ -81,9 +79,17 @@ public class MaintainabilityIndexAction implements IObjectActionDelegate {
 			File project = File.createTempFile("miproject", ".udj");
 	        String undjavaCmd = new File(getUndJavaPc95Dir(), "undjava.exe").getAbsolutePath();
 
+	        StringBuffer output = new StringBuffer();
+
 	        // Create a project and add files to it
 	        String[] commands = new String[]{undjavaCmd, "-create", "-db", project.getAbsolutePath(), "-add", "@" + listFile};
 	        Process child = Runtime.getRuntime().exec(commands);
+	        InputStream in = child.getInputStream();
+	        int c;
+	        while ((c = in.read()) != -1) {
+	        	output.append((char)c);
+	        }
+	        in.close();
 	        child.waitFor();
 
 	        // remove temp file
@@ -93,6 +99,11 @@ public class MaintainabilityIndexAction implements IObjectActionDelegate {
 	        // undjava -db myproject.udj -rebuild
 	        commands = new String[]{undjavaCmd, "-rebuild", "-db", project.getAbsolutePath()};
 	        child = Runtime.getRuntime().exec(commands);
+	        in = child.getInputStream();
+	        while ((c = in.read()) != -1) {
+	        	output.append((char)c);
+	        }
+	        in.close();
 	        child.waitFor();
 
             // "D:\Program Files\STI\bin\pc-win95\\uperl" "D:\Program Files\STI\sample\scripts\acj_maint_index_halstead.pl" -db p.udj
@@ -100,9 +111,7 @@ public class MaintainabilityIndexAction implements IObjectActionDelegate {
 	        String miScriptPath = getMIScriptPath();
 	        commands = new String[]{uperlCmd, miScriptPath, "-db", project.getAbsolutePath()};
 	        child = Runtime.getRuntime().exec(commands);
-	        InputStream in = child.getInputStream();
-	        int c;
-	        StringBuffer output = new StringBuffer();
+	        in = child.getInputStream();
 	        while ((c = in.read()) != -1) {
 	        	output.append((char)c);
 	        }
