@@ -1,4 +1,4 @@
-package org.fcg.tools.mi.popup.actions;
+package com.fcg.eclipse.handler;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

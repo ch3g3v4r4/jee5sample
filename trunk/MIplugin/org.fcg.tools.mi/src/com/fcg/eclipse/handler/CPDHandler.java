@@ -29,7 +29,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.fcg.tools.mi.popup.actions.PackageDetectCutAndPasteCmd;
 
 public class CPDHandler extends AbstractHandler {
     private static final String XML_KEY = "XML";
