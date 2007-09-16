@@ -1,25 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
+ 	<extension point="org.eclipse.ui.commands">
+   		<command id="com.fcg.eclipse.handler.MICommand" name="FCG MI"/>
+   		<command id="com.fcg.eclipse.handler.CPDCommand" name="FCG CPD"/>
+ 	</extension>
 
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            objectClass="org.eclipse.jdt.core.IPackageFragment"
-            id="org.fcg.tools.mi.contribution1">
-         <action
-               label="FCG MI"
-               class="org.fcg.tools.mi.popup.actions.MaintainabilityIndexAction"
-               enablesFor="1"
-               id="org.fcg.tools.mi.miAction">
-         </action>
-         <action
-               label="FCG CPD"
-               class="org.fcg.tools.mi.popup.actions.CPDAction"
-               enablesFor="+"
-               id="org.fcg.tools.mi.cpdAction">
-         </action>
-      </objectContribution>
-   </extension>
+	 <extension point="org.eclipse.ui.handlers">
+	       <handler class="com.fcg.eclipse.handler.MIHandler"
+	             commandId="com.fcg.eclipse.handler.MICommand">
+				<enabledWhen>
+			      <with
+			          variable="selection">
+			        <iterate
+			            ifEmpty="false"
+			            operator="and">
+			          <and>
+			            <instanceof value="org.eclipse.jdt.core.IPackageFragment"></instanceof>
+			          </and>
+			        </iterate>
+			      </with>
+			    </enabledWhen>
+	       </handler>
+	       <handler class="com.fcg.eclipse.handler.CPDHandler"
+	             commandId="com.fcg.eclipse.handler.CPDCommand">
+				<enabledWhen>
+			      <with
+			          variable="selection">
+			        <iterate
+			            ifEmpty="false"
+			            operator="and">
+			          <and>
+			            <instanceof value="org.eclipse.jdt.core.IPackageFragment"></instanceof>
+			          </and>
+			        </iterate>
+			      </with>
+			    </enabledWhen>
+	       </handler>
+	 </extension>
+
+   <extension point="org.eclipse.ui.menus">
+   		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+     		<command commandId="com.fcg.eclipse.handler.MICommand"/>
+   		</menuContribution>
+   		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+    		<command commandId="com.fcg.eclipse.handler.CPDCommand"/>
+  		</menuContribution>
+  		<!--
+  		<menuContribution locationURI="popup:#CompilationUnitEditorContext?after=additions">
+     		<command commandId="com.fcg.eclipse.handler.MICommand"/>
+   		</menuContribution>
+   		-->
+ 	</extension>
 
 </plugin>
