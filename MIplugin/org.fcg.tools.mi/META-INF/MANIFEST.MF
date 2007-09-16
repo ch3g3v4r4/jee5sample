@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Mi Plug-in
-Bundle-SymbolicName: org.fcg.tools.mi; singleton:=true
+Bundle-Name: FCG Eclipse Plug-in
+Bundle-SymbolicName: com.fcg.eclipse;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: org.fcg.tools.mi.Activator
+Bundle-Activator: com.fcg.eclipse.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

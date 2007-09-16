@@ -1,4 +1,4 @@
-package org.fcg.tools.mi;
+package com.fcg.eclipse;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
