@@ -4,6 +4,7 @@
  	<extension point="org.eclipse.ui.commands">
    		<command id="com.fcg.eclipse.handler.MICommand" name="FCG MI"/>
    		<command id="com.fcg.eclipse.handler.CPDCommand" name="FCG CPD"/>
+   		<command id="com.fcg.eclipse.handler.CodeSearchCommand" name="FCG CodeSearch"/>
  	</extension>
 
 	 <extension point="org.eclipse.ui.handlers">
@@ -37,6 +38,7 @@
 			      </with>
 			    </enabledWhen>
 	       </handler>
+	       <handler class="com.fcg.eclipse.handler.CodeSearchHandler" commandId="com.fcg.eclipse.handler.CodeSearchCommand"/>
 	 </extension>
 
    <extension point="org.eclipse.ui.menus">
@@ -46,11 +48,9 @@
    		<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
     		<command commandId="com.fcg.eclipse.handler.CPDCommand"/>
   		</menuContribution>
-  		<!--
   		<menuContribution locationURI="popup:#CompilationUnitEditorContext?after=additions">
-     		<command commandId="com.fcg.eclipse.handler.MICommand"/>
+     		<command commandId="com.fcg.eclipse.handler.CodeSearchCommand"/>
    		</menuContribution>
-   		-->
  	</extension>
 
 </plugin>
