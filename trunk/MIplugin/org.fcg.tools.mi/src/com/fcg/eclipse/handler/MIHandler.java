@@ -11,6 +11,7 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -46,12 +47,22 @@ public class MIHandler extends AbstractHandler {
 			return null;
 		}
 
+		//IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+		//IPackageFragment packageSelection = (IPackageFragment) structuredSelection
+		//		.getFirstElement();
 		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-		IPackageFragment packageSelection = (IPackageFragment) structuredSelection
-				.getFirstElement();
-
+		List packages = new ArrayList();
+		IProject project = null;
+		for (Iterator iterator = structuredSelection.iterator(); iterator.hasNext();) {
+			IPackageFragment packageSelection = (IPackageFragment) iterator.next();
+			if (project == null) project = packageSelection.getJavaProject().getProject();
+			if (packageSelection.getJavaProject().getProject() == project) {
+				// just check packages of same project
+				packages.add(packageSelection);
+			}
+		}
 		try {
-			List files = findFiles(packageSelection);
+			List files = findFiles(packages);
 			File listFile = File.createTempFile("milist", ".txt");
 			BufferedWriter listWriter = new BufferedWriter(new FileWriter(listFile));
 			String newline = System.getProperty("line.separator");
@@ -63,13 +74,13 @@ public class MIHandler extends AbstractHandler {
 
 
 	        // D:/Program Files/STI/bin/pc-win95/undjava.exe -create -db p -add @l.txt
-			File project = File.createTempFile("miproject", ".udj");
+			File projectFile = File.createTempFile("miproject", ".udj");
 	        String undjavaCmd = new File(getUndJavaPc95Dir(), "undjava.exe").getAbsolutePath();
 
 	        StringBuffer output = new StringBuffer();
 
 	        // Create a project and add files to it
-	        String[] commands = new String[]{undjavaCmd, "-create", "-db", project.getAbsolutePath(), "-add", "@" + listFile};
+	        String[] commands = new String[]{undjavaCmd, "-create", "-db", projectFile.getAbsolutePath(), "-add", "@" + listFile};
 	        Process child = Runtime.getRuntime().exec(commands);
 	        InputStream in = child.getInputStream();
 	        int c;
@@ -84,7 +95,7 @@ public class MIHandler extends AbstractHandler {
 
 	        // Analyze the files
 	        // undjava -db myproject.udj -rebuild
-	        commands = new String[]{undjavaCmd, "-rebuild", "-db", project.getAbsolutePath()};
+	        commands = new String[]{undjavaCmd, "-rebuild", "-db", projectFile.getAbsolutePath()};
 	        child = Runtime.getRuntime().exec(commands);
 	        in = child.getInputStream();
 	        while ((c = in.read()) != -1) {
@@ -96,7 +107,7 @@ public class MIHandler extends AbstractHandler {
             // "D:\Program Files\STI\bin\pc-win95\\uperl" "D:\Program Files\STI\sample\scripts\acj_maint_index_halstead.pl" -db p.udj
 	        String uperlCmd = new File(getUndJavaPc95Dir(), "uperl.exe").getAbsolutePath();
 	        String miScriptPath = getMIScriptPath();
-	        commands = new String[]{uperlCmd, miScriptPath, "-db", project.getAbsolutePath()};
+	        commands = new String[]{uperlCmd, miScriptPath, "-db", projectFile.getAbsolutePath()};
 	        child = Runtime.getRuntime().exec(commands);
 	        in = child.getInputStream();
 	        while ((c = in.read()) != -1) {
@@ -106,7 +117,7 @@ public class MIHandler extends AbstractHandler {
 	        child.waitFor();
 
 	        // remove temp file
-	        project.delete();
+	        projectFile.delete();
 
 	        MessageConsole myConsole = findConsole("Maintainability Index Console");
 			MessageConsoleStream out = myConsole.newMessageStream();
@@ -154,15 +165,18 @@ public class MIHandler extends AbstractHandler {
 		return installDir;
 	}
 
-	private List findFiles(IPackageFragment packageSelection)
+	private List findFiles(List packages)
 			throws JavaModelException {
 		List result = new ArrayList();
-		IJavaElement[] elems = packageSelection.getChildren();
-		for (int i = 0; i < elems.length; i++) {
-			IJavaElement javaElement = elems[i];
-			if (javaElement instanceof ICompilationUnit) {
-				ICompilationUnit unit = (ICompilationUnit) javaElement;
-				result.add(new File(unit.getUnderlyingResource().getLocation().toOSString()));
+		for (Iterator it = packages.iterator(); it.hasNext();) {
+			IPackageFragment packageSelection = (IPackageFragment) it.next();
+			IJavaElement[] elems = packageSelection.getChildren();
+			for (int i = 0; i < elems.length; i++) {
+				IJavaElement javaElement = elems[i];
+				if (javaElement instanceof ICompilationUnit) {
+					ICompilationUnit unit = (ICompilationUnit) javaElement;
+					result.add(new File(unit.getUnderlyingResource().getLocation().toOSString()));
+				}
 			}
 		}
 		return result;
