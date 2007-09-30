@@ -15,7 +15,7 @@
 				<version>1.1</version>
 				<extensions>true</extensions>
 				<configuration>
-					<debug>true</debug>
+					<debug>false</debug>
 					<showActionscriptWarnings>true</showActionscriptWarnings>
 					<showBindingWarnings>true</showBindingWarnings>
 					<showDeprecationWarnings>true</showDeprecationWarnings>
