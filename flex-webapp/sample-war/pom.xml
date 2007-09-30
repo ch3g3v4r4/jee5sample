@@ -22,30 +22,18 @@
 				<executions>
 					<execution>
 						<id>copy-flex-resources</id>
-						<!-- TODO: use prepare-package as of 2.0.5 -->
-						<phase>process-classes</phase>
+						<phase>process-resources</phase>
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/flex-resources</outputDirectory>
+							<outputDirectory>${basedir}/src/main/webapp</outputDirectory>
 							<includeTypes>swf,swc</includeTypes>
 							<stripVersion>true</stripVersion>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<webResources>
-						<resource>
-							<!-- this is relative to the pom.xml directory -->
-							<directory>${project.build.directory}/flex-resources</directory>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>			
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
