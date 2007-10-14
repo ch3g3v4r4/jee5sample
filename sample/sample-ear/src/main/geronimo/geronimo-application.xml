@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://geronimo.apache.org/xml/ns/j2ee/application-1.2">
+
+	<environment>
+		<moduleId>
+			<groupId>com.example</groupId>
+			<artifactId>sample</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>ear</type>
+		</moduleId>
+
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.geronimo.configs</groupId>
+				<artifactId>system-database</artifactId>
+				<type>car</type>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.geronimo.configs</groupId>
+				<artifactId>openjpa</artifactId>
+				<type>car</type>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.geronimo.configs</groupId>
+				<artifactId>j2ee-corba-yoko</artifactId>
+				<type>car</type>
+			</dependency>
+		</dependencies>
+
+	</environment>
+
+	<ext-module>
+		<connector>SampleDataSource</connector>
+		<external-path>org.tranql/tranql-connector-derby-embed-xa/1.3/rar</external-path>
+		<connector xmlns="http://geronimo.apache.org/xml/ns/j2ee/connector-1.2">
+			<resourceadapter>
+				<outbound-resourceadapter>
+					<connection-definition>
+						<connectionfactory-interface>javax.sql.DataSource</connectionfactory-interface>
+						<connectiondefinition-instance>
+							<name>jdbc/SampleDS</name>
+							<config-property-setting name="UserName" />
+							<config-property-setting name="Password" />
+							<config-property-setting name="DatabaseName">SampleDatabase</config-property-setting>
+							<config-property-setting name="CreateDatabase">true</config-property-setting>
+							<connectionmanager>
+								<xa-transaction>
+									<transaction-caching />
+								</xa-transaction>
+								<single-pool>
+									<max-size>100</max-size>
+									<min-size>0</min-size>
+									<blocking-timeout-milliseconds>5000</blocking-timeout-milliseconds>
+									<idle-timeout-minutes>30</idle-timeout-minutes>
+									<match-one />
+								</single-pool>
+							</connectionmanager>
+						</connectiondefinition-instance>
+					</connection-definition>
+				</outbound-resourceadapter>
+			</resourceadapter>
+		</connector>
+	</ext-module>
+</application>
