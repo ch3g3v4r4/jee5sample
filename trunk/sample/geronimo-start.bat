@@ -1,1 +1,1 @@
-call mvn -f sample-ear\pom.xml geronimo:start
+start mvn -f sample-ear\pom.xml geronimo:start
