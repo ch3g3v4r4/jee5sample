@@ -23,52 +23,27 @@
 					<defaultLibBundleDir>lib/</defaultLibBundleDir>
 				</configuration>
 			</plugin>
+
+			<!-- Usage: mvn geronimo:start, mvn geronimo:undeploy geronimo:deploy, mvn geronimo:stop-->
 			<plugin>
 				<groupId>org.apache.geronimo.plugins</groupId>
 				<artifactId>geronimo-maven-plugin</artifactId>
 				<configuration>
 					<assemblies>
 						<assembly>
+							<id>geronimo</id>
 							<groupId>org.apache.geronimo.assemblies</groupId>
 							<artifactId>geronimo-jetty6-jee5</artifactId>
-							<version>2.0.1</version>
+							<version>2.1-SNAPSHOT</version>
 							<classifier>bin</classifier>
 							<type>zip</type>
 						</assembly>
 					</assemblies>
-				</configuration>				
-				<executions>
-					<execution>
-						<id>start-server</id>
-						<phase>install</phase>
-						<goals>
-							<goal>start</goal>
-						</goals>
-						<configuration>
-							<optionSets>
-								<optionSet>
-									<id>debug</id>
-									<options>
-										<option>-Xdebug</option>
-										<option>-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n</option>
-									</options>
-								</optionSet>
-							</optionSets>
-							<background>true</background>
-						</configuration>
-					</execution>
-					<execution>
-						<id>deploy-ears</id>
-						<phase>install</phase>
-						<goals>
-							<goal>deploy-module</goal>
-						</goals>
-						<configuration>
-							<moduleArchive>${project.build.directory}/${artifactId}-${version}.ear</moduleArchive>
-							<modulePlan>${basedir}/src/main/geronimo/geronimo-application.xml</modulePlan>
-						</configuration>
-					</execution>
-				</executions>
+					<assemblyId>geronimo</assemblyId>
+					<moduleArchive>${project.build.directory}/${artifactId}-${version}.ear</moduleArchive>
+					<modulePlan>${basedir}/src/main/geronimo/geronimo-application.xml</modulePlan>
+					<moduleId>com.example/sample/1.0-SNAPSHOT/ear</moduleId>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
