@@ -49,6 +49,7 @@
 	</build>
 
 	<dependencies>
+		<!-- To provide hints for eclipse plugin -->
 		<dependency>
 			<groupId>javaee</groupId>
 			<artifactId>javaee-api</artifactId>
