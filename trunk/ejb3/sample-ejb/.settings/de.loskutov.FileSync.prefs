@@ -1,8 +1,0 @@
-#Tue Aug 21 21:16:32 ICT 2007
-WARNING=DO NOT MODIFY THIS FILE IF YOU DON'T UNDERSTAND
-defaultDestination=
-defaultVariables=
-eclipse.preferences.version=1
-map|0=target/classes|D\:/programs/glassfish/domains/domain1/applications/j2ee-apps/sample/sample-ejb_jar|**/*.properties;**/*.class|,|,
-map|1=src/main/resources|D\:/programs/glassfish/domains/domain1/applications/j2ee-apps/sample/sample-ejb_jar|,|,|,
-useCurrentDateForDestinationFiles=false
