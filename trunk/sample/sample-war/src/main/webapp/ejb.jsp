@@ -5,4 +5,4 @@ InitialContext ctx = new InitialContext();
 Sample sample = (Sample) ctx.lookup("java:comp/env/ejb/Sample");
 %>
 <%=sample.sayHello("Thai")%>
-<%/*= sample.getUser(new Long(1)).getEmail() */%>
+<%= sample.getUser(new Long(1)).getEmail() %>
