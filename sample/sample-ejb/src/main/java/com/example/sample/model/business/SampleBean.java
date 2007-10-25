@@ -20,6 +20,10 @@ public class SampleBean implements Sample {
     }
 
 	public User getUser(Long userId) {
-		return em.find(User.class, userId);
+		User user = new User();
+		user.setId(1);
+		user.setEmail("tha@fcg.com");
+		em.persist(user);
+		return null;
 	}
 }
