@@ -15,6 +15,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IPackageFragment;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -53,9 +54,14 @@ public class MIHandler extends AbstractHandler {
 		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 		List packages = new ArrayList();
 		IProject project = null;
+		String sourceLevel = null;
 		for (Iterator iterator = structuredSelection.iterator(); iterator.hasNext();) {
 			IPackageFragment packageSelection = (IPackageFragment) iterator.next();
-			if (project == null) project = packageSelection.getJavaProject().getProject();
+			if (project == null) {
+				project = packageSelection.getJavaProject().getProject();
+				sourceLevel = packageSelection.getJavaProject().getOption(JavaCore.COMPILER_SOURCE, true);
+			}
+
 			if (packageSelection.getJavaProject().getProject() == project) {
 				// just check packages of same project
 				packages.add(packageSelection);
@@ -95,7 +101,11 @@ public class MIHandler extends AbstractHandler {
 
 	        // Analyze the files
 	        // undjava -db myproject.udj -rebuild
-	        commands = new String[]{undjavaCmd, "-rebuild", "-db", projectFile.getAbsolutePath()};
+	        if (sourceLevel != null) {
+	        	commands = new String[]{undjavaCmd, "-rebuild", "-db", projectFile.getAbsolutePath(), "-version", sourceLevel};
+	        } else {
+	        	commands = new String[]{undjavaCmd, "-rebuild", "-db", projectFile.getAbsolutePath()};
+	        }
 	        child = Runtime.getRuntime().exec(commands);
 	        in = child.getInputStream();
 	        while ((c = in.read()) != -1) {
