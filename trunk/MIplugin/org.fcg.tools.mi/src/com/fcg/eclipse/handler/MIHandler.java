@@ -59,7 +59,15 @@ public class MIHandler extends AbstractHandler {
 			IPackageFragment packageSelection = (IPackageFragment) iterator.next();
 			if (project == null) {
 				project = packageSelection.getJavaProject().getProject();
-				sourceLevel = packageSelection.getJavaProject().getOption(JavaCore.COMPILER_SOURCE, true);
+				String sourceLevel1 = packageSelection.getJavaProject().getOption(JavaCore.COMPILER_SOURCE, true);
+				String sourceLevel2 = packageSelection.getJavaProject().getOption(JavaCore.COMPILER_COMPLIANCE, true);
+				if (sourceLevel1 != null && sourceLevel2 != null) {
+					sourceLevel = sourceLevel1.compareTo(sourceLevel2) > 0 ? sourceLevel1 : sourceLevel2;
+				} else if (sourceLevel1 != null) {
+					sourceLevel = sourceLevel1;
+				} else if (sourceLevel2 != null) {
+					sourceLevel = sourceLevel2;
+				}
 			}
 
 			if (packageSelection.getJavaProject().getProject() == project) {
