@@ -1,0 +1,19 @@
+Development with Glassfish
+
+1. Install Glassfish:
+- Download glassfish-installer-v1_ur1-p01-b02.jar. Run java -jar glassfish-installer-v1_ur1-p01-b02.jar
+- Open folder glassfish. Run ant -f setup.xml
+Default admin password: adminadmin
+
+2. Install mysql driver to glassfish
+Copy mysql-connector-java-5.0.6-bin.jar to GLASSFISH_HOME\lib
+
+4. Update profiles.xml
+
+5. Start Glassfish 
+asadmin start-domain domain1
+
+6. Create database source jdbc/SampleDS (use mysql server)
+
+7. Deploy:
+gf_deploy.bat

@@ -1,0 +1,9 @@
+<profiles>
+  <profile>
+      <id>Glassfish</id>
+      <properties>
+        <gf.deploytool>D:/programs/glassfish/bin/asadmin</gf.deploytool>
+        <gf.passwordfile>${basedir}/../gf_password</gf.passwordfile>
+      </properties>
+  </profile>
+</profiles>
