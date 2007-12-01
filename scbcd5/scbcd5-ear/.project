@@ -1,0 +1,10 @@
+<projectDescription>
+  <name>scbcd5-ear</name>
+  <comment/>
+  <projects>
+    <project>scbcd5-ejb</project>
+    <project>scbcd5-war</project>
+  </projects>
+  <buildSpec/>
+  <natures/>
+</projectDescription>

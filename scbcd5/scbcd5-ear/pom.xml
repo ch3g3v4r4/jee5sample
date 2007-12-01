@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<project>
+	<parent>
+		<groupId>com.example</groupId>
+		<artifactId>scbcd5</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${project.parent.groupId}</groupId>
+	<artifactId>${project.parent.artifactId}-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>scbcd5-ear</name>
+	<version>${project.parent.version}</version>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<version>5</version>
+					<defaultLibBundleDir>lib/</defaultLibBundleDir>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>${gf.deploytool}</executable>
+					<arguments>
+						<argument>deploy</argument>
+						<argument>--user=admin</argument>
+						<argument>--passwordfile=${gf.passwordfile}</argument>
+						<argument>target/${artifactId}-${version}.${packaging}</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- To provide hints for eclipse plugin -->
+		<dependency>
+			<groupId>javaee</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-ejb</artifactId>
+			<version>${project.parent.version}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-war</artifactId>
+			<version>${project.parent.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+</project>
