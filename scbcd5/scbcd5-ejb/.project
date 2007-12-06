@@ -12,6 +12,16 @@
     <buildCommand>
       <name>org.eclipse.wst.validation.validationbuilder</name>
     </buildCommand>
+    <buildCommand>
+      <name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+      <triggers>auto,full,incremental,</triggers>
+      <arguments>
+        <dictionary>
+          <key>LaunchConfigHandle</key>
+          <value>&lt;project&gt;/.externalToolBuilders/gfdeploy [Builder] (1).launch</value>
+        </dictionary>
+      </arguments>
+    </buildCommand>
   </buildSpec>
   <natures>
     <nature>org.eclipse.wst.common.project.facet.core.nature</nature>
