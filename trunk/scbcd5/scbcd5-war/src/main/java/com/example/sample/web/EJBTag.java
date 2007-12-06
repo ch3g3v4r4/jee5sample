@@ -9,10 +9,11 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import com.example.sample.model.business.Sample;
+import com.example.sample.model.vo.User;
 
 public class EJBTag extends SimpleTagSupport {
 
-	@EJB Sample sample;
+	@EJB private Sample sample;
 
 	@Override
 	public void doTag() throws JspException, IOException {
@@ -20,9 +21,13 @@ public class EJBTag extends SimpleTagSupport {
         JspWriter out = pageContext.getOut();
 
         try {
-            String sampleOutput = sample.sayHello("SCBCD5");
+            String sampleOutput = sample.sayHello("Loan");
             out.println(sampleOutput);
             out.println(sample.getUser(Long.valueOf(1)).getEmail());
+            out.println("List:");
+            for( User u : sample.getUsers()) {
+            	out.print(u.getId() + ":" + u.getEmail());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
