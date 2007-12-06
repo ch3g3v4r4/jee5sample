@@ -13,10 +13,10 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
     private String email;
-    
+
     // No-arg constructor
     public User() { /* empty */ }
 
