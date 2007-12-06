@@ -80,6 +80,18 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.geronimo.specs</groupId>
+				<artifactId>geronimo-interceptor_3.0_spec</artifactId>
+				<version>1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+		        <groupId>org.apache.geronimo.specs</groupId>
+		        <artifactId>geronimo-jms_1.1_spec</artifactId>
+				<version>1.1</version>
+				<scope>provided</scope>
+			</dependency>				
+			<dependency>
+				<groupId>org.apache.geronimo.specs</groupId>
 				<artifactId>geronimo-jsp_2.1_spec</artifactId>
 				<version>1.0</version>
 				<scope>provided</scope>
@@ -107,7 +119,7 @@
 				<artifactId>myfaces-impl</artifactId>
 				<version>1.2.0</version>
 				<scope>provided</scope>
-			</dependency>
+			</dependency>		
 		</dependencies>
 	</dependencyManagement>
 	<scm>
