@@ -2,8 +2,8 @@
   <name>scbcd5-ear</name>
   <comment/>
   <projects>
-    <project>scbcd5-ejb</project>
     <project>scbcd5-war</project>
+    <project>scbcd5-ejb</project>
   </projects>
   <buildSpec/>
   <natures/>

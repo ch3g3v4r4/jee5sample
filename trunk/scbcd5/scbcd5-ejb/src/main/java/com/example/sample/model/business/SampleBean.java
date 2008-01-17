@@ -2,6 +2,9 @@ package com.example.sample.model.business;
 
 import java.util.Collection;
 
+import javax.annotation.Resource;
+import javax.ejb.EJBContext;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
@@ -25,24 +28,34 @@ public class SampleBean implements Sample {
 
 	public User getUser(Long userId) {
 		User user = em.find(User.class, Long.valueOf(userId));
-		user.setEmail("set@bycode2");
 		return user;
 	}
 
 	public Collection<User> getUsers() {
 		Collection<User> users = (Collection<User>) em.createQuery("SELECT u FROM User u").getResultList();
-
 		return users;
 	}
 
-	@AroundInvoke
-	public Object profile(InvocationContext inv) throws Exception {
-		long time = System.currentTimeMillis();
-		try {
-			return inv.proceed();
-		} finally {
-			long totalTime = System.currentTimeMillis() - time;
-			System.out.println(inv.getMethod() + " took " + totalTime + " ms.");
-		}
+	@Resource
+	private SessionContext context;
+
+	public void shopping() {
+		Cart cardBean = (Cart) context.lookup("cart");
+		cardBean.beginShopping("Thai Ha");
+		cardBean.addItem("Hat");
+		cardBean.addItem("Shoes");
+		cardBean.finishShopping();
+
 	}
+
+//	@AroundInvoke
+//	public Object profile(InvocationContext inv) throws Exception {
+//		long time = System.currentTimeMillis();
+//		try {
+//			return inv.proceed();
+//		} finally {
+//			long totalTime = System.currentTimeMillis() - time;
+//			System.out.println(inv.getMethod() + " took " + totalTime + " ms.");
+//		}
+//	}
 }
