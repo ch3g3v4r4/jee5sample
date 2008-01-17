@@ -3,6 +3,7 @@ package com.example.sample.model.business;
 import java.util.Collection;
 
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.ejb.EJBContext;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
@@ -13,6 +14,7 @@ import javax.persistence.PersistenceContext;
 
 import com.example.sample.model.vo.User;
 
+@EJB(name="ejb/Cart", beanInterface=Cart.class)
 @Stateless
 public class SampleBean implements Sample {
     @PersistenceContext
@@ -40,7 +42,7 @@ public class SampleBean implements Sample {
 	private SessionContext context;
 
 	public void shopping() {
-		Cart cardBean = (Cart) context.lookup("cart");
+		Cart cardBean = (Cart) context.lookup("ejb/Cart");
 		cardBean.beginShopping("Thai Ha");
 		cardBean.addItem("Hat");
 		cardBean.addItem("Shoes");
