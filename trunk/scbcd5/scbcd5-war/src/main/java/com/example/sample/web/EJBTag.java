@@ -28,6 +28,8 @@ public class EJBTag extends SimpleTagSupport {
             for( User u : sample.getUsers()) {
             	out.print(u.getId() + ":" + u.getEmail());
             }
+            out.println("<br>");
+            sample.shopping();
         } catch (Exception e) {
             e.printStackTrace();
         }
