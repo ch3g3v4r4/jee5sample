@@ -23,26 +23,6 @@
 					<defaultLibBundleDir>lib/</defaultLibBundleDir>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<executable>${gf.deploytool}</executable>
-					<arguments>
-						<argument>deploy</argument>
-						<argument>--user=admin</argument>
-						<argument>--passwordfile=${gf.passwordfile}</argument>
-						<argument>target/${artifactId}-${version}.${packaging}</argument>
-					</arguments>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 

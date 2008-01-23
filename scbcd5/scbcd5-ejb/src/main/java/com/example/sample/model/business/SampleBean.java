@@ -47,6 +47,7 @@ public class SampleBean implements Sample {
 		cardBean.addItem("Hat");
 		cardBean.addItem("Shoes");
 		cardBean.finishShopping();
+		System.out.println("Caller principal name:" + context.getCallerPrincipal().getName());
 
 	}
 
