@@ -8,7 +8,7 @@ Default admin password: adminadmin
 2. Install mysql driver to glassfish
 Copy mysql-connector-java-5.0.6-bin.jar to GLASSFISH_HOME\lib
 
-4. Update profiles.xml
+4. Update gf_deploy.bat
 
 5. Start Glassfish 
 asadmin start-domain domain1
