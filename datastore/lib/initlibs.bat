@@ -39,3 +39,5 @@ call mvn install:install-file -DgroupId=com.google -Dversion=1.0 -Dpackaging=jar
 call mvn install:install-file -DgroupId=com.google -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true -DartifactId=gdata-youtube -Dfile=gdata/gdata-youtube-1.0-sources.jar -Dclassifier=sources
 call mvn install:install-file -DgroupId=com.google -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true -DartifactId=gdata-youtube-meta -Dfile=gdata/gdata-youtube-meta-1.0.jar
 
+
+call mvn install:install-file -DgroupId=org.eclipse.swt.win32.win32 -Dversion=3.3.0-v3346 -Dpackaging=jar -DgeneratePom=true -DartifactId=x86 -Dfile=swt/src.zip -Dclassifier=sources
