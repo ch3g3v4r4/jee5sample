@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.0.2.v200711252032]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<configs>
+		<config>src/main/resources/applicationContext.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[Default]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/applicationContext.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>
