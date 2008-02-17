@@ -15,7 +15,7 @@ public class DownloadManager implements Runnable {
     private File file;
     private Long downloadSize;
 
-    private int maxThreads = 10;
+    private int maxThreads = 2;
     private int maxTries = 10;
     private DownloadReceiver receiver;
 
@@ -101,7 +101,7 @@ public class DownloadManager implements Runnable {
         }
     }
 
-    private static List<DownloadWorker> initializeWorkers(DownloadReceiver receiver, int maxThreads) {
+    private List<DownloadWorker> initializeWorkers(DownloadReceiver receiver, int maxThreads) {
         List<DownloadWorker> workers = new ArrayList<DownloadWorker>();
 
         List<Range> ranges  = new ArrayList<Range>();
@@ -136,7 +136,7 @@ public class DownloadManager implements Runnable {
             }
         });
         for (Range range : ranges) {
-            DownloadWorker worker = new DownloadWorker(receiver, range.getOffset(), range.getSize());
+            DownloadWorker worker = new DownloadWorker(receiver, range.getOffset(), range.getSize(), webBrowser);
             workers.add(worker);
         }
         return workers;

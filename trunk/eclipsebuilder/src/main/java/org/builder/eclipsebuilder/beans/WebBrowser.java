@@ -71,6 +71,10 @@ public class WebBrowser {
         super.finalize();
     }
 
+    public HttpClient getHttpClient() {
+        return httpClient;
+    }
+
     public List<String> getLinks(String urlStr) throws Exception {
         List<String> result = new ArrayList<String>();
 

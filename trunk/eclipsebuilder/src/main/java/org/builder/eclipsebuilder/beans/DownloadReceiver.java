@@ -45,6 +45,10 @@ public class DownloadReceiver {
 
     public boolean isCompleted() {
         // TODO Auto-generated method stub
-        return false;
+        return true;
+    }
+    public void write(long currentOffset, byte[] buffer, int read) {
+        // TODO Auto-generated method stub
+
     }
 }
