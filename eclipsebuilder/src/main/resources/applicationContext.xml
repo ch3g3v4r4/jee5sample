@@ -13,20 +13,28 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
+	<bean name="configuration" class="org.builder.eclipsebuilder.beans.Configuration">
+		<property name="buildType" value="STABLE" />
+		<property name="cacheDir" value="/cached" />
+		<property name="eclipseDir" value="/eclipse" />
+	</bean>
 
-	<!-- ========================= BUSINESS OBJECT DEFINITIONS / CONTROLLER DEFINITIONS ========================= -->
-	<!--
-		Activates various annotations to be detected in bean classes: Spring's
-		@Required and @Autowired, as well as JSR 250's @PostConstruct,
-		@PreDestroy and @Resource (if available) and JPA's @PersistenceContext
-		and @PersistenceUnit (if available).
-	-->
-	<context:annotation-config />
+	<bean name="webBrowser" class="org.builder.eclipsebuilder.beans.WebBrowser"/>
 
-	<!--
-		Autodetected POJOs labeled with the @Controller/@Service/@Repositoty/@Component annotation.
-	-->
-	<context:component-scan base-package="org.builder.eclipsebuilder"/>
+	<bean name="downloadManager" scope="prototype" class="org.builder.eclipsebuilder.beans.DownloadManager">
+		<property name="webBrowser" ref="webBrowser"/>
+	</bean>
 
+	<bean name="eclipseSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseSDKPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+	</bean>
+
+	<bean name="eclipseBuilder" class="org.builder.eclipsebuilder.beans.EclipseBuilder">
+		<property name="configuration" ref="configuration"/>
+		<property name="parts">
+			<list>
+				<ref bean="eclipseSDKPartBuilder"/>
+			</list>
+		</property>
+	</bean>
 </beans>
