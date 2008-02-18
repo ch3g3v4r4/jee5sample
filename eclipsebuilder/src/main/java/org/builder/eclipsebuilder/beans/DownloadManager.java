@@ -15,7 +15,7 @@ public class DownloadManager implements Runnable {
     private File file;
     private Long downloadSize;
 
-    private int maxThreads = 2;
+    private int maxThreads = 10;
     private int maxTries = 10;
     private DownloadReceiver receiver;
 
@@ -61,7 +61,7 @@ public class DownloadManager implements Runnable {
         }
     }
 
-    private void download() throws InterruptedException {
+    private void download() throws Exception {
         receiver = new DownloadReceiver();
         receiver.setUrl(url);
         receiver.setFile(file);
@@ -107,9 +107,7 @@ public class DownloadManager implements Runnable {
         List<Range> ranges  = new ArrayList<Range>();
         List<Range> emptyParts = receiver.getEmptyParts();
         if (maxThreads <= emptyParts.size()) {
-            for (int i = 0; i < maxThreads; i++) {
-                ranges.add(emptyParts.get(i));
-            }
+            ranges.addAll(emptyParts);
         } else {
             ranges.addAll(emptyParts);
             List<Range> remainingRanges  = new ArrayList<Range>();
@@ -135,10 +133,15 @@ public class DownloadManager implements Runnable {
                 return (int) (o1.getOffset() - o2.getOffset());
             }
         });
+        int partIndex = 0;
         for (Range range : ranges) {
-            DownloadWorker worker = new DownloadWorker(receiver, range.getOffset(), range.getSize(), webBrowser);
-            workers.add(worker);
+            if (partIndex < maxThreads) {
+                DownloadWorker worker = new DownloadWorker(receiver, range.getOffset(), range.getSize(), webBrowser);
+                workers.add(worker);
+            }
+            partIndex ++;
         }
+        receiver.setEmptyParts(ranges);
         return workers;
     }
 
