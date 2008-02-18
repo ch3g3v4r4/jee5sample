@@ -161,7 +161,8 @@ public class WebBrowser {
         HttpConnectionManagerParams.setMaxTotalConnections(params, 100);
         HttpConnectionManagerParams.setDefaultMaxConnectionsPerHost(params, 20);
         HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-        DefaultHttpClient client = new DefaultHttpClient(this.clientConnectionManager, params);
+        DefaultHttpClient client = new DefaultHttpClient(
+                this.clientConnectionManager, params);
         MyRedirectHandler handler = new MyRedirectHandler();
         client.setRedirectHandler(handler);
         HttpGet httpget = new HttpGet(url.toURI());
@@ -169,19 +170,21 @@ public class WebBrowser {
             HttpResponse response = client.execute(httpget);
             HttpEntity entity = response.getEntity();
             long length = entity.getContentLength();
-            if (length >= 0) fileSize = Long.valueOf(length);
+            if (length >= 0)
+                fileSize = Long.valueOf(length);
             String name = getContentDispositionName(response);
             if (name != null) {
                 fileName = name;
             } else {
                 // guess it from last (redirected) URL
-                URL location = handler.getLocation() != null ? handler.getLocation().toURL() : url;
+                URL location = handler.getLocation() != null ? handler
+                        .getLocation().toURL() : url;
                 fileName = guessFileNameFromUrl(location);
             }
         } finally {
             httpget.abort();
         }
-        return new Object[] {fileName, fileSize};
+        return new Object[] { fileName, fileSize };
     }
 
     private String guessFileNameFromUrl(URL location) {
@@ -209,9 +212,11 @@ public class WebBrowser {
 
     private static class MyRedirectHandler extends DefaultRedirectHandler {
         private URI location;
+
         public URI getLocation() {
             return location;
         }
+
         @Override
         public URI getLocationURI(HttpResponse response, HttpContext context)
                 throws ProtocolException {
