@@ -77,7 +77,7 @@ public class DownloadWorker extends Thread {
             }
         } catch (Exception e) {
             synchronized (receiver) {
-                List<Object> errors = new ArrayList<Object>();
+                List<Exception> errors = new ArrayList<Exception>();
                 errors.addAll(receiver.getErrors());
                 errors.add(e);
                 receiver.setErrors(errors);

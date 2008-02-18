@@ -27,6 +27,7 @@
 
 	<bean name="eclipseSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseSDKPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
 	</bean>
 
 	<bean name="eclipseBuilder" class="org.builder.eclipsebuilder.beans.EclipseBuilder">

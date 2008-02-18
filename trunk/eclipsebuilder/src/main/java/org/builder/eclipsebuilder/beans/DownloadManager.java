@@ -19,7 +19,7 @@ public class DownloadManager implements Runnable {
     private int maxTries = 10;
     private DownloadReceiver receiver;
 
-    private Object error;
+    private Exception error;
 
     private WebBrowser webBrowser;
 
@@ -41,6 +41,10 @@ public class DownloadManager implements Runnable {
 
     public void setMaxTries(int maxTries) {
         this.maxTries = maxTries;
+    }
+
+    public File getFile() {
+        return this.file;
     }
 
     public void run() {
@@ -76,7 +80,7 @@ public class DownloadManager implements Runnable {
         int tryNum = 0;
         do {
 
-            receiver.setErrors(Collections.emptyList());
+            receiver.setErrors(new ArrayList<Exception>());
             List<DownloadWorker> workers = initializeWorkers(receiver, maxThreads);
             for (DownloadWorker worker : workers) {
                 worker.start();
@@ -182,8 +186,8 @@ public class DownloadManager implements Runnable {
         return this.webBrowser.getFileNameAndSize(url);
     }
 
-    public List<Object> getErrors() {
-        List<Object> errors = new ArrayList<Object>();
+    public List<Exception> getErrors() {
+        List<Exception> errors = new ArrayList<Exception>();
         if (error != null) {
             errors.add(error);
         }

@@ -1,6 +1,7 @@
 package org.builder.eclipsebuilder.beans;
 
 import java.io.File;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,9 +11,14 @@ public class EclipseSDKPartBuilder implements PartBuilder {
 
     private String downloadPage = "http://download.eclipse.org/eclipse/downloads/";
     private WebBrowser webBrowser;
+    private DownloadManager downloadManager;
 
     public void setWebBrowser(WebBrowser webBrowser) {
         this.webBrowser = webBrowser;
+    }
+
+    public void setDownloadManager(DownloadManager downloadManager) {
+        this.downloadManager = downloadManager;
     }
 
     public void build(EclipseBuilderContext context) throws Exception {
@@ -20,13 +26,22 @@ public class EclipseSDKPartBuilder implements PartBuilder {
         String downloadLink = getDownloadLink(context.getBuildType());
         File downloadedFile = downloadFile(downloadLink, context.getCacheHome());
 
-        System.out.println(downloadLink);
+        System.out.println(downloadedFile);
 
     }
 
-    private File downloadFile(String downloadLink, File cacheHome) {
-        // TODO Auto-generated method stub
-        return null;
+    private File downloadFile(String downloadLink, File cacheHome) throws Exception {
+        downloadManager.setFolder(cacheHome);
+        downloadManager.setUrl(new URL(downloadLink));
+        downloadManager.setMaxThreads(10);
+        downloadManager.setMaxTries(100);
+        Thread thread = new Thread(downloadManager);
+        thread.start();
+        thread.join();
+        if (!downloadManager.getErrors().isEmpty()) {
+            throw downloadManager.getErrors().get(0);
+        }
+        return downloadManager.getFile();
     }
 
     private String getDownloadLink(BuildType buildType) throws Exception {

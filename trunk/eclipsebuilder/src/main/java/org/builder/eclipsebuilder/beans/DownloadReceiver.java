@@ -11,7 +11,7 @@ public class DownloadReceiver {
     private Long size;
 
     private List<Range> emptyParts;
-    private List<Object> errors;
+    private List<Exception> errors;
 
     public URL getUrl() {
         return url;
@@ -32,6 +32,7 @@ public class DownloadReceiver {
         // fsutil file createnew name size
         String[] command = new String[] {"fsutil", "file", "createnew", file.getAbsolutePath(), size == null ? "0" : size.toString()};
         Process child = Runtime.getRuntime().exec(command);
+        child.waitFor();
         this.size = size;
     }
     public List<Range> getEmptyParts() {
@@ -40,10 +41,10 @@ public class DownloadReceiver {
     public void setEmptyParts(List<Range> emptyParts) {
         this.emptyParts = emptyParts;
     }
-    public List<Object> getErrors() {
+    public List<Exception> getErrors() {
         return errors;
     }
-    public void setErrors(List<Object> errors) {
+    public void setErrors(List<Exception> errors) {
         this.errors = errors;
     }
 
