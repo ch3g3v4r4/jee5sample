@@ -18,10 +18,12 @@ public class Main
         mgr.setFolder(new File("C:\\"));
         mgr.setUrl(new URL("http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/R-3.3.1.1-200710231652/eclipse-CVS-Client-SDK-3.3.1.1.zip&url=http://download.eclipse.org/eclipse/downloads/drops/R-3.3.1.1-200710231652/eclipse-CVS-Client-SDK-3.3.1.1.zip&mirror_id=1"));
         Thread t = new Thread(mgr);
+        long t1 = System.currentTimeMillis();
         t.start();
         t.join();
-        System.out.println(mgr.getErrors());
+        long t2 = System.currentTimeMillis();
+        System.out.println("time:" + (t2-t1)/1000);
         EclipseBuilder builder = (EclipseBuilder) ctx.getBean("eclipseBuilder");
-        builder.build();
+        //builder.build();
     }
 }

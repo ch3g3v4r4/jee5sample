@@ -1,6 +1,7 @@
 package org.builder.eclipsebuilder.beans;
 
 import java.io.File;
+import java.io.RandomAccessFile;
 import java.net.URL;
 import java.util.List;
 
@@ -27,7 +28,10 @@ public class DownloadReceiver {
     public Long getSize() {
         return size;
     }
-    public void setSize(Long size) {
+    public void setSize(Long size) throws Exception {
+        // fsutil file createnew name size
+        String[] command = new String[] {"fsutil", "file", "createnew", file.getAbsolutePath(), size == null ? "0" : size.toString()};
+        Process child = Runtime.getRuntime().exec(command);
         this.size = size;
     }
     public List<Range> getEmptyParts() {
@@ -44,11 +48,15 @@ public class DownloadReceiver {
     }
 
     public boolean isCompleted() {
-        // TODO Auto-generated method stub
-        return true;
+        return (size == null) || (size.longValue() == writeSize);
     }
-    public void write(long currentOffset, byte[] buffer, int read) {
-        // TODO Auto-generated method stub
 
+    private long writeSize = 0;
+    public void write(long offset, byte[] buffer, int len) throws Exception {
+        RandomAccessFile raf = new RandomAccessFile(file, "rw");
+        raf.seek(offset);
+        raf.write(buffer, 0, len);
+        raf.close();
+        writeSize += len;
     }
 }

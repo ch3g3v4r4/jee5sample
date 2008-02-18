@@ -10,6 +10,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.params.ClientPNames;
+import org.apache.http.message.BasicHeader;
 
 public class DownloadWorker extends Thread {
 
@@ -34,7 +36,9 @@ public class DownloadWorker extends Thread {
             HttpGet httpget = new HttpGet(url.toURI());
 
             if (offset > 0) {
-                httpget.setHeader("Range", "bytes=" + offset + "-");
+                List<BasicHeader> defaultHeaders = new ArrayList<BasicHeader>(1);
+                defaultHeaders.add(new BasicHeader("Range", "bytes=" + offset + "-"));
+                httpget.getParams().setParameter(ClientPNames.DEFAULT_HEADERS, defaultHeaders);
             }
 
             try {
@@ -46,7 +50,7 @@ public class DownloadWorker extends Thread {
                 }
 
                 InputStream is = new BufferedInputStream(response.getEntity().getContent());
-                byte[] buffer = new byte[4 * 1024];
+                byte[] buffer = new byte[10 * 1024];
                 long remainingCount = size != null ? size.longValue() : Long.MAX_VALUE;
                 int read = 0;
                 long currentOffset = offset;
