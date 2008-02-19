@@ -2,6 +2,7 @@ package org.builder.eclipsebuilder.beans;
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,12 +15,25 @@ public class EclipseWTPSDKPartBuilder extends PartBuilderHelper implements PartB
 
     private String downloadPage = "http://download.eclipse.org/webtools/downloads/";
 
+    private List<PartBuilder> partBuilders;
+
+    public void setParts(List<PartBuilder> partBuilders) {
+        this.partBuilders = partBuilders;
+    }
+
     public void build(EclipseBuilderContext context) throws Exception {
+
+        // Download dependencies first
+        for (PartBuilder builder : this.partBuilders) {
+            logger.info("Building WTP SDK dependencies using " + builder.getClass().getName());
+            builder.build(context);
+        }
+
         logger.info("Looking for the Eclipse WTP SDK hyperlink.");
         String[] downloadLinkAndChecksumLink = getDownloadLinkAndChecksumLink(context.getBuildType());
         String downloadLink = downloadLinkAndChecksumLink[0];
         String checksumLink = downloadLinkAndChecksumLink[1];
-        logger.info("Eclipse SDK hyperlink: " + downloadLink + "; checksum link:" + checksumLink);
+        logger.info("Eclipse WTP SDK hyperlink: " + downloadLink + "; checksum link:" + checksumLink);
 
         // If the file is already downloaded, verify it checksum to determine download again or skip
         Object[] nameAndSize = getNameAndSize(new URL(downloadLink));
@@ -32,28 +46,28 @@ public class EclipseWTPSDKPartBuilder extends PartBuilderHelper implements PartB
         boolean checksumValid = false;
 
         if (fileExist) {
-            logger.info("Verifying Eclipse SDK checksum...");
+            logger.info("Verifying Eclipse WTP SDK checksum...");
             checksumValid = verifyChecksum(file, checksumLink);
         }
 
         if (!fileExist || !checksumValid) {
-            logger.info("File is not found in cache or checksum is incorrect, will download Eclipse SDK.");
+            logger.info("File is not found in cache or checksum is incorrect, will download Eclipse WTP SDK.");
             downloadFile(downloadLink, file, downloadSize);
             fileExist = file.exists();
             if (fileExist) {
-                logger.info("Eclipse SDK is downloaded to location:" + file.getAbsolutePath());
-                logger.info("Verifying Eclipse SDK checksum...");
+                logger.info("Eclipse WTP SDK is downloaded to location:" + file.getAbsolutePath());
+                logger.info("Verifying Eclipse WTP SDK checksum...");
                 checksumValid = verifyChecksum(file, checksumLink);
             } else {
-                logger.error("Failed to download Eclipse SDK.");
-                throw new Exception("Failed to download Eclipse SDK!");
+                logger.error("Failed to download Eclipse WTP SDK.");
+                throw new Exception("Failed to download Eclipse WTP SDK!");
             }
         }
 
         if (!checksumValid) {
-            logger.warn("Failed to verify Eclipse SDK integrity.");
+            logger.warn("Failed to verify Eclipse WTP SDK integrity.");
         } else {
-            logger.info("Eclipse SDK integrity is good.");
+            logger.info("Eclipse WTP SDK integrity is good.");
         }
 
         // unzip to target folder
@@ -75,9 +89,9 @@ public class EclipseWTPSDKPartBuilder extends PartBuilderHelper implements PartB
             String pattern = "/N([^/]+)/";
             link = webBrowser.getLink(this.downloadPage, pattern);
         } else { // STABLE
-            String patternStr1 = "/S-([^/-]+)-([^/-]+)/index.php";
+            String patternStr1 = "/S-([^/]+)/";
             String link1 = webBrowser.getLink(this.downloadPage, patternStr1);
-            String patternStr2 = "/R-([^/-]+)-([^/-]+)/index.php";
+            String patternStr2 = "/R-([^/]+)/";
             String link2 = webBrowser.getLink(this.downloadPage, patternStr2);
             if (link1 == null && link2 != null) {
                 link = link2;
@@ -103,39 +117,29 @@ public class EclipseWTPSDKPartBuilder extends PartBuilderHelper implements PartB
         }
         logger.info("Eclipse WTP SDK hyperlink 1: " + link);
 
-        // http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/download.php?dropFile=eclipse-SDK-3.4M5-win32.zip
+        // http://www.eclipse.org/downloads/download.php?file=/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/wtp-sdk-S-3.0M5-20080218021547.zip
         String link2;
-        String pattern2 = "drops/([^/]+)/download.php\\?dropFile=eclipse-SDK-([^/]+)-win32.zip";
+        String pattern2 = "/wtp-sdk-";
         link2 = webBrowser.getLink(link, pattern2);
-        logger.info("Eclipse SDK hyperlink 2: " + link2);
+        logger.info("Eclipse WTP SDK hyperlink 2: " + link2);
 
-        // http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/S-3.4M5-200802071530/eclipse-SDK-3.4M5-win32.zip
+        // http://www.eclipse.org/downloads/download.php?file=/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/wtp-sdk-S-3.0M5-20080218021547.zip&url=http://download.eclipse.org/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/wtp-sdk-S-3.0M5-20080218021547.zip&mirror_id=1
         String link3;
-        String pattern3 = "eclipse-SDK-([^/]+)-win32.zip";
+        String pattern3 = "url=http://download.eclipse.org/";
         link3 = webBrowser.getLink(link2, pattern3);
-        logger.info("Eclipse SDK hyperlink 3: " + link3);
+        logger.info("Eclipse WTP SDK hyperlink 3: " + link3);
 
-        String downloadLink;
-        String link3ContentType = webBrowser.getContentType(link3);
-        if (link3ContentType != null && link3ContentType.startsWith("text")) {
-            // http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/S-3.4M5-200802071530/eclipse-SDK-3.4M5-win32.zip&url=http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/eclipse-SDK-3.4M5-win32.zip&mirror_id=1
-            String link4;
-            String pattern4 = "url=http://download.eclipse.org/";
-            link4 = webBrowser.getLink(link3, pattern4);
-            downloadLink = link4;
-        } else {
-            downloadLink = link3;
-        }
-        logger.info("Eclipse SDK hyperlink for downloading: " + downloadLink);
+        String downloadLink = link3;
+        logger.info("Eclipse WTP SDK hyperlink for downloading: " + downloadLink);
         downloadLinkAndChecksumLink[0] = downloadLink;
 
         // Checksum link
-        // http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/checksum/eclipse-SDK-3.4M5-win32.zip.md5
+        // http://download.eclipse.org/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/checksum/wtp-sdk-S-3.0M5-20080218021547.zip.md5
         String checksumLink2;
-        String checksumPattern2 = "eclipse-SDK-([^/]+)-win32.zip.md5";
+        String checksumPattern2 = "/wtp-sdk-.+\\.zip\\.md5";
         checksumLink2 = webBrowser.getLink(link, checksumPattern2);
         if (checksumLink2 == null) {
-            checksumPattern2 = "eclipse-SDK-([^/]+)-win32.zip.sha1";
+            checksumPattern2 = "/wtp-sdk-.+\\.zip\\.sha1";
             checksumLink2 = webBrowser.getLink(link, checksumPattern2);
         }
         logger.info("Eclipse SDK checksum hyperlink: " + checksumLink2);

@@ -41,10 +41,8 @@ public class EclipseBuilder {
         boolean eclipseHomeValid;
         if (!eclipseHome.exists()) {
             eclipseHomeValid = eclipseHome.mkdir();
-        } else {
-            eclipseHomeValid = eclipseHome.isDirectory()
-                    && eclipseHome.canWrite() && eclipseHome.list().length == 0;
         }
+        eclipseHomeValid = eclipseHome.isDirectory() && eclipseHome.canWrite();
         if (!eclipseHomeValid) {
             throw new IllegalArgumentException(
                     "Invalid or not-empty Eclipse directory: " + eclipseHome);

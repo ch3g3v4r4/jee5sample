@@ -104,8 +104,10 @@ public class WebBrowser {
                         href = attrs.item(j).getNodeValue();
                     }
                 }
-                String absHref = new URL(documentURL, href).toString();
-                result.add(absHref);
+                if (!href.startsWith("javascript:")) {
+                    String absHref = new URL(documentURL, href).toString();
+                    result.add(absHref);
+                }
             }
         } catch (Exception e) {
             if (httpget != null) {
