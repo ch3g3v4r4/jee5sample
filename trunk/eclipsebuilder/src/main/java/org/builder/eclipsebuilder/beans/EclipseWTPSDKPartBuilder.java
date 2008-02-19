@@ -8,14 +8,14 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 import org.builder.eclipsebuilder.beans.Configuration.BuildType;
 
-public class EclipseSDKPartBuilder extends PartBuilderHelper implements PartBuilder {
+public class EclipseWTPSDKPartBuilder extends PartBuilderHelper implements PartBuilder {
 
-    protected static Logger logger = Logger.getLogger(EclipseSDKPartBuilder.class);
+    protected static Logger logger = Logger.getLogger(EclipseWTPSDKPartBuilder.class);
 
-    private String downloadPage = "http://download.eclipse.org/eclipse/downloads/";
+    private String downloadPage = "http://download.eclipse.org/webtools/downloads/";
 
     public void build(EclipseBuilderContext context) throws Exception {
-        logger.info("Looking for the Eclipse SDK hyperlink.");
+        logger.info("Looking for the Eclipse WTP SDK hyperlink.");
         String[] downloadLinkAndChecksumLink = getDownloadLinkAndChecksumLink(context.getBuildType());
         String downloadLink = downloadLinkAndChecksumLink[0];
         String checksumLink = downloadLinkAndChecksumLink[1];
@@ -63,21 +63,21 @@ public class EclipseSDKPartBuilder extends PartBuilderHelper implements PartBuil
     private String[] getDownloadLinkAndChecksumLink(BuildType buildType) throws Exception {
         String[] downloadLinkAndChecksumLink = new String[2];
 
-        // http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/index.php
+        // http://download.eclipse.org/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/
         String link;
         if (buildType == BuildType.RELEASE) {
-            String pattern = "drops/R-([^/]+)/index.php";
+            String pattern = "/R-([^/]+)/";
             link = webBrowser.getLink(this.downloadPage, pattern);
         } else if (buildType == BuildType.INTEGRATION) {
-            String pattern = "drops/I([^/]+)/index.php";
+            String pattern = "/I-([^/]+)/";
             link = webBrowser.getLink(this.downloadPage, pattern);
         } else if (buildType == BuildType.NIGHTLY) {
-            String pattern = "drops/N([^/]+)/index.php";
+            String pattern = "/N([^/]+)/";
             link = webBrowser.getLink(this.downloadPage, pattern);
         } else { // STABLE
-            String patternStr1 = "drops/S-([^/-]+)-([^/-]+)/index.php";
+            String patternStr1 = "/S-([^/-]+)-([^/-]+)/index.php";
             String link1 = webBrowser.getLink(this.downloadPage, patternStr1);
-            String patternStr2 = "drops/R-([^/-]+)-([^/-]+)/index.php";
+            String patternStr2 = "/R-([^/-]+)-([^/-]+)/index.php";
             String link2 = webBrowser.getLink(this.downloadPage, patternStr2);
             if (link1 == null && link2 != null) {
                 link = link2;
@@ -101,7 +101,7 @@ public class EclipseSDKPartBuilder extends PartBuilderHelper implements PartBuil
                 }
             }
         }
-        logger.info("Eclipse SDK hyperlink 1: " + link);
+        logger.info("Eclipse WTP SDK hyperlink 1: " + link);
 
         // http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/download.php?dropFile=eclipse-SDK-3.4M5-win32.zip
         String link2;
