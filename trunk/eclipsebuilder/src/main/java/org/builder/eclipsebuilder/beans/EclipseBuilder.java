@@ -3,7 +3,10 @@ package org.builder.eclipsebuilder.beans;
 import java.io.File;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class EclipseBuilder {
+    private static Logger logger = Logger.getLogger(EclipseBuilder.class);
 
     private Configuration configuration;
     private List<PartBuilder> partBuilders;
@@ -27,6 +30,7 @@ public class EclipseBuilder {
         context.setBuildType(this.configuration.getBuildType());
 
         for (PartBuilder builder : this.partBuilders) {
+            logger.info("Building Eclipse part using " + builder.getClass().getName());
             builder.build(context);
         }
     }

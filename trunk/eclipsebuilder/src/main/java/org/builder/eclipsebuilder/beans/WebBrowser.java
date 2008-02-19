@@ -1,7 +1,9 @@
 package org.builder.eclipsebuilder.beans;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -79,8 +82,9 @@ public class WebBrowser {
         List<String> result = new ArrayList<String>();
 
         InputStream is = null;
+        HttpGet httpget = null;
         try {
-            HttpGet httpget = new HttpGet(urlStr);
+            httpget = new HttpGet(urlStr);
             HttpResponse response = this.httpClient.execute(httpget);
             HttpEntity entity = response.getEntity();
             is = new BufferedInputStream(entity.getContent());
@@ -103,6 +107,11 @@ public class WebBrowser {
                 String absHref = new URL(documentURL, href).toString();
                 result.add(absHref);
             }
+        } catch (Exception e) {
+            if (httpget != null) {
+                httpget.abort();
+            }
+            throw e;
         } finally {
             if (is != null) {
                 is.close();
@@ -240,5 +249,29 @@ public class WebBrowser {
             }
         }
         return name;
+    }
+
+    public String getUrlContentAsText(String url) throws Exception {
+        String content;
+        HttpGet httpget = null;
+        InputStream is = null;
+        try {
+            httpget = new HttpGet(url);
+            HttpResponse response = this.httpClient.execute(httpget);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+            content = IOUtils.toString(is, "UTF-8");
+        } catch (Exception e) {
+            if (httpget != null) {
+                httpget.abort();
+            }
+            throw e;
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+        }
+
+        return content;
     }
 }
