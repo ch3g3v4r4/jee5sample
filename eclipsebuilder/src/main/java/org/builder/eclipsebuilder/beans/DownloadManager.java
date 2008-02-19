@@ -11,9 +11,8 @@ import java.util.List;
 public class DownloadManager implements Runnable {
 
     private URL url;
-    private File folder;
     private File file;
-    private Long downloadSize;
+    private Long fileSize;
 
     private int maxThreads = 10;
     private int maxTries = 10;
@@ -31,8 +30,12 @@ public class DownloadManager implements Runnable {
         this.url = url;
     }
 
-    public void setFolder(File folder) {
-        this.folder = folder;
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
     }
 
     public void setMaxThreads(int maxThreads) {
@@ -49,17 +52,7 @@ public class DownloadManager implements Runnable {
 
     public void run() {
         try {
-            Object[] nameAndSize = getNameAndSize(url);
-            String fileName = (String) nameAndSize[0];
-            downloadSize = (Long) nameAndSize[1];
-            file = new File(folder, fileName);
-
-            boolean fileExist = file.exists() && file.isFile()
-                && (downloadSize == null || file.length() == downloadSize.longValue());
-
-            if (!fileExist) {
-                download();
-            }
+            download();
         } catch (Exception e) {
             error = e;
         }
@@ -69,11 +62,11 @@ public class DownloadManager implements Runnable {
         receiver = new DownloadReceiver();
         receiver.setUrl(url);
         receiver.setFile(file);
-        receiver.setSize(downloadSize);
+        receiver.setSize(fileSize);
         List<Range> parts = new ArrayList<Range>();
         Range range = new Range();
         range.setOffset(0);
-        range.setSize(downloadSize);
+        range.setSize(fileSize);
         parts.add(range);
         receiver.setEmptyParts(parts);
 
@@ -182,9 +175,6 @@ public class DownloadManager implements Runnable {
         return biggest;
     }
 
-    private Object[] getNameAndSize(URL url) throws Exception {
-        return this.webBrowser.getFileNameAndSize(url);
-    }
 
     public List<Exception> getErrors() {
         List<Exception> errors = new ArrayList<Exception>();
