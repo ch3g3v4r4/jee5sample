@@ -77,34 +77,45 @@ public class WebBrowser {
     }
 
     public List<String> getLinks(String urlStr) throws Exception {
-        List<String> result = new ArrayList<String>();
+        List<String> hyperlinks = new ArrayList<String>();
+        getLinksAndContenType(urlStr, hyperlinks, null);
+        return hyperlinks;
+    }
 
+    public void getLinksAndContenType(String urlStr, List<String> hyperlinks, List<String> contentType) throws Exception {
         InputStream is = null;
         HttpGet httpget = null;
         try {
             httpget = new HttpGet(urlStr);
             HttpResponse response = this.httpClient.execute(httpget);
             HttpEntity entity = response.getEntity();
+            Header header = entity.getContentType();
+            if (header != null && header.getValue() != null && contentType != null) {
+                contentType.add(header.getValue());
+            }
             is = new BufferedInputStream(entity.getContent());
-            InputSource isrc = new InputSource(is);
-            DOMParser parser = new DOMParser();
-            parser.setFeature("http://xml.org/sax/features/namespaces", false);
-            parser.parse(isrc);
-            URL documentURL = new URL(urlStr);
-            HTMLDocument document = (HTMLDocument) parser.getDocument();
-            HTMLCollection links = document.getLinks();
-            for (int i = 0; i < links.getLength(); i++) {
-                Node link = links.item(i);
-                NamedNodeMap attrs = link.getAttributes();
-                String href = null;
-                for (int j = 0; j < attrs.getLength(); j++) {
-                    if ("href".equalsIgnoreCase(attrs.item(j).getNodeName())) {
-                        href = attrs.item(j).getNodeValue();
+            if (hyperlinks != null && header != null && header.getValue() != null
+                    && header.getValue().startsWith("text/html")) {
+                InputSource isrc = new InputSource(is);
+                DOMParser parser = new DOMParser();
+                parser.setFeature("http://xml.org/sax/features/namespaces", false);
+                parser.parse(isrc);
+                URL documentURL = new URL(urlStr);
+                HTMLDocument document = (HTMLDocument) parser.getDocument();
+                HTMLCollection links = document.getLinks();
+                for (int i = 0; i < links.getLength(); i++) {
+                    Node link = links.item(i);
+                    NamedNodeMap attrs = link.getAttributes();
+                    String href = null;
+                    for (int j = 0; j < attrs.getLength(); j++) {
+                        if ("href".equalsIgnoreCase(attrs.item(j).getNodeName())) {
+                            href = attrs.item(j).getNodeValue();
+                        }
                     }
-                }
-                if (!href.startsWith("javascript:")) {
-                    String absHref = new URL(documentURL, href).toString();
-                    result.add(absHref);
+                    if (!href.startsWith("javascript:")) {
+                        String absHref = new URL(documentURL, href).toString();
+                        hyperlinks.add(absHref);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -117,8 +128,6 @@ public class WebBrowser {
                 is.close();
             }
         }
-
-        return result;
     }
 
     public String getLink(String url, String pattern) throws Exception {
@@ -274,4 +283,5 @@ public class WebBrowser {
 
         return content;
     }
+
 }

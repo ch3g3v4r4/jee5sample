@@ -7,7 +7,10 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -15,6 +18,7 @@ import java.util.zip.ZipInputStream;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.builder.eclipsebuilder.beans.Configuration.BuildType;
 
 public class PartBuilderHelper {
 
@@ -143,4 +147,100 @@ public class PartBuilderHelper {
         }
     };
 
+    protected File download(String url, String artifactId,
+            BuildType buildType, File cacheFolder, File targetFolder) throws Exception {
+
+        String downloadArtifactUrl = null;
+        LinkedHashMap<String, List<String>> urlsOnDownloadPath = new LinkedHashMap<String, List<String>>();
+
+        String currentUrl = url;
+        List<String> contentTypeList;
+        List<String> urlList;
+        do {
+            urlList = new ArrayList<String>();
+            contentTypeList = new ArrayList<String>();
+            webBrowser.getLinksAndContenType(currentUrl, urlList, contentTypeList);
+            String contentType = contentTypeList.get(0);
+            if (contentType.startsWith("text/html")) {
+                urlsOnDownloadPath.put(currentUrl, urlList);
+                currentUrl = selectBestNextUrl(artifactId, buildType, urlList);
+            } else {
+                urlsOnDownloadPath.put(currentUrl, null);
+                downloadArtifactUrl = currentUrl;
+                break;
+            }
+
+        } while (true);
+
+        System.out.println(downloadArtifactUrl);
+        System.out.println(urlsOnDownloadPath);
+
+        return null;
+    }
+
+    private String selectBestNextUrl(String artifactId, BuildType buildType,
+            List<String> urlList) throws Exception {
+        String result;
+
+        List<String> links = filter(urlList, artifactId, buildType);
+        if (!links.isEmpty()) {
+            sortByArtifactVersion(links);
+            result = links.get(links.size() - 1);
+        } else {
+            result = null;
+        }
+
+        return result;
+    }
+
+    private void sortByArtifactVersion(List<String> links) {
+        Collections.sort(links, new Comparator<String>() {
+            public int compare(String l1, String l2) {
+                int c;
+                Artifact a1 = null;
+                Artifact a2 = null;
+                try {
+                    a1 = DownloadLinkUtils.parseDownloadLink(l1);
+                } catch (Exception e) {
+                    logger.error("Cannot parse!", e);
+                }
+                try {
+                    a2 = DownloadLinkUtils.parseDownloadLink(l2);
+                } catch (Exception e) {
+                    logger.error("Cannot parse!", e);
+                }
+                if (a1 == a2) c = 0;
+                else if (a1 == null && a2 != null) c = -1;
+                else if (a1 != null && a2 == null) c = 1;
+                else {
+                    String v1 = a1.getVersion();
+                    String v2 = a2.getVersion();
+                    if (v1 == v2) c = 0;
+                    else if (v1 == null && v2 != null) c = -1;
+                    else if (v1 != null && v2 == null) c = 1;
+                    else c = v1.compareTo(v2);
+                }
+                return c;
+            }
+        });
+    }
+
+    private List<String> filter(List<String> urlList, String artifactId, BuildType buildType)
+        throws Exception {
+
+        List<String> artifactLinks = new ArrayList<String>();
+        for (String urlStr : urlList) {
+            Artifact artifact = DownloadLinkUtils.parseDownloadLink(urlStr);
+            if (artifact == null) continue;
+            if (artifactId != null && !artifactId.equals(artifact.getArtifactId())) continue;
+            if (buildType != null) {
+                if (artifact.getBuildType() == null) continue;
+                List<BuildType> values = Arrays.asList(BuildType.values());
+                if (values.indexOf(artifact.getBuildType()) > values.indexOf(buildType)) continue;
+            }
+            artifactLinks.add(urlStr);
+        }
+
+        return artifactLinks;
+    }
 }
