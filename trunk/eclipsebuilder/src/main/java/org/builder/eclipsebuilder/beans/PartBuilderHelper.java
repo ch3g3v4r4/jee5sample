@@ -94,15 +94,18 @@ public class PartBuilderHelper {
         logger.info("Download manager stopped.");
     }
 
-    protected void unzip(File zipFile, File targetFolder, boolean overwrite) throws Exception {
-        logger.info("Begin unzipping file:" + zipFile.getName() + " to folder: "+ targetFolder);
+    protected void unzip(File zipFile, File targetFolder, boolean overwrite)
+            throws Exception {
+        logger.info("Begin unzipping file:" + zipFile.getName()
+                + " to folder: " + targetFolder);
         ZipEntry entry;
         ZipInputStream zis = null;
         try {
             zis = new ZipInputStream(new FileInputStream(zipFile));
             while ((entry = zis.getNextEntry()) != null) {
                 if (!entry.isDirectory()) {
-                    String destFN = targetFolder.getAbsolutePath() + File.separator + entry.getName();
+                    String destFN = targetFolder.getAbsolutePath()
+                            + File.separator + entry.getName();
                     createDirectories(destFN);
                     File targetFile = new File(destFN);
                     if (!targetFile.exists() || overwrite) {
@@ -116,7 +119,8 @@ public class PartBuilderHelper {
                 }
             }
         } finally {
-            if (zis != null) zis.close();
+            if (zis != null)
+                zis.close();
         }
         logger.info("Unzipping completed.");
     }
@@ -137,5 +141,6 @@ public class PartBuilderHelper {
         for (File dir : directories) {
             dir.mkdir();
         }
-    }
+    };
+
 }

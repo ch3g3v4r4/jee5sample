@@ -122,6 +122,7 @@ public class EclipseSDKPartBuilder extends PartBuilderHelper implements PartBuil
             String link4;
             String pattern4 = "url=http://download.eclipse.org/";
             link4 = webBrowser.getLink(link3, pattern4);
+            logger.info("Eclipse SDK hyperlink 4: " + link4);
             downloadLink = link4;
         } else {
             downloadLink = link3;

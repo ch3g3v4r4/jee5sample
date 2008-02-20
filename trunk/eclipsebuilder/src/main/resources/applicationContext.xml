@@ -50,6 +50,7 @@
 		<property name="parts">
 			<list>
 				<!-- <ref bean="eclipseSDKPartBuilder"/>  -->
+				<ref bean="eclipseSDKPartBuilder"/>
 				<ref bean="eclipseWTPSDKPartBuilder"/>
 			</list>
 		</property>
