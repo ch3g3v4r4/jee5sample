@@ -20,32 +20,40 @@ public class PartBuilderHelperTest extends TestCase {
         super.setUp();
     }
 
-    public void testDownload() throws Exception {
+
+    public void testGetDownloadAndChecksumLinks() throws Exception {
+        String[] links;
         String url;
         String artifactId;
         BuildType buildType;
-        File cacheFolder = new File("/cache");
-        File targetFolder = new File("/eclipse");
 
         url = "http://download.eclipse.org/eclipse/downloads/";
         artifactId = "eclipse-SDK";
         buildType = BuildType.STABLE;
-        builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertEquals("http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/S-3.4M5-200802071530/eclipse-SDK-3.4M5-win32.zip&url=http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/eclipse-SDK-3.4M5-win32.zip&mirror_id=1", links[0]);
+        assertEquals("http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/checksum/eclipse-SDK-3.4M5-win32.zip.md5", links[1]);
 
         url = "http://download.eclipse.org/webtools/downloads/";
         artifactId = "wtp-sdk";
         buildType = BuildType.STABLE;
-        builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertEquals("http://www.eclipse.org/downloads/download.php?file=/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/wtp-sdk-S-3.0M5-20080218021547.zip&url=http://download.eclipse.org/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/wtp-sdk-S-3.0M5-20080218021547.zip&mirror_id=1", links[0]);
+        assertEquals("http://download.eclipse.org/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/checksum/wtp-sdk-S-3.0M5-20080218021547.zip.md5", links[1]);
 
         url = "http://www.eclipse.org/modeling/emf/downloads/";
         artifactId = "emf-sdo-xsd-SDK";
         buildType = BuildType.STABLE;
-        builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertEquals("http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.4.0/S200802090050/emf-sdo-xsd-SDK-2.4.0M5.zip&url=http://download.eclipse.org/modeling/emf/emf/downloads/drops/2.4.0/S200802090050/emf-sdo-xsd-SDK-2.4.0M5.zip&mirror_id=1", links[0]);
+        assertEquals("http://download.eclipse.org/modeling/emf/emf/downloads/drops/2.4.0/S200802090050/emf-sdo-xsd-SDK-2.4.0M5.zip.md5", links[1]);
 
-        url = "http://www.eclipse.org/tptp/home/downloads/downloads.php";
-        artifactId = "tptp.sdk";
+        url = "http://www.eclipse.org/tptp/home/downloads/";
+        artifactId = "tptp.sdk-TPTP";
         buildType = BuildType.STABLE;
-        builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertEquals("http://www.eclipse.org/downloads/download.php?file=/tptp/4.4.0.3/TPTP-4.4.0.3/tptp.sdk-TPTP-4.4.0.3.zip&url=http://download.eclipse.org/tptp/4.4.0.3/TPTP-4.4.0.3/tptp.sdk-TPTP-4.4.0.3.zip&mirror_id=1", links[0]);
+        assertNull(links[1]);
 
     }
 

@@ -95,7 +95,9 @@ public class DownloadLinkUtils {
             if (m.find()) {
                 String filePath = m.group(1);
                 artifact = new Artifact();
-                parseVersionInfoString(m.group(1), artifact);
+                String versionInfo = filePath;
+                if (versionInfo.endsWith(".zip")) versionInfo = versionInfo.substring(0, versionInfo.length() - 4);
+                parseVersionInfoString(versionInfo, artifact);
                 String fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
                 artifact.setFileName(fileName);
                 String[] strings = fileName.split("-");
