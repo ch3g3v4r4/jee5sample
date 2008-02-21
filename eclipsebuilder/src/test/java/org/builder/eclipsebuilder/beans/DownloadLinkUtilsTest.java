@@ -52,6 +52,14 @@ public class DownloadLinkUtilsTest extends TestCase {
         assertEquals("wtp-sdk", artifact.getArtifactId());
         assertEquals("wtp-sdk-S-3.0M5-20080218021547.zip", artifact.getFileName());
 
+        urlStr = "http://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/downloads/drops/2.4.0/S200802090050/emf-sdo-xsd-SDK-2.4.0M5.zip";
+        artifact = DownloadLinkUtils.parseDownloadLink(urlStr);
+        assertEquals(BuildType.STABLE, artifact.getBuildType());
+        assertEquals("2.4.0M5", artifact.getVersion());
+        assertEquals("200802090050", artifact.getBuildDate());
+        assertEquals("emf-sdo-xsd-SDK", artifact.getArtifactId());
+        assertEquals("emf-sdo-xsd-SDK-2.4.0M5.zip", artifact.getFileName());
+
     }
 
 

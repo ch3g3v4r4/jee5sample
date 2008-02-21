@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -151,6 +152,14 @@ public class PartBuilderHelper {
     protected File download(String url, String artifactId,
             BuildType buildType, File cacheFolder, File targetFolder) throws Exception {
 
+        String[] links = getDownloadAndChecksumLinks(url, artifactId, buildType);
+
+        return null;
+    }
+
+    protected String[] getDownloadAndChecksumLinks(String url, String artifactId,
+            BuildType buildType) throws Exception, MalformedURLException {
+
         String downloadArtifactUrl = null;
         LinkedHashMap<String, List<String>> urlsOnDownloadPath = new LinkedHashMap<String, List<String>>();
 
@@ -198,10 +207,7 @@ public class PartBuilderHelper {
                 }
             }
         }
-        System.out.println(downloadArtifactUrl);
-        System.out.println(downloadArtifactChecksumUrl);
-
-        return null;
+        return new String[] {downloadArtifactUrl, downloadArtifactChecksumUrl};
     }
 
     private String selectBestNextUrl(String artifactId, BuildType buildType,
