@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -172,8 +173,33 @@ public class PartBuilderHelper {
 
         } while (true);
 
+
+        String downloadArtifactChecksumUrl = null;
+        if (downloadArtifactUrl != null) {
+            String downloadFileName = DownloadLinkUtils.parseDownloadLink(downloadArtifactUrl).getFileName();
+            String checksumFileName1 = downloadFileName + ".md5";
+            String checksumFileName2 = downloadFileName + ".sha1";
+
+            List<String> reversePath = new ArrayList<String>();
+            for (Iterator<String> it = urlsOnDownloadPath.keySet().iterator(); it.hasNext();) {
+                reversePath.add(it.next());
+            }
+            Collections.reverse(reversePath);
+            outer:
+            for (String pathElem : reversePath) {
+                List<String> links = urlsOnDownloadPath.get(pathElem);
+                if (links != null) {
+                    for (String link : links) {
+                        if (link.contains(checksumFileName1) || link.contains(checksumFileName2)) {
+                            downloadArtifactChecksumUrl = link;
+                            break outer;
+                        }
+                    }
+                }
+            }
+        }
         System.out.println(downloadArtifactUrl);
-        System.out.println(urlsOnDownloadPath);
+        System.out.println(downloadArtifactChecksumUrl);
 
         return null;
     }
@@ -228,30 +254,40 @@ public class PartBuilderHelper {
     private List<String> filter(List<String> urlList, String artifactId, BuildType buildType)
         throws Exception {
 
-        List<String> artifactLinks = new ArrayList<String>();
+        List<String> resultLinks = new ArrayList<String>();
+
         List<String> artifactWin32Links = new ArrayList<String>();
-        List<String> mirror1 = new ArrayList<String>();
+        List<String> artifactNoIdLinks = new ArrayList<String>();
+        List<String> artifactMirror1Links = new ArrayList<String>();
         for (String urlStr : urlList) {
             if (urlStr.indexOf("protocol") != -1 || urlStr.indexOf("format") != -1 ) continue;
             Artifact artifact = DownloadLinkUtils.parseDownloadLink(urlStr);
             if (artifact == null) continue;
-            if (artifactId != null && !artifactId.equals(artifact.getArtifactId())) continue;
+
+            // build type
             if (buildType != null) {
                 if (artifact.getBuildType() == null) continue;
                 List<BuildType> values = Arrays.asList(BuildType.values());
                 if (values.indexOf(artifact.getBuildType()) > values.indexOf(buildType)) continue;
             }
+
+            //artifact ID (sometimes links in the first page doesn't contain artifact ID but we must select)
+            if (artifactId != null && !artifactId.equals(artifact.getArtifactId())) {
+                if (artifact.getArtifactId() == null) artifactNoIdLinks.add(urlStr);
+                continue;
+            }
+
             //windows platform only
             if (!artifact.getFileName().endsWith(".zip")) continue;
-            artifactLinks.add(urlStr);
+            resultLinks.add(urlStr);
             if (artifact.getFileName().endsWith("-win32.zip")) artifactWin32Links.add(urlStr);
 
-            if (urlStr.endsWith("&mirror_id=1")) mirror1.add(urlStr);
+            if (urlStr.endsWith("&mirror_id=1")) artifactMirror1Links.add(urlStr);
         }
 
-        if (!artifactWin32Links.isEmpty()) artifactLinks = artifactWin32Links;
-        if (!mirror1.isEmpty()) artifactLinks = mirror1;
-
-        return artifactLinks;
+        if (resultLinks.isEmpty() && !artifactNoIdLinks.isEmpty()) resultLinks = artifactNoIdLinks;
+        if (!artifactWin32Links.isEmpty()) resultLinks = artifactWin32Links;
+        if (!artifactMirror1Links.isEmpty()) resultLinks = artifactMirror1Links;
+        return resultLinks;
     }
 }

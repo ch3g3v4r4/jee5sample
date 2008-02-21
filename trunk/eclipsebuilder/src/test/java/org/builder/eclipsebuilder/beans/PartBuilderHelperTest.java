@@ -21,13 +21,32 @@ public class PartBuilderHelperTest extends TestCase {
     }
 
     public void testDownload() throws Exception {
-
-        String url = "http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/index.php";
-        String artifactId = "eclipse-SDK";
-        BuildType buildType = BuildType.STABLE;
+        String url;
+        String artifactId;
+        BuildType buildType;
         File cacheFolder = new File("/cache");
         File targetFolder = new File("/eclipse");
+
+        url = "http://download.eclipse.org/eclipse/downloads/";
+        artifactId = "eclipse-SDK";
+        buildType = BuildType.STABLE;
         builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+
+        url = "http://download.eclipse.org/webtools/downloads/";
+        artifactId = "wtp-sdk";
+        buildType = BuildType.STABLE;
+        builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+
+        url = "http://www.eclipse.org/modeling/emf/downloads/";
+        artifactId = "emf-sdo-xsd-SDK";
+        buildType = BuildType.STABLE;
+        builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+
+        url = "http://www.eclipse.org/tptp/home/downloads/downloads.php";
+        artifactId = "tptp.sdk";
+        buildType = BuildType.STABLE;
+        builder.download(url, artifactId, buildType, cacheFolder, targetFolder);
+
     }
 
 }

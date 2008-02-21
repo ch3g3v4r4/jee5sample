@@ -194,8 +194,10 @@ public class DownloadLinkUtils {
     }
 
     /**
-     * Parse URLs using type 1:
+     * Parse URLs using type 1.1:
      * http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/index.php
+     * and 1.2:
+     * http://download.eclipse.org/webtools/downloads/drops/R3.0/S-3.0M5-20080218021547/
      *
      * @param urlStr
      * @return
@@ -203,10 +205,10 @@ public class DownloadLinkUtils {
     private static Artifact parseURLType1(String urlStr) {
         Artifact artifact = null;
 
-        String patternStr = "/downloads/drops/([^/]+)/index.php";
+        String patternStr = "/downloads/drops/(.+)/(index.php)?$";
         Pattern pattern = Pattern.compile(patternStr);
         Matcher m = pattern.matcher(urlStr);
-        if (m.find()) { // match type 1
+        if (m.find()) { // match type 1.1 and 1.2
             artifact = new Artifact();
             parseVersionInfoString(m.group(1), artifact);
         }
