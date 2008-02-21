@@ -22,7 +22,7 @@ public class PartBuilderHelperTest extends TestCase {
 
     public void testDownload() throws Exception {
 
-        String url = "http://download.eclipse.org/eclipse/downloads/";
+        String url = "http://download.eclipse.org/eclipse/downloads/drops/S-3.4M5-200802071530/index.php";
         String artifactId = "eclipse-SDK";
         BuildType buildType = BuildType.STABLE;
         File cacheFolder = new File("/cache");
