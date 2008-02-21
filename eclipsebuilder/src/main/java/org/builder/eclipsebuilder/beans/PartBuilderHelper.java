@@ -229,7 +229,10 @@ public class PartBuilderHelper {
         throws Exception {
 
         List<String> artifactLinks = new ArrayList<String>();
+        List<String> artifactWin32Links = new ArrayList<String>();
+        List<String> mirror1 = new ArrayList<String>();
         for (String urlStr : urlList) {
+            if (urlStr.indexOf("protocol") != -1 || urlStr.indexOf("format") != -1 ) continue;
             Artifact artifact = DownloadLinkUtils.parseDownloadLink(urlStr);
             if (artifact == null) continue;
             if (artifactId != null && !artifactId.equals(artifact.getArtifactId())) continue;
@@ -238,8 +241,16 @@ public class PartBuilderHelper {
                 List<BuildType> values = Arrays.asList(BuildType.values());
                 if (values.indexOf(artifact.getBuildType()) > values.indexOf(buildType)) continue;
             }
+            //windows platform only
+            if (!artifact.getFileName().endsWith(".zip")) continue;
             artifactLinks.add(urlStr);
+            if (artifact.getFileName().endsWith("-win32.zip")) artifactWin32Links.add(urlStr);
+
+            if (urlStr.endsWith("&mirror_id=1")) mirror1.add(urlStr);
         }
+
+        if (!artifactWin32Links.isEmpty()) artifactLinks = artifactWin32Links;
+        if (!mirror1.isEmpty()) artifactLinks = mirror1;
 
         return artifactLinks;
     }
