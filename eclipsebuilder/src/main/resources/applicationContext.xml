@@ -30,8 +30,15 @@
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 	</bean>
-
 	<bean name="EclipseEMFSDOXSDSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseEMFSDOXSDSDKPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+	</bean>
+	<bean name="EclipseGEFSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseGEFSDKPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+	</bean>
+	<bean name="EclipseDTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseDTPSDKPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 	</bean>
@@ -41,6 +48,8 @@
 		<property name="parts">
 			<list>
 				<ref bean="EclipseEMFSDOXSDSDKPartBuilder"/>
+				<ref bean="EclipseGEFSDKPartBuilder"/>
+				<ref bean="EclipseDTPSDKPartBuilder"/>
 			</list>
 		</property>
 	</bean>

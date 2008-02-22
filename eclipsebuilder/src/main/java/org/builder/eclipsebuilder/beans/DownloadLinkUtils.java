@@ -26,6 +26,13 @@ public class DownloadLinkUtils {
         if (artifact == null)
             artifact = parseURLType3(urlStr);
 
+        if (artifact != null && artifact.getVersion() != null && artifact.getBuildType() == null) {
+            // build type is defaulted to RELEASE if version contains numbers only
+            Pattern pattern = Pattern.compile("\\d+(\\.\\d+)+");
+            if (pattern.matcher(artifact.getVersion()).matches()) {
+                artifact.setBuildType(BuildType.RELEASE);
+            }
+        }
         return artifact;
     }
 
@@ -100,12 +107,24 @@ public class DownloadLinkUtils {
                 parseVersionInfoString(versionInfo, artifact);
                 String fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
                 artifact.setFileName(fileName);
-                String[] strings = fileName.split("-");
+
+                String separator = "-";
+                if (artifact.getVersion() != null) {
+                    String version = artifact.getVersion();
+                    int index = fileName.indexOf(version);
+                    if (index > 0) {
+                        char sepChar = fileName.charAt(index - 1);
+                        if (sepChar == '_') {
+                            separator = "_";
+                        }
+                    }
+                }
+                String[] strings = fileName.split(separator);
                 String artifactId = null;
                 Pattern pattern2 = Pattern.compile("\\d");
                 for (String s : strings) {
                     if (s.length() == 1 || pattern2.matcher(s).find()) break;
-                    if (artifactId == null) artifactId = s; else artifactId += "-" + s;
+                    if (artifactId == null) artifactId = s; else artifactId += separator + s;
                 }
                 artifact.setArtifactId(artifactId);
             }
@@ -150,8 +169,22 @@ public class DownloadLinkUtils {
 
     private static void parseVersionInfoString(String versionString,
             Artifact artifact) {
+        Pattern versionPattern = Pattern.compile("\\d+(\\.\\d+)+([a-zA-Z]\\d+)?");
 
-        List<String> strings = Arrays.asList(versionString.split("[\\-/]"));
+        String separator = "-";
+        String fileName = versionString.substring(versionString.lastIndexOf('/') + 1);
+        Matcher m = versionPattern.matcher(fileName);
+        if (m.find()) {
+            String version = m.group();
+            int index = fileName.indexOf(version);
+            if (index > 0) {
+                char sepChar = fileName.charAt(index - 1);
+                if (sepChar == '_') {
+                    separator = "_";
+                }
+            }
+        }
+        List<String> strings = Arrays.asList(versionString.split("[\\" + separator + "/]"));
         List<String> versionInfo = new ArrayList<String>();
         for (Iterator<String> it = strings.iterator(); it.hasNext();) {
             String s = it.next();
@@ -164,7 +197,6 @@ public class DownloadLinkUtils {
             }
         }
         Collections.reverse(versionInfo);
-        Pattern versionPattern = Pattern.compile("\\d+(\\.\\d+)+([a-zA-Z]\\d+)?");
         for (String s : versionInfo) {
             // Build Type
             if (artifact.getBuildType() == null && s.length() == 1) {

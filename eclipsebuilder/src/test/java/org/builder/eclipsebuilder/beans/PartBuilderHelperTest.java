@@ -1,7 +1,5 @@
 package org.builder.eclipsebuilder.beans;
 
-import java.io.File;
-
 import junit.framework.TestCase;
 
 import org.builder.eclipsebuilder.beans.Configuration.BuildType;
@@ -26,7 +24,7 @@ public class PartBuilderHelperTest extends TestCase {
         String url;
         String artifactId;
         BuildType buildType;
-
+/*
         url = "http://download.eclipse.org/eclipse/downloads/";
         artifactId = "eclipse-SDK";
         buildType = BuildType.STABLE;
@@ -53,6 +51,20 @@ public class PartBuilderHelperTest extends TestCase {
         buildType = BuildType.STABLE;
         links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
         assertEquals("http://www.eclipse.org/downloads/download.php?file=/tptp/4.4.0.3/TPTP-4.4.0.3/tptp.sdk-TPTP-4.4.0.3.zip&url=http://download.eclipse.org/tptp/4.4.0.3/TPTP-4.4.0.3/tptp.sdk-TPTP-4.4.0.3.zip&mirror_id=1", links[0]);
+        assertNull(links[1]);
+*/
+        url = "http://www.eclipse.org/gef/downloads/";
+        artifactId = "GEF-ALL";
+        buildType = BuildType.STABLE;
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertEquals("http://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/3.4.0/S200802062130/GEF-ALL-3.4.0M5.zip&url=http://download.eclipse.org/tools/gef/downloads/drops/3.4.0/S200802062130/GEF-ALL-3.4.0M5.zip&mirror_id=1", links[0]);
+        assertEquals("http://download.eclipse.org/tools/gef/downloads/drops/3.4.0/S200802062130/GEF-ALL-3.4.0M5.zip.md5", links[1]);
+
+        url = "http://www.eclipse.org/datatools/downloads.php";
+        artifactId = "dtp-sdk";
+        buildType = BuildType.STABLE;
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertEquals("http://www.eclipse.org/downloads/download.php?file=/datatools/downloads/1.6/dtp-sdk_1.6M5.zip&url=http://download.eclipse.org/datatools/downloads/1.6/dtp-sdk_1.6M5.zip&mirror_id=1", links[0]);
         assertNull(links[1]);
 
     }

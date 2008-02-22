@@ -60,6 +60,13 @@ public class DownloadLinkUtilsTest extends TestCase {
         assertEquals("emf-sdo-xsd-SDK", artifact.getArtifactId());
         assertEquals("emf-sdo-xsd-SDK-2.4.0M5.zip", artifact.getFileName());
 
+        urlStr = "http://www.eclipse.org/downloads/download.php?file=/datatools/downloads/1.6/dtp-sdk_1.6M5.zip";
+        artifact = DownloadLinkUtils.parseDownloadLink(urlStr);
+        assertEquals("1.6M5", artifact.getVersion());
+        assertNull(artifact.getBuildDate());
+        assertEquals("dtp-sdk", artifact.getArtifactId());
+        assertEquals("dtp-sdk_1.6M5.zip", artifact.getFileName());
+
     }
 
 
