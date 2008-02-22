@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class PartBuilderHelper {
         this.downloadManager = downloadManager;
     }
 
-    protected boolean verifyChecksum(File file, String url) throws Exception {
+    private boolean verifyChecksum(File file, String url) throws Exception {
         boolean verify = false;
 
         MessageDigest md = null;
@@ -77,11 +76,11 @@ public class PartBuilderHelper {
         return result;
     }
 
-    protected Object[] getNameAndSize(URL url) throws Exception {
+    private Object[] getNameAndSize(URL url) throws Exception {
         return this.webBrowser.getFileNameAndSize(url);
     }
 
-    protected void downloadFile(String downloadLink, File file, Long fileSize)
+    private void downloadFile(String downloadLink, File file, Long fileSize)
             throws Exception {
         downloadManager.setUrl(new URL(downloadLink));
         downloadManager.setFile(file);
@@ -104,6 +103,7 @@ public class PartBuilderHelper {
             throws Exception {
         logger.info("Begin unzipping file:" + zipFile.getName()
                 + " to folder: " + targetFolder);
+        /*
         ZipEntry entry;
         ZipInputStream zis = null;
         try {
@@ -128,6 +128,7 @@ public class PartBuilderHelper {
             if (zis != null)
                 zis.close();
         }
+        */
         logger.info("Unzipping completed.");
     }
 
@@ -149,16 +150,46 @@ public class PartBuilderHelper {
         }
     };
 
-    protected File download(String url, String artifactId,
-            BuildType buildType, File cacheFolder, File targetFolder) throws Exception {
+    protected File downloadAndCheck(String downloadLink, String checksumLink, File cacheFolder) throws Exception {
+        // If the file is already downloaded, verify it checksum to determine download again or skip
+        Object[] nameAndSize = getNameAndSize(new URL(downloadLink));
+        String fileName = (String) nameAndSize[0];
+        Long downloadSize = (Long) nameAndSize[1];
+        logger.info("File name: " + fileName + "; file size:" + downloadSize);
+        File file = new File(cacheFolder, fileName);
 
-        String[] links = getDownloadAndChecksumLinks(url, artifactId, buildType);
+        boolean fileExist = file.exists();
+        boolean checksumValid = false;
 
-        return null;
+        if (fileExist) {
+            logger.info("Verifying checksum...");
+            checksumValid = verifyChecksum(file, checksumLink);
+        }
+
+        if (!fileExist || !checksumValid) {
+            logger.info("File is not found in cache or checksum is incorrect, will download file.");
+            downloadFile(downloadLink, file, downloadSize);
+            fileExist = file.exists();
+            if (fileExist) {
+                logger.info("File is downloaded to location:" + file.getAbsolutePath());
+                logger.info("Verifying checksum...");
+                checksumValid = verifyChecksum(file, checksumLink);
+            } else {
+                logger.error("Failed to download file.");
+                throw new Exception("Failed to download file!");
+            }
+        }
+
+        if (!checksumValid) {
+            logger.warn("Failed to verify file integrity.");
+        } else {
+            logger.info("File integrity is good.");
+        }
+        return file;
     }
 
     protected String[] getDownloadAndChecksumLinks(String url, String artifactId,
-            BuildType buildType) throws Exception, MalformedURLException {
+            BuildType buildType) throws Exception {
 
         String downloadArtifactUrl = null;
         LinkedHashMap<String, List<String>> urlsOnDownloadPath = new LinkedHashMap<String, List<String>>();
@@ -167,6 +198,7 @@ public class PartBuilderHelper {
         List<String> contentTypeList;
         List<String> urlList;
         do {
+            logger.info("Openning hyperlink:" + currentUrl);
             urlList = new ArrayList<String>();
             contentTypeList = new ArrayList<String>();
             webBrowser.getLinksAndContenType(currentUrl, urlList, contentTypeList);
@@ -174,6 +206,7 @@ public class PartBuilderHelper {
             if (contentType.startsWith("text/html")) {
                 urlsOnDownloadPath.put(currentUrl, urlList);
                 currentUrl = selectBestNextUrl(artifactId, buildType, urlList);
+                logger.info("Selected next hyperlink:" + currentUrl);
             } else {
                 urlsOnDownloadPath.put(currentUrl, null);
                 downloadArtifactUrl = currentUrl;
@@ -250,7 +283,11 @@ public class PartBuilderHelper {
                     if (v1 == v2) c = 0;
                     else if (v1 == null && v2 != null) c = -1;
                     else if (v1 != null && v2 == null) c = 1;
-                    else c = v1.compareTo(v2);
+                    else {
+                        // compare to non-empty version numbers
+                        // TODO: standardize versions like 3.4.0M5 and 3.4M5 before comparing
+                        c = v1.compareTo(v2);
+                    }
                 }
                 return c;
             }
@@ -272,7 +309,7 @@ public class PartBuilderHelper {
 
             // build type
             if (buildType != null) {
-                if (artifact.getBuildType() == null) continue;
+                //if (artifact.getBuildType() == null) continue;
                 List<BuildType> values = Arrays.asList(BuildType.values());
                 if (values.indexOf(artifact.getBuildType()) > values.indexOf(buildType)) continue;
             }
