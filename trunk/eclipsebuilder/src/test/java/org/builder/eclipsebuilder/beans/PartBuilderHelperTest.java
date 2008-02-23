@@ -24,7 +24,7 @@ public class PartBuilderHelperTest extends TestCase {
         String url;
         String artifactId;
         BuildType buildType;
-/*
+
         url = "http://download.eclipse.org/eclipse/downloads/";
         artifactId = "eclipse-SDK";
         buildType = BuildType.STABLE;
@@ -52,7 +52,7 @@ public class PartBuilderHelperTest extends TestCase {
         links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
         assertEquals("http://www.eclipse.org/downloads/download.php?file=/tptp/4.4.0.3/TPTP-4.4.0.3/tptp.sdk-TPTP-4.4.0.3.zip&url=http://download.eclipse.org/tptp/4.4.0.3/TPTP-4.4.0.3/tptp.sdk-TPTP-4.4.0.3.zip&mirror_id=1", links[0]);
         assertNull(links[1]);
-*/
+
         url = "http://www.eclipse.org/gef/downloads/";
         artifactId = "GEF-ALL";
         buildType = BuildType.STABLE;
