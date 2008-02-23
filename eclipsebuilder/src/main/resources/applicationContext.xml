@@ -17,7 +17,7 @@
 		<!-- <property name="buildType" value="STABLE" />  -->
 		<property name="buildType" value="STABLE" />
 		<property name="cacheDir" value="/cached" />
-		<property name="eclipseDir" value="/eclipse" />
+		<property name="eclipseDir" value="/integration" />
 	</bean>
 
 	<bean name="webBrowser" class="org.builder.eclipsebuilder.beans.WebBrowser"/>

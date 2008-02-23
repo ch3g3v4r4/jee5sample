@@ -12,7 +12,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -36,23 +39,47 @@ public class PartBuilderHelper {
         this.downloadManager = downloadManager;
     }
 
+    private static boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i=0; i<children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
+    }
+
     private boolean verifyChecksum(File file, String url) throws Exception {
         boolean verify = false;
-
-        MessageDigest md = null;
-        if (url.toString().endsWith(".md5")) {
-            md = MessageDigest.getInstance("MD5");
+        if (url != null) {
+            MessageDigest md = null;
+            if (url.toString().endsWith(".md5")) {
+                md = MessageDigest.getInstance("MD5");
+            }
+            if (url.toString().endsWith(".sha1")) {
+                md = MessageDigest.getInstance("SHA-1");
+            }
+            String fileContent = webBrowser.getUrlContentAsText(url);
+            if (md != null && fileContent != null) {
+                String expectedChecksum = fileContent.split(" ")[0];
+                String checksum = digest(file, md);
+                verify = expectedChecksum.equals(checksum);
+            }
+        } else if (file.getName().endsWith(".zip")) {
+            // try to test zip integrity
+            File temp = File.createTempFile("tmp", ".tmp");
+            temp.delete();
+            temp.mkdir();
+            try {
+                unzip(file, temp, true);
+                verify = true;
+            } catch (Exception e) {
+            }
+            deleteDir(temp);
         }
-        if (url.toString().endsWith(".sha1")) {
-            md = MessageDigest.getInstance("SHA-1");
-        }
-        String fileContent = webBrowser.getUrlContentAsText(url);
-        if (md != null && fileContent != null) {
-            String expectedChecksum = fileContent.split(" ")[0];
-            String checksum = digest(file, md);
-            verify = expectedChecksum.equals(checksum);
-        }
-
         return verify;
     }
 
@@ -103,7 +130,7 @@ public class PartBuilderHelper {
             throws Exception {
         logger.info("Begin unzipping file:" + zipFile.getName()
                 + " to folder: " + targetFolder);
-        /*
+
         ZipEntry entry;
         ZipInputStream zis = null;
         try {
@@ -128,7 +155,7 @@ public class PartBuilderHelper {
             if (zis != null)
                 zis.close();
         }
-        */
+
         logger.info("Unzipping completed.");
     }
 
@@ -198,7 +225,7 @@ public class PartBuilderHelper {
         List<String> contentTypeList;
         List<String> urlList;
         do {
-            logger.info("Openning hyperlink:" + currentUrl);
+            logger.info("Openning hyperlink: " + currentUrl);
             urlList = new ArrayList<String>();
             contentTypeList = new ArrayList<String>();
             webBrowser.getLinksAndContenType(currentUrl, urlList, contentTypeList);
@@ -206,7 +233,7 @@ public class PartBuilderHelper {
             if (contentType.startsWith("text/html")) {
                 urlsOnDownloadPath.put(currentUrl, urlList);
                 currentUrl = selectBestNextUrl(artifactId, buildType, urlList);
-                logger.info("Selected next hyperlink:" + currentUrl);
+                logger.info("Selected next hyperlink: " + currentUrl);
             } else {
                 urlsOnDownloadPath.put(currentUrl, null);
                 downloadArtifactUrl = currentUrl;
@@ -285,8 +312,44 @@ public class PartBuilderHelper {
                     else if (v1 != null && v2 == null) c = 1;
                     else {
                         // compare to non-empty version numbers
-                        // TODO: standardize versions like 3.4.0M5 and 3.4M5 before comparing
-                        c = v1.compareTo(v2);
+                        // standardize versions like 3.4.0M5 and 3.4M5 before comparing
+                        Pattern p = Pattern.compile("^\\d+(\\.\\d+)+");
+                        Matcher m1 = p.matcher(v1);
+                        Matcher m2 = p.matcher(v2);
+                        String v1g1 = "0";
+                        String v1g2 = "Z";
+                        if (m1.find()) {
+                            v1g1 = m1.group(0);
+                            v1g2 = v1.substring(v1g1.length());
+                        }
+                        String v2g1 = "0";
+                        String v2g2 = "Z";
+                        if (m2.find()) {
+                            v2g1 = m2.group(0);
+                            v2g2 = v2.substring(v2g1.length());
+                        }
+                        List<String> v1l = new LinkedList<String>(Arrays.asList(v1g1.split("\\.")));
+                        List<String> v2l = new LinkedList<String>(Arrays.asList(v2g1.split("\\.")));
+                        int maxSize = Math.max(v1l.size(), v2l.size());
+                        List<Integer> v1in = new ArrayList<Integer>(v1l.size());
+                        List<Integer> v2in = new ArrayList<Integer>(v2l.size());
+                        for (String s : v1l) {
+                            v1in.add(Integer.parseInt(s));
+                        }
+                        for (String s : v2l) {
+                            v2in.add(Integer.parseInt(s));
+                        }
+                        while (v1in.size() < maxSize) v1in.add(0);
+                        while (v2in.size() < maxSize) v2in.add(0);
+                        c = 0;
+                        int i = 0;
+                        while (i < maxSize && c == 0) {
+                            c = v1in.get(i) - v2in.get(i);
+                            i++;
+                        }
+                        if (c == 0) {
+                            c = v1g2.compareTo(v2g2);
+                        }
                     }
                 }
                 return c;
