@@ -4,10 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
