@@ -52,6 +52,11 @@
 			</list>
 		</property>
 	</bean>
+	<bean name="eclipseAgentControlerPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseAgentControlerPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+	</bean>
+
 	<bean name="eclipseWTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseWTPSDKPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
@@ -71,6 +76,7 @@
 				<ref bean="eclipseSDKPartBuilder"/>
 				<ref bean="eclipseWTPSDKPartBuilder"/>
 				<ref bean="eclipseTPTPSDKPartBuilder"/>
+				<ref bean="eclipseAgentControlerPartBuilder"/>
 			</list>
 		</property>
 	</bean>

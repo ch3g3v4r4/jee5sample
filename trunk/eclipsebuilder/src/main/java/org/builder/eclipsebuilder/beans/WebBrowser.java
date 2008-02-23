@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,8 +32,10 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HttpContext;
 import org.cyberneko.html.parsers.DOMParser;
+import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.w3c.dom.html.HTMLCollection;
 import org.w3c.dom.html.HTMLDocument;
 import org.xml.sax.InputSource;
@@ -111,6 +112,12 @@ public class WebBrowser {
                         hyperlinks.add(absHref);
                     }
                 }
+                NodeList options = document.getElementsByTagName("option");
+                for (int i  = 0; i < options.getLength(); i ++) {
+                    Element option = (Element) options.item(i);
+                    String value = option.getAttribute("value");
+                    if (value.startsWith("http://")) hyperlinks.add(value);
+                }
             }
         } catch (Exception e) {
             if (httpget != null) {
@@ -122,19 +129,6 @@ public class WebBrowser {
                 is.close();
             }
         }
-    }
-
-
-    private List<String> filter(List<String> strings, String patternStr) {
-        List<String> result = new ArrayList<String>();
-        Pattern pattern = Pattern.compile(patternStr);
-        for (String string : strings) {
-            Matcher m = pattern.matcher(string);
-            if (m.find()) {
-                result.add(string);
-            }
-        }
-        return result;
     }
 
     public String getContentType(String urlStr) throws Exception {
