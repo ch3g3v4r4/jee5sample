@@ -14,14 +14,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 	<bean name="configuration" class="org.builder.eclipsebuilder.beans.Configuration">
-		<!-- <property name="buildType" value="STABLE" />  -->
 		<property name="buildType" value="STABLE" />
 		<property name="cacheDir" value="/cached" />
 		<property name="eclipseDir" value="/integration" />
 	</bean>
-
 	<bean name="webBrowser" class="org.builder.eclipsebuilder.beans.WebBrowser"/>
-
 	<bean name="downloadManager" scope="prototype" class="org.builder.eclipsebuilder.beans.DownloadManager">
 		<property name="webBrowser" ref="webBrowser"/>
 	</bean>
@@ -30,26 +27,39 @@
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 	</bean>
-	<bean name="EclipseEMFSDOXSDSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseEMFSDOXSDSDKPartBuilder">
+	<bean name="eclipseEMFSDOXSDSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseEMFSDOXSDSDKPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 	</bean>
-	<bean name="EclipseGEFSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseGEFSDKPartBuilder">
+	<bean name="eclipseGEFSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseGEFSDKPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 	</bean>
-	<bean name="EclipseDTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseDTPSDKPartBuilder">
+	<bean name="eclipseDTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseDTPSDKPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+	</bean>
+	<bean name="eclipseBIRTSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseBIRTSDKPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+	</bean>
+	<bean name="eclipseTPTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseTPTPSDKPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="parts">
+			<list>
+				<ref bean="eclipseBIRTSDKPartBuilder"/>
+			</list>
+		</property>
 	</bean>
 	<bean name="eclipseWTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseWTPSDKPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="parts">
 			<list>
-				<ref bean="EclipseEMFSDOXSDSDKPartBuilder"/>
-				<ref bean="EclipseGEFSDKPartBuilder"/>
-				<ref bean="EclipseDTPSDKPartBuilder"/>
+				<ref bean="eclipseEMFSDOXSDSDKPartBuilder"/>
+				<ref bean="eclipseGEFSDKPartBuilder"/>
+				<ref bean="eclipseDTPSDKPartBuilder"/>
 			</list>
 		</property>
 	</bean>
@@ -58,9 +68,9 @@
 		<property name="configuration" ref="configuration"/>
 		<property name="parts">
 			<list>
-				<!-- <ref bean="eclipseSDKPartBuilder"/>  -->
 				<ref bean="eclipseSDKPartBuilder"/>
 				<ref bean="eclipseWTPSDKPartBuilder"/>
+				<ref bean="eclipseTPTPSDKPartBuilder"/>
 			</list>
 		</property>
 	</bean>

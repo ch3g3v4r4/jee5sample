@@ -31,12 +31,28 @@ public class PartBuilderHelper {
     protected WebBrowser webBrowser;
     private DownloadManager downloadManager;
 
+    protected List<PartBuilder> partBuilders;
+
+    public void setParts(List<PartBuilder> partBuilders) {
+        this.partBuilders = partBuilders;
+    }
+
     public void setWebBrowser(WebBrowser webBrowser) {
         this.webBrowser = webBrowser;
     }
 
     public void setDownloadManager(DownloadManager downloadManager) {
         this.downloadManager = downloadManager;
+    }
+
+    public void build(EclipseBuilderContext context) throws Exception {
+        if (this.partBuilders != null) {
+            // Download dependencies first
+            for (PartBuilder builder : this.partBuilders) {
+                logger.info("Building dependencies using " + builder.getClass().getName());
+                builder.build(context);
+            }
+        }
     }
 
     private static boolean deleteDir(File dir) {
@@ -224,14 +240,17 @@ public class PartBuilderHelper {
         String currentUrl = url;
         List<String> contentTypeList;
         List<String> urlList;
+        List<String> visitedLinks = new ArrayList<String>();
         do {
             logger.info("Openning hyperlink: " + currentUrl);
             urlList = new ArrayList<String>();
             contentTypeList = new ArrayList<String>();
             webBrowser.getLinksAndContenType(currentUrl, urlList, contentTypeList);
+            visitedLinks.add(currentUrl);
+            urlList.removeAll(visitedLinks);
             String contentType = contentTypeList.get(0);
             if (contentType.startsWith("text/html")) {
-                urlsOnDownloadPath.put(currentUrl, urlList);
+                urlsOnDownloadPath.put(currentUrl, new LinkedList<String>(urlList));
                 currentUrl = selectBestNextUrl(artifactId, buildType, urlList);
                 logger.info("Selected next hyperlink: " + currentUrl);
             } else {
@@ -248,6 +267,7 @@ public class PartBuilderHelper {
             String downloadFileName = DownloadLinkUtils.parseDownloadLink(downloadArtifactUrl).getFileName();
             String checksumFileName1 = downloadFileName + ".md5";
             String checksumFileName2 = downloadFileName + ".sha1";
+            String checksumFileName3 = downloadFileName.substring(0, downloadFileName.lastIndexOf('.')) + ".md5";
 
             List<String> reversePath = new ArrayList<String>();
             for (Iterator<String> it = urlsOnDownloadPath.keySet().iterator(); it.hasNext();) {
@@ -259,7 +279,7 @@ public class PartBuilderHelper {
                 List<String> links = urlsOnDownloadPath.get(pathElem);
                 if (links != null) {
                     for (String link : links) {
-                        if (link.contains(checksumFileName1) || link.contains(checksumFileName2)) {
+                        if (link.contains(checksumFileName1) || link.contains(checksumFileName2)|| link.contains(checksumFileName3)) {
                             downloadArtifactChecksumUrl = link;
                             break outer;
                         }
@@ -305,95 +325,141 @@ public class PartBuilderHelper {
                 else if (a1 == null && a2 != null) c = -1;
                 else if (a1 != null && a2 == null) c = 1;
                 else {
-                    String v1 = a1.getVersion();
-                    String v2 = a2.getVersion();
-                    if (v1 == v2) c = 0;
-                    else if (v1 == null && v2 != null) c = -1;
-                    else if (v1 != null && v2 == null) c = 1;
-                    else {
-                        // compare to non-empty version numbers
-                        // standardize versions like 3.4.0M5 and 3.4M5 before comparing
-                        Pattern p = Pattern.compile("^\\d+(\\.\\d+)+");
-                        Matcher m1 = p.matcher(v1);
-                        Matcher m2 = p.matcher(v2);
-                        String v1g1 = "0";
-                        String v1g2 = "Z";
-                        if (m1.find()) {
-                            v1g1 = m1.group(0);
-                            v1g2 = v1.substring(v1g1.length());
-                        }
-                        String v2g1 = "0";
-                        String v2g2 = "Z";
-                        if (m2.find()) {
-                            v2g1 = m2.group(0);
-                            v2g2 = v2.substring(v2g1.length());
-                        }
-                        List<String> v1l = new LinkedList<String>(Arrays.asList(v1g1.split("\\.")));
-                        List<String> v2l = new LinkedList<String>(Arrays.asList(v2g1.split("\\.")));
-                        int maxSize = Math.max(v1l.size(), v2l.size());
-                        List<Integer> v1in = new ArrayList<Integer>(v1l.size());
-                        List<Integer> v2in = new ArrayList<Integer>(v2l.size());
-                        for (String s : v1l) {
-                            v1in.add(Integer.parseInt(s));
-                        }
-                        for (String s : v2l) {
-                            v2in.add(Integer.parseInt(s));
-                        }
-                        while (v1in.size() < maxSize) v1in.add(0);
-                        while (v2in.size() < maxSize) v2in.add(0);
-                        c = 0;
-                        int i = 0;
-                        while (i < maxSize && c == 0) {
-                            c = v1in.get(i) - v2in.get(i);
-                            i++;
-                        }
-                        if (c == 0) {
-                            c = v1g2.compareTo(v2g2);
-                        }
-                    }
+                    c = compareVersion(a1.getVersion(), a2.getVersion());
                 }
                 return c;
             }
+
         });
+    }
+
+    private static int compareVersion(String v1, String v2) {
+        int c;
+        if (v1 == v2) c = 0;
+        else if (v1 == null && v2 != null) c = -1;
+        else if (v1 != null && v2 == null) c = 1;
+        else {
+            // compare to non-empty version numbers
+            // standardize versions like 3.4.0M5 and 3.4M5 before comparing
+            Pattern p = Pattern.compile("^\\d+(\\.\\d+)+");
+            Matcher m1 = p.matcher(v1);
+            Matcher m2 = p.matcher(v2);
+            String v1g1 = "0";
+            String v1g2 = "Z";
+            if (m1.find()) {
+                v1g1 = m1.group(0);
+                v1g2 = v1.substring(v1g1.length());
+            }
+            String v2g1 = "0";
+            String v2g2 = "Z";
+            if (m2.find()) {
+                v2g1 = m2.group(0);
+                v2g2 = v2.substring(v2g1.length());
+            }
+            List<String> v1l = new LinkedList<String>(Arrays.asList(v1g1.split("\\.")));
+            List<String> v2l = new LinkedList<String>(Arrays.asList(v2g1.split("\\.")));
+            int maxSize = Math.max(v1l.size(), v2l.size());
+            List<Integer> v1in = new ArrayList<Integer>(v1l.size());
+            List<Integer> v2in = new ArrayList<Integer>(v2l.size());
+            for (String s : v1l) {
+                v1in.add(Integer.parseInt(s));
+            }
+            for (String s : v2l) {
+                v2in.add(Integer.parseInt(s));
+            }
+            while (v1in.size() < maxSize) v1in.add(0);
+            while (v2in.size() < maxSize) v2in.add(0);
+            c = 0;
+            int i = 0;
+            while (i < maxSize && c == 0) {
+                c = v1in.get(i) - v2in.get(i);
+                i++;
+            }
+            if (c == 0) {
+                c = v1g2.compareTo(v2g2);
+            }
+        }
+        return c;
     }
 
     private List<String> filter(List<String> urlList, String artifactId, BuildType buildType)
         throws Exception {
 
         List<String> resultLinks = new ArrayList<String>();
-
-        List<String> artifactWin32Links = new ArrayList<String>();
-        List<String> artifactNoIdLinks = new ArrayList<String>();
-        List<String> artifactMirror1Links = new ArrayList<String>();
+//
+//        List<String> artifactWin32Links = new ArrayList<String>();
+//        List<String> artifactNoIdLinks = new ArrayList<String>();
+//        List<String> artifactMirror1Links = new ArrayList<String>();
+        String latestVersion = null;
+        String latestDate = null;
         for (String urlStr : urlList) {
             if (urlStr.indexOf("protocol") != -1 || urlStr.indexOf("format") != -1 ) continue;
             Artifact artifact = DownloadLinkUtils.parseDownloadLink(urlStr);
-            if (artifact == null) continue;
+            if (artifact == null || artifact.getArtifactId() != null && artifactId != null
+                    && !artifactId.equals(artifact.getArtifactId())) continue;
 
             // build type
-            if (buildType != null) {
-                //if (artifact.getBuildType() == null) continue;
+            if (buildType != null && artifact.getBuildType() != null) {
                 List<BuildType> values = Arrays.asList(BuildType.values());
                 if (values.indexOf(artifact.getBuildType()) > values.indexOf(buildType)) continue;
             }
 
-            //artifact ID (sometimes links in the first page doesn't contain artifact ID but we must select)
-            if (artifactId != null && !artifactId.equals(artifact.getArtifactId())) {
-                if (artifact.getArtifactId() == null) artifactNoIdLinks.add(urlStr);
-                continue;
+            if (artifact.getFileName() != null && !artifact.getFileName().endsWith(".zip")) continue;
+
+            if (latestVersion == null || artifact.getVersion() != null && compareVersion(artifact.getVersion(), latestVersion) > 0) {
+                latestVersion = artifact.getVersion();
+            }
+            if (latestDate == null || artifact.getBuildDate() != null && artifact.getBuildDate().compareTo(latestDate) > 0) {
+                latestDate = artifact.getBuildDate();
             }
 
-            //windows platform only
-            if (!artifact.getFileName().endsWith(".zip")) continue;
             resultLinks.add(urlStr);
-            if (artifact.getFileName().endsWith("-win32.zip")) artifactWin32Links.add(urlStr);
-
-            if (urlStr.endsWith("&mirror_id=1")) artifactMirror1Links.add(urlStr);
+//            //artifact ID (sometimes links in the first page doesn't contain artifact ID but we must select)
+//            if (artifactId != null && !artifactId.equals(artifact.getArtifactId())) {
+//                if (artifact.getArtifactId() == null) artifactNoIdLinks.add(urlStr);
+//                continue;
+//            }
+//
+//            resultLinks.add(urlStr);
+//            if (artifact.getFileName().endsWith("-win32.zip")) artifactWin32Links.add(urlStr);
+//
+//            if (urlStr.endsWith("&mirror_id=1")) artifactMirror1Links.add(urlStr);
         }
 
-        if (resultLinks.isEmpty() && !artifactNoIdLinks.isEmpty()) resultLinks = artifactNoIdLinks;
-        if (!artifactWin32Links.isEmpty()) resultLinks = artifactWin32Links;
-        if (!artifactMirror1Links.isEmpty()) resultLinks = artifactMirror1Links;
+//        if (resultLinks.isEmpty() && !artifactNoIdLinks.isEmpty()) resultLinks = artifactNoIdLinks;
+//        if (!artifactWin32Links.isEmpty()) resultLinks = artifactWin32Links;
+//        if (!artifactMirror1Links.isEmpty()) resultLinks = artifactMirror1Links;
+
+        // Some exceptions "-win32.zip" "&mirror_id=1"
+        // or if no special urls found, select latest version or latest date links
+        List<String> specialLinks = new ArrayList<String>();
+        List<String> idVersionLinks = new ArrayList<String>();
+        List<String> versionLinks = new ArrayList<String>();
+        List<String> dateLinks = new ArrayList<String>();
+        for (String url : resultLinks) {
+            Artifact artifact = DownloadLinkUtils.parseDownloadLink(url);
+            if (artifact.getFileName() != null && artifact.getFileName().endsWith("-win32.zip") || url.endsWith("&mirror_id=1")) {
+                specialLinks.add(url);
+            }
+            if (artifact.getVersion() != null && artifact.getVersion().equals(latestVersion)) {
+                versionLinks.add(url);
+                if (url.contains(artifactId)) idVersionLinks.add(url);
+            }
+            if (artifact.getBuildDate() != null && artifact.getBuildDate().equals(latestDate)) {
+                dateLinks.add(url);
+            }
+        }
+
+        if (!specialLinks.isEmpty()) {
+            resultLinks = specialLinks;
+        } else if (!idVersionLinks.isEmpty()) {
+            resultLinks = idVersionLinks;
+        } else if (!versionLinks.isEmpty()) {
+            resultLinks = versionLinks;
+        } else if (!dateLinks.isEmpty()) {
+            resultLinks = dateLinks;
+        }
+
         return resultLinks;
     }
 }

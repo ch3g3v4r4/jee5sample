@@ -25,6 +25,8 @@ public class DownloadLinkUtils {
             artifact = parseURLType2223(urlStr);
         if (artifact == null)
             artifact = parseURLType3(urlStr);
+        if (artifact == null)
+            artifact = parseURLType4(urlStr);
 
         if (artifact != null && artifact.getVersion() != null && artifact.getBuildType() == null) {
             // build type is defaulted to RELEASE if version contains numbers only
@@ -33,6 +35,40 @@ public class DownloadLinkUtils {
                 artifact.setBuildType(BuildType.RELEASE);
             }
         }
+        return artifact;
+    }
+
+    /**
+     * Parse URLs using type 4:
+     * http://download.eclipse.org/birt/downloads/build.php?build=M-R1-2.3M5-200802191157
+     * http://www.eclipse.org/tptp/home/downloads/?ver=4.5.0
+     * http://www.eclipse.org/tptp/home/downloads/?buildId=TPTP-4.5.0M5-200802170400,
+     *
+     * @param urlStr
+     * @return
+     * @throws MalformedURLException
+     */
+    private static Artifact parseURLType4(String urlStr) {
+        Artifact artifact = null;
+
+        String patternStr;
+        Pattern pattern;
+        Matcher m;
+
+        String[] patterns = new String[]{
+                "/build.php\\?build=([^/]+)$",
+                "/downloads/\\?ver=([^/]+)$",
+                "/downloads/\\?buildId=([^/]+)$"};
+        for (int i = 0; i < patterns.length; i++) {
+            patternStr = patterns[i];
+            pattern = Pattern.compile(patternStr);
+            m = pattern.matcher(urlStr);
+            if (m.find()) { // match type 4
+                artifact = new Artifact();
+                parseVersionInfoString(m.group(1), artifact);
+            }
+        }
+
         return artifact;
     }
 

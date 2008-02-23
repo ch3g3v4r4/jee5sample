@@ -76,12 +76,6 @@ public class WebBrowser {
         return httpClient;
     }
 
-    public List<String> getLinks(String urlStr) throws Exception {
-        List<String> hyperlinks = new ArrayList<String>();
-        getLinksAndContenType(urlStr, hyperlinks, null);
-        return hyperlinks;
-    }
-
     public void getLinksAndContenType(String urlStr, List<String> hyperlinks, List<String> contentType) throws Exception {
         InputStream is = null;
         HttpGet httpget = null;
@@ -112,7 +106,7 @@ public class WebBrowser {
                             href = attrs.item(j).getNodeValue();
                         }
                     }
-                    if (!href.startsWith("javascript:")) {
+                    if (!href.startsWith("javascript:") && !href.startsWith("news:")) {
                         String absHref = new URL(documentURL, href).toString();
                         hyperlinks.add(absHref);
                     }
@@ -130,21 +124,6 @@ public class WebBrowser {
         }
     }
 
-    public String getLink(String url, String pattern) throws Exception {
-
-        String result;
-
-        List<String> links = getLinks(url);
-        links = filter(links, pattern);
-        if (!links.isEmpty()) {
-            Collections.sort(links);
-            result = links.get(links.size() - 1);
-        } else {
-            result = null;
-        }
-
-        return result;
-    }
 
     private List<String> filter(List<String> strings, String patternStr) {
         List<String> result = new ArrayList<String>();

@@ -11,19 +11,11 @@ public class EclipseWTPSDKPartBuilder extends PartBuilderHelper implements PartB
 
     private String downloadPage = "http://download.eclipse.org/webtools/downloads/";
 
-    private List<PartBuilder> partBuilders;
 
-    public void setParts(List<PartBuilder> partBuilders) {
-        this.partBuilders = partBuilders;
-    }
 
     public void build(EclipseBuilderContext context) throws Exception {
 
-        // Download dependencies first
-        for (PartBuilder builder : this.partBuilders) {
-            logger.info("Building WTP SDK dependencies using " + builder.getClass().getName());
-            builder.build(context);
-        }
+        super.build(context);
 
         logger.info("Looking for the Eclipse WTP SDK hyperlink.");
         String[] downloadLinkAndChecksumLink = getDownloadAndChecksumLinks(downloadPage, "wtp-sdk", context.getBuildType());
