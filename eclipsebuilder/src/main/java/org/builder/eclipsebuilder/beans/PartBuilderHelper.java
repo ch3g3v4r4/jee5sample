@@ -84,7 +84,8 @@ public class PartBuilderHelper {
                 String checksum = digest(file, md);
                 verify = expectedChecksum.equals(checksum);
             }
-        } else if (file.getName().endsWith(".zip")) {
+        }
+        if (!verify && file.getName().endsWith(".zip")) {
             // try to test zip integrity
             File temp = File.createTempFile("tmp", ".tmp");
             temp.delete();
