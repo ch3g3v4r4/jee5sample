@@ -23,27 +23,37 @@
 		<property name="webBrowser" ref="webBrowser"/>
 	</bean>
 
-	<bean name="eclipseSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseSDKPartBuilder">
+	<bean name="eclipseSDKPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="eclipse-SDK"/>
+		<property name="downloadPage" value="http://download.eclipse.org/eclipse/downloads/"/>
 	</bean>
-	<bean name="eclipseEMFSDOXSDSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseEMFSDOXSDSDKPartBuilder">
+	<bean name="eclipseEMFSDOXSDSDKPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="emf-sdo-xsd-SDK"/>
+		<property name="downloadPage" value="http://www.eclipse.org/modeling/emf/downloads/"/>
 	</bean>
-	<bean name="eclipseGEFSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseGEFSDKPartBuilder">
+	<bean name="eclipseGEFSDKPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="GEF-ALL"/>
+		<property name="downloadPage" value="http://www.eclipse.org/gef/downloads/"/>
 	</bean>
-	<bean name="eclipseDTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseDTPSDKPartBuilder">
+	<bean name="eclipseDTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="dtp"/>
+		<property name="downloadPage" value="http://www.eclipse.org/datatools/downloads.php"/>
 	</bean>
-	<bean name="eclipseBIRTSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseBIRTSDKPartBuilder">
+	<bean name="eclipseBIRTSDKPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="birt-report-framework"/>
+		<property name="downloadPage" value="http://download.eclipse.org/birt/downloads/build_list.php"/>
 	</bean>
-	<bean name="eclipseTPTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseTPTPSDKPartBuilder">
+	<bean name="eclipseTPTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="parts">
@@ -51,13 +61,17 @@
 				<ref bean="eclipseBIRTSDKPartBuilder"/>
 			</list>
 		</property>
+		<property name="artifactId" value="tptp.runtime-TPTP"/>
+		<property name="downloadPage" value="http://www.eclipse.org/tptp/home/downloads/"/>
 	</bean>
-	<bean name="eclipseAgentControlerPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseAgentControlerPartBuilder">
+	<bean name="eclipseAgentControlerPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="agntctrl.win_ia32-TPTP"/>
+		<property name="downloadPage" value="http://www.eclipse.org/tptp/home/downloads/"/>
 	</bean>
 
-	<bean name="eclipseWTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseWTPSDKPartBuilder">
+	<bean name="eclipseWTPSDKPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="parts">
@@ -67,6 +81,8 @@
 				<ref bean="eclipseDTPSDKPartBuilder"/>
 			</list>
 		</property>
+		<property name="artifactId" value="wtp"/>
+		<property name="downloadPage" value="http://download.eclipse.org/webtools/downloads/"/>
 	</bean>
 
 	<bean name="fileSyncPartBuilder" class="org.builder.eclipsebuilder.beans.AndreiPartBuilder">
@@ -97,13 +113,14 @@
 	<bean name="subclipsePartBuilder" class="org.builder.eclipsebuilder.beans.SubclipsePartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="site"/>
+		<property name="downloadPage" value="http://subclipse.tigris.org/servlets/ProjectDocumentList?folderID=2240&amp;expandFolder=2240&amp;folderID=0"/>
 	</bean>
 
 	<bean name="eclipseBuilder" class="org.builder.eclipsebuilder.beans.EclipseBuilder">
 		<property name="configuration" ref="configuration"/>
 		<property name="parts">
 			<list>
-			<!--
 				<ref bean="eclipseSDKPartBuilder"/>
 				<ref bean="eclipseWTPSDKPartBuilder"/>
 				<ref bean="eclipseTPTPSDKPartBuilder"/>
@@ -112,7 +129,6 @@
 				<ref bean="bytecodeOutlinePartBuilder"/>
 				<ref bean="anyEditPartBuilder"/>
 				<ref bean="jdependPartBuilder"/>
-			 -->
 			 	<ref bean="subclipsePartBuilder" />
 			</list>
 		</property>
