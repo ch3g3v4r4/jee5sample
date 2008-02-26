@@ -23,4 +23,7 @@ public class EclipseEMFSDOXSDSDKPartBuilder extends PartBuilderHelper implements
         // unzip to target folder
         unzip(file, context.getEclipseHome(), true);
     }
+
+    public void copyFile(File file, File targetDir) {
+    }
 }

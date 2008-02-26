@@ -31,4 +31,7 @@ public class EclipseAgentControlerPartBuilder extends PartBuilderHelper implemen
         // unzip to target folder
         unzip(file, dir, true);
     }
+
+    public void copyFile(File file, File targetDir) {
+    }
 }

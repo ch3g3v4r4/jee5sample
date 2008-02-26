@@ -24,4 +24,7 @@ public class EclipseTPTPSDKPartBuilder extends PartBuilderHelper implements Part
         // unzip to target folder
         unzip(file, context.getEclipseHome(), true);
     }
+
+    public void copyFile(File file, File targetDir) {
+    }
 }

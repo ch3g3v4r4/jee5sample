@@ -23,4 +23,7 @@ public class EclipseSDKPartBuilder extends PartBuilderHelper implements PartBuil
         // unzip to target folder
         unzip(file, context.getEclipseHome(), true);
     }
+
+    public void copyFile(File file, File targetDir) {
+    }
 }

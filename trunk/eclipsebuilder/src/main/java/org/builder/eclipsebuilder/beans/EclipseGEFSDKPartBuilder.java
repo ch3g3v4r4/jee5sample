@@ -22,4 +22,7 @@ public class EclipseGEFSDKPartBuilder extends PartBuilderHelper implements PartB
         // unzip to target folder
         unzip(file, context.getEclipseHome(), true);
     }
+
+    public void copyFile(File file, File targetDir) {
+    }
 }
