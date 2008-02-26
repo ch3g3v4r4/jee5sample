@@ -28,17 +28,19 @@ import org.apache.log4j.Logger;
 import org.builder.eclipsebuilder.beans.Configuration.BuildType;
 import org.springframework.util.StringUtils;
 
-public class PartBuilderHelper {
+public class PartBuilderHelper implements PartBuilder {
 
     private static Logger logger = Logger.getLogger(PartBuilderHelper.class);
 
     protected WebBrowser webBrowser;
     private DownloadManager downloadManager;
+    private String downloadPage;
+    private String artifactId;
 
-    protected List<PartBuilder> partBuilders;
+    protected List<PartBuilder> parts;
 
-    public void setParts(List<PartBuilder> partBuilders) {
-        this.partBuilders = partBuilders;
+    public void setParts(List<PartBuilder> parts) {
+        this.parts = parts;
     }
 
     public void setWebBrowser(WebBrowser webBrowser) {
@@ -49,14 +51,44 @@ public class PartBuilderHelper {
         this.downloadManager = downloadManager;
     }
 
+    public String getDownloadPage() {
+        return downloadPage;
+    }
+
+    public void setDownloadPage(String downloadPage) {
+        this.downloadPage = downloadPage;
+    }
+
+    public String getArtifactId() {
+        return artifactId;
+    }
+
+    public void setArtifactId(String artifactId) {
+        this.artifactId = artifactId;
+    }
+
     public void build(EclipseBuilderContext context) throws Exception {
-        if (this.partBuilders != null) {
+
+        if (this.parts != null) {
             // Download dependencies first
-            for (PartBuilder builder : this.partBuilders) {
+            for (PartBuilder builder : this.parts) {
                 logger.info("Building dependencies using " + builder.getClass().getName());
                 builder.build(context);
             }
         }
+
+        logger.info("Looking for the " + getArtifactId() + " hyperlink.");
+        String[] downloadLinkAndChecksumLink = getDownloadAndChecksumLinks(
+                getDownloadPage(), getArtifactId(),
+                context.getBuildType());
+        String downloadLink = downloadLinkAndChecksumLink[0];
+        String checksumLink = downloadLinkAndChecksumLink[1];
+        logger.info(getArtifactId() + " hyperlink: " + downloadLink + "; checksum link:" + checksumLink);
+
+        File file = downloadAndCheck(downloadLink, checksumLink, context.getCacheHome());
+
+        // install to target folder
+        installPart(file, context.getEclipseHome(), true);
     }
 
     private static boolean deleteDir(File dir) {
@@ -164,9 +196,9 @@ public class PartBuilderHelper {
                 unzip(partFile, temp, true);
                 installSiteUpdate(temp, eclipse, overwrite);
                 deleteDir(temp);
-            } else if (fileNames.size() == 1 && fileNames.contains("eclipse/")) {
+            } else if (fileNames.contains("eclipse/")) {
                 unzip(partFile, eclipseParentDir, overwrite);
-            } else if (fileNames.contains("plugins/")) {
+            } else if (fileNames.contains("plugins/") && !fileNames.contains("bin/")) {
                 unzip(partFile, eclipse, overwrite);
             } else if (containsPattern(fileNames, "[^/]+/plugin.xml")) {
                 File plugins = new File(eclipse, "plugins");
@@ -181,6 +213,14 @@ public class PartBuilderHelper {
                 File updateDir = new File(temp, children[0]);
                 installSiteUpdate(updateDir, eclipse, overwrite);
                 deleteDir(temp);
+            } else {
+                String fileName = partFile.getName();
+                if (fileName.endsWith(".zip")) {
+                    fileName = fileName.substring(0, fileName.length() - ".zip".length());
+                }
+                File dir = new File(eclipseParentDir, fileName);
+                dir.mkdir();
+                unzip(partFile, dir, overwrite);
             }
         }
     }
@@ -457,7 +497,9 @@ public class PartBuilderHelper {
                 i++;
             }
             if (c == 0) {
-                c = v1g2.compareTo(v2g2);
+                if (v1g2 == null || v1g2.length() == 0) c = 1;
+                else if (v2g2 == null || v2g2.length() == 0) c = -1;
+                else c = v1g2.compareTo(v2g2);
             }
         }
         return c;
