@@ -116,14 +116,9 @@ public class WebBrowser {
                     if (value.startsWith("http://")) hyperlinks.add(value);
                 }
             }
-        } catch (Exception e) {
+        } finally {
             if (httpget != null) {
                 httpget.abort();
-            }
-            throw e;
-        } finally {
-            if (is != null) {
-                is.close();
             }
         }
     }
@@ -224,6 +219,7 @@ public class WebBrowser {
                 if (nameVal != null && nameVal[0] != null
                         && nameVal[0].trim().equalsIgnoreCase("filename")) {
                     name = nameVal[1].trim();
+                    name = StringUtils.replace(name, "\"", "");
                 }
             }
         }

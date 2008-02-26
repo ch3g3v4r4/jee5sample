@@ -27,6 +27,8 @@ public class DownloadLinkUtils {
             artifact = parseURLType3(urlStr);
         if (artifact == null)
             artifact = parseURLType4(urlStr);
+        if (artifact == null)
+            artifact = parseURLType5(urlStr);
 
         if (artifact != null && artifact.getVersion() != null && artifact.getBuildType() == null) {
             // build type is defaulted to RELEASE if version contains numbers only
@@ -35,6 +37,38 @@ public class DownloadLinkUtils {
                 artifact.setBuildType(BuildType.RELEASE);
             }
         }
+        return artifact;
+    }
+
+    /**
+     * Parse URLs using type 5:
+     * http://filesync4eclipse.googlecode.com/files/de.loskutov.FileSync_1.3.2.1.jar
+     *
+     * @param urlStr
+     * @return
+     * @throws MalformedURLException
+     */
+    private static Artifact parseURLType5(String urlStr) {
+        Artifact artifact = null;
+
+        String patternStr;
+        Pattern pattern;
+        Matcher m;
+
+        String[] patterns = new String[]{"(\\d+(\\.\\d+)+([a-zA-Z]\\d+)?)[^/]*\\.jar$",
+                "(\\d+(\\.\\d+)+([a-zA-Z]\\d+)?)[^/]*\\.zip$"};
+        for (int i = 0; i < patterns.length; i++) {
+            patternStr = patterns[i];
+            pattern = Pattern.compile(patternStr);
+            m = pattern.matcher(urlStr);
+            if (m.find()) { // match type 5
+                artifact = new Artifact();
+                String fileName = urlStr.substring(urlStr.lastIndexOf('/') + 1);
+                parseVersionInfoString(fileName.substring(0, fileName.length() - 4), artifact);
+                artifact.setFileName(fileName);
+            }
+        }
+
         return artifact;
     }
 

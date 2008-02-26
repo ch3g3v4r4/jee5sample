@@ -26,4 +26,7 @@ public class EclipseWTPSDKPartBuilder extends PartBuilderHelper implements PartB
         unzip(file, context.getEclipseHome(), true);
     }
 
+    public void copyFile(File file, File targetDir) {
+    }
+
 }

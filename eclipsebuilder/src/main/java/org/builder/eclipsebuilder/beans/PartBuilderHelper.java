@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -17,12 +18,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.builder.eclipsebuilder.beans.Configuration.BuildType;
+import org.springframework.util.StringUtils;
 
 public class PartBuilderHelper {
 
@@ -85,7 +89,7 @@ public class PartBuilderHelper {
                 verify = expectedChecksum.equals(checksum);
             }
         }
-        if (!verify && file.getName().endsWith(".zip")) {
+        if (!verify && (file.getName().endsWith(".zip") || file.getName().endsWith(".jar"))) {
             // try to test zip integrity
             File temp = File.createTempFile("tmp", ".tmp");
             temp.delete();
@@ -141,6 +145,82 @@ public class PartBuilderHelper {
             throw downloadManager.getErrors().get(0);
         }
         logger.info("Download manager stopped.");
+    }
+
+    protected void installPart(File partFile, File eclipseParentDir, boolean overwrite) throws Exception {
+        File eclipse = new File(eclipseParentDir, "eclipse");
+        eclipse.mkdir();
+        if (partFile.getName().endsWith(".jar")) {
+            File plugins = new File(eclipse, "plugins");
+            plugins.mkdir();
+            File destFile = new File(plugins, partFile.getName());
+            FileUtils.copyFile(partFile, destFile);
+        } else if (partFile.getName().endsWith(".zip")) {
+            List<String> fileNames = listZip(partFile);
+            if (fileNames.contains("site.xml")) {
+                File temp = File.createTempFile("tmp", ".tmp");
+                temp.delete();
+                temp.mkdir();
+                unzip(partFile, temp, true);
+                installSiteUpdate(temp, eclipse, overwrite);
+                deleteDir(temp);
+            } else if (fileNames.size() == 1 && fileNames.contains("eclipse/")) {
+                unzip(partFile, eclipseParentDir, overwrite);
+            } else if (fileNames.contains("plugins/")) {
+                unzip(partFile, eclipse, overwrite);
+            } else if (containsPattern(fileNames, "[^/]+/plugin.xml")) {
+                File plugins = new File(eclipse, "plugins");
+                plugins.mkdir();
+                unzip(partFile, plugins, overwrite);
+            } else if (containsPattern(fileNames, "[^/]+/site.xml")) {
+                File temp = File.createTempFile("tmp", ".tmp");
+                temp.delete();
+                temp.mkdir();
+                unzip(partFile, temp, true);
+                String[] children = temp.list();
+                File updateDir = new File(temp, children[0]);
+                installSiteUpdate(updateDir, eclipse, overwrite);
+                deleteDir(temp);
+            }
+        }
+    }
+
+    private boolean containsPattern(List<String> strings, String pattern) {
+        boolean found = false;
+        Pattern p = Pattern.compile(pattern);
+        for (String s: strings) {
+            if (p.matcher(s).matches()) {
+                found = true;
+                break;
+            }
+        }
+        return found;
+    }
+
+    private void installSiteUpdate(File updateDir, File eclipse, boolean overwrite) throws Exception {
+        unzipFiles(new File(updateDir, "features"), new File(eclipse, "features"), overwrite);
+        unzipFiles(new File(updateDir, "plugins"), new File(eclipse, "plugins"), overwrite);
+    }
+
+    private void unzipFiles(File dir, File toDir, boolean overwrite) throws Exception {
+        File[] files = dir.listFiles();
+        for (File file : files) {
+            String name = file.getName();
+            String plainName = StringUtils.stripFilenameExtension(name);
+            File newFolder = new File(toDir, plainName);
+            newFolder.mkdir();
+            unzip(file, newFolder, overwrite);
+        }
+    }
+
+    private List<String> listZip(File zipFile) throws Exception {
+        List<String> names = new ArrayList<String>();
+        ZipFile zf = new ZipFile(zipFile);
+        for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
+            String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
+            names.add(zipEntryName);
+        }
+        return names;
     }
 
     protected void unzip(File zipFile, File targetFolder, boolean overwrite)
@@ -383,14 +463,10 @@ public class PartBuilderHelper {
         return c;
     }
 
-    private List<String> filter(List<String> urlList, String artifactId, BuildType buildType)
+    protected List<String> filter(List<String> urlList, String artifactId, BuildType buildType)
         throws Exception {
 
         List<String> resultLinks = new ArrayList<String>();
-//
-//        List<String> artifactWin32Links = new ArrayList<String>();
-//        List<String> artifactNoIdLinks = new ArrayList<String>();
-//        List<String> artifactMirror1Links = new ArrayList<String>();
         String latestVersion = null;
         String latestDate = null;
         for (String urlStr : urlList) {
@@ -415,21 +491,7 @@ public class PartBuilderHelper {
             }
 
             resultLinks.add(urlStr);
-//            //artifact ID (sometimes links in the first page doesn't contain artifact ID but we must select)
-//            if (artifactId != null && !artifactId.equals(artifact.getArtifactId())) {
-//                if (artifact.getArtifactId() == null) artifactNoIdLinks.add(urlStr);
-//                continue;
-//            }
-//
-//            resultLinks.add(urlStr);
-//            if (artifact.getFileName().endsWith("-win32.zip")) artifactWin32Links.add(urlStr);
-//
-//            if (urlStr.endsWith("&mirror_id=1")) artifactMirror1Links.add(urlStr);
         }
-
-//        if (resultLinks.isEmpty() && !artifactNoIdLinks.isEmpty()) resultLinks = artifactNoIdLinks;
-//        if (!artifactWin32Links.isEmpty()) resultLinks = artifactWin32Links;
-//        if (!artifactMirror1Links.isEmpty()) resultLinks = artifactMirror1Links;
 
         // Some exceptions "-win32.zip" "&mirror_id=1"
         // or if no special urls found, select latest version or latest date links

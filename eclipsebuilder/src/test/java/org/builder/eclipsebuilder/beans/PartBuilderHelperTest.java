@@ -81,6 +81,13 @@ public class PartBuilderHelperTest extends TestCase {
         links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
         assertEquals("http://www.eclipse.org/downloads/download.php?file=/birt/downloads/drops/M-R1-2.3M5-200802191157/birt-report-framework-sdk-2.3M5.zip", links[0]);
         assertEquals("http://download.eclipse.org/birt/downloads/drops/M-R1-2.3M5-200802191157/birt-report-framework-sdk-2.3M5.md5", links[1]);
+
+        url = "http://www.eclipse.org/tptp/home/downloads/";
+        artifactId = "agntctrl.win_ia32.sdk-TPTP";
+        buildType = BuildType.STABLE;
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertEquals("http://www.eclipse.org/downloads/download.php?file=/tptp/4.5.0/TPTP-4.5.0M5-200802170400/agntctrl.win_ia32.sdk-TPTP-4.5.0M5.zip&url=http://download.eclipse.org/tptp/4.5.0/TPTP-4.5.0M5-200802170400/agntctrl.win_ia32.sdk-TPTP-4.5.0M5.zip&mirror_id=1", links[0]);
+        assertNull(links[1]);
     }
     public void testGetDownloadAndChecksumLinks2() throws Exception {
         String[] links;
@@ -88,11 +95,15 @@ public class PartBuilderHelperTest extends TestCase {
         String artifactId;
         BuildType buildType;
 
-        url = "http://www.eclipse.org/tptp/home/downloads/";
-        artifactId = "agntctrl.win_ia32.sdk-TPTP";
+        url = "http://andrei.gmxhome.de/filesync/links.html";
+        artifactId = "de.loskutov.FileSync";
         buildType = BuildType.STABLE;
+        ApplicationContext  ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        AndreiPartBuilder builder = new AndreiPartBuilder();
+        builder.setDownloadManager((DownloadManager) ctx.getBean("downloadManager"));
+        builder.setWebBrowser( (WebBrowser) ctx.getBean("webBrowser"));
         links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
-        assertEquals("http://www.eclipse.org/downloads/download.php?file=/tptp/4.5.0/TPTP-4.5.0M5-200802170400/agntctrl.win_ia32.sdk-TPTP-4.5.0M5.zip&url=http://download.eclipse.org/tptp/4.5.0/TPTP-4.5.0M5-200802170400/agntctrl.win_ia32.sdk-TPTP-4.5.0M5.zip&mirror_id=1", links[0]);
+        assertEquals("http://filesync4eclipse.googlecode.com/files/de.loskutov.FileSync_1.3.2.1.jar", links[0]);
         assertNull(links[1]);
     }
 }
