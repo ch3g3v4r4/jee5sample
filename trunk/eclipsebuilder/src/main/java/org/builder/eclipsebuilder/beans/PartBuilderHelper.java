@@ -442,8 +442,21 @@ public class PartBuilderHelper implements PartBuilder {
                 } catch (Exception e) {
                     logger.error("Cannot parse!", e);
                 }
-                if (a1 == a2) c = 0;
-                else if (a1 == null && a2 != null) c = -1;
+                if (a1 == null && a2 == null) {
+                    Pattern p = Pattern.compile("\\d+(\\.\\d+)*");
+                    Matcher m1 = p.matcher(l1);
+                    Matcher m2 = p.matcher(l2);
+                    if (m1.find() && m2.find()) {
+                        String v1 = m1.group();
+                        String v2 = m2.group();
+                        if (v1.indexOf('.') == -1 && v2.indexOf('.') == -1 && v1.length() != v2.length()) {
+                            int maxLength = Math.max(v1.length(), v2.length());
+                            while (v1.length() < maxLength) v1 += '0';
+                            while (v2.length() < maxLength) v2 += '0';
+                        }
+                        c = v1.compareTo(v2);
+                    } else c = l1.compareTo(l2);
+                } else if (a1 == null && a2 != null) c = -1;
                 else if (a1 != null && a2 == null) c = 1;
                 else {
                     c = compareVersion(a1.getVersion(), a2.getVersion());

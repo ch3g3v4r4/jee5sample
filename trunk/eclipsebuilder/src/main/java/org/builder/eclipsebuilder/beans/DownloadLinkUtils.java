@@ -55,8 +55,8 @@ public class DownloadLinkUtils {
         Pattern pattern;
         Matcher m;
 
-        String[] patterns = new String[]{"(\\d+(\\.\\d+)+([a-zA-Z]\\d+)?)[^/]*\\.jar$",
-                "(\\d+(\\.\\d+)+([a-zA-Z]\\d+)?)[^/]*\\.zip$"};
+        String[] patterns = new String[]{"\\d+(\\.\\d+)*[^/]*\\.jar$",
+                "\\d+(\\.\\d+)*[^/]*\\.zip$"};
         for (int i = 0; i < patterns.length; i++) {
             patternStr = patterns[i];
             pattern = Pattern.compile(patternStr);
