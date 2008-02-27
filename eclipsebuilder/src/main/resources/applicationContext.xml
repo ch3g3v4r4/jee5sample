@@ -117,10 +117,18 @@
 		<property name="downloadPage" value="http://subclipse.tigris.org/servlets/ProjectDocumentList?folderID=2240&amp;expandFolder=2240&amp;folderID=0"/>
 	</bean>
 
+	<bean name="tomcatPluginPartBuilder" class="org.builder.eclipsebuilder.beans.SubclipsePartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="tomcatPlugin"/>
+		<property name="downloadPage" value="http://www.eclipsetotale.com/tomcatPlugin.html"/>
+	</bean>
+
 	<bean name="eclipseBuilder" class="org.builder.eclipsebuilder.beans.EclipseBuilder">
 		<property name="configuration" ref="configuration"/>
 		<property name="parts">
 			<list>
+
 				<ref bean="eclipseSDKPartBuilder"/>
 				<ref bean="eclipseWTPSDKPartBuilder"/>
 				<ref bean="eclipseTPTPSDKPartBuilder"/>
@@ -130,6 +138,8 @@
 				<ref bean="anyEditPartBuilder"/>
 				<ref bean="jdependPartBuilder"/>
 			 	<ref bean="subclipsePartBuilder" />
+
+			 	<ref bean="tomcatPluginPartBuilder"/>
 			</list>
 		</property>
 	</bean>
