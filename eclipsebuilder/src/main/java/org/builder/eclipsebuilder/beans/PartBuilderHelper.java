@@ -39,12 +39,9 @@ public class PartBuilderHelper implements PartBuilder {
     private DownloadManager downloadManager;
     private String downloadPage;
     private String artifactId;
+    protected List<String> features;
 
     protected List<PartBuilder> parts;
-
-    public void setParts(List<PartBuilder> parts) {
-        this.parts = parts;
-    }
 
     public void setWebBrowser(WebBrowser webBrowser) {
         this.webBrowser = webBrowser;
@@ -68,6 +65,14 @@ public class PartBuilderHelper implements PartBuilder {
 
     public void setArtifactId(String artifactId) {
         this.artifactId = artifactId;
+    }
+
+    public void setFeatures(List<String> features) {
+        this.features = features;
+    }
+
+    public void setParts(List<PartBuilder> parts) {
+        this.parts = parts;
     }
 
     public void build(EclipseBuilderContext context) throws Exception {
@@ -197,7 +202,7 @@ public class PartBuilderHelper implements PartBuilder {
                 temp.delete();
                 temp.mkdir();
                 unzip(partFile, temp, true);
-                installSiteUpdate(temp, eclipse, null, overwrite);
+                installSiteUpdate(temp, eclipse, this.features, overwrite);
                 deleteDir(temp);
             } else if (fileNames.contains("eclipse/")) {
                 unzip(partFile, eclipseParentDir, overwrite);
@@ -214,7 +219,7 @@ public class PartBuilderHelper implements PartBuilder {
                 unzip(partFile, temp, true);
                 String[] children = temp.list();
                 File updateDir = new File(temp, children[0]);
-                installSiteUpdate(updateDir, eclipse, null, overwrite);
+                installSiteUpdate(updateDir, eclipse, this.features, overwrite);
                 deleteDir(temp);
             } else {
                 String fileName = partFile.getName();
@@ -240,7 +245,7 @@ public class PartBuilderHelper implements PartBuilder {
         return found;
     }
 
-    private void installSiteUpdate(File siteUpdateFile, File eclipse, String[] features, boolean overwrite) throws Exception {
+    private void installSiteUpdate(File siteUpdateFolder, File eclipse, List<String> features, boolean overwrite) throws Exception {
         // http://publib.boulder.ibm.com/infocenter/wchelp/v6r0m0/index.jsp?topic=/com.ibm.commerce.telesales.developer.doc/tasks/ttrdcreateupdatesiteexample.htm
         // http://dev.eclipse.org/newslists/news.eclipse.platform/msg66561.html
         // java -jar plugins/org.eclipse.equinox.launcher_<version>.jar -application  org.eclipse.update.core.standaloneUpdate -command search -from remote_site_url
@@ -254,13 +259,12 @@ public class PartBuilderHelper implements PartBuilder {
             }
         };
         File[] files = plugins.listFiles(fileFilter);
-
         Process p = Runtime.getRuntime().exec(
                 new String[]{
-                        "java", "-jar", files[0].getAbsolutePath(),
+                        getJavaCommand(), "-jar", files[0].getAbsolutePath(),
                         "-application",  "org.eclipse.update.core.standaloneUpdate",
                         "-command", "search",
-                        "-from", siteUpdateFile.getAbsolutePath()});
+                        "-from", siteUpdateFolder.toURL().toString()});
         // Get the input stream and read from it
         InputStream in = p.getInputStream();
         StringBuffer sb = new StringBuffer();
@@ -270,23 +274,43 @@ public class PartBuilderHelper implements PartBuilder {
         }
         in.close();
         p.waitFor();
-        Pattern pattern = Pattern.compile("Feature\\:\\s+([^\\s]+)\\s+([^\\s]+)\\s+");
-        Matcher m = pattern.matcher(sb.toString());
+
         Map<String, String> feature2Version = new HashMap<String, String>();
-        while (m.find()) {
-            feature2Version.put(m.group(1), m.group(2));
+        String patternStr = "^(.*)$";
+        Pattern pattern = Pattern.compile(patternStr, Pattern.MULTILINE);
+        Matcher matcher = pattern.matcher(sb.toString());
+        while (matcher.find()) {
+            String line = matcher.group(1);
+            String[] splits = line.split(" ");
+            String version = splits[splits.length - 1];
+            Pattern numPattern = Pattern.compile("\\d");
+            if (numPattern.matcher(version).find()) {
+                feature2Version.put(splits[splits.length - 2], splits[splits.length - 1]);
+            }
         }
         for (String feature: features) {
             p = Runtime.getRuntime().exec(
                     new String[]{
-                            "java", "-jar", files[0].getAbsolutePath(),
+                            getJavaCommand(), "-jar", files[0].getAbsolutePath(),
                             "-application",  "org.eclipse.update.core.standaloneUpdate",
                             "-command", "install",
                             "-featureId", feature,
                             "-version", feature2Version.get(feature),
-                            "-from", siteUpdateFile.getAbsolutePath()});
+                            "-from", siteUpdateFolder.toURL().toString()});
+            p.waitFor();
 
         }
+    }
+
+    private String getJavaCommand() {
+        String osname = System.getProperty("os.name").toLowerCase();
+        String commandName;
+        if (osname.indexOf("windows") >= 0) {
+            commandName = "javaw.exe";
+        } else {
+            commandName = "java";
+        }
+        return System.getProperty("java.home") + File.separator + "bin" + File.separator + commandName;
     }
 
     private List<String> listZip(File zipFile) throws Exception {
