@@ -128,13 +128,47 @@
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="site"/>
 		<property name="downloadPage" value="http://subclipse.tigris.org/servlets/ProjectDocumentList?folderID=2240&amp;expandFolder=2240&amp;folderID=0"/>
+		<property name="features">
+			<list>
+				<value>org.tigris.subversion.subclipse</value>
+			</list>
+		</property>
 	</bean>
-
 	<bean name="tomcatPluginPartBuilder" class="org.builder.eclipsebuilder.beans.SubclipsePartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="tomcatPlugin"/>
 		<property name="downloadPage" value="http://www.eclipsetotale.com/tomcatPlugin.html"/>
+	</bean>
+	<bean name="springIDEPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="spring-ide"/>
+		<property name="downloadPage" value="http://springide.org/updatesite/"/>
+	</bean>
+	<bean name="findbugsPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="edu.umd.cs.findbugs.plugin.eclipse"/>
+		<property name="downloadPage" value="http://findbugs.sourceforge.net/manual/eclipse.html"/>
+	</bean>
+	<bean name="checkstylePartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="com.atlassw.tools.eclipse.checkstyle"/>
+		<property name="downloadPage" value="http://sourceforge.net/project/showfiles.php?group_id=80344"/>
+	</bean>
+	<bean name="propeditPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="jp.gr.java_conf.ussiy.app.propedit"/>
+		<property name="downloadPage" value="http://sourceforge.jp/projects/propedit/files/?release_id=17247"/>
+	</bean>
+	<bean name="pmdPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="pmd-eclipse-site"/>
+		<property name="downloadPage" value="http://sourceforge.net/project/showfiles.php?group_id=56262"/>
 	</bean>
 
 	<bean name="eclipseBuilder" class="org.builder.eclipsebuilder.beans.EclipseBuilder">
@@ -152,6 +186,12 @@
 				<ref bean="jdependPartBuilder"/>
 			 	<ref bean="subclipsePartBuilder" />
 			 	<ref bean="tomcatPluginPartBuilder"/>
+			 	<ref bean="springIDEPartBuilder"/>
+			 	<ref bean="findbugsPartBuilder"/>
+			 	<ref bean="checkstylePartBuilder"/>
+				<ref bean="propeditPartBuilder"/>
+				<ref bean="pmdPartBuilder"/>
+
 			</list>
 		</property>
 	</bean>
