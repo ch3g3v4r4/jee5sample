@@ -207,7 +207,7 @@ public class PartBuilderHelper implements PartBuilder {
                 deleteDir(temp);
             } else if (fileNames.contains("eclipse/")) {
                 unzip(partFile, eclipseParentDir, overwrite);
-            } else if (fileNames.contains("plugins/") && !fileNames.contains("bin/")) {
+            } else if (someStringsHasPrefix(fileNames, "plugins/") && !someStringsHasPrefix(fileNames, "bin/")) {
                 unzip(partFile, eclipse, overwrite);
             } else if (containsPattern(fileNames, "[^/]+/plugin.xml")) {
                 File plugins = new File(eclipse, "plugins");
@@ -232,6 +232,17 @@ public class PartBuilderHelper implements PartBuilder {
                 unzip(partFile, dir, overwrite);
             }
         }
+    }
+
+    private boolean someStringsHasPrefix(List<String> strings, String prefix) {
+        boolean result = false;
+        for (String s : strings) {
+            if (s.startsWith(prefix)) {
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
     private boolean containsPattern(List<String> strings, String pattern) {
@@ -487,7 +498,7 @@ public class PartBuilderHelper implements PartBuilder {
         return result;
     }
 
-    private void sortByArtifactVersion(List<String> links) {
+    protected void sortByArtifactVersion(List<String> links) {
         Collections.sort(links, new Comparator<String>() {
             public int compare(String l1, String l2) {
                 int c;
@@ -586,7 +597,7 @@ public class PartBuilderHelper implements PartBuilder {
         String latestVersion = null;
         String latestDate = null;
         for (String urlStr : urlList) {
-            if (urlStr.indexOf("protocol") != -1 || urlStr.indexOf("format") != -1 ) continue;
+            if (urlStr.indexOf("protocol") != -1 || urlStr.indexOf("format") != -1 || urlStr.indexOf("mirror_picker.php") != -1) continue;
             Artifact artifact = DownloadLinkUtils.parseDownloadLink(urlStr);
             if (artifact == null || artifact.getArtifactId() != null && artifactId != null
                     && !artifactId.equals(artifact.getArtifactId())) continue;

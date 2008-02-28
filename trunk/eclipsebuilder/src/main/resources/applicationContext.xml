@@ -123,29 +123,21 @@
 		<property name="downloadPage" value="http://andrei.gmxhome.de/jdepend4eclipse/links.html"/>
 	</bean>
 
-	<bean name="subclipsePartBuilder" class="org.builder.eclipsebuilder.beans.SubclipsePartBuilder">
+	<bean name="subclipsePartBuilder" class="org.builder.eclipsebuilder.beans.ZipFilePartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="site"/>
 		<property name="downloadPage" value="http://subclipse.tigris.org/servlets/ProjectDocumentList?folderID=2240&amp;expandFolder=2240&amp;folderID=0"/>
-		<property name="features">
-			<list>
-				<value>org.tigris.subversion.subclipse</value>
-			</list>
-		</property>
+		<property name="features"><list><value>org.tigris.subversion.subclipse</value></list></property>
 	</bean>
-	<bean name="tomcatPluginPartBuilder" class="org.builder.eclipsebuilder.beans.SubclipsePartBuilder">
+	<bean name="tomcatPluginPartBuilder" class="org.builder.eclipsebuilder.beans.ZipFilePartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="tomcatPlugin"/>
 		<property name="downloadPage" value="http://www.eclipsetotale.com/tomcatPlugin.html"/>
 	</bean>
-	<bean name="springIDEPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
-		<property name="webBrowser" ref="webBrowser"/>
-		<property name="downloadManager" ref="downloadManager"/>
-		<property name="artifactId" value="spring-ide"/>
-		<property name="downloadPage" value="http://springide.org/updatesite/"/>
-	</bean>
+
+
 	<bean name="findbugsPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
@@ -158,17 +150,31 @@
 		<property name="artifactId" value="com.atlassw.tools.eclipse.checkstyle"/>
 		<property name="downloadPage" value="http://sourceforge.net/project/showfiles.php?group_id=80344"/>
 	</bean>
-	<bean name="propeditPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
-		<property name="webBrowser" ref="webBrowser"/>
-		<property name="downloadManager" ref="downloadManager"/>
-		<property name="artifactId" value="jp.gr.java_conf.ussiy.app.propedit"/>
-		<property name="downloadPage" value="http://sourceforge.jp/projects/propedit/files/?release_id=17247"/>
-	</bean>
 	<bean name="pmdPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="pmd-eclipse-site"/>
-		<property name="downloadPage" value="http://sourceforge.net/project/showfiles.php?group_id=56262"/>
+		<property name="downloadPage" value="http://sourceforge.net/project/showfiles.php?group_id=56262&amp;package_id=53767"/>
+		<property name="features"><list><value>net.sourceforge.pmd.eclipse</value></list></property>
+	</bean>
+
+	<bean name="springIDEPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="spring-ide"/>
+		<property name="downloadPage" value="http://springide.org/updatesite/"/>
+	</bean>
+	<bean name="propeditPartBuilder" class="org.builder.eclipsebuilder.beans.PropEditPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="jp.gr.java_conf.ussiy.app.propedit_"/>
+		<property name="downloadPage" value="http://sourceforge.jp/projects/propedit/files/?release_id=17247"/>
+	</bean>
+	<bean name="jiglooPluginPartBuilder" class="org.builder.eclipsebuilder.beans.ZipFilePartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="jigloo"/>
+		<property name="downloadPage" value="http://www.cloudgarden.com/jigloo/dnld_redirect.html"/>
 	</bean>
 
 	<bean name="eclipseBuilder" class="org.builder.eclipsebuilder.beans.EclipseBuilder">
@@ -176,7 +182,6 @@
 		<property name="parts">
 			<list>
 				<!-- Core packages -->
-				<!--
 				<ref bean="eclipseGanymedeJEEPartBuilder"/>
 				<ref bean="eclipseGanymedeRCPPartBuilder"/>
 
@@ -189,18 +194,15 @@
 				<ref bean="jdependPartBuilder"/>
 
 			 	<ref bean="subclipsePartBuilder" />
-
 			 	<ref bean="tomcatPluginPartBuilder"/>
 
 			 	<ref bean="findbugsPartBuilder"/>
--->
 			 	<ref bean="checkstylePartBuilder"/>
 				<ref bean="pmdPartBuilder"/>
 
 			 	<ref bean="springIDEPartBuilder"/>
-
 				<ref bean="propeditPartBuilder"/>
-
+				<ref bean="jiglooPluginPartBuilder"/>
 			</list>
 		</property>
 	</bean>
