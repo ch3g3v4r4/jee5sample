@@ -96,6 +96,7 @@ public class PartBuilderHelper implements PartBuilder {
         File file = downloadAndCheck(downloadLink, checksumLink, context.getCacheHome());
 
         // install to target folder
+        logger.info("Installing " + getArtifactId() + " ...");
         installPart(file, context.getEclipseHome(), true);
     }
 
@@ -196,6 +197,7 @@ public class PartBuilderHelper implements PartBuilder {
             plugins.mkdir();
             File destFile = new File(plugins, partFile.getName());
             FileUtils.copyFile(partFile, destFile);
+            logger.info("Copied " + partFile + " to " + destFile);
         } else if (partFile.getName().endsWith(".zip")) {
             List<String> fileNames = listZip(partFile);
             if (fileNames.contains("site.xml")) {
@@ -262,6 +264,7 @@ public class PartBuilderHelper implements PartBuilder {
         // http://dev.eclipse.org/newslists/news.eclipse.platform/msg66561.html
         // java -jar plugins/org.eclipse.equinox.launcher_<version>.jar -application  org.eclipse.update.core.standaloneUpdate -command search -from remote_site_url
         // java -jar plugins/org.eclipse.equinox.launcher_<version>.jar -application  org.eclipse.update.core.standaloneUpdate -command install -featureId feature_id -version version -from remote_site_url [-to target_site_dir]
+        logger.info("Begin installing site:" + siteUpdateFolder.getName());
 
         // List features and versions
         File plugins = new File(eclipse, "plugins");
@@ -301,6 +304,7 @@ public class PartBuilderHelper implements PartBuilder {
             }
         }
         for (String feature: features) {
+            logger.info("Installing feature: " + feature + "; version: " + feature2Version.get(feature));
             p = Runtime.getRuntime().exec(
                     new String[]{
                             getJavaCommand(), "-jar", files[0].getAbsolutePath(),
@@ -312,6 +316,7 @@ public class PartBuilderHelper implements PartBuilder {
             p.waitFor();
 
         }
+        logger.info("Installing site completed.");
     }
 
     private String getJavaCommand() {
