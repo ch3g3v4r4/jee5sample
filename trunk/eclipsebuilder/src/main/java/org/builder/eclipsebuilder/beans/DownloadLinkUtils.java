@@ -122,7 +122,7 @@ public class DownloadLinkUtils {
         URL url = new URL(urlStr);
         String path = url.getPath();
         String query = url.getQuery();
-        if (path != null && query == null
+        if (path != null && path.indexOf("/drops/") != -1 && query == null
                 && (path.endsWith(".zip") || path.endsWith(".md5"))) {
             String[] splits = path.split("/drops/");
             if (splits.length == 2 && splits[1].indexOf('/') != -1) { // match

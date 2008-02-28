@@ -6,6 +6,7 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -544,7 +545,7 @@ public class PartBuilderHelper implements PartBuilder {
         });
     }
 
-    private static int compareVersion(String v1, String v2) {
+    protected static int compareVersion(String v1, String v2) {
         int c;
         if (v1 == v2) c = 0;
         else if (v1 == null && v2 != null) c = -1;
@@ -570,20 +571,20 @@ public class PartBuilderHelper implements PartBuilder {
             List<String> v1l = new LinkedList<String>(Arrays.asList(v1g1.split("\\.")));
             List<String> v2l = new LinkedList<String>(Arrays.asList(v2g1.split("\\.")));
             int maxSize = Math.max(v1l.size(), v2l.size());
-            List<Integer> v1in = new ArrayList<Integer>(v1l.size());
-            List<Integer> v2in = new ArrayList<Integer>(v2l.size());
+            List<BigInteger> v1in = new ArrayList<BigInteger>(v1l.size());
+            List<BigInteger> v2in = new ArrayList<BigInteger>(v2l.size());
             for (String s : v1l) {
-                v1in.add(Integer.parseInt(s));
+                v1in.add(new BigInteger(s, 10));
             }
             for (String s : v2l) {
-                v2in.add(Integer.parseInt(s));
+                v2in.add(new BigInteger(s, 10));
             }
-            while (v1in.size() < maxSize) v1in.add(0);
-            while (v2in.size() < maxSize) v2in.add(0);
+            while (v1in.size() < maxSize) v1in.add(BigInteger.valueOf(0));
+            while (v2in.size() < maxSize) v2in.add(BigInteger.valueOf(0));
             c = 0;
             int i = 0;
             while (i < maxSize && c == 0) {
-                c = v1in.get(i) - v2in.get(i);
+                c = v1in.get(i).compareTo(v2in.get(i));
                 i++;
             }
             if (c == 0) {
