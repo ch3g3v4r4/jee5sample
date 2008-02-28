@@ -135,9 +135,10 @@ public class PartBuilderHelper implements PartBuilder {
             temp.delete();
             temp.mkdir();
             try {
+                listZip(file);
                 unzip(file, temp, true);
                 verify = true;
-            } catch (Exception e) {
+            } catch (Throwable t) {
             }
             deleteDir(temp);
         }

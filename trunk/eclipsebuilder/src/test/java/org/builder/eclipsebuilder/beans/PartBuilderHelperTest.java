@@ -88,12 +88,6 @@ public class PartBuilderHelperTest extends TestCase {
         links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
         assertEquals("http://www.eclipse.org/downloads/download.php?file=/tptp/4.5.0/TPTP-4.5.0M5-200802170400/agntctrl.win_ia32.sdk-TPTP-4.5.0M5.zip&url=http://download.eclipse.org/tptp/4.5.0/TPTP-4.5.0M5-200802170400/agntctrl.win_ia32.sdk-TPTP-4.5.0M5.zip&mirror_id=1", links[0]);
         assertNull(links[1]);
-    }
-    public void testGetDownloadAndChecksumLinks2() throws Exception {
-        String[] links;
-        String url;
-        String artifactId;
-        BuildType buildType;
 
         url = "http://andrei.gmxhome.de/filesync/links.html";
         artifactId = "de.loskutov.FileSync";
@@ -104,6 +98,23 @@ public class PartBuilderHelperTest extends TestCase {
         builder.setWebBrowser( (WebBrowser) ctx.getBean("webBrowser"));
         links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
         assertEquals("http://filesync4eclipse.googlecode.com/files/de.loskutov.FileSync_1.3.2.1.jar", links[0]);
+        assertNull(links[1]);
+
+    }
+    public void testGetDownloadAndChecksumLinks2() throws Exception {
+        String[] links;
+        String url;
+        String artifactId;
+        BuildType buildType;
+
+        url = "http://findbugs.sourceforge.net/manual/eclipse.html";
+        artifactId = "edu.umd.cs.findbugs.plugin.eclipse";
+        buildType = BuildType.STABLE;
+        ApplicationContext  ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        builder.setDownloadManager((DownloadManager) ctx.getBean("downloadManager"));
+        builder.setWebBrowser( (WebBrowser) ctx.getBean("webBrowser"));
+        links = builder.getDownloadAndChecksumLinks(url, artifactId, buildType);
+        assertTrue(links[0].endsWith("edu.umd.cs.findbugs.plugin.eclipse_1.3.2.20080222.zip"));
         assertNull(links[1]);
     }
 }

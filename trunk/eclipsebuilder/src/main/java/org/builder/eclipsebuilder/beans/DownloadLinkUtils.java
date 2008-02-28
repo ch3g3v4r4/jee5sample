@@ -43,6 +43,7 @@ public class DownloadLinkUtils {
     /**
      * Parse URLs using type 5:
      * http://filesync4eclipse.googlecode.com/files/de.loskutov.FileSync_1.3.2.1.jar
+     * http://prdownloads.sourceforge.net/findbugs/edu.umd.cs.findbugs.plugin.eclipse_1.3.2.20080222.zip?download
      *
      * @param urlStr
      * @return
@@ -55,15 +56,14 @@ public class DownloadLinkUtils {
         Pattern pattern;
         Matcher m;
 
-        String[] patterns = new String[]{"\\d+(\\.\\d+)*[^/]*\\.jar$",
-                "\\d+(\\.\\d+)*[^/]*\\.zip$"};
+        String[] patterns = new String[]{"([^/&=]+.jar)", "([^/&=]+.zip)"};
         for (int i = 0; i < patterns.length; i++) {
             patternStr = patterns[i];
             pattern = Pattern.compile(patternStr);
             m = pattern.matcher(urlStr);
             if (m.find()) { // match type 5
                 artifact = new Artifact();
-                String fileName = urlStr.substring(urlStr.lastIndexOf('/') + 1);
+                String fileName = m.group();
                 parseVersionInfoString(fileName.substring(0, fileName.length() - 4), artifact);
                 artifact.setFileName(fileName);
             }
@@ -71,6 +71,7 @@ public class DownloadLinkUtils {
 
         return artifact;
     }
+
 
     /**
      * Parse URLs using type 4:
