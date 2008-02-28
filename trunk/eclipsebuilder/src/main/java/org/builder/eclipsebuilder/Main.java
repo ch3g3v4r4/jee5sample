@@ -16,5 +16,7 @@ public class Main {
         EclipseBuilder builder = (EclipseBuilder) ctx.getBean("eclipseBuilder");
         logger.info("Building Eclipse IDE.");
         builder.build();
+        logger.info("Please also download JSEclipse from http://labs.adobe.com/technologies/jseclipse/, account: hathanhthai@yahoo.com/thaiha");
+        
     }
 }
