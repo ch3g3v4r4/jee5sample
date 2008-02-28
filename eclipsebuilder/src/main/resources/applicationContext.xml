@@ -84,7 +84,14 @@
 		<property name="artifactId" value="wtp"/>
 		<property name="downloadPage" value="http://download.eclipse.org/webtools/downloads/"/>
 	</bean>
-
+	
+	<bean name="eclipseAjdtIDEPartBuilder" class="org.builder.eclipsebuilder.beans.ZipFilePartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="ajdt"/>
+		<property name="downloadPage" value="http://www.eclipse.org/ajdt/downloads/"/>
+	</bean>
+	
 	<bean name="eclipseGanymedeJEEPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
@@ -163,6 +170,7 @@
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="spring-ide"/>
 		<property name="downloadPage" value="http://springide.org/updatesite/"/>
+		<property name="parts"><list><ref bean="eclipseAjdtIDEPartBuilder"/></list></property>				
 	</bean>
 	<bean name="propeditPartBuilder" class="org.builder.eclipsebuilder.beans.PropEditPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
@@ -182,6 +190,7 @@
 		<property name="parts">
 			<list>
 				<!-- Core packages -->
+
 				<ref bean="eclipseGanymedeJEEPartBuilder"/>
 				<ref bean="eclipseGanymedeRCPPartBuilder"/>
 
@@ -199,10 +208,11 @@
 			 	<ref bean="findbugsPartBuilder"/>
 			 	<ref bean="checkstylePartBuilder"/>
 				<ref bean="pmdPartBuilder"/>
-
+ 
 			 	<ref bean="springIDEPartBuilder"/>
 				<ref bean="propeditPartBuilder"/>
 				<ref bean="jiglooPluginPartBuilder"/>
+
 			</list>
 		</property>
 	</bean>
