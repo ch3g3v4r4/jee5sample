@@ -287,8 +287,9 @@ public class DownloadLinkUtils {
                 }
             }
             // Version
-            if (artifact.getVersion() == null && versionPattern.matcher(s).matches()) {
-                artifact.setVersion(s);
+            Matcher m2 = versionPattern.matcher(s);
+            if (artifact.getVersion() == null && m2.find()) {
+                artifact.setVersion(m2.group());
             }
             // BuildDate
             if (artifact.getBuildDate() == null && s.indexOf('.') == -1

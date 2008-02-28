@@ -18,6 +18,7 @@ public class CheckstylePartBuilder extends PartBuilderHelper implements PartBuil
         Pattern p1 = Pattern.compile("com\\.atlassw\\.tools\\.eclipse\\.checkstyle\\_\\d+(\\.\\d+)*-bin\\.zip");
         Pattern p2 = Pattern.compile("com\\.atlassw\\.tools\\.eclipse\\.checkstyle\\_\\d+(\\.\\d+)*-updatesite\\.zip");
         for (String url : urlList) {
+            if (url.indexOf("mirror_picker.php") != -1) continue;
             if (p1.matcher(url).find() || p2.matcher(url).find()) {
                 resultLinks.add(url);
             }
