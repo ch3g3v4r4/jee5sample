@@ -202,7 +202,7 @@
 
 				<ref bean="fileSyncPartBuilder"/>
 				<ref bean="bytecodeOutlinePartBuilder"/>
-				<ref bean="anyEditPartBuilder"/> <!-- 1.9.2 version doesn't work, use 1.9.3 - not official from http://anyedittools.googlecode.com/files/de.loskutov.anyedit.AnyEditTools_1.9.3.jar -->
+				<ref bean="anyEditPartBuilder"/>
 				<ref bean="jdependPartBuilder"/>
 
 			 	<ref bean="subclipsePartBuilder" />
