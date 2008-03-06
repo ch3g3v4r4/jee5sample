@@ -190,13 +190,15 @@
 		<property name="parts">
 			<list>
 				<!-- Core packages -->
-
 				<ref bean="eclipseGanymedeJEEPartBuilder"/>
 				<!-- For developing RCP apps
 				<ref bean="eclipseGanymedeRCPPartBuilder"/>
+
                 -->
+                <!-- For profiling Java programs
 				<ref bean="eclipseTPTPSDKPartBuilder"/>
 				<ref bean="eclipseAgentControlerPartBuilder"/>
+                -->
 
 				<ref bean="fileSyncPartBuilder"/>
 				<ref bean="bytecodeOutlinePartBuilder"/>
