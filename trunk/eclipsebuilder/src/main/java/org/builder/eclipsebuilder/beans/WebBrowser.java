@@ -106,6 +106,11 @@ public class WebBrowser {
                     }
                     if (!href.startsWith("javascript:") && !href.startsWith("news:")) {
                         String absHref = new URL(documentURL, href).toString();
+                        int lastSep = absHref.lastIndexOf('/');
+                        int lastSharp = absHref.lastIndexOf('#');
+                        if (lastSep >= 0 && lastSharp >= 0 && lastSharp > lastSep) {
+                            absHref = absHref.substring(0, lastSharp);
+                        }
                         hyperlinks.add(absHref);
                     }
                 }

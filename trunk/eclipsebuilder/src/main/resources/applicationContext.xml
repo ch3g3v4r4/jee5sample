@@ -178,6 +178,12 @@
 		<property name="downloadPage" value="http://springide.org/updatesite/"/>
 		<property name="parts"><list><ref bean="eclipseAjdtIDEPartBuilder"/></list></property>
 	</bean>
+	<bean name="hibernateToolsPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="HibernateTools"/>
+		<property name="downloadPage" value="http://www.hibernate.org/255.html"/>
+	</bean>
 	<bean name="propeditPartBuilder" class="org.builder.eclipsebuilder.beans.PropEditPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
@@ -196,7 +202,7 @@
 		<property name="parts">
 			<list>
 				<!-- Core packages -->
-				<ref bean="eclipseNightlyJEEPartBuilder"/>
+				<ref bean="eclipseGanymedeJEEPartBuilder"/>
 				<!-- For developing RCP apps
 				<ref bean="eclipseGanymedeRCPPartBuilder"/>
 
@@ -220,6 +226,7 @@
 				<ref bean="pmdPartBuilder"/>
 
 			 	<ref bean="springIDEPartBuilder"/>
+				<ref bean="hibernateToolsPartBuilder" />
 				<ref bean="propeditPartBuilder"/>
 				<!-- For using Jigloo - Visual editor - a commercial plugin
 				<ref bean="jiglooPluginPartBuilder"/>
