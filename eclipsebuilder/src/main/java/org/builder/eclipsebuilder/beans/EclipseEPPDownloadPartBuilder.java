@@ -12,7 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class EclipseEPPDownloadPartBuilder extends PartBuilderHelper {
+public class EclipseEPPDownloadPartBuilder extends GanimedeNoP2PartBuilder {
     @Override
     protected String[] getDownloadAndChecksumLinks(String url,
             String artifactId, BuildType buildType) throws Exception {
