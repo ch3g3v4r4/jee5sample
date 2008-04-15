@@ -92,13 +92,13 @@
 		<property name="downloadPage" value="http://www.eclipse.org/ajdt/downloads/"/>
 	</bean>
 
-	<bean name="eclipseGanymedeJEEPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+	<bean name="eclipseGanymedeJEEPartBuilder" class="org.builder.eclipsebuilder.beans.GanimedeNoP2PartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="eclipse-jee-ganymede"/>
 		<property name="downloadPage" value="http://www.eclipse.org/epp/ganymede.php"/>
 	</bean>
-	<bean name="eclipseGanymedeRCPPartBuilder" class="org.builder.eclipsebuilder.beans.PartBuilderHelper">
+	<bean name="eclipseGanymedeRCPPartBuilder" class="org.builder.eclipsebuilder.beans.GanimedeNoP2PartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
 		<property name="artifactId" value="eclipse-rcp-ganymede"/>
