@@ -104,6 +104,12 @@
 		<property name="artifactId" value="eclipse-rcp-ganymede"/>
 		<property name="downloadPage" value="http://www.eclipse.org/epp/ganymede.php"/>
 	</bean>
+	<bean name="eclipseNightlyJEEPartBuilder" class="org.builder.eclipsebuilder.beans.EclipseEPPDownloadPartBuilder">
+		<property name="webBrowser" ref="webBrowser"/>
+		<property name="downloadManager" ref="downloadManager"/>
+		<property name="artifactId" value="jee"/>
+		<property name="downloadPage" value="http://www.eclipse.org/epp/download.php"/>
+	</bean>
 
 	<bean name="fileSyncPartBuilder" class="org.builder.eclipsebuilder.beans.AndreiPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
@@ -190,7 +196,7 @@
 		<property name="parts">
 			<list>
 				<!-- Core packages -->
-				<ref bean="eclipseGanymedeJEEPartBuilder"/>
+				<ref bean="eclipseNightlyJEEPartBuilder"/>
 				<!-- For developing RCP apps
 				<ref bean="eclipseGanymedeRCPPartBuilder"/>
 
@@ -206,8 +212,9 @@
 				<ref bean="jdependPartBuilder"/>
 
 			 	<ref bean="subclipsePartBuilder" />
+			 	<!--
 			 	<ref bean="tomcatPluginPartBuilder"/>
-
+                -->
 			 	<ref bean="findbugsPartBuilder"/>
 			 	<ref bean="checkstylePartBuilder"/>
 				<ref bean="pmdPartBuilder"/>
