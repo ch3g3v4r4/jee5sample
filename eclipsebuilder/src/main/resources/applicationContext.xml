@@ -190,6 +190,10 @@
 		<property name="artifactId" value="axis2-eclipse-codegen-wizard"/>
 		<property name="downloadPage" value="http://ws.apache.org/axis2/tools/index.html"/>
 	</bean>
+	<bean name="xFirePartBuilder" class="org.builder.eclipsebuilder.beans.RemoteSitePartBuilder">
+		<property name="features"><list><value>org.codehaus.xfire.eclipse</value></list></property>
+		<property name="remoteSite" value="http://dist.codehaus.org/xfire/update/"/>
+	</bean>
 	<bean name="propeditPartBuilder" class="org.builder.eclipsebuilder.beans.PropEditPartBuilder">
 		<property name="webBrowser" ref="webBrowser"/>
 		<property name="downloadManager" ref="downloadManager"/>
@@ -235,7 +239,8 @@
 
 			 	<ref bean="springIDEPartBuilder"/>
 				<ref bean="hibernateToolsPartBuilder" />
-				<ref bean="axis2CodeGenPartBuilder" />
+				<!-- <ref bean="axis2CodeGenPartBuilder" />  -->
+				<ref bean="xFirePartBuilder" />
 				<ref bean="propeditPartBuilder"/>
 				<!-- For using Jigloo - Visual editor - a commercial plugin
 				<ref bean="jiglooPluginPartBuilder"/>
