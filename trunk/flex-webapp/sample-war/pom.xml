@@ -71,7 +71,7 @@
 						<fileset>
 							<directory>${basedir}/src/main/webapp</directory>
 							<includes>
-								<include>mapquest-flex*.swf</include>
+								<include>sample-flex*.swf</include>
 							</includes>
 						</fileset>
 					</filesets>
