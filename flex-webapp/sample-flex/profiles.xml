@@ -5,7 +5,7 @@
 			<activeByDefault>true</activeByDefault>
 		</activation>
 		<properties>
-			<flex.home>D:/programs/flex2_sdk_hf1</flex.home>
+			<flex.home>D:/Program Files/Adobe/Flex Builder 3/sdks/3.0.0</flex.home>
 		</properties>
 	</profile>
 </profiles>
