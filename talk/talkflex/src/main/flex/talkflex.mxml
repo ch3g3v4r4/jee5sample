@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:control="org.talk.controller.*">
-<control:TalkController id="controller" />
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+    xmlns:control="org.talk.controller.*"
+    creationComplete="initApplication()">
 
-<mx:Label text="Hello, Flash World"/>
+    <control:ApplicationController id="controller" />
+
+    <mx:Script>
+        <![CDATA[
+
+            import org.talk.controller.ApplicationController;
+            import org.talk.event.ApplicationEvent;
+            import org.talk.model.ApplicationModel;
+
+			[Bindable]
+			public var model:ApplicationModel = ApplicationModel.getInstance();
+
+            private function initApplication():void
+			{
+				new ApplicationEvent(ApplicationController.EVENT_INIT, model).dispatch();
+			}
+
+        ]]>
+    </mx:Script>
+
+<mx:Label id="mylabel" text="Hello, Flash World"/>
+
 </mx:Application>
