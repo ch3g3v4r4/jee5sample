@@ -1,0 +1,11 @@
+<profiles>
+	<profile>
+		<id>default</id>
+		<activation>
+			<activeByDefault>true</activeByDefault>
+		</activation>
+		<properties>
+			<flex.home>F:/programs/flex_sdk_3</flex.home>
+		</properties>
+	</profile>
+</profiles>
