@@ -6,7 +6,9 @@
 <libraryPathEntry kind="4" path=""/>
 <libraryPathEntry kind="1" linkType="1" path="libs"/>
 </libraryPath>
-<sourceAttachmentPath/>
+<sourceAttachmentPath>
+<sourceAttachmentPathEntry kind="3" linkType="1" path="F:/projects/jee5sample/talk/talkflex/libs/Cairngorm.swc" sourcepath="src/main/flex/external/Cairngorm" useDefaultLinkType="false"/>
+</sourceAttachmentPath>
 </compiler>
 <applications>
 <application path="talkflex.mxml"/>
