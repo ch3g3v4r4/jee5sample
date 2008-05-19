@@ -5,8 +5,10 @@ import java.lang.reflect.ParameterizedType;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fcg.style3.dao.GenericDAO;
+
 
 public abstract class GenericDAOImpl<T, ID extends Serializable> implements
         GenericDAO<T, ID> {
