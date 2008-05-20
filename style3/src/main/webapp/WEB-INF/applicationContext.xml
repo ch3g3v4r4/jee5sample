@@ -11,6 +11,20 @@
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <context:property-placeholder location="classpath:jdbc.properties" />
+    <tx:annotation-driven />
+
+  <bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
+      <property name="forceShutdown"><value>true</value></property>
+  </bean>
+
+  <bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+      <property name="transactionTimeout"><value>300</value></property>
+  </bean>
+
+  <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+      <property name="transactionManager"><ref bean="atomikosTransactionManager"  /></property>
+      <property name="userTransaction"><ref bean="atomikosUserTransaction"  /></property>
+  </bean>
 
     <!-- configure an Atomikos JTA-aware datasource -->
    <bean id="datasource1" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
