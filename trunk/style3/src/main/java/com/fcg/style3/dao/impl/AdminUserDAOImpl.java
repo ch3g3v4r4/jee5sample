@@ -1,6 +1,5 @@
 package com.fcg.style3.dao.impl;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fcg.style3.dao.AdminUserDAO;
