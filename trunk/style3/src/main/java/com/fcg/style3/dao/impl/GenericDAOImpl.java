@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fcg.style3.dao.GenericDAO;
 
-
+@Transactional
 public abstract class GenericDAOImpl<T, ID extends Serializable> implements
         GenericDAO<T, ID> {
 
