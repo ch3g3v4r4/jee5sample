@@ -2,6 +2,10 @@ package com.fcg.style3.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.sql.Connection;
+import java.sql.Statement;
+
+import javax.sql.DataSource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,6 +21,7 @@ public abstract class GenericDAOImpl<T, ID extends Serializable> implements
 
     protected SessionFactory sessionFactory1;
     protected SessionFactory sessionFactory2;
+    protected DataSource datasource;
 
     @SuppressWarnings("unchecked")
     public GenericDAOImpl() {
@@ -30,6 +35,9 @@ public abstract class GenericDAOImpl<T, ID extends Serializable> implements
     public void setSessionFactory2(SessionFactory sessionFactory) {
         this.sessionFactory2 = sessionFactory;
     }
+    public void setDatasource(DataSource ds) {
+        this.datasource = ds;
+    }
 
     public Class<T> getPersistentClass() {
         return persistentClass;
@@ -42,6 +50,14 @@ public abstract class GenericDAOImpl<T, ID extends Serializable> implements
     public void persist(T entity) {
         Session session = sessionFactory1.getCurrentSession();
         session.merge(entity);
+//        try {
+//            Connection con = this.datasource.getConnection();
+//            Statement stmt = con.createStatement();
+//            int result = stmt.executeUpdate("insert into adminuser values (1,1,'tha@fcg.com','Thai', 'Ha', 'password', 'username')");
+//            System.out.println("Result:" + result);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 //
 //    public void update(T entity) {
