@@ -4,7 +4,7 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.fcg</groupId>
-  <artifactId>style3jbossts</artifactId>
+  <artifactId>style3transaction</artifactId>
   <packaging>war</packaging>
   <name>Web site</name>
   <version>1.0-SNAPSHOT</version>
@@ -117,43 +117,6 @@
       <artifactId>ojdbc5</artifactId>
       <version>11.1.0.6.0</version>
       <scope>runtime</scope>
-    </dependency>
-
-    <!-- Atomikos  -->
-    <dependency>
-      <groupId>com.atomikos</groupId>
-      <artifactId>atomikos-util</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.atomikos</groupId>
-      <artifactId>transactions-api</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.atomikos</groupId>
-      <artifactId>transactions-hibernate3</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.atomikos</groupId>
-      <artifactId>transactions-jdbc</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.atomikos</groupId>
-      <artifactId>transactions-jta</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.atomikos</groupId>
-      <artifactId>transactions</artifactId>
-      <version>3.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.4.3</version>
     </dependency>
 
     <dependency>

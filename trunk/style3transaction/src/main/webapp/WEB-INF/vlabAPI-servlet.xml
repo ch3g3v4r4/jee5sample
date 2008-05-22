@@ -15,6 +15,7 @@
 
   <bean id="dispatchController" class="com.fcg.style3.action.DispatchController">
     <property name="adminUserDao" ref="adminUserDao"/>
+    <property name="logDao" ref="logDao"/>
   </bean>
 
   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
