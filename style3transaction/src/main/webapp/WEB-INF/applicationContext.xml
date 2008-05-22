@@ -1,91 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
-        xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
-        xmlns:tx="http://www.springframework.org/schema/tx"
-        xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:jee="http://www.springframework.org/schema/jee"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
             http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-    <context:property-placeholder location="classpath:jdbc.properties" />
-    <tx:annotation-driven />
+  <context:property-placeholder location="classpath:jdbc.properties" />
+<!--
+  <tx:annotation-driven />
+ -->
+  <bean id="dataSource1"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+    p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url1}"
+    p:username="${jdbc.username1}" p:password="${jdbc.password1}" />
+  <bean id="dataSource2"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+    p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url2}"
+    p:username="${jdbc.username2}" p:password="${jdbc.password2}" />
 
-  <bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
-      <property name="forceShutdown"><value>true</value></property>
+  <bean id="sessionFactory1" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+    p:dataSource-ref="dataSource1"
+    p:mappingResources="mapping.hbm.xml">
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
+        <prop key="hibernate.show_sql">${jdbc.hibernate.show_sql}</prop>
+        <prop key="hibernate.hbm2ddl.auto">create</prop>
+      </props>
+    </property>
+    <property name="eventListeners">
+      <map>
+        <entry key="merge">
+          <bean
+            class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener" />
+        </entry>
+      </map>
+    </property>
+  </bean>
+  <bean id="sessionFactory2" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+    p:dataSource-ref="dataSource2"
+    p:mappingResources="mapping.hbm.xml">
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
+        <prop key="hibernate.show_sql">${jdbc.hibernate.show_sql}</prop>
+        <prop key="hibernate.hbm2ddl.auto">create</prop>
+      </props>
+    </property>
+    <property name="eventListeners">
+      <map>
+        <entry key="merge">
+          <bean
+            class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener" />
+        </entry>
+      </map>
+    </property>
   </bean>
 
-  <bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.J2eeUserTransaction">
-      <property name="transactionTimeout"><value>300</value></property>
+  <bean id="sessionFactoryTarget" class="com.fcg.style3.hibernate.SessionFactoryTargetSource">
+    <property name="sessionFactories">
+      <map>
+        <entry><key><value>sessionFactory1</value></key><ref bean="sessionFactory1" /></entry>
+        <entry><key><value>sessionFactory2</value></key><ref bean="sessionFactory2" /></entry>
+      </map>
+    </property>
   </bean>
 
-   <bean class="com.fcg.style3.atomikos.J2eeUserTransactionReference">
-        <property name="userTransaction" ref="atomikosUserTransaction"/>
-   </bean>
-
-  <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
-      <property name="transactionManager"><ref bean="atomikosTransactionManager"  /></property>
-      <property name="userTransaction"><ref bean="atomikosUserTransaction"  /></property>
+  <bean id="sessionFactory" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="proxyInterfaces" value="org.hibernate.SessionFactory" />
+    <property name="targetSource" ref="sessionFactoryTarget" />
   </bean>
 
-    <!-- configure an Atomikos JTA-aware datasource -->
-   <bean id="datasource1" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
-      <property name="uniqueResourceName"><value>XADBMS1</value></property>
-      <property name="xaDataSourceClassName"><value>oracle.jdbc.xa.client.OracleXADataSource</value></property>
-        <property name="xaProperties">
-           <props>
-            <prop key="URL">${jdbc.url}</prop>
-            <prop key="user">${jdbc.username}</prop>
-            <prop key="password">${jdbc.password}</prop>
-         </props>
-     </property>
-        <property name="maxPoolSize"><value>10</value></property>
-        <property name="minPoolSize"><value>2</value></property>
-        <property name="loginTimeout"><value>30</value></property>
-        <property name="testQuery"><value>select 1 from ADMINUSER</value></property>
-   </bean>
-   <bean id="datasource2" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
-      <property name="uniqueResourceName"><value>XADBMS2</value></property>
-      <property name="xaDataSourceClassName"><value>oracle.jdbc.xa.client.OracleXADataSource</value></property>
-        <property name="xaProperties">
-           <props>
-            <prop key="URL">${jdbc.url1}</prop>
-            <prop key="user">${jdbc.username1}</prop>
-            <prop key="password">${jdbc.password1}</prop>
-         </props>
-     </property>
-        <property name="maxPoolSize"><value>10</value></property>
-        <property name="minPoolSize"><value>2</value></property>
-        <property name="loginTimeout"><value>30</value></property>
-        <property name="testQuery"><value>select 1 from ADMINUSER</value></property>
-   </bean>
+  <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+    p:sessionFactory-ref="sessionFactory" />
 
-   <bean id="sessionFactory1" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-            p:dataSource-ref="datasource1" p:mappingResources="adminuser.hbm.xml">
-      <property name="hibernateProperties">
-         <props>
-            <prop key="hibernate.transaction.factory_class">com.fcg.style3.atomikos.JTATransactionFactory</prop>
-            <prop key="hibernate.transaction.manager_lookup_class">com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup</prop>
-            <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
-            <prop key="hibernate.show_sql">${jdbc.hibernate.show_sql}</prop>
-         </props>
-      </property>
-   </bean>
-   <bean id="sessionFactory2" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-            p:dataSource-ref="datasource2" p:mappingResources="adminuser.hbm.xml">
-      <property name="hibernateProperties">
-         <props>
-            <prop key="hibernate.transaction.factory_class">com.fcg.style3.atomikos.JTATransactionFactory</prop>
-            <prop key="hibernate.transaction.manager_lookup_class">com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup</prop>
-            <prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
-            <prop key="hibernate.show_sql">${jdbc.hibernate.show_sql}</prop>
-         </props>
-      </property>
-   </bean>
-
-    <bean id="adminUserDao" class="com.fcg.style3.dao.impl.AdminUserDAOImpl"
-     p:sessionFactory1-ref="sessionFactory1" p:sessionFactory2-ref="sessionFactory2" p:datasource-ref="datasource1"/>
+  <bean id="adminUserDao" class="com.fcg.style3.dao.impl.AdminUserDAOImpl"
+    p:sessionFactory-ref="sessionFactory" p:allowCreate="true"/>
+  <bean id="logDao" class="com.fcg.style3.dao.impl.LogDAOImpl"
+    p:sessionFactory-ref="sessionFactory2" p:allowCreate="true"/>
 
 </beans>

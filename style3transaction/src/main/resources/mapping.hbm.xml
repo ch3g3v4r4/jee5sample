@@ -18,4 +18,12 @@
         <property name="password" column="password"/>
         <property name="username" column="username"/>
 	</class>
-</hibernate-mapping>
+
+	<class name="com.fcg.style3.domain.Log" table="log">
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+        <property name="log" column="log"/>
+	</class>
+
+	</hibernate-mapping>
