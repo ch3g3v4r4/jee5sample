@@ -23,7 +23,7 @@ import org.hibernate.util.NamingHelper;
 
 /**
  * Factory for <tt>JTATransaction</tt>.
- *
+ * http://opensource.atlassian.com/projects/hibernate/browse/HHH-3110
  * @see JTATransaction
  * @author Gavin King
  */
@@ -96,13 +96,8 @@ public class JTATransactionFactory implements TransactionFactory {
                 return JTAHelper.isInProgress( jdbcContext.getFactory().getTransactionManager().getStatus() );
             }
             else {
-                try {
-                                        UserTransaction ut = ( UserTransaction ) context.lookup( utName );
-                                return ut != null && JTAHelper.isInProgress( ut.getStatus() );
-                                }
-                                catch ( NamingException ne ) {
-                                        throw new TransactionException( "Unable to locate UserTransaction to check status", ne );
-                                }
+                        UserTransaction ut = J2eeUserTransactionReference.getUserTransaction();
+                return ut != null && JTAHelper.isInProgress( ut.getStatus() );
             }
                 }
                 catch( SystemException se ) {

@@ -58,7 +58,6 @@ public class JTATransaction implements Transaction {
                 try {
 
                         //ut = (UserTransaction) context.lookup(utName);
-                        //ut = new UserTransactionServiceImp ().getUserTransaction();
                     ut = J2eeUserTransactionReference.getUserTransaction();
                 }
                 catch (Exception ne) {
