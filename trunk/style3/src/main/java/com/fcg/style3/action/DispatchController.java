@@ -18,15 +18,21 @@ public class DispatchController extends MultiActionController {
 
     public ModelAndView actionName(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
-        AdminUser adminUser = new AdminUser();
-        adminUser.setActive(true);
-        adminUser.setEmail("tha@fcg.com");
-        adminUser.setFirstName("Thai");
-        adminUser.setLastName("Ha");
-        adminUser.setPassword("secret");
-        adminUser.setUsername("thaiha");
-        adminUserDao.persist(adminUser);
-        System.out.println(adminUserDao.getClass());
+        long total = 0;
+        long current;
+        for (int i = 0; i < 1000; i++) {
+            AdminUser adminUser = new AdminUser();
+            adminUser.setActive(true);
+            adminUser.setEmail("tha@fcg.com");
+            adminUser.setFirstName("Thai");
+            adminUser.setLastName("Ha");
+            adminUser.setPassword("secret");
+            adminUser.setUsername("thaiha");
+            current = System.currentTimeMillis();
+            adminUserDao.persist(adminUser);
+            total += System.currentTimeMillis() - current;
+        }
+        System.out.println("time:" + (total / 1000.0));//89.797ms
         return null;
     }
 }
