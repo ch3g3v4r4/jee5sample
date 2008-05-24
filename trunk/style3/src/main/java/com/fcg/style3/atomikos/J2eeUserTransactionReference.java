@@ -1,15 +1,15 @@
 package com.fcg.style3.atomikos;
 
-import com.atomikos.icatch.jta.J2eeUserTransaction;
+import javax.transaction.UserTransaction;
 
 public class J2eeUserTransactionReference {
-    private static J2eeUserTransaction userTransaction;
+    private static UserTransaction userTransaction;
 
-    public void setUserTransaction(J2eeUserTransaction userTransaction) {
+    public void setUserTransaction(UserTransaction userTransaction) {
         J2eeUserTransactionReference.userTransaction = userTransaction;
     }
 
-    public static J2eeUserTransaction getUserTransaction() {
+    public static UserTransaction getUserTransaction() {
         return userTransaction;
     }
 }
