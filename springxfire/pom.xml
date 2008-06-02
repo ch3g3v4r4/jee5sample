@@ -212,7 +212,7 @@
           </connectors>
           <!-- END Support HTTPS for Jetty -->
         </configuration>
-
+<!-- http://www.jroller.com/gmazza/date/20080417 -->
       </plugin>
     </plugins>
   </build>
