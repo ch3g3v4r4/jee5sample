@@ -18,20 +18,22 @@
   <import resource="classpath:META-INF/cxf/cxf.xml" />
   <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-
+<!--
   <simple:server id="pojoservice" serviceClass="example.Echo" address="/echo">
     <simple:serviceBean>
         <bean class="example.EchoImpl" />
     </simple:serviceBean>
   </simple:server>
-<!--
+   -->
+
     <import resource="classpath:META-INF/cxf/cxf.xml" />
     <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
     <jaxws:endpoint
-      id="helloWorld"
-      implementor="demo.spring.HelloWorldImpl"
-      address="/HelloWorld" />
- -->
+        id="doubleit"
+        implementor="com.mycompany.webservice.service.DoubleItPortTypeImpl"
+        wsdlLocation="WEB-INF/wsdl/DoubleIt.wsdl"
+        address="/doubleit">
+    </jaxws:endpoint>
 </beans>
