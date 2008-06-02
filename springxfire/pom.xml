@@ -11,7 +11,7 @@
   <version>1.0-SNAPSHOT</version>
   <properties>
     <spring.version>2.5.4</spring.version>
-    <cxf.version>2.1</cxf.version>
+    <cxf.version>2.1.1-SNAPSHOT</cxf.version>
   </properties>
 
   <dependencies>
@@ -118,6 +118,17 @@
       <version>${cxf.version}</version>
     </dependency>
   --></dependencies>
+
+<repositories>
+    <repository>
+        <id>apache-snapshots</id>
+        <name>Apache SNAPSHOT Repository</name>
+        <url>http://people.apache.org/repo/m2-snapshot-repository/</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
 
   <build>
     <finalName>${project.artifactId}</finalName>
