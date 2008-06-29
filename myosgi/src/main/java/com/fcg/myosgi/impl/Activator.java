@@ -8,11 +8,11 @@ public class Activator implements BundleActivator {
 
 	public void start(BundleContext context) throws Exception {
 		this.context = context;
-		System.out.println("Starting...");
+		System.out.println("Hello!");
 	} 
 
 	public void stop(BundleContext arg0) throws Exception {
-		System.out.println("Stopping..");
+		System.out.println("Goodbye!");
 
 	}
 }
