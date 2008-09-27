@@ -30,17 +30,8 @@
       <artifactId>jaxws-rt</artifactId>
       <version>2.1.4</version>
     </dependency>
+
     <!-- Logging frameworks -->
-    <!--
-      If 1.1.1 is not specified, v1.0 will be used by mvn
-      eclipse:eclipse
-    -->
-    <!-- http://jira.codehaus.org/browse/MECLIPSE-262 -->
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <version>1.1.1</version>
-    </dependency>
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
