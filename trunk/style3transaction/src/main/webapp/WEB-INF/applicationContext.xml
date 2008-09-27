@@ -14,9 +14,9 @@
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
   <context:property-placeholder location="classpath:jdbc.properties" />
-<!--
+
   <tx:annotation-driven />
- -->
+
   <bean id="dataSource1"
     class="org.springframework.jdbc.datasource.DriverManagerDataSource"
     p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url1}"

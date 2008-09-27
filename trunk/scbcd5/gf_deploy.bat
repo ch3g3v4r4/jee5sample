@@ -8,7 +8,7 @@ set MAVEN_TERMINATE_CMD=on
 cmd /C mvn.bat install
 IF ERRORLEVEL 1 GOTO end
 
-call G:/programs/glassfish/bin/asadmin.bat deploy --user=admin --passwordfile=gf_password scbcd5-ear/target/scbcd5-ear-1.0-SNAPSHOT.ear
+call F:/programs/glassfish/bin/asadmin.bat deploy --user=admin --passwordfile=gf_password scbcd5-ear/target/scbcd5-ear-1.0-SNAPSHOT.ear
 
 :end
 

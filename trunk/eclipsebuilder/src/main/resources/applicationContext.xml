@@ -219,7 +219,7 @@
 		<property name="parts">
 			<list>
 				<!-- Core packages -->
-				<!--
+				<!-- 
 				<ref bean="eclipseGanymedeJEEPartBuilder"/>
 				 -->
 				<!-- For developing RCP apps
@@ -238,24 +238,23 @@
 				<ref bean="anyEditPartBuilder"/>
 				<ref bean="jdependPartBuilder"/>
 			 	<ref bean="subclipsePartBuilder" />
-
 			 	<ref bean="tomcatPluginPartBuilder"/>
 
 			 	<ref bean="findbugsPartBuilder"/>
-
 			 	<ref bean="checkstylePartBuilder"/>
+-->
 				<ref bean="pmdPartBuilder"/>
-
+<!--
 			 	<ref bean="springIDEPartBuilder"/>
 
 				<ref bean="hibernateToolsPartBuilder" />
--->				<!-- <ref bean="axis2CodeGenPartBuilder" />  -->
+				<ref bean="axis2CodeGenPartBuilder" />  -->
 				<!-- <ref bean="xFirePartBuilder" /> -->
 <!-- 				<ref bean="propeditPartBuilder"/> -->
 				<!-- For using Jigloo - Visual editor - a commercial plugin
 				<ref bean="jiglooPluginPartBuilder"/>
  	            -->
- 	            <ref bean="log4eclipsePartBuilder"/>
+ 	            <!-- bean="log4eclipsePartBuilder"/> --> 
 			</list>
 		</property>
 	</bean>
