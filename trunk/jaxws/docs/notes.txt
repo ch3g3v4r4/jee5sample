@@ -1,0 +1,12 @@
+SCDJWS Notes
+
+JAX-WS API 2.1 (JSR 224)
+-> JAXB API 2.1 (JSR 222)
+-> A Metadata Facility for the Java Programming Language (JSR 175)
+-> Web Services Metadata for the Java Platform (JSR 181)
+-> Implementing Enterprise Web Services (JSR 109)
+-> Web Services Security (JSR 183)
+
+SOAP 1.2
+WSDL 2.0/1.1
+WS-I Basic Profile 1.1
