@@ -37,6 +37,7 @@ public class SessionFactoryTargetSource implements TargetSource {
             logger.info("Returning sesstionFactory at 1");
             sf = arr[1];
         }
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
         return sf;
     }

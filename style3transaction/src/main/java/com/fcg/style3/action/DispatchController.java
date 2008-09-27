@@ -45,7 +45,6 @@ public class DispatchController extends MultiActionController {
         Log log = new Log();
         log.setLog("Hello");
         logDao.persist1(log);
-        System.out.println(adminUserDao.getClass());
         return null;
     }
 }

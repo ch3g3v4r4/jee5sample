@@ -67,7 +67,6 @@ public class SessionFactoryBean implements FactoryBean {
             logger.info("Returning sesstionFactory at 1");
             sf = arr[1];
         }
-
         return sf;
 
     }
