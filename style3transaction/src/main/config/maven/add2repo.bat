@@ -1,1 +1,0 @@
-call mvn install:install-file "-Dfile=%~dp0artifacts\ojdbc5.jar" -DgroupId=com.oracle -DartifactId=ojdbc5 -Dversion=11.1.0.6.0 -Dpackaging=jar -DgeneratePom=true
