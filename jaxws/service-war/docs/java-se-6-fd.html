@@ -1,0 +1,1690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/xhtml1-strict.dtd">
+<html><head><title>JSR 270 : Java SE 6 : FD</title><style type="text/css">
+
+      BODY, .jref-plain {
+        font-family: Luxi Sans, Bitstream Vera Sans, Arial, Helvetica, sans; }
+      BODY { font-size: 11pt; margin: 2em auto; width: 42em; }
+      PRE, CODE, TT, A.mailto { font-family: Luxi Mono, monospace; }
+      A { text-decoration: none; }
+      .jred, A:link { color: #d12124; }
+      .jblue, A:visited { color: #584fbe; }
+      A:hover { color: #d12124; background: #e0e0ff; }
+      .feature { margin-top: 2ex; }
+      .feature .title-left, .feature .title-right { font-size: 12pt; }
+      .feature .title { font-weight: bold; }
+      .feature .title-left { padding-right: 1em; }
+      .feature .jsr { font-style: italic; }
+      .feature .title-right { font-weight: normal; float: right; }
+      .feature .number { font-weight: bold; }
+      .hidden { background: #ddd; }
+      .feature .body { margin-left: 1.5em; margin-right: 1.5em; }
+      .feature .spec, .feature .links { font-size: 9pt; }
+      .feature .links SPAN { background: #ddd; }
+      .description, .motivation {
+        font-size: 9pt; font-family: Luxi Mono, monospace; white-space: pre;
+        color: #008; background: #ddd; padding: 1ex;
+        margin-top: 1ex; width: 52em; clear: both; }
+      .undone { color: #008; }
+      .TBW { background: #ddd; color: #d00;
+             padding-left: .25em; padding-right: .25em; }
+      .summary { margin-top: 1ex; clear: both; }
+      P { margin-top: 1ex; margin-bottom: 1ex; }
+
+      .NOTE { font-size: 9pt; margin-top: 1ex; padding: 1ex;
+              color: #800; background: #ddd; }
+      .NOTE .left { float: left; font-weight: bold; }
+      .NOTE .right { float: left; width: 40em; }
+      .NOTE BR { clear: left; }
+      .NOTE P:first-child { margin-top: 0px; }
+      .NOTE P { margin-bottom: 0px; }
+
+      BLOCKQUOTE { margin: 1.5ex 2em; }
+      TABLE { border-collapse: collapse; padding: 0px; }
+      TD { padding: 0px; }
+      TABLE.tagged-list TD { padding: 0px; padding-top: .5ex; margin: 0px;
+                             vertical-align: top; }
+      TABLE.tagged-list TR:first-child TD { padding: 0px; }
+      TABLE.tagged-list TR TD { width: 100%; }
+      TABLE.tagged-list TR TD:first-child {
+        padding-right: .5em; text-align: right; width: auto; }
+      TABLE.tagged-list TR TD.left { padding-right: .5em; text-align: left; }
+      TABLE.list TD { padding: 0px; vertical-align: top; }
+      TABLE.list TR TD:first-child { padding-right: .5em; text-align: right; }
+      A.jref { font-family: Luxi Mono, monospace; }
+      UL { padding-left: 2em; margin-right: 2em;
+           margin-top: 1ex; margin-bottom: 1ex; }
+      LI { margin-top: .5ex; }
+      SPAN.sc { font-size: 10pt; text-transform: uppercase; }
+      .spec .body { margin-left: .5em; }
+      .spec .open { float: left; width: .5em; }
+
+      .section .title SPAN, .section .number SPAN {
+        font-size: 14pt; font-weight: bold; }
+      .section .number { float: left; width: 1.5em; }
+      .section &gt; .title { margin-left: 1.5em; }
+      .section .body { margin-left: 1.5em; margin-top: 1ex; }
+      .section { margin-top: 3ex; }
+
+      .head { text-align: center;
+              margin-left: 1.5em; margin-top: 3em; margin-bottom: 3em; }
+      .head .super { font-size: 10pt; text-transform: uppercase;
+                     margin-bottom: 1ex; }
+      .head .title { font-size: 16pt; font-weight: bold; }
+      .head .sub { font-size: 11pt; margin-top: 1ex; }
+      .head .editor { font-size: 11pt; margin-top: 1ex; }
+      .head .editor .org { font-size: 11pt; }
+      .head .editor .e-mail { font-size: 11pt; font-family: Luxi Mono, monospace; }
+
+      P.subsection { margin-top: 1.5ex; }
+      P.subsection:first-child { margin-top: 1ex; }
+      P.subsection .title { font-weight: bold; padding-right: 1em; }
+
+      TABLE.index TH { padding-left: .25em; text-align: left; padding-top: 1ex; }
+      TABLE.index TR:first-child TH { padding-top: 0ex; }
+      TABLE.index TD { vertical-align: top; }
+      TABLE.index TD.name { padding-left: 2.25em; text-indent: -2em; }
+      TABLE.index TD.area { padding-left: 1em; text-align: right; }
+      TABLE.index TD.component { padding-right: 1em; }
+      TABLE.index TD.priority { padding-right: 1em; text-align: center; }
+      TABLE.index TD.id { padding-right: .25em; }
+      TD.gray-row { background: #e8e8e8; }
+
+      TABLE.ac-list TD { vertical-align: top; }
+      TABLE.ac-list TD.area-header { font-weight: bold;
+                                     padding-top: .5ex; }
+      TABLE.ac-list TD.area-desc { font-weight: bold; padding-top: .5ex; }
+      TABLE.ac-list TR:first-child TD { padding-top: 0px; }
+      TABLE.ac-list TD.desc { padding-left: 1em; }
+      TABLE.ac-list TD.component { padding-left: 1em; padding-right: 2em; }
+
+      DIV.toc { margin-left: 1.5em; margin-top: 2ex; margin-bottom: 2ex;
+                padding-left: 2em; padding-right: 2em; }
+      TABLE.toc TD:first-child { font-weight: bold; padding-right: 1em; }
+      TABLE.toc TH { font-size: 12pt; font-weight: bold; text-align: left; }
+      DIV.rights { font-size: 9pt; margin: 2ex 1.5em; text-align: center; }
+
+      TABLE.jsr-list TD { vertical-align: top; }
+      TABLE.jsr-list TD.name { padding-left: 3em; text-indent: -2em; }
+      TABLE.jsr-list TD.jcp-state { padding-left: 1em; white-space: pre; }
+
+    </style></head><body><div class="head"><div class="super">Java Specif&#8203;ication Request 270</div><div class="title">Java SE 6 Release Contents</div><div class="sub">Final Draft<br/>2006/10/18</div><div class="editor"><div class="name">Mark Reinhold, <i>editor</i></div><div class="org">Sun Microsystems</div></div></div><div class="section"><div class="body">
+
+    <p> This speci&#64257;cation de&#64257;nes the feature set for the next major release
+    of the Java Standard Edition platform, which is currently targeted to ship
+    in late 2006. </p>
+
+    <p> Java&#160;SE&#160;6, formerly code-named &#8220;Mustang,&#8221; is one of an ongoing
+    series of Java&#160;SE feature releases.  The goal is to ship feature releases
+    on a regular 18&#8211;24 month cycle, with each release including a combination
+    of quality improvements and new features. </p>
+
+    <p> This &#8220;umbrella&#8221; JSR does not itself de&#64257;ne speci&#64257;c features; rather it
+    enumerates features de&#64257;ned in other JSRs or through the concurrent
+    maintenance reviews of the Java&#160;SE platform speci&#64257;cation. </p>
+
+    <p> In addition to listing new features, this speci&#64257;cation also de&#64257;nes a
+    policy for the removal of existing features and proposes the removal of a
+    speci&#64257;c existing feature in a future release of the platform. </p>
+
+    <p> This release is still under development.  At this point in time the
+    JSR&#160;270 Expert Group has approved all of the features listed in this
+    document for inclusion in the release. </p>
+
+    <p> The &#64257;nal release is expected to include all of these features, but it
+    is possible for an approved feature to be dropped.  The EG could, for
+    example, determine that a feature is too costly to implement.  The &#64257;nal
+    release could also include additional features that are identi&#64257;ed and
+    approved by the EG in response to feedback from the Java community.  The
+    &#64257;nal version of this speci&#64257;cation will, in any case, re&#64258;ect the actual
+    content of the release. </p>
+
+    
+
+  <p> Please send comments on this speci&#64257;cation to
+	  <a class="mailto" href="mailto:java-se-6-jsr-comments@sun.com">java-se-6-jsr-comments@sun.com</a>. </p></div></div><div class="toc"><table class="toc" summary="Contents"><tr><th colspan="2">Contents</th></tr><tr><td>1</td><td><a href="#1">Themes</a></td></tr><tr><td>2</td><td><a href="#2">Component JSRs</a></td></tr><tr><td>3</td><td><a href="#3">Related maintenance reviews</a></td></tr><tr><td>4</td><td><a href="#4">Existing features proposed for removal</a></td></tr><tr><td>5</td><td><a href="#5">De&#64257;nitions</a></td></tr><tr><td>6</td><td><a href="#6">Features sorted by area and component</a></td></tr><tr><td>7</td><td><a href="#7">Features sorted by priority</a></td></tr><tr><td>8</td><td><a href="#8">Feature details</a></td></tr><tr><td>9</td><td><a href="#9">Dropped features</a></td></tr><tr><td>A</td><td><a href="#A">Feature-removal policy</a></td></tr><tr><td>B</td><td><a href="#B">Change history</a></td></tr></table></div><div class="rights">Copyright &#169; 2006 Sun Microsystems, Inc., 4150 Network Circle,
+    <br/>Santa Clara, California 95054, U.S.A.  All rights reserved.</div><div class="section"><div class="number"><span>1</span></div><div class="title"><span>Themes</span><a name="1">&#160;</a></div><div class="body">
+
+    <p> The feature set for Java&#160;SE&#160;6 is driven, in large part, by a set
+    of themes. </p>
+
+    <p> The themes describe the main focal points of the release.  Some themes
+    are fairly abstract guiding principles; others are more concrete in that
+    they identify particular problem areas, signi&#64257;cant new feature sets, or
+    speci&#64257;c target market segments. </p>
+
+    <p> The themes are not prioritized, except that the &#64257;rst one is the most
+    important. </p>
+
+    <blockquote>
+
+      <p class="subsection"><span class="title">Compatibility</span>
+
+      As the platform has matured, yet continued to evolve, many community
+      members have naturally come to expect that their investments in
+      Java-based systems, whether large or small, will be preserved.  Any
+      program running on a previous release of the platform must also
+      run&#8212;unchanged&#8212;on an implementation of Java&#160;SE&#160;6.  (There are
+      exceptions to this general rule but they are exceedingly rare, and they
+      typically involve serious issues such as security.)  </p>
+
+      <p class="subsection"><span class="title">Ease of Development</span>
+
+      The Java&#160;SE&#160;5 release made signi&#64257;cant improvements to the
+      developer experience with the introduction of generic types, annotations,
+      and other language features, along with some important API
+      simpli&#64257;cations.  There&#8217;s more work to be done here, particularly in
+      the areas of database access and support for scripting languages, and in
+      underlying technologies such as source-code compilation, annotation
+      processing, and support for better GUI design-time tools. </p>
+
+      <p class="subsection"><span class="title">Diagnosability, Monitoring, &amp; Management</span>
+
+      The Java&#160;SE platform is in regular production use as the foundation for
+      mission-critical applications.  To work well in such settings requires
+      good support for remote monitoring, management, and diagnosis.  The
+      Java&#160;SE&#160;5 release made progress in this area with the introduction
+      of JMX, the Java Management Extensions, and JVMTI, the new Java Virtual
+      Machine Tools Interface.  Further improvements are needed, however; <i>e.g.</i>,
+      the ability to diagnose a long-running application that started without
+      special monitoring &#64258;ags, and the ability to inspect the content of a
+      running application&#8217;s heap. </p>
+
+      <p class="subsection"><span class="title">Enterprise Desktop</span>
+
+      Rich client applications have lately regained some prominence as
+      developers have run up against the limitations of browser-based thin
+      clients.  For use in the enterprise, however, the platform is still
+      lacking in some key areas, <i>e.g.</i>, integration with native desktop
+      facilities, text printing, and table display and manipulation. </p>
+
+      <p class="subsection"><span class="title">XML &amp; Web Services</span>
+
+      The Java&#160;SE&#160;5 release, as originally proposed, was intended to
+      include a full Web Services client stack.  That work unfortunately could
+      not be completed in time for that release, and in the meantime XML and
+      Web Services have only increased in their importance to many members of
+      the community. </p>
+
+      <p class="subsection"><span class="title">Transparency</span>
+
+      Developers in the community have expressed a clear desire for more
+      insight into the evolution of the Java&#160;SE platform.  Many would like to
+      review the platform speci&#64257;cation and test the reference implementation
+      even while work on these artifacts is in progress.  Some would like to
+      become yet more involved and contribute their own enhancements and bug
+      &#64257;xes. </p>
+
+    </blockquote>
+
+    <p> Not every feature in the release is associated with a theme.  The
+    themes outline the primary focal points of the release, but they are not
+    meant to be exhaustive.  <a href="#010">JSR 202</a>, <i>e.g.</i>, the Class
+    File Speci&#64257;cation Update, is an important feature yet it&#8217;s not bound to
+    any particular theme. </p>
+
+    <p> Not every theme, likewise, translates into a set of features.  The
+    &#64257;rst theme, Compatibility, captures a critical constraint on the further
+    evolution of the platform.  The last theme, Transparency, captures a broad
+    desire that will be implemented not by any particular feature set but
+    rather by changes in how Sun <a href="http://jdk6.dev.java.net">interacts with the community</a> during
+    the development of the platform speci&#64257;cation and the reference
+    implementation. </p>
+
+  </div></div><div class="section"><div class="number"><span>2</span></div><div class="title"><span>Component JSRs</span><a name="2">&#160;</a></div><div class="body">
+
+    <p> Each of the large new components of the Java&#160;SE&#160;6 release is
+    speci&#64257;ed in its own separate JSR.  Smaller additions and changes will be
+    speci&#64257;ed in the concurrent JCP maintenance review of the platform
+    speci&#64257;cation.  All features, JSRs and otherwise, are described in more
+    detail <a href="#8">below</a>, but for ease of reference the component JSRs
+    are enumerated here along with their JCP status at the time of
+    writing. </p>
+
+    <blockquote><table class="jsr-list" summary="JSR list"><tr><td><a href="#22">105</a></td><td class="name">XML Digital-Signature APIs </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=105">Final Release</a></td></tr><tr><td><a href="#24">173</a></td><td class="name">Streaming API for XML (StAX) </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=173">Final Release</a></td></tr><tr><td><a href="#399">181</a></td><td class="name">Web-Services Metadata </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=181">Final Release</a></td></tr><tr><td><a href="#27">199</a></td><td class="name">Java Compiler API </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=199">Final Draft</a></td></tr><tr><td><a href="#10">202</a></td><td class="name">Java Class-File Speci&#64257;cation Update </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=202">Final Draft</a></td></tr><tr><td><a href="#25">221</a></td><td class="name">JDBC 4.0 </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=221">Final Draft</a></td></tr><tr><td><a href="#21">222</a></td><td class="name">Java Architecture for XML Binding (JAXB)&#160;2.0 </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=222">Final Release</a></td></tr><tr><td><a href="#28">223</a></td><td class="name">Scripting for the Java Platform </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=223">Final Draft</a></td></tr><tr><td><a href="#20">224</a></td><td class="name">Java API for XML-Based Web Services (JAX-WS)&#160;2.0 </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=224">Final Release</a></td></tr><tr><td><a href="#368">250</a></td><td class="name">Common Annotations </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=250">Final Release</a></td></tr><tr><td><a href="#9">269</a></td><td class="name">Pluggable Annotation-Processing API </td><td class="jcp-state"><a href="http://jcp.org/en/jsr/detail?id=269">Final Draft</a></td></tr></table></blockquote>
+
+    <p> The <a href="http://jcp.org/en/jsr/detail?id=270">original submission</a> of this umbrella
+    JSR mentioned three potential component JSRs that will not, as it turns
+    out, be part of Java&#160;SE&#160;6. </p>
+
+    <ul>
+
+      <li> <a href="http://jcp.org/en/jsr/detail?id=260">JSR&#160;260</a>, the Javadoc Tag Update,
+      will not be included because the JSR&#160;260 Expert Group was unable to
+      reach consensus on a number of critical issues in time for this
+      release. </li>
+
+      <li> <a href="http://jcp.org/en/jsr/detail?id=268">JSR&#160;268</a>, the Java Smart-Card I/O
+      API, will not be included because the JSR&#160;270 Expert Group concluded
+      that it would not be of suf&#64257;ciently wide interest in the Java&#160;SE&#160;6
+      time frame. </li>
+
+      <li> The &#8220;JAXP.next&#8221; JSR will not be included because it was
+      never submitted.  Minor changes to the JAXP&#160;1.3 API will be handled
+      in a maintenance review of <a href="http://jcp.org/en/jsr/detail?id=206">JSR&#160;206</a>. </li>
+
+    </ul>
+
+  </div></div><div class="section"><div class="number"><span>3</span></div><div class="title"><span>Related maintenance reviews</span><a name="3">&#160;</a></div><div class="body">
+
+    <p> Small additions and changes to the platform for this release are
+    speci&#64257;ed in concurrent maintenance reviews of <a href="http://jcp.org/en/jsr/detail?id=176">JSR&#160;176</a>, the umbrella JSR for Java&#160;SE&#160;5. </p>
+
+    <p> Several components of the previous version of the platform are still
+    available separately.  Minor changes to these components are therefore
+    covered in their own individual maintenance reviews: </p>
+
+    <ul>
+
+      <li> <a href="http://jcp.org/en/jsr/detail?id=3">JSR&#160;3: Java Management Extensions
+      (JMX)</a> </li>
+
+      <li> <a href="http://jcp.org/en/jsr/detail?id=160">JSR&#160;160: Java Management Extensions (JMX)
+      Remote API 1.0</a> </li>
+
+      <li> <a href="http://jcp.org/en/jsr/detail?id=206">JSR&#160;206: Java API for XML Processing
+      1.4</a> </li>
+
+    </ul>
+
+  </div></div><div class="section"><div class="number"><span>4</span></div><div class="title"><span>Existing features proposed for removal</span><a name="4">&#160;</a></div><div class="body">
+
+    <p> An <a href="#A">appendix</a> to this speci&#64257;cation motivates and
+    de&#64257;nes a policy for the removal of existing features from the
+    platform. </p>
+
+    <p> Per that policy, this speci&#64257;cation proposes the removal of the
+    <a class="jref" href="http://getjava.sfbay/doc/javax/sound/midi/package-summary.html">javax.sound.midi</a> package in a future
+    release of the platform.  This package is not often used and typical
+    implementations of it require a large data &#64257;le, about half a megabyte in
+    size, which is a signi&#64257;cant component of minimal Java Runtime Environment
+    (JRE) download bundles. </p>
+
+    <p> This proposal does not mean that the <tt>javax.sound.midi</tt> package
+    will be removed in Java&#160;SE&#160;6.  This proposal is merely the &#64257;rst step
+    in the feature-removal process de&#64257;ned <a href="#A">below</a>.  This
+    proposal serves as a warning that this package may be removed in a future
+    release of the platform, but whether it is actually removed, and in which
+    release, is a decision for future expert groups. </p>
+
+  </div></div><div class="section"><div class="number"><span>5</span></div><div class="title"><span>De&#64257;nitions</span><a name="5">&#160;</a></div><div class="body">
+
+
+    <p class="subsection"><span class="title">Features <i>vs.</i> enhancements</span>
+
+    Additions to the Java&#160;SE platform speci&#64257;cation are categorized as either
+    features or enhancements.  A <i>feature</i> is, roughly speaking, an
+    addition of which at least one of the following statements is true: </p>
+
+    <ul>
+
+      <li> It requires two or more weeks of engineering effort to design and
+      implement, </li>
+
+      <li> It&#8217;s signi&#64257;cant in size (<i>e.g.</i>, a JSR), or </li>
+
+      <li> It&#8217;s in high demand by the Java community. </li>
+
+    </ul>
+
+    <p> Any addition that&#8217;s not a feature is considered an
+    <i>enhancement</i>. </p>
+
+    <p> There&#8217;s obviously quite a bit of room for interpretation in reading
+    the above de&#64257;nition.  In order to maximize the visibility of platform
+    revisions we have generally tended to consider borderline items to be
+    features rather than enhancements. </p>
+
+    <p> This speci&#64257;cation only lists the features being proposed for the
+    Java&#160;SE&#160;6 release.  The enhancements will be documented in the
+    concurrent Java&#160;SE maintenance review. </p>
+
+
+    <p class="subsection"><span class="title">Areas and components</span>
+
+    Each feature is classi&#64257;ed by the area and component of the platform that
+    contains it.  For Java&#160;SE&#160;6 the areas and components are: </p>
+
+    <blockquote><table class="ac-list" summary="Areas and components">
+      <tr><td class="area-header">client</td><td class="area-desc">Desktop and other user-interface components</td></tr>
+      <tr><td class="component">2d</td><td class="desc">2D Graphics</td></tr>
+      <tr><td class="component">awt</td><td class="desc">Abstract Window Toolkit (<tt>java.awt</tt>)</td></tr>
+      <tr><td class="component">i18n</td><td class="desc">Internationalization (<tt>java.text</tt>, <i>etc.</i>)</td></tr>
+      <tr><td class="component">swing</td><td class="desc">Swing UI Toolkit (<tt>javax.swing</tt>)</td></tr>
+      <tr><td class="area-header">core</td><td class="area-desc">Core platform components</td></tr>
+      <tr><td class="component">&#8211;</td><td class="desc">General core features</td></tr>
+      <tr><td class="component">debug</td><td class="desc">Debugging</td></tr>
+      <tr><td class="component">libs</td><td class="desc">Libraries (<tt>java.lang</tt>, <tt>java.io</tt>,
+	      <tt>java.util</tt>, <i>etc.</i>)</td></tr>
+      <tr><td class="component">m&amp;m</td><td class="desc">Monitoring &amp; Manageability (<tt>java.lang.management</tt>, <i>etc.</i>)</td></tr>
+      <tr><td class="component">net</td><td class="desc">Networking (<tt>java.net</tt>, <i>etc.</i>)</td></tr>
+      <tr><td class="component">sec</td><td class="desc">Security (<tt>java.security</tt>, <i>etc.</i>)</td></tr>
+      <tr><td class="component">tools</td><td class="desc">Tools (<tt>javac</tt>)</td></tr>
+      <tr><td class="area-header">ee</td><td class="area-desc">Components shared with the Java&#160;EE platform</td></tr>
+      <tr><td class="component">&#8211;</td><td class="desc">General enterprise features</td></tr>
+      <tr><td class="component">jdbc</td><td class="desc">Java Database Connectivity (<tt>java.sql</tt>, <i>etc.</i>)</td></tr>
+      <tr><td class="component">xml</td><td class="desc">XML &amp; Web Services (<tt>javax.xml</tt>, <tt>javax.ws</tt>)</td></tr>
+    </table></blockquote>
+
+    <p> For brevity a speci&#64257;c component is often identi&#64257;ed by the pair
+    consisting of its area name and its component name, separated by a forward
+    slash.  The short name of the Monitoring &amp; Manageability component,
+    <i>e.g.</i>, is &#8220;core/m&amp;m.&#8221; </p>
+
+
+    <p class="subsection"><span class="title">Priorities</span>
+
+    Each feature is also classi&#64257;ed by priority, a rough measure of how
+    important it is to complete the feature in order for the release to be
+    successful.  The priorities are: </p>
+
+    <ul>
+
+      <li> A <i>Release Driver</i> (RD) is a feature that&#8217;s critical to the
+      success of the release. </li>
+
+      <li> A <i>Group Driver</i> (GD) is a feature that&#8217;s very important to
+      the success of the release. </li>
+
+      <li> A <i>Target of Opportunity</i> (TO) is just what it says.  If time
+      and resources allow a TO to be completed in the reference implementation
+      then it will be included in the &#64257;nal platform speci&#64257;cation.   </li>
+
+    </ul>
+
+    <p> The Release and Group Drivers together make up the committed features
+    of the release. </p>
+
+
+    <p class="subsection"><span class="title">Identi&#64257;cation numbers</span>
+
+    Finally, for ease of reference each feature has a unique three-digit
+    identi&#64257;cation number, which is displayed in the rightmost column of the
+    various feature listings in this speci&#64257;cation.  These numbers have no
+    intrinsic meaning. </p>
+
+
+  </div></div><div class="section"><div class="number"><span>6</span></div><div class="title"><span>Features sorted by area and component</span><a name="6">&#160;</a></div><div class="body">
+    <div class="index"><table class="index" summary="Area and component index"><tr><td class="name gray-row"> GIF image writer </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">2d</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#269">269</a></td></tr><tr><td class="name"> Access to desktop helper applications </td><td class="area">client&#160;/&#160;</td><td class="component">awt</td><td class="priority">TO</td><td class="id"><a href="#239">239</a></td></tr><tr><td class="name gray-row"> Fast splash screens </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">awt</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#137">137</a></td></tr><tr><td class="name"> Improved modal dialogs </td><td class="area">client&#160;/&#160;</td><td class="component">awt</td><td class="priority">TO</td><td class="id"><a href="#058">058</a></td></tr><tr><td class="name gray-row"> System-tray support </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">awt</td><td class="priority gray-row">GD</td><td class="id gray-row"><a href="#006">006</a></td></tr><tr><td class="name"> Pluggable locale data </td><td class="area">client&#160;/&#160;</td><td class="component">i18n</td><td class="priority">GD</td><td class="id"><a href="#048">048</a></td></tr><tr><td class="name gray-row"> Resource-bundle enhancements </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">i18n</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#096">096</a></td></tr><tr><td class="name"> Unicode string normalization </td><td class="area">client&#160;/&#160;</td><td class="component">i18n</td><td class="priority">TO</td><td class="id"><a href="#101">101</a></td></tr><tr><td class="name gray-row">Baseline/gap APIs</td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#134">134</a></td></tr><tr><td class="name">Easy-to-use Swing layout manager</td><td class="area">client&#160;/&#160;</td><td class="component">swing</td><td class="priority">TO</td><td class="id"><a href="#207">207</a></td></tr><tr><td class="name gray-row"> Improve Swing drag-&amp;-drop </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#188">188</a></td></tr><tr><td class="name">JTabbedPane: Tabs as components</td><td class="area">client&#160;/&#160;</td><td class="component">swing</td><td class="priority">TO</td><td class="id"><a href="#196">196</a></td></tr><tr><td class="name gray-row">JTable sorting, &#64257;ltering, and highlighting</td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="priority gray-row">GD</td><td class="id gray-row"><a href="#200">200</a></td></tr><tr><td class="name">SwingWorker</td><td class="area">client&#160;/&#160;</td><td class="component">swing</td><td class="priority">TO</td><td class="id"><a href="#202">202</a></td></tr><tr><td class="name gray-row"> Text-component printing </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#193">193</a></td></tr><tr><td class="name"> JSR 223: Scripting for the Java Platform </td><td class="area">core&#160;/&#160;</td><td class="component">&#8211;</td><td class="priority">GD</td><td class="id"><a href="#028">028</a></td></tr><tr><td class="name gray-row"> Access to heap contents </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">debug</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#216">216</a></td></tr><tr><td class="name">Attach-on-demand</td><td class="area">core&#160;/&#160;</td><td class="component">debug</td><td class="priority">GD</td><td class="id"><a href="#282">282</a></td></tr><tr><td class="name gray-row">Multiple simultaneous agents</td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">debug</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#284">284</a></td></tr><tr><td class="name"> JSR 202: Java Class-File Speci&#64257;cation Update </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="priority">RD</td><td class="id"><a href="#010">010</a></td></tr><tr><td class="name gray-row"> Array reallocation </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#379">379</a></td></tr><tr><td class="name"> Collections: Deques </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="priority">TO</td><td class="id"><a href="#398">398</a></td></tr><tr><td class="name gray-row"> Collections: Sorted sets and maps with bidirectional navigation </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#397">397</a></td></tr><tr><td class="name"> Critical &#64257;le-I/O enhancements </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="priority">GD</td><td class="id"><a href="#002">002</a></td></tr><tr><td class="name gray-row"> Floating point: Add core IEEE 754 recommended functions </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#294">294</a></td></tr><tr><td class="name"> <tt>java.util.concurrent</tt> updates </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="priority">GD</td><td class="id"><a href="#364">364</a></td></tr><tr><td class="name gray-row"> Password prompting </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="priority gray-row">GD</td><td class="id gray-row"><a href="#003">003</a></td></tr><tr><td class="name"> Service-provider lookup </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="priority">TO</td><td class="id"><a href="#083">083</a></td></tr><tr><td class="name gray-row"> Generalized lock monitoring </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">m&amp;m</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#136">136</a></td></tr><tr><td class="name"> Generalized MBean descriptors </td><td class="area">core&#160;/&#160;</td><td class="component">m&amp;m</td><td class="priority">GD</td><td class="id"><a href="#371">371</a></td></tr><tr><td class="name gray-row">Generic annotations for MBean descriptor contents</td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">m&amp;m</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#373">373</a></td></tr><tr><td class="name"> MXBeans </td><td class="area">core&#160;/&#160;</td><td class="component">m&amp;m</td><td class="priority">GD</td><td class="id"><a href="#372">372</a></td></tr><tr><td class="name gray-row"> Internationalized domain names </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">net</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#107">107</a></td></tr><tr><td class="name">Programmatic access to network parameters</td><td class="area">core&#160;/&#160;</td><td class="component">net</td><td class="priority">TO</td><td class="id"><a href="#115">115</a></td></tr><tr><td class="name gray-row"> Simple HTTP cookie manager </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">net</td><td class="priority gray-row">TO</td><td class="id gray-row"><a href="#119">119</a></td></tr><tr><td class="name"> JSR 105: XML Digital-Signature APIs </td><td class="area">core&#160;/&#160;</td><td class="component">sec</td><td class="priority">RD</td><td class="id"><a href="#022">022</a></td></tr><tr><td class="name gray-row"> JSR 199: Java Compiler API </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">tools</td><td class="priority gray-row">RD</td><td class="id gray-row"><a href="#027">027</a></td></tr><tr><td class="name"> JSR 269: Pluggable Annotation-Processing API </td><td class="area">core&#160;/&#160;</td><td class="component">tools</td><td class="priority">RD</td><td class="id"><a href="#009">009</a></td></tr><tr><td class="name gray-row"> JSR 250: Common Annotations </td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">&#8211;</td><td class="priority gray-row">GD</td><td class="id gray-row"><a href="#368">368</a></td></tr><tr><td class="name"> JSR 221: JDBC 4.0 </td><td class="area">ee&#160;/&#160;</td><td class="component">jdbc</td><td class="priority">RD</td><td class="id"><a href="#025">025</a></td></tr><tr><td class="name gray-row"> JSR 173: Streaming API for XML (StAX) </td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">xml</td><td class="priority gray-row">RD</td><td class="id gray-row"><a href="#024">024</a></td></tr><tr><td class="name"> JSR 181: Web-Services Metadata </td><td class="area">ee&#160;/&#160;</td><td class="component">xml</td><td class="priority">RD</td><td class="id"><a href="#399">399</a></td></tr><tr><td class="name gray-row"> JSR 222: Java Architecture for XML Binding (JAXB)&#160;2.0 </td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">xml</td><td class="priority gray-row">RD</td><td class="id gray-row"><a href="#021">021</a></td></tr><tr><td class="name"> JSR 224: Java API for XML-Based Web Services (JAX-WS)&#160;2.0 </td><td class="area">ee&#160;/&#160;</td><td class="component">xml</td><td class="priority">RD</td><td class="id"><a href="#020">020</a></td></tr><tr><td class="name gray-row">JavaBeans Activation Framework (JAF) 1.1</td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">xml</td><td class="priority gray-row">RD</td><td class="id gray-row"><a href="#378">378</a></td></tr></table></div>
+  </div></div><div class="section"><div class="number"><span>7</span></div><div class="title"><span>Features sorted by priority</span><a name="7">&#160;</a></div><div class="body">
+    <div class="index"><table class="index" summary="Priority index"><tr><th>Release drivers (RD)</th></tr><tr><td class="name gray-row"> JSR 202: Java Class-File Speci&#64257;cation Update </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="id gray-row"><a href="#010">010</a></td></tr><tr><td class="name"> JSR 105: XML Digital-Signature APIs </td><td class="area">core&#160;/&#160;</td><td class="component">sec</td><td class="id"><a href="#022">022</a></td></tr><tr><td class="name gray-row"> JSR 199: Java Compiler API </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">tools</td><td class="id gray-row"><a href="#027">027</a></td></tr><tr><td class="name"> JSR 269: Pluggable Annotation-Processing API </td><td class="area">core&#160;/&#160;</td><td class="component">tools</td><td class="id"><a href="#009">009</a></td></tr><tr><td class="name gray-row"> JSR 221: JDBC 4.0 </td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">jdbc</td><td class="id gray-row"><a href="#025">025</a></td></tr><tr><td class="name"> JSR 173: Streaming API for XML (StAX) </td><td class="area">ee&#160;/&#160;</td><td class="component">xml</td><td class="id"><a href="#024">024</a></td></tr><tr><td class="name gray-row"> JSR 181: Web-Services Metadata </td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">xml</td><td class="id gray-row"><a href="#399">399</a></td></tr><tr><td class="name"> JSR 222: Java Architecture for XML Binding (JAXB)&#160;2.0 </td><td class="area">ee&#160;/&#160;</td><td class="component">xml</td><td class="id"><a href="#021">021</a></td></tr><tr><td class="name gray-row"> JSR 224: Java API for XML-Based Web Services (JAX-WS)&#160;2.0 </td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">xml</td><td class="id gray-row"><a href="#020">020</a></td></tr><tr><td class="name">JavaBeans Activation Framework (JAF) 1.1</td><td class="area">ee&#160;/&#160;</td><td class="component">xml</td><td class="id"><a href="#378">378</a></td></tr><tr><th>Group drivers (GD)</th></tr><tr><td class="name gray-row"> System-tray support </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">awt</td><td class="id gray-row"><a href="#006">006</a></td></tr><tr><td class="name"> Pluggable locale data </td><td class="area">client&#160;/&#160;</td><td class="component">i18n</td><td class="id"><a href="#048">048</a></td></tr><tr><td class="name gray-row">JTable sorting, &#64257;ltering, and highlighting</td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="id gray-row"><a href="#200">200</a></td></tr><tr><td class="name"> JSR 223: Scripting for the Java Platform </td><td class="area">core&#160;/&#160;</td><td class="component">&#8211;</td><td class="id"><a href="#028">028</a></td></tr><tr><td class="name gray-row">Attach-on-demand</td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">debug</td><td class="id gray-row"><a href="#282">282</a></td></tr><tr><td class="name"> Critical &#64257;le-I/O enhancements </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="id"><a href="#002">002</a></td></tr><tr><td class="name gray-row"> <tt>java.util.concurrent</tt> updates </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="id gray-row"><a href="#364">364</a></td></tr><tr><td class="name"> Password prompting </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="id"><a href="#003">003</a></td></tr><tr><td class="name gray-row"> Generalized MBean descriptors </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">m&amp;m</td><td class="id gray-row"><a href="#371">371</a></td></tr><tr><td class="name"> MXBeans </td><td class="area">core&#160;/&#160;</td><td class="component">m&amp;m</td><td class="id"><a href="#372">372</a></td></tr><tr><td class="name gray-row"> JSR 250: Common Annotations </td><td class="area gray-row">ee&#160;/&#160;</td><td class="component gray-row">&#8211;</td><td class="id gray-row"><a href="#368">368</a></td></tr><tr><th>Targets of opportunity (TO)</th></tr><tr><td class="name gray-row"> GIF image writer </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">2d</td><td class="id gray-row"><a href="#269">269</a></td></tr><tr><td class="name"> Access to desktop helper applications </td><td class="area">client&#160;/&#160;</td><td class="component">awt</td><td class="id"><a href="#239">239</a></td></tr><tr><td class="name gray-row"> Fast splash screens </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">awt</td><td class="id gray-row"><a href="#137">137</a></td></tr><tr><td class="name"> Improved modal dialogs </td><td class="area">client&#160;/&#160;</td><td class="component">awt</td><td class="id"><a href="#058">058</a></td></tr><tr><td class="name gray-row"> Resource-bundle enhancements </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">i18n</td><td class="id gray-row"><a href="#096">096</a></td></tr><tr><td class="name"> Unicode string normalization </td><td class="area">client&#160;/&#160;</td><td class="component">i18n</td><td class="id"><a href="#101">101</a></td></tr><tr><td class="name gray-row">Baseline/gap APIs</td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="id gray-row"><a href="#134">134</a></td></tr><tr><td class="name">Easy-to-use Swing layout manager</td><td class="area">client&#160;/&#160;</td><td class="component">swing</td><td class="id"><a href="#207">207</a></td></tr><tr><td class="name gray-row"> Improve Swing drag-&amp;-drop </td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="id gray-row"><a href="#188">188</a></td></tr><tr><td class="name">JTabbedPane: Tabs as components</td><td class="area">client&#160;/&#160;</td><td class="component">swing</td><td class="id"><a href="#196">196</a></td></tr><tr><td class="name gray-row">SwingWorker</td><td class="area gray-row">client&#160;/&#160;</td><td class="component gray-row">swing</td><td class="id gray-row"><a href="#202">202</a></td></tr><tr><td class="name"> Text-component printing </td><td class="area">client&#160;/&#160;</td><td class="component">swing</td><td class="id"><a href="#193">193</a></td></tr><tr><td class="name gray-row"> Access to heap contents </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">debug</td><td class="id gray-row"><a href="#216">216</a></td></tr><tr><td class="name">Multiple simultaneous agents</td><td class="area">core&#160;/&#160;</td><td class="component">debug</td><td class="id"><a href="#284">284</a></td></tr><tr><td class="name gray-row"> Array reallocation </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="id gray-row"><a href="#379">379</a></td></tr><tr><td class="name"> Collections: Deques </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="id"><a href="#398">398</a></td></tr><tr><td class="name gray-row"> Collections: Sorted sets and maps with bidirectional navigation </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="id gray-row"><a href="#397">397</a></td></tr><tr><td class="name"> Floating point: Add core IEEE 754 recommended functions </td><td class="area">core&#160;/&#160;</td><td class="component">libs</td><td class="id"><a href="#294">294</a></td></tr><tr><td class="name gray-row"> Service-provider lookup </td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">libs</td><td class="id gray-row"><a href="#083">083</a></td></tr><tr><td class="name"> Generalized lock monitoring </td><td class="area">core&#160;/&#160;</td><td class="component">m&amp;m</td><td class="id"><a href="#136">136</a></td></tr><tr><td class="name gray-row">Generic annotations for MBean descriptor contents</td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">m&amp;m</td><td class="id gray-row"><a href="#373">373</a></td></tr><tr><td class="name"> Internationalized domain names </td><td class="area">core&#160;/&#160;</td><td class="component">net</td><td class="id"><a href="#107">107</a></td></tr><tr><td class="name gray-row">Programmatic access to network parameters</td><td class="area gray-row">core&#160;/&#160;</td><td class="component gray-row">net</td><td class="id gray-row"><a href="#115">115</a></td></tr><tr><td class="name"> Simple HTTP cookie manager </td><td class="area">core&#160;/&#160;</td><td class="component">net</td><td class="id"><a href="#119">119</a></td></tr></table></div>
+  </div></div><div class="section"><div class="number"><span>8</span></div><div class="title"><span>Feature details</span><a name="8">&#160;</a></div><div class="body">
+
+    <p> This JSR does not itself de&#64257;ne speci&#64257;c features, as noted earlier.
+    As a convenience to the reader, however, links to relevant online draft
+    speci&#64257;cations, or to entries in Sun&#8217;s public bug database, are provided
+    when such documents exist.  These links are not a normative part of this
+    speci&#64257;cation. </p>
+
+    <p> In the list that follows each feature is identi&#64257;ed by a header line
+    consisting of its name on the left and its component and area, priority,
+    and identi&#64257;cation number on the right. </p>
+
+  </div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / 2d</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">269</span></div><span class="title-left"> GIF image writer &#160;<a name="269"> </a></span></div><div class="body"><div class="summary">
+
+      <p> GIF is a very common image format but, due to IP issues, the platform
+      has never supported writing GIF &#64257;les.  Now that the relevant patent has
+      expired we should &#64257;x this long-standing sore spot. </p>
+
+      <p> No new classes or methods are required here; the bulk of the changes
+      merely revise the speci&#64257;cation of the
+      <a class="jref" href="http://getjava.sfbay/doc/javax/imageio/package-summary.html">javax.imageio</a> package to require support
+      for writing the GIF format. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/imageio/package-summary.html">javax.imageio</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / awt</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">239</span></div><span class="title-left"> Access to desktop helper applications &#160;<a name="239"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Allow Java applications to access helper applications registered in
+      the native desktop.  An application should be able to display an
+      arbitrary URL in a new window in the user&#8217;s preferred browser, launch
+      the user&#8217;s preferred mail composer to create and send a mail message,
+      and display &#64257;les via viewer programs chosen by MIME type or &#64257;le
+      extension (<i>e.g.</i>, Acrobat Reader for PDF &#64257;les).  </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body"><a class="jref" href="http://getjava.sfbay/doc/java/awt/Desktop.html">java.awt.Desktop</a> ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / awt</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">137</span></div><span class="title-left"> Fast splash screens &#160;<a name="137"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Splash screens are a standard part of modern GUI applications.  Their
+      primary purpose is to provide feedback to the user that the application
+      is starting up.  By employing a polished and professional splash screen,
+      an application can occupy the user&#8217;s attention and assure the user
+      that the application will soon be ready.  Second, splash screens can
+      provide marketing information.  Finally, splash screens are sometimes
+      required for legal reasons to present copyright information, third party
+      logos, <i>etc.</i> </p>
+
+      <p> It is possible to employ Swing or AWT to create splash screens for
+      Java applications today.  The main purpose of a splash screen is to
+      provide feedback during application startup, however, so the delay
+      between the moment an application is launched and the moment when the
+      splash screen appears should be minimal.  Before a pure Java splash
+      screen can be displayed the application loads and initializes the JVM,
+      the AWT subsystem, perhaps Swing, and also possibly some
+      application-dependent libraries.  This imposes a multi-second delay, so a
+      pure Java splash screen cannot satisfy these timing requirements. </p>
+
+      <p> This feature will implement initial splash-screen display in native
+      code, prior to the actual launching of the VM.  It will support GIF, JPEG
+      and PNG format images, including transparency (GIF, PNG) and animation
+      (GIF).  Splash-screen images can be speci&#64257;ed on the command line or,
+      more usually, in a header in the application&#8217;s JAR manifest &#64257;le.  The
+      splash screen will be removed automatically when the application displays
+      its &#64257;rst window. </p>
+
+      <p> This feature will also provide a simple Java API for controlling the
+      splash screen once the application has started. </p>
+
+      <p> This feature will not have any impact on startup time if the splash
+      screen is not used. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/SplashScreen.html">java.awt.SplashScreen</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / awt</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">058</span></div><span class="title-left"> Improved modal dialogs &#160;<a name="058"> </a></span></div><div class="body"><div class="summary">
+
+      <p> From its introduction AWT has only offered one type of modal dialog:
+      Whenever a dialog window is displayed then all windows in the application
+      are blocked.  Other toolkits and platforms offer different dialog
+      modalities, which developers are now expecting.  OS X, <i>e.g.</i>, makes
+      extensive use of window-level modality, in which only the parent window
+      of a modal dialog is blocked. </p>
+
+      <p> Another important missing feature is the ability to exempt a
+      particular window from being blocked by modal dialogs at all.  A widely
+      distributed help system for java applications, JavaHelp, has been
+      suffering from this problem for years.  Modal dialogs shown from the
+      application completely disable the help window, thereby making it
+      useless. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/doc-files/Modality.html"><span class="jref-plain">Modality spec</span></a>;
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/Dialog.html">java.awt.Dialog</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/Dialog.ModalityType.html">Dialog.ModalityType</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/Dialog.ModalExclusionType.html">Dialog.ModalExclusionType</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / awt</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">006</span></div><span class="title-left"> System-tray support &#160;<a name="006"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Every modern desktop has a &#8220;system tray&#8221; or equivalent where
+      native applications can display icons to notify the user of application
+      events or allow access to extra functionality for applications that
+      don&#8217;t have to be constantly visible in main window on the desktop.
+      System-tray support is one of the key user-interface elements whose
+      absence makes Java applications look less appealing than native
+      applications. </p>
+
+      <p> This feature will de&#64257;ne a cross-platform API for system trays that
+      can be reasonably implemented on all known windowing systems. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/SystemTray.html">java.awt.SystemTray</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/TrayIcon.html">TrayIcon</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/TrayIcon.MessageType.html">TrayIcon.MessageType</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / i18n</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">048</span></div><span class="title-left"> Pluggable locale data &#160;<a name="048"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Third parties need to be able to add support for new locales to the
+      JRE.  This feature will de&#64257;ne a new set of &#8220;pluggability&#8221; APIs
+      so that an existing JRE can be augmented with additional locale data.
+      </p>
+
+      <p> The <tt>getAvailableLocales</tt> methods of most existing
+      locale-sensitive classes will return any newly-added locales, and their
+      <tt>getInstance</tt> methods will return appropriately-localized objects.
+      The data behind the following classes will be extensible: </p>
+
+      <blockquote>
+        <table class="tagged-list" summary="Affected classes">
+	  <tr>
+	    <td><a class="jref" href="http://getjava.sfbay/doc/java/text/package-summary.html">java.text</a>:</td>
+	    <td>
+	      <a class="jref" href="http://getjava.sfbay/doc/java/text/BreakIterator.html">BreakIterator</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/text/Collator.html">Collator</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/text/DateFormat.html">DateFormat</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/text/DateFormatSymbols.html">DateFormatSymbols</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/text/DecimalFormat.html">DecimalFormat</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/text/NumberFormat.html">NumberFormat</a>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td><a class="jref" href="http://getjava.sfbay/doc/java/util/package-summary.html">java.util</a>:</td>
+	    <td>
+	      <a class="jref" href="http://getjava.sfbay/doc/java/util/Currency.html">Currency</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/util/Locale.html">Locale</a>,
+	      <a class="jref" href="http://getjava.sfbay/doc/java/util/TimeZone.html">TimeZone</a>
+	        (text only, not zone data)
+	    </td>
+	  </tr>
+	</table>
+      </blockquote>
+
+      <p> The main bene&#64257;t of such extensibility is that third parties will be
+      able to provide support for locales for which Java&#160;SE platform
+      implementors lack the necessary expertise. </p>
+
+      <p> This feature will not revise the
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/Calendar.html">java.util.Calendar</a> class
+      along similar lines since that class is not well-suited to supporting
+      non-Gregorian calendars.  Pluggable locale support for calendars may be
+      considered in a future release if and when a more general date/time API
+      is introduced. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/text/spi/package-summary.html">java.text.spi</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/spi/package-summary.html">java.util.spi</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / i18n</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">096</span></div><span class="title-left"> Resource-bundle enhancements &#160;<a name="096"> </a></span></div><div class="body"><div class="summary">
+
+      <p> The <a class="jref" href="http://getjava.sfbay/doc/java/util/ResourceBundle.html">ResourceBundle</a>
+      class is in need of several minor enhancements: </p>
+
+      <ul>
+
+        <li> A way to remove a bundle from the cache so that it can be
+	reloaded, <i>e.g.</i>, in a long-running application; </li>
+
+	<li> A way to support bundles in arbitrary non-standard formats, <i>e.g.</i>,
+	XML; </li>
+
+	<li> A way for developers to de&#64257;ne their own bundle search strategies;
+	and </li>
+
+	<li> A way to de&#64257;ne resource bundles without having to declare them as
+	public classes. </li>
+
+      </ul>
+
+      <p> This feature will address these requirements by breaking the current
+      &#64257;xed bundle-loading process into its constituent parts so that
+      applications can customize the behavior of each part via callback
+      methods.  The bundle cache and its behavior, which was previously
+      implicit, will also be made explicit as well as customizable. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/ResourceBundle.html">java.util.ResourceBundle</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/ResourceBundle.Control.html">ResourceBundle.Control</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / i18n</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">101</span></div><span class="title-left"> Unicode string normalization &#160;<a name="101"> </a></span></div><div class="body"><div class="summary">
+
+      <p> An API for normalizing Unicode strings.  The ability to transform
+      Unicode strings into one of the standard normal forms is important for
+      text processing and for supporting various external standards such as
+      internationalized domain names and XML canonicalization. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/text/Normalizer.html">java.text.Normalizer</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / swing</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">134</span></div><span class="title-left">Baseline/gap APIs&#160;<a name="134"> </a></span></div><div class="body"><div class="summary">
+
+      <p> To enable the creation of GUI layouts that are independent of any
+      particular look-&amp;-feel, and to enable more intuitive layout managers and
+      development tools, this feature will extend Swing to provide APIs for
+      </p>
+
+      <ul>
+
+        <li> Determining the preferred distances (<i>i.e.</i>, gaps) between
+        components depending upon the guidelines for a given look-&amp;-feel, and for
+        </li>
+
+	<li> Determining the position of text baselines and arranging for
+	components to be aligned vertically on their text baselines. </li>
+
+      </ul>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/awt/Component.BaselineResizeBehavior.html">java.awt.Component.BaselineResizeBehavior</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/LayoutStyle.html">javax.swing.LayoutStyle</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/LayoutStyle.ComponentPlacement.html">LayoutStyle.ComponentPlacement</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / swing</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">207</span></div><span class="title-left">Easy-to-use Swing layout manager&#160;<a name="207"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Developers new to Swing face the daunting process of using layout
+      managers for managing the positions of their components.  The current
+      layout managers, while powerful, require considerable care and experience
+      to use correctly. </p>
+
+      <p> This feature will de&#64257;ne a new layout manager called <a class="jref" href="http://getjava.sfbay/doc/javax/swing/GroupLayout.html">GroupLayout</a> which, in
+      combination with appropriate tools, will make it much easier for
+      non-experts to create functional and attractive GUI component
+      layouts. </p>
+
+      <p> This layout manager was originally created as part of Sun&#8217;s <a href="http://www.netbeans.org/kb/articles/matisse.html">&#8220;Matisse&#8221;</a>
+      layout-tool project, which has garnered rave reviews from the developer
+      community.  Matisse is part of Sun&#8217;s NetBeans IDE, but it&#8217;s proven so
+      popular that the code has been <a href="http://www.myeclipseide.com/ContentExpress-display-ceid-77.html">ported</a>
+      to Eclipse (<a href="http://www.eclipsezone.com/eclipse/forums/t65341.html">twice</a>);
+      an <a href="http://www.instantiations.com/windowbuilderpro/shots/grouplayout_content.html">
+      existing Eclipse plugin has also been extended</a> to support this model.
+      There is <a href="http://www.javalobby.org/java/forums/t66080.html">strong support in
+      the developer community</a> for the inclusion of GroupLayout in
+      Java&#160;SE&#160;6. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/GroupLayout.html">javax.swing.GroupLayout</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / swing</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">188</span></div><span class="title-left"> Improve Swing drag-&amp;-drop &#160;<a name="188"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Currently it&#8217;s dif&#64257;cult for programmers to use drag-&amp;-drop with
+      Swing&#8212;only a small handful of Swing components have easy-to-use
+      drag-&amp;-drop support.  There are two major problems: </p>
+
+      <ul>
+
+        <li> A drop location is indicated by moving the selection around within
+        the component under which drag-&amp;-drop is occurring.  This &#64257;res unnecessary
+        selection events, is not customizable, and is hardly ever what the user
+        wants. </li>
+
+	<li> Swing provides no support at all for customizing what data can be
+	inserted at what locations in the component.  User code is provided
+	very few details about the actual transfer when asked whether or not it
+	can accept it, it&#8217;s only asked once (not based on position in the
+	component), and it&#8217;s given the same sparse information when it&#8217;s
+	time to import the data. </li>
+
+      </ul>
+
+      <p> This feature will de&#64257;ne new APIs to allow user code to specify one
+      of several new drop modes on components that support drops.  This will
+      provide more &#64258;exible ways to insert data and will allow drop locations
+      to be indicated without affecting selection.  Drop locations will be
+      calculated based on the drop mode and will be returned to user code
+      during drag-&amp;-drop operations. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/DropMode.html">javax.swing.DropMode</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/TransferHandler.DropLocation.html">TransferHandler.DropLocation</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/TransferHandler.TransferSupport.html">TransferHandler.TransferSupport</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / swing</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">196</span></div><span class="title-left">JTabbedPane: Tabs as components&#160;<a name="196"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Currently tabs can contain only an icon, text, or HTML.  Many modern
+      applications, <i>e.g.</i>, Mozilla, now support a richer user experience with
+      tabbed panes that can only be done in Swing if we allow arbitrary
+      components to be added to a tabbed pane.  This will make it possible,
+      <i>e.g.</i>, to have both a text label and a close button on each tab. </p>
+ 
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/JTabbedPane.html#setTabComponentAt">javax.swing.JTabbedPane.setTabComponentAt</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / swing</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">200</span></div><span class="title-left">JTable sorting, &#64257;ltering, and highlighting&#160;<a name="200"> </a></span></div><div class="body"><div class="summary">
+
+      <p> It&#8217;s very common for developers&#8212;especially in the corporate
+      world&#8212;to want to sort, &#64257;lter, and highlight the contents of
+      <tt>JTable</tt>s.  It&#8217;s unnecessarily hard to do so, however, hence
+      developers typically wind up either rolling their own or using a
+      third-party sorting framework.  This feature will add this missing
+      functionality to Swing. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/RowFilter.html">javax.swing.RowFilter</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/RowSorter.html">RowSorter</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/SortOrder.html">SortOrder</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/table/TableRowSorter.html">javax.swing.table.TableRowSorter</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / swing</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">202</span></div><span class="title-left">SwingWorker&#160;<a name="202"> </a></span></div><div class="body"><div class="summary">
+
+      <p> To effectively create a Swing application one needs to use multiple
+      threads, especially when interacting with remote resources such as
+      databases or web services.  Swing is not thread safe, however, which
+      makes this a daunting and arduous task. </p>
+
+      <p> The <tt>SwingWorker</tt> class makes multi-threaded Swing programming
+      much easier.  It was originally published on java.sun.com more than six
+      years ago and since that time many developers have requested that it be
+      integrated into the platform. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/SwingWorker.html">javax.swing.SwingWorker</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">client / swing</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">193</span></div><span class="title-left"> Text-component printing &#160;<a name="193"> </a></span></div><div class="body"><div class="summary">
+
+      <p> It&#8217;s presently dif&#64257;cult, though possible, to print the contents
+      of a Swing text component as a document rather than as a printed
+      rendering of the component itself.  This feature will integrate basic
+      printing support into the <a class="jref" href="http://getjava.sfbay/doc/javax/swing/text/JTextComponent.html">JTextComponent</a>
+      class. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/text/JTextComponent.html#print()">javax.swing.text.JTextComponent.print()</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/swing/text/JTextComponent.html#getPrintable()">getPrintable()</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / &#8211;</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">028</span></div><span class="title-left jsr"> JSR 223: Scripting for the Java Platform &#160;<a name="028"> </a><a name="jsr-223"> </a></span></div><div class="body"><div class="summary">
+
+      <p> A large percentage of Java developers also use scripting languages.
+      While the Java language is suitable for many tasks, and especially for
+      writing robust, long-lived applications, scripting languages are useful
+      for many other tasks. </p>
+
+      <p> <a href="http://jcp.org/en/jsr/detail?id=223">JSR 223</a> de&#64257;nes a framework for
+      connecting interpreters of arbitrary scripting languages to Java
+      programs.  It includes facilities for locating the available scripting
+      engines, invoking scripts from Java code and vice versa, and making Java
+      application objects visible to scripts.  The framework is divided into
+      two parts, the Scripting API and an optional Web Scripting Framework.
+      This feature will incorporate just the Scripting API into this version of
+      the Java&#160;SE platform. </p>
+
+      <p> There will be no requirement that any particular scripting language
+      be supported by the platform; implementors may choose to include support
+      for the scripting language(s) of their choice as they see &#64257;t. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=223">JSR 223</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/script/package-summary.html">javax.script</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / debug</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">216</span></div><span class="title-left"> Access to heap contents &#160;<a name="216"> </a></span></div><div class="body"><div class="summary">
+
+      <p> To support the implementation of leak detectors and other kinds of
+      heap-analysis tools this feature will extend JVMTI, the Java Virtual
+      Machine Tools interface, and JDWP, the Java Debug Wire Protocol, to
+      support the retrieval of information about all instances of a given
+      class, and all objects referring to a particular instance, within a
+      running virtual machine. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://download.java.net/jdk6/docs/platform/jvmti/jvmti.html#Heap">JVMTI: Heap functions</a>;
+      JDWP protocol: <a href="http://download.java.net/jdk6/docs/platform/jpda/jdwp/jdwp-protocol.html#JDWP_ReferenceType_Instances">Instances</a>,
+      <a href="http://download.java.net/jdk6/docs/platform/jpda/jdwp/jdwp-protocol.html#JDWP_VirtualMachine_InstanceCounts">InstanceCounts</a>,
+      <a href="http://download.java.net/jdk6/docs/platform/jpda/jdwp/jdwp-protocol.html#JDWP_ObjectReference_ReferringObjects">ReferringObjects</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / debug</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">282</span></div><span class="title-left">Attach-on-demand&#160;<a name="282"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Sometimes it&#8217;s necessary to connect a monitoring, debugging, or
+      pro&#64257;ling tool to a running virtual machine that was not started with any
+      of the special command-line &#64258;ags that enable such connections. </p>
+
+      <p> This feature will extend the JVMTI and <tt>java.lang.instrument</tt>
+      speci&#64257;cations to support the starting of agents in an already-running
+      VM. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://download.java.net/jdk6/docs/platform/jvmti/jvmti.html#onattach">JVMTI: <tt>Agent_OnAttach</tt></a>;
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/instrument/package-summary.html">java.lang.instrument</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / debug</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">284</span></div><span class="title-left">Multiple simultaneous agents&#160;<a name="284"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Both JVMTI and <tt>java.lang.instrument</tt> were designed to support
+      multiple simultaneous independent tool agents.  If more than one such
+      agent is attempting to insert instrumentation, however, then they will
+      interfere with each other.  These existing interfaces are also &#64258;awed in
+      that they model the process of instrumenting a class as a replacement
+      operation, so it&#8217;s not always possible for a transformer to access the
+      original bytecodes of the class it&#8217;s transforming nor is it possible
+      to safely remove instrumentation once a tool&#8217;s task is &#64257;nished. </p>
+
+      <p> This feature will address these problems by extending these
+      interfaces to support an event-based retransformation operation. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://download.java.net/jdk6/docs/platform/jvmti/jvmti.html#RetransformClasses">JVMTI:
+      <tt>RetransformClasses</tt></a>;
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/instrument/Instrumentation.html#retransformClasses(java.lang.Class[])">java.lang.instrument.Instrumentation.retransformClasses(java.lang.Class[])</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">010</span></div><span class="title-left jsr"> JSR 202: Java Class-File Speci&#64257;cation Update &#160;<a name="010"> </a><a name="jsr-202"> </a></span></div><div class="body"><div class="summary">
+
+      <p> An update to the Java class-&#64257;le format to add support for the
+      &#8220;split veri&#64257;cation&#8221; architecture pioneered in the Java&#160;ME
+      platform (see JSRs <a href="http://jcp.org/en/jsr/detail?id=30">30</a> and <a href="http://jcp.org/en/jsr/detail?id=139">139</a>).  This technique enables improved performance as
+      well as a higher level of con&#64257;dence in the Java security model since the
+      runtime veri&#64257;cation logic is itself easier to prove correct. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=202">JSR 202</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">379</span></div><span class="title-left"> Array reallocation &#160;<a name="379"> </a></span></div><div class="body"><div class="summary">
+
+      <p> It&#8217;s often the case that arrays cannot be sized accurately before
+      they are &#64257;lled.  This implies a resizing operation via the <a class="jref" href="http://getjava.sfbay/doc/java/lang/System.html#arraycopy(java.lang.Object,int,java.lang.Object,int,int)">System.arrayCopy</a>
+      method, which is not statically type-safe and whose order of arguments is
+      notoriously dif&#64257;cult to remember.  If the initial allocation of the
+      array is generous enough, moreover, the copy operation might be performed
+      infrequently enough to make testing haphazard, raising the likelihood of
+      post-release bugs. </p>
+
+      <p> This feature will add convenience methods to the
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/Arrays.html">java.util.Arrays</a> class that
+      will make it easier to expand, or contract, the size of an array by
+      providing operations that both allocate a new array and copy data in from
+      an existing array. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/Arrays.html#copyOf(boolean[],int)">java.util.Arrays.copyOf</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/Arrays.html#copyOfRange(boolean[],int,int)">copyOfRange</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">398</span></div><span class="title-left"> Collections: Deques &#160;<a name="398"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Users have long wanted the ability to have bi-directional variants of
+      queues and lists, along with iterators that visit their elements in a
+      descending direction. </p>
+
+      <p> This feature will de&#64257;ne two new interfaces, <a class="jref" href="http://getjava.sfbay/doc/java/util/Deque.html">Deque</a> and <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/BlockingDeque.html">BlockingDeque</a>, along
+      with basic implementations.  It will also retro&#64257;t existing interfaces
+      and classes to support these new interfaces where appropriate. </p>
+
+      <p> This is a community contribution from past members of the <a href="http://jcp.org/en/jsr/detail?id=166">JSR&#160;166</a> Expert Group. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/Deque.html">java.util.Deque</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/BlockingDeque.html">java.util.concurrent.BlockingDeque</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">397</span></div><span class="title-left"> Collections: Sorted sets and maps with bidirectional navigation &#160;<a name="397"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Users want sorted collections (sets and maps) with more capabilities,
+      in particular the ability to search bidirectionally, and to &#64257;nd elements
+      strictly less than or greater than a given element. </p>
+
+      <p> This feature will extend each of the existing <a class="jref" href="http://getjava.sfbay/doc/java/util/SortedSet.html">SortedSet</a> and
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/SortedMap.html">SortedMap</a> interfaces with a new interface,
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/NavigableSet.html">NavigableSet</a> and
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/NavigableMap.html">NavigableMap</a>, respectively, and provide
+      concurrent implementations of these new interfaces.  It will also
+      retro&#64257;t existing interfaces and classes to support these new interfaces
+      where appropriate. </p>
+
+      <p> This is a community contribution from past members of the <a href="http://jcp.org/en/jsr/detail?id=166">JSR&#160;166</a> Expert Group. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/NavigableMap.html">java.util.NavigableMap</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/NavigableSet.html">NavigableSet</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/ConcurrentNavigableMap.html">java.util.concurrent.ConcurrentNavigableMap</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">002</span></div><span class="title-left"> Critical &#64257;le-I/O enhancements &#160;<a name="002"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Developers have long been asking for a way to discover the amount of
+      free space in a &#64257;lesystem and for methods to manipulate &#64257;le attributes.
+      These requests will eventually be addressed fully by <a href="http://jcp.org/en/jsr/detail?id=203">JSR&#160;203</a>, but in the meantime the lack of even
+      basic functionality in these areas is causing lots of frustration. </p>
+
+      <p> As an interim measure this feature will add a handful of new methods
+      to the <a class="jref" href="http://getjava.sfbay/doc/java/io/File.html">java.io.File</a> class
+      to support </p>
+
+      <ul>
+
+        <li> The discovery of the amount of free disk space, in bytes, in the
+        &#64257;lesystem partition named by a given <a class="jref" href="http://getjava.sfbay/doc/java/io/File.html">File</a>
+        instance; and </li>
+
+	<li> The examination and modi&#64257;cation of simple cross-platform &#64257;le
+	attributes including readability, writability, and executability. </li>
+
+      </ul>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/io/File.html">java.io.File</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">294</span></div><span class="title-left"> Floating point: Add core IEEE 754 recommended functions &#160;<a name="294"> </a></span></div><div class="body"><div class="summary">
+
+      <p> The Java math libraries do not include many of the IEEE&#160;754
+      recommended low-level functions for manipulating and examining
+      &#64258;oating-point values.  These functions are needed for both implementing
+      and testing &#64258;oating-point libraries.  This feature will add the core
+      IEEE-recommended functions <tt>scalb</tt>, <tt>getExponent</tt>,
+      <tt>nextAfter</tt>, <tt>nextUp</tt>, and <tt>copySign</tt> for both
+      <tt>float</tt> and <tt>double</tt> types. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/Float.html">java.lang.Float</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/Double.html">Double</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/Math.html">Math</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/StrictMath.html">StrictMath</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">364</span></div><span class="title-left"> <tt>java.util.concurrent</tt> updates &#160;<a name="364"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Several members of the <a href="http://jcp.org/en/jsr/detail?id=166">JSR&#160;166</a>
+      Expert Group have continued working to re&#64257;ne and extend the interfaces
+      and classes de&#64257;ned by that speci&#64257;cation.  This feature will integrate a
+      set of minor &#64257;xes and additions including, but not limited to: </p>
+
+      <blockquote>
+        <table class="list" summary="Updates">
+	  <tr>
+	    <td><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=5057341">5057341</a></td>
+	    <td><a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/TimeUnit.html">TimeUnit</a>
+	      needs additional enum constants for longer durations</td>
+	  </tr>
+	  <tr>
+	    <td><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=5073546">5073546</a></td>
+	    <td>Minor <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/ConcurrentHashMap.html">ConcurrentHashMap</a> constructor
+	      spec tweaks</td>
+	  </tr>
+	  <tr>
+	    <td><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6237968">6237968</a></td>
+	    <td>Add <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/locks/AbstractQueuedLongSynchronizer.html">AbstractQueuedLongSynchronizer</a></td>
+	  </tr>
+	  <tr>
+	    <td><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6267833">6267833</a></td>
+	    <td>Incorrect method signature
+	        <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/ExecutorService.html#invokeAll()">ExecutorService.invokeAll()</a></td>
+	  </tr>
+	  <tr>
+	    <td><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6275329">6275329</a></td>
+	    <td>Add <tt>lazySet</tt> methods to atomic classes</td>
+	  </tr>
+	  <tr>
+	    <td><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6277663">6277663</a></td>
+	    <td>Improve extensibility of thread pools</td>
+	  </tr>
+	  <tr>
+	    <td><a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6330307">6330307</a></td>
+	    <td>Improve <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/CopyOnWriteArraySet.html">CopyOnWriteArraySet</a>,
+	    <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/CopyOnWriteArrayList.html">CopyOnWriteArrayList</a> equals methods</td>
+	  </tr>
+	</table>
+      </blockquote>
+
+    </div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">003</span></div><span class="title-left"> Password prompting &#160;<a name="003"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Many Java applications require the ability to prompt for a password
+      without revealing the password on the screen.  GUI applications can do
+      this today, but command-line applications cannot, at least not without
+      resorting to native code and JNI. </p>
+
+      <p> This feature will de&#64257;ne a new API for interactive console I/O that
+      can disable character echoing while reading passwords. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/io/Console.html">java.io.Console</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">083</span></div><span class="title-left"> Service-provider lookup &#160;<a name="083"> </a></span></div><div class="body"><div class="summary">
+
+      <p> The JAR &#64257;le format was extended in J2SE&#160;1.3 to support a
+      standard way of specifying <a href="http://java.sun.com/j2se/1.4.2/docs/guide/jar/jar.html#Service%20Provider">pluggable
+      &#8220;service providers.&#8221;</a> Many subsystems in the platform now use this
+      mechanism, including image I/O, input methods, naming, networking, new
+      I/O, printing, security, sound, and XML.  Many of these subsystems use an
+      implementation-internal utility class for looking up services and
+      instantiating providers; there is no standard API offering such
+      functionality. </p>
+
+      <p> This feature will re&#64257;ne the internal utility class as needed and
+      then promote it into the <a class="jref" href="http://getjava.sfbay/doc/java/util/package-summary.html">java.util</a>
+      package.  This will make it easier for both internal and external
+      developers to make use of the JAR-&#64257;le service-provider feature, which
+      has become very widely used. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/ServiceLoader.html">java.util.ServiceLoader</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / m&amp;m</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">136</span></div><span class="title-left"> Generalized lock monitoring &#160;<a name="136"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Existing facilities for diagnosing synchronization problems, and in
+      particular the <a class="jref" href="http://getjava.sfbay/doc/java/lang/management/ThreadInfo.html">ThreadInfo</a> class,
+      only report information about object monitors; they do not report on the
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/package-summary.html">java.util.concurrent</a> locks introduced in
+      the J2SE&#160;5 release.  This will make the diagnosis of synchronization
+      problems much more dif&#64257;cult as applications begin to make use of these
+      new types of locks. </p>
+
+      <p> This feature will extend the existing monitoring APIs to provide
+      diagnostic information about all types of monitors and locks. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/management/LockInfo.html">java.lang.management.LockInfo</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/management/MonitorInfo.html">MonitorInfo</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/lang/management/ThreadInfo.html#getLockInfo()">ThreadInfo.getLockInfo()</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/locks/AbstractOwnableSynchronizer.html">java.util.concurrent.locks.AbstractOwnableSynchronizer</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/util/concurrent/locks/LockSupport.html">LockSupport</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / m&amp;m</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">371</span></div><span class="title-left"> Generalized MBean descriptors &#160;<a name="371"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Additional metadata about a Model MBean can be provided via <a class="jref" href="http://getjava.sfbay/doc/javax/management/Descriptor.html">Descriptors</a>.  A
+      descriptor can be attached to a <a class="jref" href="http://getjava.sfbay/doc/javax/management/modelmbean/ModelMBeanInfo.html">ModelMBeanInfo</a>
+      object to describe the MBean itself as well as to instances of the
+      various <tt>ModelMBean*Info</tt> classes to describe the components of
+      the MBean. </p>
+
+      <p> This feature will generalize the speci&#64257;cation so that descriptors
+      can be associated with all types of MBeans, not just Model MBeans.  This
+      will make it much easier to communicate various kinds of metadata such as
+      </p>
+
+      <ul>
+
+        <li> Resource bundle names and keys that localize descriptions and
+        other text in an <tt>MBeanInfo</tt> object, </li>
+
+	<li> Constraints on attribute and parameter values, </li>
+
+	<li> Units and other descriptive information, and </li>
+
+	<li> Additional metadata from other, related management models (<i>e.g.</i>,
+	SNMP&#160;OIDs or CIM quali&#64257;ers). </li>
+
+      </ul>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/management/DescriptorRead.html">javax.management.DescriptorRead</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/management/ImmutableDescriptor.html">ImmutableDescriptor</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / m&amp;m</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">373</span></div><span class="title-left">Generic annotations for MBean descriptor contents&#160;<a name="373"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Feature <a href="#371">371</a> proposes adding descriptor support to all
+      types of MBeans.  This allows instances of <a class="jref" href="http://getjava.sfbay/doc/javax/management/MBeanInfo.html">MBeanInfo</a> and associated
+      classes to include arbitrary extra information beyond the &#64257;xed &#64257;elds
+      that are currently de&#64257;ned. </p>
+
+      <p> Given that descriptors will be available for Standard MBeans, and
+      that the <tt>MBeanInfo</tt> class for a Standard MBean is derived from a
+      Java interface, it would be convenient to be able to add annotations to
+      the Java interface to de&#64257;ne the descriptor contents.  This would provide
+      an immediate way for a tool that generates Standard MBeans from an
+      existing management model to include information from the model in the
+      generated MBean interfaces, rather than in separate &#64257;les, and for
+      clients of the generated MBeans to retrieve this information in an
+      obvious way. </p>
+
+      <p> This feature will de&#64257;ne a generic mechanism by which users can
+      de&#64257;ne custom annotations that map to speci&#64257;c descriptor &#64257;elds.
+      </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/management/DescriptorKey.html">javax.management.DescriptorKey</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / m&amp;m</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">372</span></div><span class="title-left"> MXBeans &#160;<a name="372"> </a></span></div><div class="body"><div class="summary">
+
+      <p> A persistent problem with JMX modeling is that one often needs a type
+      that is an atomic snapshot of a collection of values, <i>e.g.</i>, <a class="jref" href="http://getjava.sfbay/doc/java/lang/management/ThreadInfo.html">ThreadInfo</a>, but
+      clients of the model cannot be required to have that type
+      present&#8212;especially since the type might change between
+      versions. </p>
+
+      <p> Open MBeans are one solution to this problem but they are,
+      unfortunately, dif&#64257;cult to use.  The J2SE&#160;5 release introduced the
+      notion of <a class="jref" href="http://getjava.sfbay/doc/java/lang/management/ManagementFactory.html"><span class="jref-plain">MXBeans</span></a>, but these were
+      only implemented for the platform&#8217;s built-in MBean server.  This
+      feature will add full support for MXBeans to the base JMX
+      infrastructure. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/javax/management/MXBean.html">javax.management.MXBean</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / net</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">107</span></div><span class="title-left"> Internationalized domain names &#160;<a name="107"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Domain names on the Internet are moving beyond ASCII.  This feature
+      will add support for internationalized domain names as speci&#64257;ed by RFCs
+      <a href="http://www.ietf.org/rfc/rfc3490">3490</a>, <a href="http://www.ietf.org/rfc/rfc3491">3491</a>, and <a href="http://www.ietf.org/rfc/rfc3492">3492</a>. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/net/IDN.html">java.net.IDN</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / net</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">115</span></div><span class="title-left">Programmatic access to network parameters&#160;<a name="115"> </a></span></div><div class="body"><div class="summary">
+
+      <p> Many applications need more information about the capabilities and
+      current state of the underlying system&#8217;s network interfaces than is
+      currently provided.  This feature will extend the existing <a class="jref" href="http://getjava.sfbay/doc/java/net/NetworkInterface.html">NetworkInterface</a> class to
+      include, at least, the following kinds of information: </p>
+
+      <ul>
+
+	<li> Broadcast address </li>
+	<li> Subnet mask </li>
+	<li> MAC/hardware address </li>
+	<li> MTU size </li>
+	<li> State (<i>i.e.</i>, up or down) </li>
+	<li> Is multicast supported? </li>
+	<li> Is this the loopback interface? </li>
+	<li> Is this interface&#8217;s address dynamic? </li>
+	<li> Is this a subinterface (<i>i.e.</i>, a virtual address)? </li>
+
+      </ul>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/net/InterfaceAddress.html">java.net.InterfaceAddress</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/net/NetworkInterface.html">NetworkInterface</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / net</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">119</span></div><span class="title-left"> Simple HTTP cookie manager &#160;<a name="119"> </a></span></div><div class="body"><div class="summary">
+
+      <p> J2SE&#160;5 introduced a <a class="jref" href="http://getjava.sfbay/doc/java/net/package-summary.html">CookieHandler</a> API so that applications could
+      control how cookies are managed on the client side of an HTTP connection.
+      No implementations of this abstract class were provided, however, so
+      application developers were left to roll their own. </p>
+
+      <p> This feature will de&#64257;ne a simple implementation of the <a class="jref" href="http://getjava.sfbay/doc/java/net/package-summary.html">CookieHandler</a> API that&#8217;s suf&#64257;ciently
+      customizable to meet the needs of most applications. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a class="jref" href="http://getjava.sfbay/doc/java/net/CookieManager.html">java.net.CookieManager</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/net/CookiePolicy.html">CookiePolicy</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/net/CookieStore.html">CookieStore</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/java/net/HttpCookie.html">HttpCookie</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / sec</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">022</span></div><span class="title-left jsr"> JSR 105: XML Digital-Signature APIs &#160;<a name="022"> </a><a name="jsr-105"> </a></span></div><div class="body"><div class="summary">
+
+      <p> The <a href="http://www.w3.org/2000/09/xmldsig">XML Signature</a>
+      standard is a key part of Web Services Security.  It&#8217;s therefore
+      required by <a href="http://jcp.org/en/jsr/detail?id=224">JSR&#160;224</a> (<a href="#020">JAX-WS&#160;2.0</a>), though it&#8217;s also useful in its own
+      right. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=105">JSR 105</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/crypto/package-summary.html">javax.xml.crypto</a>
+      
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / tools</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">027</span></div><span class="title-left jsr"> JSR 199: Java Compiler API &#160;<a name="027"> </a><a name="jsr-199"> </a></span></div><div class="body"><div class="summary">
+
+      <p> This JSR will de&#64257;ne a service-provider API that allows a Java
+      program to select and invoke a Java language compiler programmatically,
+      retrieve errors and other messages in a structured fashion, and access
+      the dependency information computed by the compiler.  This will ful&#64257;ll a
+      longstanding request from many Java tools vendors. </p>
+
+      <p> The speci&#64257;cation will not mandate the inclusion of a Java language
+      compiler in a Java&#160;SE&#160;6 JRE; it will merely permit it. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=199">JSR 199</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/tools/package-summary.html">javax.tools</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / tools</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">009</span></div><span class="title-left jsr"> JSR 269: Pluggable Annotation-Processing API &#160;<a name="009"> </a><a name="jsr-269"> </a></span></div><div class="body"><div class="summary">
+
+      <p> This JSR will de&#64257;ne a standard API to support the processing of
+      <a href="http://jcp.org/en/jsr/detail?id=175">JSR&#160;175</a> annotations. </p> 
+
+      <p> As with <a href="http://jcp.org/en/jsr/detail?id=199">JSR 199</a>, the Java Compiler API,
+      the speci&#64257;cation will not require that a Java&#160;SE&#160;6 JRE support
+      annotation processing; it will merely permit it.  </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=269">JSR 269</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/annotation/processing/package-summary.html">javax.annotation.processing</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/lang/model/package-summary.html">javax.lang.model</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/lang/model/element/package-summary.html">javax.lang.model.element</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/lang/model/type/package-summary.html">javax.lang.model.type</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/lang/model/util/package-summary.html">javax.lang.model.util</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">ee / &#8211;</span>
+          &#183;
+          <span class="priority">GD</span>
+          &#183;
+          <span class="number">368</span></div><span class="title-left jsr"> JSR 250: Common Annotations &#160;<a name="368"> </a><a name="jsr-250"> </a></span></div><div class="body"><div class="summary">
+
+      <p> <a href="http://jcp.org/en/jsr/detail?id=250">JSR 250</a> de&#64257;nes a small set of common
+      annotations for use in other speci&#64257;cations.  Some of the annotations are
+      speci&#64257;c to the Java&#160;EE platform; others, however, are relevant to the
+      Java&#160;SE platform and are also of use in other component JSRs such as
+      <a href="http://jcp.org/en/jsr/detail?id=224">JSR&#160;224</a> (<a href="#020">JAX-WS&#160;2.0</a>). </p>
+
+      <p> The more-general annotations de&#64257;ned by JSR&#160;250 are in its
+      <a class="jref" href="http://getjava.sfbay/doc/javax/annotation/package-summary.html">javax.annotation</a> package.  This feature
+      will incorporate that package into the Java&#160;SE platform. </p>
+      
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=250">JSR 250</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/annotation/package-summary.html">javax.annotation</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">ee / jdbc</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">025</span></div><span class="title-left jsr"> JSR 221: JDBC 4.0 &#160;<a name="025"> </a><a name="jsr-221"> </a></span></div><div class="body"><div class="summary">
+
+      <p> JDBC 4.0 is the latest revision of the core Java database access
+      standard.  The highlights of this version are: </p>
+
+      <ul>
+
+        <li> Automatic driver loading via the Java&#160;SE <a href="#083">service-provider mechanism</a>; </li>
+
+	<li> Annotations that ease the development of applications that
+	manipulate data in relational (table) form rather than via an
+	object/relational mapping; </li>
+
+	<li> Support for SQL ROWIDs; </li>
+
+	<li> Enhanced support for BLOBs and CLOBs; </li>
+
+	<li> SQL/XML support, as de&#64257;ned in SQL:2003; and </li>
+
+	<li> Improved connection management. </li>
+
+      </ul>
+
+      <p> This feature will integrate JDBC 4.0 into the Java&#160;SE platform.
+      </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=221">JSR 221</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/java/sql/package-summary.html">java.sql</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/sql/package-summary.html">javax.sql</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">ee / xml</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">024</span></div><span class="title-left jsr"> JSR 173: Streaming API for XML (StAX) &#160;<a name="024"> </a><a name="jsr-173"> </a></span></div><div class="body"><div class="summary">
+
+      <p> <a href="http://jcp.org/en/jsr/detail?id=173">JSR 173</a> de&#64257;nes a streaming-parser API
+      for XML.  Streaming parsers, also called &#8220;pull&#8221; parsers, offer
+      performance competitive with existing SAX parsers but an interface
+      that&#8217;s much easier to use.  StAX is also a foundational technology for
+      <a href="http://jcp.org/en/jsr/detail?id=222">JSR 222</a> (<a href="#021">JAXB&#160;2.0</a>)
+      and <a href="http://jcp.org/en/jsr/detail?id=224">JSR&#160;224</a> (<a href="#020">JAX-WS&#160;2.0</a>). </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=173">JSR 173</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/stream/package-summary.html">javax.xml.stream</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/stream/events/package-summary.html">javax.xml.stream.events</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/stream/util/package-summary.html">javax.xml.stream.util</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/transform/stax/package-summary.html">javax.xml.transform.stax</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">ee / xml</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">399</span></div><span class="title-left jsr"> JSR 181: Web-Services Metadata &#160;<a name="399"> </a><a name="jsr-181"> </a></span></div><div class="body"><div class="summary">
+
+      <p> <a href="http://jcp.org/en/jsr/detail?id=181">JSR 181</a> de&#64257;nes a simpli&#64257;ed programming
+      model for Web Services based upon a set of annotations.  These
+      annotations are used by <a href="http://jcp.org/en/jsr/detail?id=224">JSR&#160;224</a> (<a href="#020">JAX-WS&#160;2.0</a>). </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=181">JSR 181</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/jws/package-summary.html">javax.jws</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">ee / xml</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">021</span></div><span class="title-left jsr"> JSR 222: Java Architecture for XML Binding (JAXB)&#160;2.0 &#160;<a name="021"> </a><a name="jsr-222"> </a></span></div><div class="body"><div class="summary">
+
+      <p> <a href="http://jcp.org/en/jsr/detail?id=222">JSR 222</a> is a major revision of the
+      JAXB&#160;1.1 speci&#64257;cation.  Its primary goals are </p>
+
+      <ul>
+
+        <li> Full support for W3C XML Schema; </li>
+
+	<li> The ability to bind existing Java classes, which may include
+	customizing annotations, to an XML schema generated from those classes;
+	</li>
+
+	<li> Simpli&#64257;ed bindings that leverage the language features introduced
+	in Java&#160;SE&#160;5; and </li>
+
+	<li> The portability of JAXB-generated classes across different
+	implementations. </li>
+
+      </ul>
+
+      <p> This feature will integrate JAXB&#160;2.0 into the Java&#160;SE platform.
+      </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=221">JSR 221</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/bind/package-summary.html">javax.xml.bind</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/bind/annotation/package-summary.html">javax.xml.bind.annotation</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/bind/annotation/adapters/package-summary.html">javax.xml.bind.annotation.adapters</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/bind/attachment/package-summary.html">javax.xml.bind.attachment</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/bind/helpers/package-summary.html">javax.xml.bind.helpers</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">ee / xml</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">020</span></div><span class="title-left jsr"> JSR 224: Java API for XML-Based Web Services (JAX-WS)&#160;2.0 &#160;<a name="020"> </a><a name="jsr-224"> </a></span></div><div class="body"><div class="summary">
+
+      <p> <a href="http://jcp.org/en/jsr/detail?id=224">JSR 224</a> is a major revision of the
+      JAX-RPC&#160;1.1 speci&#64257;cation.  Its primary goals are </p>
+
+      <ul>
+
+        <li> Full integration with <a href="http://jcp.org/en/jsr/detail?id=222">JSR 222</a> (<a href="#021">JAXB&#160;2.0</a>); </li>
+
+	<li> Support for the latest Web Services standards, including
+	SOAP&#160;1.2, WSDL&#160;2.0, and the WS-I Basic
+	Pro&#64257;le&#160;1.1; </li>
+
+	<li> Improved ease-of-development via annotations that will simplify
+	the most common development scenarios; </li>
+
+	<li> Support for client-side asynchronous operations; and </li>
+
+	<li> The portability of JAX-WS-generated classes across different
+	implementations. </li>
+
+      </ul>
+
+      <p> This feature will incorporate the core and client portions of the
+      JAX-WS&#160;2.0 speci&#64257;cation into the Java&#160;SE platform. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://jcp.org/en/jsr/detail?id=224">JSR 224</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/ws/package-summary.html">javax.xml.ws</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/ws/handler/package-summary.html">javax.xml.ws.handler</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/ws/handler/soap/package-summary.html">javax.xml.ws.handler.soap</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/ws/http/package-summary.html">javax.xml.ws.http</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/ws/spi/package-summary.html">javax.xml.ws.spi</a>,
+      <a class="jref" href="http://getjava.sfbay/doc/javax/xml/ws/soap/package-summary.html">javax.xml.ws.soap</a>
+     ]</div></div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">ee / xml</span>
+          &#183;
+          <span class="priority">RD</span>
+          &#183;
+          <span class="number">378</span></div><span class="title-left">JavaBeans Activation Framework (JAF) 1.1&#160;<a name="378"> </a></span></div><div class="body"><div class="summary">
+
+      <p> The JAF is a simple data typing and registry framework.  It provides
+      standard services for determining the MIME type of an arbitrary piece of
+      binary data, encapsulating access to it, discovering the operations
+      available on it, and instantiating an appropriate bean to perform those
+      operations. </p>
+
+      <p> The JAF is required by <a href="http://jcp.org/en/jsr/detail?id=224">JSR&#160;224</a>
+      (<a href="#020">JAX-WS&#160;2.0</a>), though it&#8217;s also useful in
+      its own right. </p>
+
+      <p><span class="sc">PROCESS NOTE: </span> The JAF speci&#64257;cation predates
+      the Java Community Process.  Some minor revisions were recently proposed
+      under <a href="http://jcp.org/en/jsr/detail?id=925">JSR&#160;925</a>. </p>
+
+    </div><div class="spec"><div class="open">[</div><div class="body">
+      <a href="http://java.sun.com/products/javabeans/jaf">JAF 1.0.2</a>;
+      <a href="http://jcp.org/en/jsr/detail?id=925">JSR 925: JAF 1.1</a>;
+      <a class="jref" href="http://getjava.sfbay/doc/javax/activation/package-summary.html">javax.activation</a>
+     ]</div></div></div></div><div class="section"><div class="number"><span>9</span></div><div class="title"><span>Dropped features</span><a name="9">&#160;</a></div><div class="body">
+
+    <p> The following features have been dropped from the release since the
+    Early Draft Review. </p>
+
+  </div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / libs</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">402</span></div><span class="title-left">Re&#64258;ective access to parameter names&#160;<a name="402"> </a></span></div><div class="body"><div class="summary"><p> Original description: </p><blockquote>
+
+      <p> Practical experience with annotations has identi&#64257;ed situations in
+      which it&#8217;d be useful to be able to access the names of method and
+      constructor parameter names.  This is particularly relevant to JSRs
+      <a href="http://jcp.org/en/jsr/detail?id=181">181</a> (<a href="#399">Web-Services
+      Metadata</a>) and <a href="http://jcp.org/en/jsr/detail?id=224">224</a> (<a href="#020">JAX-WS&#160;2.0</a>), but it may also be of use in other JSRs
+      such as <a href="http://jcp.org/en/jsr/detail?id=255">255</a>(JMX&#160;2.0) and <a href="http://jcp.org/en/jsr/detail?id=274">274</a> (Design-Time API for JavaBeans). </p>
+
+      <p> This feature will provide access to the names of constructor and
+      method parameters at runtime via the re&#64258;ection API.  To do this
+      effectively will probably require the introduction of a new core
+      annotation, or perhaps a meta-annotation, to identify constructors and
+      methods whose parameter names should be recorded in class &#64257;les.
+      Otherwise this feature would only work with class &#64257;les containing full
+      debug information; such class &#64257;les are larger than is desirable in
+      production settings. </p>
+
+    </blockquote>
+
+      <p> The JSR&#160;270 Expert Group concluded, after a lengthy discussion,
+      that it would be better to support re&#64258;ective access to all parameter
+      names, by default, rather than require the use of annotations or some
+      other means to request that parameter names be recorded during the
+      compilation of particular classes or interfaces.  This is the cleanest
+      approach from the standpoint of language design, it &#64257;lls in one last gap
+      in Java&#8217;s re&#64258;ection facilities, and it removes any question as to
+      whether or not parameter names will be available to applications. </p>
+
+      <p> A consequence of making parameter names available by default is that
+      programs may, intentionally or not, become dependent upon parameter names
+      even though such names are not, strictly speaking, part of the signature
+      of a constructor or method.  After this change is made it will be
+      dangerous to rename a parameter of any public or protected method or
+      constructor in any published API.  A change of this magnitude deserves
+      wider, and longer-term, publicity and discussion than is possible in the
+      remainder of the Java&#160;SE&#160;6 development cycle.  The JSR&#160;270 EG
+      therefore recommends that this more complete approach be pursued in
+      Java&#160;SE&#160;7. </p>
+
+    </div></div></div><div class="feature"><div class="title"><div class="title-right"><span class="area-comp">core / net</span>
+          &#183;
+          <span class="priority">TO</span>
+          &#183;
+          <span class="number">108</span></div><span class="title-left">Internationalized resource identi&#64257;ers&#160;<a name="108"> </a></span></div><div class="body"><div class="summary"><p> Original description: </p><blockquote>
+
+      <p> URIs on the Internet are moving beyond ASCII too.  This feature will
+      add support for internationalized resource identi&#64257;ers as speci&#64257;ed by
+      RFCs <a href="http://www.ietf.org/rfc/rfc3986">3986</a> and <a href="http://www.ietf.org/rfc/rfc3987">3987</a>. </p>
+
+    </blockquote>
+
+      <p> An implementation of this feature was &#64257;rst integrated into build 55
+      of the Java&#160;SEnbsp;6 reference implementation, but in the ensuing months
+      a series of nontrivial compatibility issues were identi&#64257;ed.  Some of
+      these were reparable with point &#64257;xes, but others were not.  Rather than
+      attempt a deep rewrite so late in the development cycle it was decided
+      instead to drop this feature from the current release with the intent
+      that it be reconsidered for a future release. </p>
+
+      
+
+    </div></div></div><div class="section"><div class="number"><span>A</span></div><div class="title"><span>Feature-removal policy</span><a name="A">&#160;</a></div><div class="body">
+
+    <p> The Java&#160;SE Platform Speci&#64257;cation has grown monotonically since it
+    was &#64257;rst released.  No feature has ever been removed, and the standing
+    policy has been that no feature ever will be removed. </p>
+
+    <p> This policy has had its bene&#64257;ts, chief among them the fact that it is
+    a cornerstone of the platform&#8217;s strong commitment to binary compatibility.
+    If an application is built on release N then it will run on release
+    N+1. </p>
+
+    <p> As the platform has matured, however, some of the disadvantages of this
+    policy have gradually become evident.  Chief among these are the facts that
+    both the conceptual complexity of the platform and the size of minimal Java
+    Runtime Environment (JRE) download bundles have, in turn, also grown
+    monotonically. </p>
+
+    <p> This appendix de&#64257;nes a simple policy for removing features that is
+    intended to work well within the JCP and also take proper account of the
+    needs of customers who use the platform in production settings.  This
+    policy doesn&#8217;t actually require that removed features be deleted; instead,
+    such features become optional components that continue to be covered by the
+    platform TCK and may continue to be shipped by platform implementors at
+    their discretion. </p>
+
+    <p> This policy is not binding upon future Java&#160;SE platform umbrella JSR
+    Expert Groups.  It is, however, seen as a commitment by Sun Microsystems to
+    be honored in all future umbrella JSRs for which it may serve as the
+    Speci&#64257;cation Lead. </p>
+
+
+    <p class="subsection"><span class="title">Scope</span> This policy is only intended to be applied to large
+    features, on the scale of entire packages or subsystems.  It is not
+    intended to be applied to one or a few classes, nor to speci&#64257;c class
+    members (methods, &#64257;elds, <i>etc.</i>).  There are almost always less-costly ways
+    to deal with little-used or fundamentally-broken API elements at this
+    smaller scale, <i>e.g.</i>, deprecation or appropriate documentation. </p>
+
+
+    <p class="subsection"><span class="title">Process</span> Removing a feature is a two step process that
+    involves two feature releases and, therefore, two Umbrella Expert Groups
+    (UEGs). </p>
+
+    <p> The UEG for release N of the platform may decide to propose that a
+    feature be removed.  The only immediate consequence of this action is that
+    the release N speci&#64257;cation is updated to indicate, in a very prominent
+    way, that the feature may be removed in release N+1, or in some later
+    release. </p>
+
+    <p> The UEG for release N+1 gets to make the actual decision as to whether
+    the feature is removed from that release, retained as a required component,
+    or left in the &#8220;proposed removal&#8221; state for the next UEG to decide.  It is
+    generally expected that they will follow through on the proposal made by
+    UEG N unless new information indicates that the Java community would be
+    better served by one of the alternatives. </p>
+
+    <p> If the UEG for release N+1 decides not to remove the feature but also
+    decides not to retain the feature as a required component then the UEG for
+    release N+2, and so on, will be faced with the same three-way
+    decision. </p>
+
+    <p> The decision by UEG N to propose the removal of a feature, and the
+    decision by UEG N+1 or some later UEG to remove the feature, or to retain
+    it, or to leave it in limbo, must be made prior to the publication of the
+    Public Review draft of the corresponding platform speci&#64257;cation and,
+    obviously, communicated in that draft. </p>
+
+    <p> Each UEG involved in this process is expected to undertake widespread
+    consultation with the Java&#160;SE community, and especially with those using
+    current releases in production settings, in order to ensure that the
+    community supports the proposed feature removal. </p>
+
+    <p> Once a feature has been proposed for removal, but before it is actually
+    made optional, platform implementors are strongly encouraged to provide
+    mechanical assistance to developers, <i>e.g.</i>, in the form of compile-time
+    warnings, that the feature may be removed in the next release. </p>
+
+
+    <p class="subsection"><span class="title">Result</span> The result of successfully applying this policy to
+    a feature is not the actual deletion of the feature but rather the
+    conversion of the feature from a required component of the Java&#160;SE
+    platform into an optional component.  As such its speci&#64257;cation is still
+    part of the Java&#160;SE Platform Speci&#64257;cation but it is identi&#64257;ed, in a very
+    prominent way, as an optional feature that might not be available in all
+    platform implementations. </p>
+
+    <p> A particular implementation of the Java&#160;SE platform may omit an
+    optional feature or it may still contain the feature, at the discretion of
+    the implementor.  A platform implementor may choose to ship an
+    implementation of an optional feature in some alternate form, e.g., as a
+    separate jar &#64257;le co-packaged with the platform implementation or available
+    for download on the web.  If an implementor ships implementations of the
+    Java&#160;SE platform for several different target operating-system/hardware
+    combinations then the implementor is free to include the feature for some
+    targets but omit it for others. </p>
+
+    <p> An optional feature may be further unbundled from the Java&#160;SE platform
+    if its Maintenance Lead commits to providing a standalone TCK.  This would
+    make it possible to create implementations of optional features that are
+    independent of any particular platform implementation. </p>
+
+    <p> An optional feature may also be declared, in the Java&#160;SE Platform
+    Speci&#64257;cation, to be overridable via the Endorsed Standards Override
+    Mechanism.  This would make it possible to replace a platform
+    implementation&#8217;s version of an optional feature with an independent
+    alternative. </p>
+
+    <p> In any case, the Java&#160;SE TCK will continue to contain the tests for
+    removed features after they become optional.  Implementations of optional
+    features will be required to pass these tests, regardless of the form in
+    which they are delivered. </p>
+
+  </div></div><div class="section"><div class="number"><span>B</span></div><div class="title"><span>Change history</span><a name="B">&#160;</a></div><div class="body">
+
+    <p class="subsection"><span class="title">Changes between  Early Draft Review  and  Public Review </span></p><ul><li><a href="#402">402</a>&#160;&#8211; Dropped per EG discussion </li><li><a href="#108">108</a>&#160;&#8211; Dropped due to compatibility issues </li><li><a href="#207">207</a>&#160;&#8211; Added </li><li><a href="#368">368</a>&#160;&#8211; Clari&#64257;ed to identify the speci&#64257;c annotations to
+	be included </li><li> Added <a href="#3">section</a> linking to related maintenance
+	reviews </li><li> Added <a href="#A">appendix</a> describing the feature-removal
+	policy </li><li> Added <a href="#4">section</a> proposing the removal of
+	<tt>javax.sound.midi</tt> </li><li> Updated the status column in the <a href="#2">table of
+	component JSRs</a> </li><li> Removed all uses of the &#8220;Mustang&#8221; code name </li></ul><p class="subsection"><span class="title">Changes between  Public Review  and  Proposed Final Draft </span></p><ul><li> Updated the status column in the <a href="#2">table of
+	component JSRs</a> </li></ul><p class="subsection"><span class="title">Changes since  Proposed Final Draft </span></p><ul><li> Updated the status column in the <a href="#2">table of
+	component JSRs</a> </li></ul>
+
+  </div></div></body></html>
