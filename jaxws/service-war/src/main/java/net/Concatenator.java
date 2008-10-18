@@ -35,6 +35,6 @@ public class Concatenator {
 
         System.out.println("publishing service at: " + publishUrl);
         Concatenator concatenator = new Concatenator();
-        Endpoint endpoint = Endpoint.publish(publishUrl, concatenator);
+        Endpoint.publish(publishUrl, concatenator);
     }
 }
