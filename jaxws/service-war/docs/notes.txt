@@ -1,9 +1,9 @@
 SCDJWS Notes
 
-JAX-WS API 2.1 (JSR 224) - jaxws-api-2.1.jar jaxws-rt-2.1.4.jar (jax.xml.ws.*)
-	-> JAXB API 2.1 (JSR 222) - jaxb-api-2.1.jar jax-impl-2.1.7.jar (jax.xml.bind.*)
+JAX-WS API 2.1 (JSR 224) - jaxws-api-2.1.jar jaxws-rt-2.1.4.jar (javax.xml.ws.*)
+	-> JAXB API 2.1 (JSR 222) - jaxb-api-2.1.jar jax-impl-2.1.7.jar (javax.xml.bind.*)
 	-> A Metadata Facility for the Java Programming Language (JSR 175) JDK5+
-	-> Web Services Metadata for the Java Platform (JSR 181) jsr181-api-1.0-MR1.jar (jax.jws.*) : 10 annonation classes
+	-> Web Services Metadata for the Java Platform (JSR 181) jsr181-api-1.0-MR1.jar (javax.jws.*) : 10 annonation classes
 	-> Implementing Enterprise Web Services (JSR 109)
 	-> Web Services Security (JSR 183) Withdrawn
 
