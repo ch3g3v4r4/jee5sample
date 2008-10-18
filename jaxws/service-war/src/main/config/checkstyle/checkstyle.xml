@@ -23,6 +23,7 @@
 
     <!-- Checks for Javadoc comments.                     -->
     <!-- See http://checkstyle.sf.net/config_javadoc.html -->
+    <!-- TEMP
     <module name="JavadocMethod">
       <property name="scope" value="protected" />
       <property name="allowMissingPropertyJavadoc" value="true" />
@@ -32,7 +33,7 @@
       <property name="scope" value="protected" />
     </module>
     <module name="JavadocStyle" />
-
+ -->
     <!-- Checks for Naming Conventions.                  -->
     <!-- See http://checkstyle.sf.net/config_naming.html -->
     <module name="ConstantName" />
@@ -167,6 +168,7 @@
       <property name="format" value="\s+$" />
       <property name="message" value="Line has trailing spaces." />
     </module>
+    <!-- TEMP
     <module name="GenericIllegalRegexp">
       <property name="format" value="System\.out\.print"/>
       <property name="message" value="Use log instead of System.out.print." />
@@ -175,6 +177,7 @@
       <property name="format" value="[.]*\.printStackTrace"/>
       <property name="message" value="Use log(msg, ex) instead of printStackTrace()." />
     </module>
+     -->
     <module name="GenericIllegalRegexp">
       <property name="format" value="System\.exit"/>
     </module>
