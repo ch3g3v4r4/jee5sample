@@ -1,5 +1,6 @@
 SCDJWS Notes
 
+1./
 JAX-WS API 2.1 (JSR 224) - jaxws-api-2.1.jar jaxws-rt-2.1.4.jar (javax.xml.ws.*)
 	-> JAXB API 2.1 (JSR 222) - jaxb-api-2.1.jar jax-impl-2.1.7.jar (javax.xml.bind.*)
 	-> A Metadata Facility for the Java Programming Language (JSR 175) JDK5+
@@ -23,3 +24,20 @@ JDK6:
 SOAP 1.2
 WSDL 2.0/1.1
 WS-I Basic Profile 1.1
+
+---------------------------------------------------------------------------
+
+2./ JAX-WS Architecture:
+
+jaxws-api.jar (api)
+  + Runtime SPI: A part of JAX-WS that defines the contract between the JAX-WS RI runtime and Java EE.
+jaxws-rt.jar (runtime): runtime module is available at application runtime and provide the actual core Web Services framework.
+jaxws-tools.jar (tools):
+  + tools: Tools for converting WSDLs and Java source/class files to Web Services.
+  + Annotation Processor: An APT AnnotationProcessor for processing Java source files with javax.jws.* annotations and making them web services.
+  + Tools SPI: A part of JAX-WS that defines the contract between the JAX-WS RI tools and Java EE.
+
+jaxb-api.jar
+jaxb-impl.jar (runtime)
+jaxb-xjc.jar
+
