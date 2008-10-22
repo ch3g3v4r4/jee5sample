@@ -9,6 +9,7 @@
 
 	<properties>
 		<jaxws.version>2.1.5-SNAPSHOT</jaxws.version>
+		<activation.scope>compile</activation.scope>
 	</properties>
 
 	<dependencies>
@@ -22,6 +23,12 @@
 			<groupId>com.sun.xml.ws</groupId>
 			<artifactId>jaxws-rt</artifactId>
 			<version>${jaxws.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.activation</groupId>
+					<artifactId>activation</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 	</dependencies>
@@ -58,7 +65,6 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-
              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
