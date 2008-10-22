@@ -17,9 +17,8 @@
 
 package net;
 
-import javax.jws.WebService;
 import javax.jws.WebMethod;
-import javax.xml.ws.Endpoint;
+import javax.jws.WebService;
 
 @WebService
 public class Concatenator {
@@ -29,12 +28,4 @@ public class Concatenator {
         return a + " " + b;
     }
 
-    public static void main(String[] args) {
-        // e.g.
-        String publishUrl = "http://localhost:8080/concatservice";
-
-        System.out.println("publishing service at: " + publishUrl);
-        Concatenator concatenator = new Concatenator();
-        Endpoint.publish(publishUrl, concatenator);
-    }
 }
