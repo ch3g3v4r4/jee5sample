@@ -8,7 +8,7 @@
 	<name>service-war</name>
 
 	<properties>
-		<jaxws.version>2.1.5-SNAPSHOT</jaxws.version>
+		<jaxws.version>2.1.5</jaxws.version>
 		<activation.scope>compile</activation.scope>
 	</properties>
 
@@ -155,8 +155,8 @@ org.eclipse.jdt.apt.reconcileEnabled=true
 						<file>
 							<name>.factorypath</name>
 							<content><![CDATA[<factorypath>
-    <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/bind/jaxb-impl/2.1.9-SNAPSHOT/jaxb-impl-2.1.9-SNAPSHOT.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/bind/jaxb-xjc/2.1.9-SNAPSHOT/jaxb-xjc-2.1.9-SNAPSHOT.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/bind/jaxb-impl/2.1.9/jaxb-impl-2.1.9.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/bind/jaxb-xjc/2.1.9/jaxb-xjc-2.1.9.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/ws/jaxws-rt/${jaxws.version}/jaxws-rt-${jaxws.version}.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/ws/jaxws-tools/${jaxws.version}/jaxws-tools-${jaxws.version}.jar" enabled="true" runInBatchMode="true"/>
 </factorypath>
