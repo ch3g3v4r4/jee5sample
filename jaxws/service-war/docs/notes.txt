@@ -41,3 +41,7 @@ jaxb-api.jar
 jaxb-impl.jar (runtime)
 jaxb-xjc.jar
 
+3/
+WSServletContextListener --> "com.sun.xml.ws.server.http.servletDelegate" : WSServletDelegate(sun-jaxws.xml)
+WSServlet -> WSServletDelegate -> ServletAdapter
+
