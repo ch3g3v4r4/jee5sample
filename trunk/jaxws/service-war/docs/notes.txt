@@ -41,7 +41,15 @@ jaxb-api.jar
 jaxb-impl.jar (runtime)
 jaxb-xjc.jar
 
-3/
+3/ JAX-WS Impl Design
+
 WSServletContextListener --> "com.sun.xml.ws.server.http.servletDelegate" : WSServletDelegate(sun-jaxws.xml)
 WSServlet -> WSServletDelegate -> ServletAdapter
 
+3/ WS Concepts
+
+ [Port Type](abstract) =  Set of [Operation]s
+ [Binding] (concrete)  =  [Port Type] + [network protocol (e.g. soap over http) and message format (e.g. document+literal)]
+ [Port] (concrete)     =  [Binding] + [address (http://localhost:8080/service-war/myService) ]
+ [Endpoint](concrete)  =  [Port] + [Binding] + [Port Type]
+ [Service](abstract)   =  SUM related [Endpoint]s
