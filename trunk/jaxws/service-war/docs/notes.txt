@@ -51,5 +51,5 @@ WSServlet -> WSServletDelegate -> ServletAdapter
  [Port Type](abstract) =  Set of [Operation]s
  [Binding] (concrete)  =  [Port Type] + [network protocol (e.g. soap over http) and message format (e.g. document+literal)]
  [Port] (concrete)     =  [Binding] + [address (http://localhost:8080/service-war/myService) ]
- [Endpoint](concrete)  =  [Port] + [Binding] + [Port Type]
+ [Endpoint](concrete)  =  [Port]
  [Service](abstract)   =  SUM related [Endpoint]s
