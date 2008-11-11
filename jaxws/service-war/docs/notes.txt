@@ -48,7 +48,7 @@ WSServlet -> WSServletDelegate -> ServletAdapter
 
 3/ WS Concepts
 
- [Port Type](abstract) =  Set of [Operation]s
+ [Port Type](abstract) =  collection of [Operation]s
  [Binding] (concrete)  =  [Port Type] + [network protocol (e.g. soap over http) and message format (e.g. document+literal)]
  [Port] (concrete)     =  [Binding] + [address (http://localhost:8080/service-war/myService) ]
  [Endpoint](concrete)  =  [Port]
