@@ -21,8 +21,8 @@ JDK6:
 	250	Common Annotations 	Final Release
 	269	Pluggable Annotation-Processing API 	Final Draft
 
-SOAP 1.2
-WSDL 2.0/1.1
+SOAP 1.2 (+1.1)
+WSDL 1.1 (2.0 will be supported later)
 WS-I Basic Profile 1.1
 
 ---------------------------------------------------------------------------
