@@ -15,7 +15,7 @@
  *
  */
 
-package net;
+package com.mycompany.webservice;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
