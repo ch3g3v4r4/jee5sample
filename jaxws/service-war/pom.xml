@@ -94,7 +94,7 @@
               <goal>wsgen</goal>
             </goals>
             <configuration>
-              <sei>net.Concatenator</sei>
+              <sei>com.mycompany.webservice.Concatenator</sei>
               <genWsdl>true</genWsdl>
               <sourceDestDir>.apt_generated</sourceDestDir>
               <keep>true</keep>
