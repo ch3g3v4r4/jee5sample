@@ -1,70 +1,70 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.mycompany.webservice</groupId>
-	<artifactId>service-war</artifactId>
-	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>service-war</name>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mycompany.webservice</groupId>
+  <artifactId>service-war</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>service-war</name>
 
-	<properties>
-		<jaxws.version>2.1.5</jaxws.version>
-		<activation.scope>compile</activation.scope>
-	</properties>
+  <properties>
+    <jaxws.version>2.1.5</jaxws.version>
+    <activation.scope>compile</activation.scope>
+  </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.ws</groupId>
-			<artifactId>jaxws-rt</artifactId>
-			<version>${jaxws.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.activation</groupId>
-					<artifactId>activation</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-rt</artifactId>
+      <version>${jaxws.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.activation</groupId>
+          <artifactId>activation</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
-	</dependencies>
+  </dependencies>
 
-	<repositories>
-		<repository>
-			<id>maven-repository.dev.java.net</id>
-			<name>Java.net Repository for Maven 1</name>
-			<url>http://download.java.net/maven/1/</url>
-			<layout>legacy</layout>
-		</repository>
-		<repository>
-			<id>maven2-repository.dev.java.net</id>
-			<name>Java.net Repository for Maven 2</name>
-			<url>http://download.java.net/maven/2/</url>
-		</repository>
-	</repositories>
+  <repositories>
+    <repository>
+      <id>maven-repository.dev.java.net</id>
+      <name>Java.net Repository for Maven 1</name>
+      <url>http://download.java.net/maven/1/</url>
+      <layout>legacy</layout>
+    </repository>
+    <repository>
+      <id>maven2-repository.dev.java.net</id>
+      <name>Java.net Repository for Maven 2</name>
+      <url>http://download.java.net/maven/2/</url>
+    </repository>
+  </repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>maven2-repository.dev.java.net</id>
-			<url>http://download.java.net/maven/2/</url>
-		</pluginRepository>
-	</pluginRepositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>maven2-repository.dev.java.net</id>
+      <url>http://download.java.net/maven/2/</url>
+    </pluginRepository>
+  </pluginRepositories>
 
-	<build>
-		<finalName>service-war</finalName>
+  <build>
+    <finalName>service-war</finalName>
 
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -84,92 +84,92 @@
                 </executions>
             </plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxws-maven-plugin</artifactId>
-				<version>1.10</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>wsgen</goal>
-						</goals>
-						<configuration>
-							<sei>net.Concatenator</sei>
-							<genWsdl>true</genWsdl>
-							<sourceDestDir>.apt_generated</sourceDestDir>
-							<keep>true</keep>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>com.sun.xml.ws</groupId>
-						<artifactId>jaxws-tools</artifactId>
-						<version>${jaxws.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxws-maven-plugin</artifactId>
+        <version>1.10</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>wsgen</goal>
+            </goals>
+            <configuration>
+              <sei>net.Concatenator</sei>
+              <genWsdl>true</genWsdl>
+              <sourceDestDir>.apt_generated</sourceDestDir>
+              <keep>true</keep>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-tools</artifactId>
+            <version>${jaxws.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
 
-			<!-- Jetty server for development -->
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.11</version>
-				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
-				<version>1.0-alpha-1</version>
-			</plugin>
+      <!-- Jetty server for development -->
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.11</version>
+        <configuration>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>tomcat-maven-plugin</artifactId>
+        <version>1.0-alpha-1</version>
+      </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<wtpversion>1.5</wtpversion>
-					<wtpapplicationxml>true</wtpapplicationxml>
-					<additionalProjectnatures>
-						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-						<projectnature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</projectnature>
-						<projectnature>edu.umd.cs.findbugs.plugin.eclipse.findbugsNature</projectnature>
-						<projectnature>net.sourceforge.pmd.runtime.pmdNature</projectnature>
-						<projectnature>org.hibernate.eclipse.console.hibernateNature</projectnature>
-					</additionalProjectnatures>
-					<additionalBuildcommands>
-						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-						<buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
-						<buildcommand>edu.umd.cs.findbugs.plugin.eclipse.findbugsBuilder</buildcommand>
-						<buildcommand>net.sourceforge.pmd.runtime.pmdBuilder</buildcommand>
-						<buildcommand>org.hibernate.eclipse.console.hibernateBuilder</buildcommand>
-					</additionalBuildcommands>
-					<additionalConfig>
-						<file>
-							<name>.settings/org.eclipse.jdt.apt.core.prefs</name>
-							<content><![CDATA[#Sat Oct 18 12:10:19 GMT+07:00 2008
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <wtpversion>1.5</wtpversion>
+          <wtpapplicationxml>true</wtpapplicationxml>
+          <additionalProjectnatures>
+            <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+            <projectnature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</projectnature>
+            <projectnature>edu.umd.cs.findbugs.plugin.eclipse.findbugsNature</projectnature>
+            <projectnature>net.sourceforge.pmd.runtime.pmdNature</projectnature>
+            <projectnature>org.hibernate.eclipse.console.hibernateNature</projectnature>
+          </additionalProjectnatures>
+          <additionalBuildcommands>
+            <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+            <buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
+            <buildcommand>edu.umd.cs.findbugs.plugin.eclipse.findbugsBuilder</buildcommand>
+            <buildcommand>net.sourceforge.pmd.runtime.pmdBuilder</buildcommand>
+            <buildcommand>org.hibernate.eclipse.console.hibernateBuilder</buildcommand>
+          </additionalBuildcommands>
+          <additionalConfig>
+            <file>
+              <name>.settings/org.eclipse.jdt.apt.core.prefs</name>
+              <content><![CDATA[#Sat Oct 18 12:10:19 GMT+07:00 2008
 eclipse.preferences.version=1
 org.eclipse.jdt.apt.aptEnabled=true
 org.eclipse.jdt.apt.genSrcDir=.apt_generated
 org.eclipse.jdt.apt.reconcileEnabled=true
 ]]></content>
-						</file>
-						<file>
-							<name>.factorypath</name>
-							<content><![CDATA[<factorypath>
+            </file>
+            <file>
+              <name>.factorypath</name>
+              <content><![CDATA[<factorypath>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/bind/jaxb-impl/2.1.9/jaxb-impl-2.1.9.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/bind/jaxb-xjc/2.1.9/jaxb-xjc-2.1.9.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/ws/jaxws-rt/${jaxws.version}/jaxws-rt-${jaxws.version}.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/sun/xml/ws/jaxws-tools/${jaxws.version}/jaxws-tools-${jaxws.version}.jar" enabled="true" runInBatchMode="true"/>
 </factorypath>
 ]]></content>
-						</file>
-						<file>
-							<name>.checkstyle</name>
-							<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+            </file>
+            <file>
+              <name>.checkstyle</name>
+              <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <fileset-config file-format-version="1.2.0" simple-config="false">
     <local-check-config name="checkstyle" location="src/main/config/checkstyle/checkstyle.xml" type="project" description="">
         <additional-data name="protect-config-file" value="true"/>
@@ -179,20 +179,20 @@ org.eclipse.jdt.apt.reconcileEnabled=true
     </fileset>
 </fileset-config>
 ]]></content>
-						</file>
-						<file>
-							<name>.pmd</name>
-							<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+            </file>
+            <file>
+              <name>.pmd</name>
+              <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <pmd>
     <useProjectRuleSet>true</useProjectRuleSet>
     <ruleSetFile>.ruleset</ruleSetFile>
     <includeDerivedFiles>false</includeDerivedFiles>
 </pmd>
 ]]></content>
-						</file>
-						<file>
-							<name>.ruleset</name>
-							<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+            </file>
+            <file>
+              <name>.ruleset</name>
+              <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <ruleset xmlns="http://pmd.sf.net/ruleset/1.0.0" name="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd">
 <description></description>
 <rule ref="rulesets/basic.xml/AvoidDecimalLiteralsInBigDecimalConstructor"/>
@@ -434,10 +434,10 @@ org.eclipse.jdt.apt.reconcileEnabled=true
 <rule ref="rulesets/unusedcode.xml/UnusedPrivateMethod"/>
 </ruleset>
 ]]></content>
-						</file>
-						<file>
-							<name>.springBeans</name>
-							<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+            </file>
+            <file>
+              <name>.springBeans</name>
+              <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
     <version>1</version>
     <configSuffixes>
@@ -459,20 +459,20 @@ org.eclipse.jdt.apt.reconcileEnabled=true
     </configSets>
 </beansProjectDescription>
 ]]></content>
-						</file>
-						<file>
-							<name>.settings/org.hibernate.eclipse.console.prefs</name>
-							<content><![CDATA[#Sat Aug 23 08:42:58 ICT 2008
+            </file>
+            <file>
+              <name>.settings/org.hibernate.eclipse.console.prefs</name>
+              <content><![CDATA[#Sat Aug 23 08:42:58 ICT 2008
 default.configuration=
 eclipse.preferences.version=1
 hibernate3.enabled=true
 ]]></content>
-						</file>
-					</additionalConfig>
-				</configuration>
-			</plugin>
+            </file>
+          </additionalConfig>
+        </configuration>
+      </plugin>
 
-		</plugins>
-	</build>
+    </plugins>
+  </build>
 
 </project>
