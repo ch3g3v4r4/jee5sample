@@ -7,7 +7,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.part.ViewPart;
 
 import com.jme.bounding.BoundingBox;
@@ -33,7 +32,10 @@ import com.jmex.swt.lwjgl.LWJGLSWTConstants;
 
 public class JMEView extends ViewPart {
     private Display display;
+    private DisplaySystem ds;
     private LWJGLSWTCanvas canvas;
+
+    static int width = 100, height = 100;
 
 	/**
 	 * The constructor.
@@ -51,7 +53,7 @@ public class JMEView extends ViewPart {
         comp.setLayout(new FillLayout());
 
 
-        DisplaySystem ds = DisplaySystem.getDisplaySystem(LWJGLSystemProvider.LWJGL_SYSTEM_IDENTIFIER);
+        ds = DisplaySystem.getDisplaySystem(LWJGLSystemProvider.LWJGL_SYSTEM_IDENTIFIER);
         ds.registerCanvasConstructor("SWT", LWJGLSWTCanvasConstructor.class);
 
         HashMap<String, Object> props = new HashMap<String, Object>();
@@ -73,16 +75,12 @@ public class JMEView extends ViewPart {
         canvas.setImplementor(impl);
 
         display.timerExec(200, new Runnable() {
-
 			@Override
 			public void run() {
 		        canvas.init();
 		        canvas.render();
 
 			}});
-
-
-
 
 	}
 
@@ -93,50 +91,16 @@ public class JMEView extends ViewPart {
 
 	}
 
+	@Override
+	public void dispose() {
+		SWTMouseInput.destroyIfInitalized();
+		KeyInput.destroyIfInitalized();
+		canvas.dispose();
+		ds.close();
 
-    static int width = 100, height = 100;
-    public static void main(String [] args) {
+		super.dispose();
+	}
 
-
-        final Display display = new Display();
-        Shell shell = new Shell(display);
-        shell.setLayout(new FillLayout());
-        Composite comp = new Composite(shell, SWT.NONE);
-        comp.setLayout(new FillLayout());
-
-        DisplaySystem ds = DisplaySystem.getDisplaySystem(LWJGLSystemProvider.LWJGL_SYSTEM_IDENTIFIER);
-        ds.registerCanvasConstructor("SWT", LWJGLSWTCanvasConstructor.class);
-
-        HashMap<String, Object> props = new HashMap<String, Object>();
-        props.put(LWJGLSWTConstants.PARENT, comp);
-        props.put(LWJGLSWTConstants.STYLE, SWT.NONE);
-        props.put(LWJGLSWTConstants.DEPTH_BITS, 8);
-        final LWJGLSWTCanvas canvas = (LWJGLSWTCanvas)ds.createCanvas(width, height, "SWT", props);
-        canvas.setUpdateInput(true);
-        canvas.setTargetRate(60);
-
-        KeyInput.setProvider(SWTKeyInput.class.getCanonicalName());
-        canvas.addKeyListener((SWTKeyInput) KeyInput.get());
-
-        SWTMouseInput.setup(canvas, true);
-
-          // Important! Here is where we add the guts to the panel:
-        MyImplementor impl = new MyImplementor(width, height);
-        canvas.setImplementor(impl);
-
-        shell.setText("SWT/JME Example");
-        shell.setSize(width, height);
-        shell.open();
-
-        canvas.init();
-        canvas.render();
-
-        while (!shell.isDisposed()) {
-            if (!display.readAndDispatch())
-                display.sleep();
-        }
-        display.dispose();
-    }
 
     static class MyImplementor extends SimpleCanvasImpl {
 
@@ -203,9 +167,9 @@ public class JMEView extends ViewPart {
             } else {
                 long timeUsed = 5000 + (startTime - System.currentTimeMillis());
                 startTime = System.currentTimeMillis() + 5000;
-                System.out.println(fps + " frames in " + (timeUsed / 1000f)
-                        + " seconds = " + (fps / (timeUsed / 1000f))
-                        + " FPS (average)");
+//                System.out.println(fps + " frames in " + (timeUsed / 1000f)
+//                        + " seconds = " + (fps / (timeUsed / 1000f))
+//                        + " FPS (average)");
                 fps = 0;
             }
         }
