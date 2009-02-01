@@ -35,7 +35,7 @@ public class JMEView extends ViewPart {
     private DisplaySystem ds;
     private LWJGLSWTCanvas canvas;
 
-    static int width = 100, height = 100;
+    static int width = 640, height = 480;
 
 	/**
 	 * The constructor.
@@ -74,12 +74,11 @@ public class JMEView extends ViewPart {
         MyImplementor impl = new MyImplementor(width, height);
         canvas.setImplementor(impl);
 
-        display.timerExec(200, new Runnable() {
+        display.asyncExec(new Runnable() {
 			@Override
 			public void run() {
 		        canvas.init();
 		        canvas.render();
-
 			}});
 
 	}
