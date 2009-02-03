@@ -55,6 +55,11 @@ public class JMEView extends ViewPart {
 
         ds = DisplaySystem.getDisplaySystem(LWJGLSystemProvider.LWJGL_SYSTEM_IDENTIFIER);
         ds.registerCanvasConstructor("SWT", LWJGLSWTCanvasConstructor.class);
+        System.out.println("ds.getAdapter() " + ds.getAdapter());
+        System.out.println("ds.getDisplayAPIVersion() " + ds.getDisplayAPIVersion());
+        System.out.println("ds.getDisplayRenderer() " + ds.getDisplayRenderer());
+        System.out.println("ds.getDisplayVendor() " + ds.getDisplayVendor());
+        System.out.println("ds.getDriverVersion() " + ds.getDriverVersion());
 
         HashMap<String, Object> props = new HashMap<String, Object>();
         props.put(LWJGLSWTConstants.PARENT, comp);
