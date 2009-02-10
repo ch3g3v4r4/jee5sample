@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycompany</groupId>
+    <artifactId>wicket</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>wicket</name>
+
+    <properties>
+    </properties>
+
+    <dependencies>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>3.8.1</version>
+          <scope>test</scope>
+        </dependency>
+
+        <!-- Servlet & JSP APIs -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+		<dependency>
+		    <groupId>org.apache.wicket</groupId>
+		    <artifactId>wicket</artifactId>
+		    <version>1.4-rc2</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		    <version>1.4.2</version>
+		</dependency>
+
+
+
+    </dependencies>
+
+    <build>
+        <finalName>wicket</finalName>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tomcat-maven-plugin</artifactId>
+                <version>1.0-alpha-1</version>
+            </plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.0.2</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+				</configuration>
+			</plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <wtpversion>1.5</wtpversion>
+                    <wtpapplicationxml>true</wtpapplicationxml>
+                    <additionalProjectnatures>
+                        <projectnature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</projectnature>
+                        <projectnature>edu.umd.cs.findbugs.plugin.eclipse.findbugsNature</projectnature>
+                        <projectnature>net.sourceforge.pmd.eclipse.plugin.pmdNature</projectnature>
+                        <projectnature>com.jutils.lint4j.core.Nature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalBuildcommands>
+                        <buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
+                        <buildcommand>edu.umd.cs.findbugs.plugin.eclipse.findbugsBuilder</buildcommand>
+                        <buildcommand>net.sourceforge.pmd.eclipse.plugin.pmdBuilder</buildcommand>
+                        <buildcommand>com.jutils.lint4j.core.Builder</buildcommand>
+                    </additionalBuildcommands>
+                    <additionalConfig>
+                        <file>
+                            <name>.checkstyle</name>
+                            <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<fileset-config file-format-version="1.2.0" simple-config="false">
+    <local-check-config name="checkstyle" location="src/main/config/checkstyle/checkstyle.xml" type="project" description="">
+        <additional-data name="protect-config-file" value="true"/>
+    </local-check-config>
+    <fileset name="Checkstyle File Set" enabled="true" check-config-name="checkstyle" local="true">
+        <file-match-pattern match-pattern="^src[\\/]main[\\/]java[\\/]" include-pattern="true"/>
+    </fileset>
+</fileset-config>
+]]></content>
+                        </file>
+                        <file>
+                            <name>.pmd</name>
+                            <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<pmd>
+    <useProjectRuleSet>true</useProjectRuleSet>
+    <ruleSetFile>.ruleset</ruleSetFile>
+    <includeDerivedFiles>false</includeDerivedFiles>
+</pmd>
+]]></content>
+                        </file>
+                        <file>
+                            <name>.ruleset</name>
+                            <content><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ruleset xmlns="http://pmd.sf.net/ruleset/1.0.0" name="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd" xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd">
+   <description/>
+   <exclude-pattern>.*/target/.*</exclude-pattern>
+   <rule ref="rulesets/basic.xml/AvoidDecimalLiteralsInBigDecimalConstructor"/>
+   <rule ref="rulesets/basic.xml/AvoidMultipleUnaryOperators"/>
+   <rule ref="rulesets/basic.xml/AvoidThreadGroup"/>
+   <rule ref="rulesets/basic.xml/AvoidUsingHardCodedIP"/>
+   <rule ref="rulesets/basic.xml/AvoidUsingOctalValues"/>
+   <rule ref="rulesets/basic.xml/BigIntegerInstantiation"/>
+   <rule ref="rulesets/basic.xml/BooleanInstantiation"/>
+   <rule ref="rulesets/basic.xml/BrokenNullCheck"/>
+   <rule ref="rulesets/basic.xml/CheckResultSet"/>
+   <rule ref="rulesets/basic.xml/ClassCastExceptionWithToArray"/>
+   <rule ref="rulesets/basic.xml/CollapsibleIfStatements"/>
+   <rule ref="rulesets/basic.xml/DoubleCheckedLocking"/>
+   <rule ref="rulesets/basic.xml/EmptyCatchBlock"/>
+   <rule ref="rulesets/basic.xml/EmptyFinallyBlock"/>
+   <rule ref="rulesets/basic.xml/EmptyIfStmt"/>
+   <rule ref="rulesets/basic.xml/EmptyInitializer"/>
+   <rule ref="rulesets/basic.xml/EmptyStatementNotInLoop"/>
+   <rule ref="rulesets/basic.xml/EmptyStaticInitializer"/>
+   <rule ref="rulesets/basic.xml/EmptySwitchStatements"/>
+   <rule ref="rulesets/basic.xml/EmptySynchronizedBlock"/>
+   <rule ref="rulesets/basic.xml/EmptyTryBlock"/>
+   <rule ref="rulesets/basic.xml/EmptyWhileStmt"/>
+   <rule ref="rulesets/basic.xml/ForLoopShouldBeWhileLoop"/>
+   <rule ref="rulesets/basic.xml/JumbledIncrementer"/>
+   <rule ref="rulesets/basic.xml/MisplacedNullCheck"/>
+   <rule ref="rulesets/basic.xml/OverrideBothEqualsAndHashcode"/>
+   <rule ref="rulesets/basic.xml/ReturnFromFinallyBlock"/>
+   <rule ref="rulesets/basic.xml/UnconditionalIfStatement"/>
+   <rule ref="rulesets/basic.xml/UnnecessaryConversionTemporary"/>
+   <rule ref="rulesets/basic.xml/UnnecessaryFinalModifier"/>
+   <rule ref="rulesets/basic.xml/UnnecessaryReturn"/>
+   <rule ref="rulesets/basic.xml/UnusedNullCheckInEquals"/>
+   <rule ref="rulesets/basic.xml/UselessOperationOnImmutable"/>
+   <rule ref="rulesets/basic.xml/UselessOverridingMethod"/>
+   <rule ref="rulesets/braces.xml/ForLoopsMustUseBraces"/>
+   <rule ref="rulesets/braces.xml/IfElseStmtsMustUseBraces"/>
+   <rule ref="rulesets/braces.xml/IfStmtsMustUseBraces"/>
+   <rule ref="rulesets/braces.xml/WhileLoopsMustUseBraces"/>
+   <rule ref="rulesets/typeresolution.xml/CloneMethodMustImplementCloneable"/>
+   <rule ref="rulesets/clone.xml/CloneThrowsCloneNotSupportedException"/>
+   <rule ref="rulesets/clone.xml/ProperCloneImplementation"/>
+   <rule ref="rulesets/codesize.xml/CyclomaticComplexity"/>
+   <rule ref="rulesets/codesize.xml/ExcessiveClassLength"/>
+   <rule ref="rulesets/codesize.xml/ExcessiveMethodLength"/>
+   <rule ref="rulesets/codesize.xml/ExcessiveParameterList"/>
+   <rule ref="rulesets/codesize.xml/ExcessivePublicCount"/>
+   <rule ref="rulesets/codesize.xml/NcssConstructorCount"/>
+   <rule ref="rulesets/codesize.xml/NcssMethodCount"/>
+   <rule ref="rulesets/codesize.xml/NcssTypeCount"/>
+   <rule ref="rulesets/codesize.xml/NPathComplexity"/>
+   <rule ref="rulesets/codesize.xml/TooManyFields"/>
+   <rule ref="rulesets/codesize.xml/TooManyMethods"/>
+   <rule ref="rulesets/controversial.xml/AssignmentInOperand"/>
+   <rule ref="rulesets/controversial.xml/AtLeastOneConstructor"/>
+   <rule ref="rulesets/controversial.xml/AvoidAccessibilityAlteration"/>
+   <rule ref="rulesets/controversial.xml/AvoidFinalLocalVariable"/>
+   <rule ref="rulesets/controversial.xml/AvoidUsingNativeCode"/>
+   <rule ref="rulesets/controversial.xml/AvoidUsingShortType"/>
+   <rule ref="rulesets/controversial.xml/AvoidUsingVolatile"/>
+   <rule ref="rulesets/controversial.xml/BooleanInversion"/>
+   <!--<rule ref="rulesets/controversial.xml/CallSuperInConstructor"/>-->
+   <rule ref="rulesets/controversial.xml/DataflowAnomalyAnalysis"/>
+   <rule ref="rulesets/controversial.xml/DefaultPackage"/>
+   <rule ref="rulesets/controversial.xml/DoNotCallGarbageCollectionExplicitly"/>
+   <rule ref="rulesets/controversial.xml/DontImportSun"/>
+   <rule ref="rulesets/controversial.xml/NullAssignment"/>
+   <rule ref="rulesets/controversial.xml/OnlyOneReturn"/>
+   <rule ref="rulesets/controversial.xml/SuspiciousOctalEscape"/>
+   <rule ref="rulesets/controversial.xml/UnnecessaryConstructor"/>
+   <rule ref="rulesets/controversial.xml/UnnecessaryParentheses"/>
+   <rule ref="rulesets/controversial.xml/UnusedModifier"/>
+   <rule ref="rulesets/coupling.xml/CouplingBetweenObjects"/>
+   <rule ref="rulesets/coupling.xml/ExcessiveImports"/>
+   <rule ref="rulesets/typeresolution.xml/LooseCoupling"/>
+   <rule ref="rulesets/design.xml/AbstractClassWithoutAbstractMethod"/>
+   <rule ref="rulesets/design.xml/AbstractClassWithoutAnyMethod"/>
+   <rule ref="rulesets/design.xml/AccessorClassGeneration"/>
+   <rule ref="rulesets/design.xml/AssignmentToNonFinalStatic"/>
+   <rule ref="rulesets/design.xml/AvoidConstantsInterface"/>
+   <rule ref="rulesets/design.xml/AvoidDeeplyNestedIfStmts"/>
+   <rule ref="rulesets/design.xml/AvoidInstanceofChecksInCatchClause"/>
+   <rule ref="rulesets/design.xml/AvoidProtectedFieldInFinalClass"/>
+   <rule ref="rulesets/design.xml/AvoidReassigningParameters"/>
+   <rule ref="rulesets/design.xml/AvoidSynchronizedAtMethodLevel"/>
+   <rule ref="rulesets/design.xml/BadComparison"/>
+   <rule ref="rulesets/design.xml/ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
+   <rule ref="rulesets/design.xml/CloseResource"/>
+   <rule ref="rulesets/design.xml/CompareObjectsWithEquals"/>
+   <rule ref="rulesets/design.xml/ConfusingTernary"/>
+   <rule ref="rulesets/design.xml/ConstructorCallsOverridableMethod"/>
+   <rule ref="rulesets/design.xml/DefaultLabelNotLastInSwitchStmt"/>
+   <rule ref="rulesets/design.xml/EmptyMethodInAbstractClassShouldBeAbstract"/>
+   <rule ref="rulesets/design.xml/EqualsNull"/>
+   <rule ref="rulesets/design.xml/FinalFieldCouldBeStatic"/>
+   <rule ref="rulesets/design.xml/IdempotentOperations"/>
+   <rule ref="rulesets/design.xml/ImmutableField"/>
+   <rule ref="rulesets/design.xml/InstantiationToGetClass"/>
+   <rule ref="rulesets/design.xml/MissingBreakInSwitch"/>
+   <rule ref="rulesets/design.xml/MissingStaticMethodInNonInstantiatableClass"/>
+   <rule ref="rulesets/design.xml/NonCaseLabelInSwitchStatement"/>
+   <rule ref="rulesets/design.xml/NonStaticInitializer"/>
+   <rule ref="rulesets/design.xml/NonThreadSafeSingleton"/>
+   <rule ref="rulesets/design.xml/OptimizableToArrayCall"/>
+   <rule ref="rulesets/design.xml/PositionLiteralsFirstInComparisons"/>
+   <rule ref="rulesets/design.xml/PreserveStackTrace"/>
+   <rule ref="rulesets/design.xml/ReturnEmptyArrayRatherThanNull"/>
+   <rule ref="rulesets/design.xml/SimpleDateFormatNeedsLocale"/>
+   <rule ref="rulesets/design.xml/SimplifyBooleanExpressions"/>
+   <rule ref="rulesets/design.xml/SimplifyBooleanReturns"/>
+   <rule ref="rulesets/design.xml/SimplifyConditional"/>
+   <rule ref="rulesets/design.xml/SingularField"/>
+   <rule ref="rulesets/design.xml/SwitchDensity"/>
+   <rule ref="rulesets/design.xml/SwitchStmtsShouldHaveDefault"/>
+   <rule ref="rulesets/design.xml/TooFewBranchesForASwitchStatement"/>
+   <rule ref="rulesets/design.xml/UncommentedEmptyConstructor"/>
+   <rule ref="rulesets/design.xml/UncommentedEmptyMethod"/>
+   <rule ref="rulesets/design.xml/UnnecessaryLocalBeforeReturn"/>
+   <rule ref="rulesets/design.xml/UnsynchronizedStaticDateFormatter"/>
+   <rule ref="rulesets/design.xml/UseCollectionIsEmpty"/>
+   <rule ref="rulesets/design.xml/UseLocaleWithCaseConversions"/>
+   <rule ref="rulesets/design.xml/UseNotifyAllInsteadOfNotify"/>
+   <rule ref="rulesets/design.xml/UseSingleton"/>
+   <rule ref="rulesets/finalizers.xml/AvoidCallingFinalize"/>
+   <rule ref="rulesets/finalizers.xml/EmptyFinalizer"/>
+   <rule ref="rulesets/finalizers.xml/FinalizeDoesNotCallSuperFinalize"/>
+   <rule ref="rulesets/finalizers.xml/FinalizeOnlyCallsSuperFinalize"/>
+   <rule ref="rulesets/finalizers.xml/FinalizeOverloaded"/>
+   <rule ref="rulesets/finalizers.xml/FinalizeShouldBeProtected"/>
+   <rule ref="rulesets/imports.xml/DontImportJavaLang"/>
+   <rule ref="rulesets/imports.xml/DuplicateImports"/>
+   <rule ref="rulesets/imports.xml/ImportFromSamePackage"/>
+   <rule ref="rulesets/imports.xml/TooManyStaticImports"/>
+   <rule ref="rulesets/typeresolution.xml/UnusedImports"/>
+   <rule ref="rulesets/j2ee.xml/DoNotCallSystemExit"/>
+   <rule ref="rulesets/j2ee.xml/DoNotUseThreads"/>
+   <rule ref="rulesets/j2ee.xml/LocalHomeNamingConvention"/>
+   <rule ref="rulesets/j2ee.xml/LocalInterfaceSessionNamingConvention"/>
+   <rule ref="rulesets/j2ee.xml/MDBAndSessionBeanNamingConvention"/>
+   <rule ref="rulesets/j2ee.xml/RemoteInterfaceNamingConvention"/>
+   <rule ref="rulesets/j2ee.xml/RemoteSessionInterfaceNamingConvention"/>
+   <rule ref="rulesets/j2ee.xml/StaticEJBFieldShouldBeFinal"/>
+   <rule ref="rulesets/j2ee.xml/UseProperClassLoader"/>
+   <rule ref="rulesets/logging-jakarta-commons.xml/ProperLogger"/>
+   <rule ref="rulesets/logging-jakarta-commons.xml/UseCorrectExceptionLogging"/>
+   <rule ref="rulesets/logging-java.xml/AvoidPrintStackTrace"/>
+   <rule ref="rulesets/logging-java.xml/LoggerIsNotStaticFinal"/>
+   <rule ref="rulesets/logging-java.xml/MoreThanOneLogger"/>
+   <rule ref="rulesets/logging-java.xml/SystemPrintln"/>
+   <rule ref="rulesets/javabeans.xml/BeanMembersShouldSerialize"/>
+   <rule ref="rulesets/javabeans.xml/MissingSerialVersionUID"/>
+   <rule ref="rulesets/junit.xml/JUnitAssertionsShouldIncludeMessage"/>
+   <rule ref="rulesets/junit.xml/JUnitSpelling"/>
+   <rule ref="rulesets/junit.xml/JUnitStaticSuite"/>
+   <rule ref="rulesets/junit.xml/JUnitTestsShouldIncludeAssert"/>
+   <rule ref="rulesets/junit.xml/SimplifyBooleanAssertion"/>
+   <rule ref="rulesets/junit.xml/TestClassWithoutTestCases"/>
+   <rule ref="rulesets/junit.xml/UnnecessaryBooleanAssertion"/>
+   <rule ref="rulesets/junit.xml/UseAssertEqualsInsteadOfAssertTrue"/>
+   <rule ref="rulesets/junit.xml/UseAssertNullInsteadOfAssertTrue"/>
+   <rule ref="rulesets/junit.xml/UseAssertSameInsteadOfAssertTrue"/>
+   <rule ref="rulesets/migrating.xml/AvoidAssertAsIdentifier"/>
+   <rule ref="rulesets/migrating.xml/AvoidEnumAsIdentifier"/>
+   <rule ref="rulesets/migrating.xml/ByteInstantiation"/>
+   <rule ref="rulesets/migrating.xml/IntegerInstantiation"/>
+   <rule ref="rulesets/migrating.xml/JUnit4SuitesShouldUseSuiteAnnotation"/>
+   <rule ref="rulesets/migrating.xml/JUnit4TestShouldUseAfterAnnotation"/>
+   <rule ref="rulesets/migrating.xml/JUnit4TestShouldUseBeforeAnnotation"/>
+   <rule ref="rulesets/migrating.xml/JUnit4TestShouldUseTestAnnotation"/>
+   <rule ref="rulesets/migrating.xml/JUnitUseExpected"/>
+   <rule ref="rulesets/migrating.xml/LongInstantiation"/>
+   <rule ref="rulesets/migrating.xml/ReplaceEnumerationWithIterator"/>
+   <rule ref="rulesets/migrating.xml/ReplaceHashtableWithMap"/>
+   <rule ref="rulesets/migrating.xml/ReplaceVectorWithList"/>
+   <rule ref="rulesets/migrating.xml/ShortInstantiation"/>
+   <rule ref="rulesets/naming.xml/AbstractNaming"/>
+   <rule ref="rulesets/naming.xml/AvoidDollarSigns"/>
+   <rule ref="rulesets/naming.xml/AvoidFieldNameMatchingMethodName"/>
+   <rule ref="rulesets/naming.xml/AvoidFieldNameMatchingTypeName"/>
+   <rule ref="rulesets/naming.xml/BooleanGetMethodName"/>
+   <rule ref="rulesets/naming.xml/ClassNamingConventions"/>
+   <rule ref="rulesets/naming.xml/LongVariable"/>
+   <rule ref="rulesets/naming.xml/MethodNamingConventions"/>
+   <rule ref="rulesets/naming.xml/MethodWithSameNameAsEnclosingClass"/>
+   <rule ref="rulesets/naming.xml/MisleadingVariableName"/>
+   <rule ref="rulesets/naming.xml/NoPackage"/>
+   <rule ref="rulesets/naming.xml/PackageCase"/>
+   <rule ref="rulesets/naming.xml/ShortMethodName"/>
+   <rule ref="rulesets/naming.xml/ShortVariable"/>
+   <rule ref="rulesets/naming.xml/SuspiciousConstantFieldName"/>
+   <rule ref="rulesets/naming.xml/SuspiciousEqualsMethodName"/>
+   <rule ref="rulesets/naming.xml/SuspiciousHashcodeMethodName"/>
+   <rule ref="rulesets/naming.xml/VariableNamingConventions"/>
+   <rule ref="rulesets/optimizations.xml/AddEmptyString"/>
+   <rule ref="rulesets/optimizations.xml/AvoidArrayLoops"/>
+   <rule ref="rulesets/optimizations.xml/AvoidInstantiatingObjectsInLoops"/>
+   <rule ref="rulesets/optimizations.xml/LocalVariableCouldBeFinal"/>
+   <rule ref="rulesets/optimizations.xml/MethodArgumentCouldBeFinal"/>
+   <rule ref="rulesets/optimizations.xml/SimplifyStartsWith"/>
+   <rule ref="rulesets/optimizations.xml/UnnecessaryWrapperObjectCreation"/>
+   <rule ref="rulesets/optimizations.xml/UseArrayListInsteadOfVector"/>
+   <rule ref="rulesets/optimizations.xml/UseArraysAsList"/>
+   <rule ref="rulesets/optimizations.xml/UseStringBufferForStringAppends"/>
+   <rule ref="rulesets/sunsecure.xml/ArrayIsStoredDirectly"/>
+   <rule ref="rulesets/sunsecure.xml/MethodReturnsInternalArray"/>
+   <rule ref="rulesets/strictexception.xml/AvoidCatchingNPE"/>
+   <rule ref="rulesets/strictexception.xml/AvoidCatchingThrowable"/>
+   <rule ref="rulesets/strictexception.xml/AvoidRethrowingException"/>
+   <rule ref="rulesets/strictexception.xml/AvoidThrowingNullPointerException"/>
+   <rule ref="rulesets/strictexception.xml/AvoidThrowingRawExceptionTypes"/>
+   <rule ref="rulesets/strictexception.xml/DoNotExtendJavaLangError"/>
+   <rule ref="rulesets/strictexception.xml/DoNotThrowExceptionInFinally"/>
+   <rule ref="rulesets/strictexception.xml/ExceptionAsFlowControl"/>
+   <rule ref="rulesets/typeresolution.xml/SignatureDeclareThrowsException"/>
+   <rule ref="rulesets/strings.xml/AppendCharacterWithChar"/>
+   <rule ref="rulesets/strings.xml/AvoidDuplicateLiterals"/>
+   <rule ref="rulesets/strings.xml/AvoidStringBufferField"/>
+   <rule ref="rulesets/strings.xml/ConsecutiveLiteralAppends"/>
+   <rule ref="rulesets/strings.xml/InefficientEmptyStringCheck"/>
+   <rule ref="rulesets/strings.xml/InefficientStringBuffering"/>
+   <rule ref="rulesets/strings.xml/InsufficientStringBufferDeclaration"/>
+   <rule ref="rulesets/strings.xml/StringBufferInstantiationWithChar"/>
+   <rule ref="rulesets/strings.xml/StringInstantiation"/>
+   <rule ref="rulesets/strings.xml/StringToString"/>
+   <rule ref="rulesets/strings.xml/UnnecessaryCaseChange"/>
+   <rule ref="rulesets/strings.xml/UseEqualsToCompareStrings"/>
+   <rule ref="rulesets/strings.xml/UseIndexOfChar"/>
+   <rule ref="rulesets/strings.xml/UselessStringValueOf"/>
+   <rule ref="rulesets/strings.xml/UseStringBufferLength"/>
+   <rule ref="rulesets/typeresolution.xml/CloneMethodMustImplementCloneable"/>
+   <rule ref="rulesets/typeresolution.xml/LooseCoupling"/>
+   <rule ref="rulesets/typeresolution.xml/SignatureDeclareThrowsException"/>
+   <rule ref="rulesets/typeresolution.xml/UnusedImports"/>
+   <rule ref="rulesets/unusedcode.xml/UnusedFormalParameter"/>
+   <rule ref="rulesets/unusedcode.xml/UnusedLocalVariable"/>
+   <rule ref="rulesets/unusedcode.xml/UnusedPrivateField"/>
+   <rule ref="rulesets/unusedcode.xml/UnusedPrivateMethod"/>
+</ruleset>
+]]></content>
+                        </file>
+                        <file>
+                            <name>.fbprefs</name>
+                            <content><![CDATA[#FindBugs User Preferences
+#Thu Jan 29 14:09:13 ICT 2009
+detectorAppendingToAnObjectOutputStream=AppendingToAnObjectOutputStream|true
+detectorBadAppletConstructor=BadAppletConstructor|true
+detectorBadResultSetAccess=BadResultSetAccess|true
+detectorBadSyntaxForRegularExpression=BadSyntaxForRegularExpression|true
+detectorBadUseOfReturnValue=BadUseOfReturnValue|true
+detectorBadlyOverriddenAdapter=BadlyOverriddenAdapter|true
+detectorBooleanReturnNull=BooleanReturnNull|true
+detectorCallToUnsupportedMethod=CallToUnsupportedMethod|true
+detectorCheckImmutableAnnotation=CheckImmutableAnnotation|true
+detectorCheckTypeQualifiers=CheckTypeQualifiers|true
+detectorCloneIdiom=CloneIdiom|true
+detectorComparatorIdiom=ComparatorIdiom|true
+detectorConfusedInheritance=ConfusedInheritance|true
+detectorConfusionBetweenInheritedAndOuterMethod=ConfusionBetweenInheritedAndOuterMethod|true
+detectorCrossSiteScripting=CrossSiteScripting|true
+detectorDoInsideDoPrivileged=DoInsideDoPrivileged|true
+detectorDontCatchIllegalMonitorStateException=DontCatchIllegalMonitorStateException|true
+detectorDontUseEnum=DontUseEnum|true
+detectorDroppedException=DroppedException|true
+detectorDumbMethodInvocations=DumbMethodInvocations|true
+detectorDumbMethods=DumbMethods|true
+detectorDuplicateBranches=DuplicateBranches|true
+detectorEmptyZipFileEntry=EmptyZipFileEntry|true
+detectorEqualsOperandShouldHaveClassCompatibleWithThis=EqualsOperandShouldHaveClassCompatibleWithThis|true
+detectorFinalizerNullsFields=FinalizerNullsFields|true
+detectorFindBadCast2=FindBadCast2|true
+detectorFindBadForLoop=FindBadForLoop|true
+detectorFindCircularDependencies=FindCircularDependencies|true
+detectorFindDeadLocalStores=FindDeadLocalStores|true
+detectorFindDoubleCheck=FindDoubleCheck|true
+detectorFindEmptySynchronizedBlock=FindEmptySynchronizedBlock|true
+detectorFindFieldSelfAssignment=FindFieldSelfAssignment|true
+detectorFindFinalizeInvocations=FindFinalizeInvocations|true
+detectorFindFloatEquality=FindFloatEquality|true
+detectorFindHEmismatch=FindHEmismatch|true
+detectorFindInconsistentSync2=FindInconsistentSync2|true
+detectorFindJSR166LockMonitorenter=FindJSR166LockMonitorenter|true
+detectorFindLocalSelfAssignment2=FindLocalSelfAssignment2|true
+detectorFindMaskedFields=FindMaskedFields|true
+detectorFindMismatchedWaitOrNotify=FindMismatchedWaitOrNotify|true
+detectorFindNakedNotify=FindNakedNotify|true
+detectorFindNonSerializableStoreIntoSession=FindNonSerializableStoreIntoSession|true
+detectorFindNonSerializableValuePassedToWriteObject=FindNonSerializableValuePassedToWriteObject|true
+detectorFindNonShortCircuit=FindNonShortCircuit|true
+detectorFindNullDeref=FindNullDeref|true
+detectorFindNullDerefsInvolvingNonShortCircuitEvaluation=FindNullDerefsInvolvingNonShortCircuitEvaluation|true
+detectorFindOpenStream=FindOpenStream|true
+detectorFindPuzzlers=FindPuzzlers|true
+detectorFindRefComparison=FindRefComparison|true
+detectorFindReturnRef=FindReturnRef|true
+detectorFindRunInvocations=FindRunInvocations|true
+detectorFindSelfComparison=FindSelfComparison|true
+detectorFindSelfComparison2=FindSelfComparison2|true
+detectorFindSleepWithLockHeld=FindSleepWithLockHeld|true
+detectorFindSpinLoop=FindSpinLoop|true
+detectorFindSqlInjection=FindSqlInjection|true
+detectorFindTwoLockWait=FindTwoLockWait|true
+detectorFindUncalledPrivateMethods=FindUncalledPrivateMethods|true
+detectorFindUnconditionalWait=FindUnconditionalWait|true
+detectorFindUninitializedGet=FindUninitializedGet|true
+detectorFindUnrelatedTypesInGenericContainer=FindUnrelatedTypesInGenericContainer|true
+detectorFindUnreleasedLock=FindUnreleasedLock|true
+detectorFindUnsatisfiedObligation=FindUnsatisfiedObligation|true
+detectorFindUnsyncGet=FindUnsyncGet|true
+detectorFindUselessControlFlow=FindUselessControlFlow|true
+detectorFormatStringChecker=FormatStringChecker|true
+detectorHugeSharedStringConstants=HugeSharedStringConstants|true
+detectorIDivResultCastToDouble=IDivResultCastToDouble|true
+detectorIncompatMask=IncompatMask|true
+detectorInconsistentAnnotations=InconsistentAnnotations|true
+detectorInefficientMemberAccess=InefficientMemberAccess|true
+detectorInefficientToArray=InefficientToArray|true
+detectorInfiniteLoop=InfiniteLoop|true
+detectorInfiniteRecursiveLoop=InfiniteRecursiveLoop|true
+detectorInfiniteRecursiveLoop2=InfiniteRecursiveLoop2|true
+detectorInheritanceUnsafeGetResource=InheritanceUnsafeGetResource|true
+detectorInitializationChain=InitializationChain|true
+detectorInstantiateStaticClass=InstantiateStaticClass|true
+detectorInvalidJUnitTest=InvalidJUnitTest|true
+detectorIteratorIdioms=IteratorIdioms|true
+detectorLazyInit=LazyInit|true
+detectorLoadOfKnownNullValue=LoadOfKnownNullValue|true
+detectorMethodReturnCheck=MethodReturnCheck|true
+detectorMultithreadedInstanceAccess=MultithreadedInstanceAccess|true
+detectorMutableLock=MutableLock|true
+detectorMutableStaticFields=MutableStaticFields|true
+detectorNaming=Naming|true
+detectorNumberConstructor=NumberConstructor|true
+detectorOverridingEqualsNotSymmetrical=OverridingEqualsNotSymmetrical|true
+detectorPreferZeroLengthArrays=PreferZeroLengthArrays|true
+detectorPublicSemaphores=PublicSemaphores|true
+detectorQuestionableBooleanAssignment=QuestionableBooleanAssignment|true
+detectorReadReturnShouldBeChecked=ReadReturnShouldBeChecked|true
+detectorRedundantInterfaces=RedundantInterfaces|true
+detectorRepeatedConditionals=RepeatedConditionals|true
+detectorRuntimeExceptionCapture=RuntimeExceptionCapture|true
+detectorSerializableIdiom=SerializableIdiom|true
+detectorStartInConstructor=StartInConstructor|true
+detectorStaticCalendarDetector=StaticCalendarDetector|true
+detectorStringConcatenation=StringConcatenation|true
+detectorSuperfluousInstanceOf=SuperfluousInstanceOf|true
+detectorSuspiciousThreadInterrupted=SuspiciousThreadInterrupted|true
+detectorSwitchFallthrough=SwitchFallthrough|true
+detectorSynchronizeAndNullCheckField=SynchronizeAndNullCheckField|true
+detectorSynchronizeOnClassLiteralNotGetClass=SynchronizeOnClassLiteralNotGetClass|true
+detectorSynchronizingOnContentsOfFieldToProtectField=SynchronizingOnContentsOfFieldToProtectField|true
+detectorURLProblems=URLProblems|true
+detectorUncallableMethodOfAnonymousClass=UncallableMethodOfAnonymousClass|true
+detectorUnnecessaryMath=UnnecessaryMath|true
+detectorUnreadFields=UnreadFields|true
+detectorUseObjectEquals=UseObjectEquals|true
+detectorUselessSubclassMethod=UselessSubclassMethod|true
+detectorVarArgsProblems=VarArgsProblems|true
+detectorVolatileUsage=VolatileUsage|true
+detectorWaitInLoop=WaitInLoop|true
+detectorWrongMapIterator=WrongMapIterator|true
+detectorXMLFactoryBypass=XMLFactoryBypass|true
+detector_threshold=2
+effort=default
+filter_settings=Medium|BAD_PRACTICE,CORRECTNESS,EXPERIMENTAL,I18N,MALICIOUS_CODE,MT_CORRECTNESS,PERFORMANCE,SECURITY,STYLE|false
+filter_settings_neg=|
+run_at_full_build=true
+]]></content>
+                        </file>
+                        <file>
+                            <name>.lint4jprefs</name>
+                            <content><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?><Lint4j><Audits><Audit id="J2SEGroup.audit1"/><Audit id="J2SEGroup.audit2"/><Audit id="J2SEGroup.audit4"/><Audit id="J2SEGroup.audit5"/><Audit id="J2SEGroup.audit6"/><Audit id="J2SEGroup.audit7"/><Audit id="J2SEGroup.audit8"/><Audit id="J2SEGroup.audit9"/><Audit id="J2SEGroup.audit10"/><Audit id="J2SEGroup.audit11"/><Audit id="J2SEGroup.audit12"/><Audit id="J2SEGroup.audit14"/><Audit id="J2SEGroup.audit15"/><Audit id="J2SEGroup.audit16"/><Audit id="J2SEGroup.audit13"/><Audit id="SerializationGroup.audit1"/><Audit id="SerializationGroup.audit2"/><Audit id="SerializationGroup.audit3"/><Audit id="SerializationGroup.audit4"/><Audit id="SerializationGroup.audit5"/><Audit id="SerializationGroup.audit6"/><Audit id="SerializationGroup.audit7"/><Audit id="SerializationGroup.audit8"/><Audit id="SerializationGroup.audit9"/><Audit id="SerializationGroup.audit10"/><Audit id="SerializationGroup.audit11"/><Audit id="MaturityGroup.audit1"/><Audit id="MaturityGroup.audit2"/><Audit id="MaturityGroup.audit3"/><Audit id="MaturityGroup.audit4"/><Audit id="MaturityGroup.audit5"/><Audit id="MaturityGroup.audit6"/><Audit id="MaturityGroup.audit7"/><Audit id="MaturityGroup.audit8"/><Audit id="MaturityGroup.audit9"/><Audit id="MaturityGroup.audit11"/><Audit id="MaturityGroup.audit12"/><Audit id="MaturityGroup.audit13"/><Audit id="MaturityGroup.audit14"/><Audit id="MaturityGroup.audit15"/><Audit id="MaturityGroup.audit16"/><Audit id="MaturityGroup.audit17"/><Audit id="MaturityGroup.audit18"/><Audit id="MaturityGroup.audit19"/><Audit id="MaturityGroup.audit20"/><Audit id="MaturityGroup.audit21"/><Audit id="MaturityGroup.audit22"/><Audit id="MaturityGroup.audit23"/><Audit id="PerformanceGroup.audit1"/><Audit id="PerformanceGroup.audit2"/></Audits></Lint4j>
+]]></content>
+                        </file>
+                    </additionalConfig>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
