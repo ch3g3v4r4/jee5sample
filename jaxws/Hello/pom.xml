@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>HelloWorld</groupId>
+  <artifactId>Hello</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>exe</name>
+
+
+  <build>
+	<outputDirectory>target/dotnet-assembly</outputDirectory>
+	<testOutputDirectory>target/test-dotnet-assembly</testOutputDirectory>
+	<sourceDirectory>src/main/csharp</sourceDirectory>
+	<testSourceDirectory>src/test/csharp</testSourceDirectory>
+
+    <plugins>
+	
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <compilerId>csharp</compilerId>
+		  <fork>true</fork>
+		  <executable>C:/WINDOWS/Microsoft.NET/Framework/v3.5/csc.exe</executable>
+          <includes>
+            <include>**/*.cs</include>
+          </includes>		  
+        </configuration>
+        <executions>
+          <execution>
+            <id>compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <compilerArguments>
+                <target>exe</target>
+                <mainClass>HelloWorld.Hello</mainClass>
+              </compilerArguments>
+            </configuration>
+          </execution>
+        </executions>
+
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-compiler-csharp</artifactId>
+            <version>1.6-SNAPSHOT</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+    <repositories>
+    <repository>
+      <id>Codehaus Snapshots</id>
+      <url>http://snapshots.repository.codehaus.org/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>Codehaus Snapshots</id>
+      <url>http://snapshots.repository.codehaus.org/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>  <!-- Workaround for MNG-2974, see note below -->
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+  
+</project>
