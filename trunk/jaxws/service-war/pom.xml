@@ -23,6 +23,12 @@
       <groupId>com.sun.xml.ws</groupId>
       <artifactId>jaxws-rt</artifactId>
       <version>${jaxws.version}</version>
+      <exclusions><!-- avoid problem with classloaders when running on Jetty -->
+        <exclusion>
+          <groupId>javax.activation</groupId>
+          <artifactId>activation</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
   </dependencies>
