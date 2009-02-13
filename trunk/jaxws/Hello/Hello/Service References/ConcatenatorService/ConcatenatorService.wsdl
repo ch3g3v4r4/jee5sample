@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://webservice.mycompany.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ConcatenatorService" targetNamespace="http://webservice.mycompany.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/service-war/myService?xsd=1" namespace="http://webservice.mycompany.com/" />
+    </xsd:schema>
+  </types>
+  <message name="concatenate">
+    <part name="parameters" element="tns:concatenate" />
+  </message>
+  <message name="concatenateResponse">
+    <part name="parameters" element="tns:concatenateResponse" />
+  </message>
+  <portType name="Concatenator">
+    <operation name="concatenate">
+      <input message="tns:concatenate" />
+      <output message="tns:concatenateResponse" />
+    </operation>
+  </portType>
+  <binding name="ConcatenatorPortBinding" type="tns:Concatenator">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="concatenate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ConcatenatorService">
+    <port name="ConcatenatorPort" binding="tns:ConcatenatorPortBinding">
+      <soap:address location="http://localhost:8080/service-war/myService" />
+    </port>
+  </service>
+</definitions>
