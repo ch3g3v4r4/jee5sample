@@ -85,6 +85,7 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Generate webservice classes - run at generate-resources phase and not compile the code-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxws-maven-plugin</artifactId>
@@ -110,7 +111,7 @@
           </dependency>
         </dependencies>
       </plugin>
-      <!-- Same function as jaxws-maven-plugin
+      <!-- Same function as jaxws-maven-plugin but run at process-classes phase and also compile the code
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>apt-maven-plugin</artifactId>
