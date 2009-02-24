@@ -65,6 +65,8 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+   
+      <!-- For eclipse:eclipse target only -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -83,7 +85,6 @@
           </execution>
         </executions>
       </plugin>
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxws-maven-plugin</artifactId>
@@ -109,7 +110,30 @@
           </dependency>
         </dependencies>
       </plugin>
-
+      <!-- Same function as jaxws-maven-plugin
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>apt-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <goals>
+                <goal>process</goal>
+              </goals>
+            </execution>
+          </executions>        
+          <configuration>
+            <fork>true</fork>
+            <factory>com.sun.istack.ws.AnnotationProcessorFactoryImpl</factory>
+          </configuration>        
+         <dependencies>
+           <dependency>
+             <groupId>com.sun.xml.ws</groupId>
+             <artifactId>jaxws-tools</artifactId>
+             <version>2.1.5</version>
+           </dependency>
+         </dependencies>
+      </plugin>
+ -->
       <!-- Jetty server for development -->
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
