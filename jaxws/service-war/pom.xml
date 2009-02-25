@@ -67,7 +67,6 @@
       </plugin>
    
       <!-- For eclipse:eclipse target only -->
-      <!-- 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -85,7 +84,7 @@
             </configuration>
           </execution>
         </executions>
-      </plugin> -->
+      </plugin>
       
       <!-- Generate webservice classes - run at process-classes phase and compile the code, receive classes files and -XclassesAsDecls option-->
       <!-- 
