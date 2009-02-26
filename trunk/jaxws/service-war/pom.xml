@@ -137,6 +137,32 @@
            </dependency>
          </dependencies>
       </plugin>
+
+	<plugin>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>jaxws-maven-plugin</artifactId>
+		<executions>
+			<execution>
+				<goals>
+					<goal>wsimport</goal>
+				</goals>
+			</execution>
+		</executions>
+		<configuration>
+			<packageName>com.ECS.client.jax</packageName>
+			<sourceDestDir>.apt_generated</sourceDestDir>
+			<wsdlUrls>
+				<wsdlUrl>http://ecs.amazonaws.com/AWSECommerceService/AWSECommerceService.wsdl</wsdlUrl>
+			</wsdlUrls>
+		</configuration>
+         <dependencies>
+           <dependency>
+             <groupId>com.sun.xml.ws</groupId>
+             <artifactId>jaxws-tools</artifactId>
+             <version>${jaxws.version}</version>
+           </dependency>
+         </dependencies>
+	</plugin>
    
       <!-- Jetty server for development -->
       <plugin>
