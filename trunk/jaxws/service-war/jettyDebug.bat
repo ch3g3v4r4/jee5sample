@@ -1,0 +1,1 @@
+mvnDebug jetty:run -Dcom.sun.xml.ws.transport.http.HttpAdapter.dump=true -Dcom.sun.xml.ws.transport.http.client.HttpTransportPipe.dump=true

@@ -1,31 +1,25 @@
-/*
- * Copyright  2003-2004 The Apache Software Foundation
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- *
- */
-
 package com.mycompany.webservice;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+
+import com.ecocoma.service.domain.whois.Whois;
+import com.ecocoma.service.domain.whois.WhoisService;
+import com.ecocoma.service.domain.whois.WhoisServiceSoap;
 
 @WebService
 public class Concatenator {
 
     @WebMethod
     public String concatenate(String a, String b) {
-        return a + " " + b;
+    	return whois(a);
     }
 
+	private String whois(String a) {
+		WhoisService service = new WhoisService();
+		WhoisServiceSoap port = service.getWhoisServiceSoap();
+		Whois result = port.getWhois("DOM-S81987308M", "", "20.203.133.27");
+		return result.getDescription();
+
+	}
 }
