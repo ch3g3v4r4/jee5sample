@@ -11,15 +11,10 @@ import com.ecocoma.service.domain.whois.WhoisServiceSoap;
 public class Concatenator {
 
     @WebMethod
-    public String concatenate(String a, String b) {
-    	return whois(a);
-    }
-
-	private String whois(String a) {
+    public String whois(String name) {
 		WhoisService service = new WhoisService();
 		WhoisServiceSoap port = service.getWhoisServiceSoap();
-		Whois result = port.getWhois("DOM-S81987308M", "", "20.203.133.27");
-		return result.getDescription();
-
-	}
+		Whois result = port.getWhois("DOM-M89714033M", "", name);
+		return result.getDescription().replaceAll("</br>", "\r\n");
+    }
 }
