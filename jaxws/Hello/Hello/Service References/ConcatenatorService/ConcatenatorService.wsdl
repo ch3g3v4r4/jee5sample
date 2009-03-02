@@ -5,21 +5,21 @@
       <xsd:import schemaLocation="http://localhost:8080/service-war/myService?xsd=1" namespace="http://webservice.mycompany.com/" />
     </xsd:schema>
   </types>
-  <message name="concatenate">
-    <part name="parameters" element="tns:concatenate" />
+  <message name="whois">
+    <part name="parameters" element="tns:whois" />
   </message>
-  <message name="concatenateResponse">
-    <part name="parameters" element="tns:concatenateResponse" />
+  <message name="whoisResponse">
+    <part name="parameters" element="tns:whoisResponse" />
   </message>
   <portType name="Concatenator">
-    <operation name="concatenate">
-      <input message="tns:concatenate" />
-      <output message="tns:concatenateResponse" />
+    <operation name="whois">
+      <input message="tns:whois" />
+      <output message="tns:whoisResponse" />
     </operation>
   </portType>
   <binding name="ConcatenatorPortBinding" type="tns:Concatenator">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="concatenate">
+    <operation name="whois">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

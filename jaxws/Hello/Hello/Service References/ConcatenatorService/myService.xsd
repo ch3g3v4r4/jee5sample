@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://webservice.mycompany.com/" targetNamespace="http://webservice.mycompany.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="concatenate" type="tns:concatenate" />
-  <xs:element name="concatenateResponse" type="tns:concatenateResponse" />
-  <xs:complexType name="concatenate">
+  <xs:element name="whois" type="tns:whois" />
+  <xs:element name="whoisResponse" type="tns:whoisResponse" />
+  <xs:complexType name="whois">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string" />
-      <xs:element minOccurs="0" name="arg1" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="concatenateResponse">
+  <xs:complexType name="whoisResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>

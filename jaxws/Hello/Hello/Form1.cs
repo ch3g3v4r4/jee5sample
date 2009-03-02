@@ -19,7 +19,12 @@ namespace Hello
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             ConcatenatorService.ConcatenatorClient service = new ConcatenatorService.ConcatenatorClient();
-            txtResult.Text = service.concatenate(txtString1.Text, txtString2.Text);
+            txtResult.Text = service.whois(txtString1.Text);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
