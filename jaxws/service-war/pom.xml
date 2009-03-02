@@ -65,7 +65,7 @@
           <target>1.6</target>
         </configuration>
       </plugin>
-   
+
       <!-- For eclipse:eclipse target only -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -85,9 +85,9 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <!-- Generate webservice classes - run at process-classes phase and compile the code, receive classes files and -XclassesAsDecls option-->
-      <!-- 
+      <!--
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxws-maven-plugin</artifactId>
@@ -124,11 +124,11 @@
                 <goal>process</goal>
               </goals>
             </execution>
-          </executions>        
+          </executions>
           <configuration>
             <factory>com.sun.istack.ws.AnnotationProcessorFactoryImpl</factory>
             <outputDirectory>.apt_generated</outputDirectory>
-          </configuration>        
+          </configuration>
          <dependencies>
            <dependency>
              <groupId>com.sun.xml.ws</groupId>
@@ -149,10 +149,9 @@
 			</execution>
 		</executions>
 		<configuration>
-			<packageName>com.ECS.client.jax</packageName>
 			<sourceDestDir>.apt_generated</sourceDestDir>
 			<wsdlUrls>
-				<wsdlUrl>http://ecs.amazonaws.com/AWSECommerceService/AWSECommerceService.wsdl</wsdlUrl>
+				<wsdlUrl>http://service.ecocoma.com/domain/whois.asmx?WSDL</wsdlUrl>
 			</wsdlUrls>
 		</configuration>
          <dependencies>
@@ -163,7 +162,7 @@
            </dependency>
          </dependencies>
 	</plugin>
-   
+
       <!-- Jetty server for development -->
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
