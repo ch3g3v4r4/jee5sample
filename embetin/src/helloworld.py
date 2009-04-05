@@ -1,4 +1,7 @@
-print 'Content-Type: text/plain'
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+print 'Content-Type: text/plain; charset=utf-8'
 print ''
 print 'Hello, world!'
-print 'TinTin'
+print 'Chú bé Tin Tin'
