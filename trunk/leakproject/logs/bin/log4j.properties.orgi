@@ -1,0 +1,28 @@
+# For JBoss: Avoid to setup Log4J outside $JBOSS_HOME/server/default/deploy/log4j.xml!
+# For all other servers: Comment out the Log4J listener in web.xml to activate Log4J.
+log4j.rootLogger=INFO, logfile
+# Transaction logging
+log4j.logger.atomikos=WARN
+# CXF logging
+#log4j.logger.org.apache.cxf=INFO
+# Hibernate logging - Display SQL
+#log4j.logger.org.hibernate.SQL=DEBUG
+# Hibernate logging - Display bound parameters for SQL
+#log4j.logger.org.hibernate.type=TRACE
+# DxTech logging
+log4j.logger.com.dxtech=ALL
+
+# CONSOLE
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d [%t] %p [%c] - <%m>%n
+
+# LOG FILE
+log4j.appender.logfile=org.apache.log4j.RollingFileAppender
+log4j.appender.logfile.File=/tmp/DxServer.log
+log4j.appender.logfile.MaxFileSize=512KB
+# Keep three backup files.
+log4j.appender.logfile.MaxBackupIndex=30
+# Pattern to output: date priority [category] - message
+log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
+log4j.appender.logfile.layout.ConversionPattern=%d [%t] %p [%c] - %m%n
