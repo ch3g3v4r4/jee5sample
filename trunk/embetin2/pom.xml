@@ -97,6 +97,28 @@
       <version>1.0-sdk-1.2.0</version>
     </dependency>
 
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>1.5.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jul-to-slf4j</artifactId>
+      <version>1.5.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>log4j-over-slf4j</artifactId>
+      <version>1.5.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>1.5.6</version>
+    </dependency>
+
 
   </dependencies>
 
@@ -170,7 +192,7 @@
         <artifactId>maven-eclipse-plugin</artifactId>
         <version>2.6</version>
         <configuration>
-          <excludes>
+          <excludes><!-- GAE_CONTAINER already have these jars -->
             <exclude>org.datanucleus:datanucleus-core</exclude>
             <exclude>org.datanucleus:datanucleus-jpa</exclude>
             <exclude>com.google.appengine:datanucleus-appengine</exclude>
