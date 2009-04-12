@@ -6,6 +6,10 @@
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
 
+  <properties>
+    <spring.version>3.0.0.M2</spring.version>
+  </properties>
+
   <dependencies>
     <!-- Unit test -->
     <dependency>
@@ -52,6 +56,11 @@
       <version>1.1.1</version>
     </dependency>
     <dependency>
+      <groupId>javax.jdo</groupId>
+      <artifactId>jdo2-api</artifactId>
+      <version>2.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-jta_1.1_spec</artifactId>
       <version>1.1.1</version>
@@ -77,11 +86,6 @@
           <artifactId>persistence-api</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>javax.jdo</groupId>
-      <artifactId>jdo2-api</artifactId>
-      <version>2.3-SNAPSHOT</version>
     </dependency>
     <!-- Google App Engine persistence runtime -->
     <dependency>
@@ -119,6 +123,133 @@
       <version>1.5.6</version>
     </dependency>
 
+    <!-- Spring framework, remove all commons-logging b/c we have jcl-over-slf4j -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.aop</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.aspects</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.beans</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.context</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.context.support</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.core</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.expression</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.orm</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.web</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.web.servlet</artifactId>
+      <version>${spring.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>asm</groupId>
+      <artifactId>asm</artifactId>
+      <version>2.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>asm</groupId>
+      <artifactId>asm-commons</artifactId>
+      <version>2.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>org.springframework.test</artifactId>
+      <version>${spring.version}</version>
+      <scope>test</scope>
+    </dependency>
 
   </dependencies>
 
@@ -155,6 +286,14 @@
           <api>JPA</api>
           <mappingIncludes>**/*.jdo, **/model/**.class</mappingIncludes>
           <enhancerName>ASM</enhancerName>
+          <fork>true</fork>
+          <classpathElements>
+            <classpathElement>AAAAAAAAAAAAA</classpathElement>
+          </classpathElements>
+          <pluginArtifacts implementation="java.util.List">
+            <pluginArtifact>BBBBBBBBBBBBB</pluginArtifact>
+          </pluginArtifacts>
+
         </configuration>
         <executions>
           <execution>
@@ -193,6 +332,7 @@
         <version>2.6</version>
         <configuration>
           <excludes><!-- GAE_CONTAINER already have these jars -->
+          <!--
             <exclude>org.datanucleus:datanucleus-core</exclude>
             <exclude>org.datanucleus:datanucleus-jpa</exclude>
             <exclude>com.google.appengine:datanucleus-appengine</exclude>
@@ -203,6 +343,7 @@
             <exclude>org.apache.geronimo.specs:geronimo-jta_1.1_spec</exclude>
             <exclude>javax.jdo:jdo2-api</exclude>
             <exclude>com.google.appengine:appengine-api</exclude>
+             -->
           </excludes>
           <downloadSources>true</downloadSources>
           <buildOutputDirectory>${basedir}/war/WEB-INF/classes</buildOutputDirectory>
@@ -229,7 +370,7 @@
           </additionalBuildcommands>
           <classpathContainers>
             <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-            <classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer>
+            <!-- <classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer> -->
           </classpathContainers>
         </configuration>
       </plugin>
@@ -267,40 +408,31 @@
     </plugins>
   </build>
 
-  <repositories><!--
-    <repository>
-      <id>DataNucleus_Repos</id>
-      <name>DataNucleus Repository</name>
-      <url>http://www.datanucleus.org/downloads/maven</url>
-      <layout>legacy</layout>
+  <repositories>
+    <repository><!-- To access Google App Engine jars -->
+      <id>www.mvnsearch.org</id>
+      <name>www.mvnsearch.org</name>
+      <url>http://www.mvnsearch.org/maven2/</url>
     </repository>
     <repository>
       <id>DataNucleus_Repos2</id>
       <name>DataNucleus Repository</name>
       <url>http://www.datanucleus.org/downloads/maven2</url>
     </repository>
--->
-    <!-- We can load datanucleus jars from either mirrors.ibiblio.org or DataNucleus repos above
-      <repository> <id>mirrors.ibiblio.org</id>
-      <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-      </repository>
-    -->
-    <!-- To access Google App Engine jars -->
     <repository>
-      <id>www.mvnsearch.org</id>
-      <name>www.mvnsearch.org</name>
-      <url>http://www.mvnsearch.org/maven2/</url>
+      <id>SpringSource Enterprise Bundle Repository - External Bundle Milestones</id>
+      <url>http://repository.springsource.com/maven/bundles/milestone</url>
     </repository>
-
+    <repository>
+      <id>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</id>
+      <url>http://repository.springsource.com/maven/bundles/release</url>
+    </repository>
+    <repository>
+      <id>SpringSource Enterprise Bundle Repository - External Bundle Releases</id>
+      <url>http://repository.springsource.com/maven/bundles/external</url>
+    </repository>
   </repositories>
-<!--   <pluginRepositories>
-    <pluginRepository>
-      <id>DataNucleus_2</id>
-      <url>http://www.datanucleus.org/downloads/maven2/</url>
-    </pluginRepository>
-      <pluginRepository> <id>mirrors.ibiblio.org</id>
-      <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-      </pluginRepository>
+  <pluginRepositories>
     <pluginRepository>
       <id>maven-repository.dev.java.net</id>
       <name>Java.net Maven 1 Repository (legacy)</name>
@@ -308,5 +440,5 @@
       <layout>legacy</layout>
     </pluginRepository>
   </pluginRepositories>
- -->
+
 </project>
