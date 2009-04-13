@@ -26,7 +26,8 @@ public class EmployeeManagerImpl implements EmployeeManager {
 
 	@Override
 	public List<Employee> getAll() {
-		return employeeDao.findAll();
+		List<Employee> result = employeeDao.findAll();
+		return result;
 	}
 
 }

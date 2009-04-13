@@ -93,6 +93,17 @@
       <artifactId>datanucleus-appengine</artifactId>
       <version>1.0.0.final</version>
     </dependency>
+    <!-- Below two dependencies + LocalApiProxyServletFilter  are used to simulate GAE dev env on Jetty server  -->
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-local-runtime</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-stubs</artifactId>
+      <version>1.0</version>
+    </dependency>
 
     <!-- Google App Engine API -->
     <dependency>

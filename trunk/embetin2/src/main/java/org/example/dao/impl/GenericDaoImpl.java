@@ -49,7 +49,9 @@ public abstract class GenericDaoImpl <T, ID extends Serializable>
 
     @SuppressWarnings("unchecked")
 	public List<T> findAll() {
-        List<T> results = entityManager.createQuery("select o from " + getPersistentClass().getSimpleName() + " o").getResultList();
+        List<T> results = entityManager.createQuery("select o from "
+        		+ getPersistentClass().getName() + " o").getResultList();
+        results.size(); // In JPA apps, we don't need this call!!
         return results;
     }
 
