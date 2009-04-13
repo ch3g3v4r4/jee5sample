@@ -25,10 +25,11 @@ public class HelloAppEngineServlet extends HttpServlet {
 		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		EmployeeManager em = (EmployeeManager) context.getBean("employeeManagerImpl");
 		Employee employee = new Employee() ;
-		employee.setId(1L);
 		employee.setFirstName("Thai");
 		employee.setLastName("Ha");
 		em.add(employee);
+
+		for (Employee e : em.getAll()) System.out.println(e.getFirstName());
 		resp.getWriter().println("Hello, world");
 	}
 }
