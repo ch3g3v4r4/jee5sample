@@ -327,7 +327,6 @@
         <version>2.6</version>
         <configuration>
           <excludes><!-- GAE_CONTAINER already have these jars -->
-          <!--
             <exclude>org.datanucleus:datanucleus-core</exclude>
             <exclude>org.datanucleus:datanucleus-jpa</exclude>
             <exclude>com.google.appengine:datanucleus-appengine</exclude>
@@ -338,7 +337,6 @@
             <exclude>org.apache.geronimo.specs:geronimo-jta_1.1_spec</exclude>
             <exclude>javax.jdo:jdo2-api</exclude>
             <exclude>com.google.appengine:appengine-api</exclude>
-             -->
           </excludes>
           <downloadSources>true</downloadSources>
           <buildOutputDirectory>${basedir}/war/WEB-INF/classes</buildOutputDirectory>
@@ -365,7 +363,7 @@
           </additionalBuildcommands>
           <classpathContainers>
             <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-            <!-- <classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer> -->
+            <classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer>
           </classpathContainers>
         </configuration>
       </plugin>
