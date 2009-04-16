@@ -47,4 +47,9 @@
     -->
     <context:component-scan base-package="org.example" />
 
+    <bean id="methodLoggingAdvice" class="org.example.util.MethodLoggingAdvice"/>
+    <aop:config>
+      <aop:advisor advice-ref="methodLoggingAdvice" pointcut="execution(* org.example.manager.*.*(..))" order="1"/>
+    </aop:config>
+
 </beans>
