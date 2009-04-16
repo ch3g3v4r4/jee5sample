@@ -368,6 +368,9 @@
             <projectnature>
               com.google.gdt.eclipse.core.webAppNature
             </projectnature>
+            <projectnature>
+                org.springframework.ide.eclipse.core.springnature
+            </projectnature>
           </additionalProjectnatures>
           <additionalBuildcommands>
             <buildcommand>
@@ -379,11 +382,45 @@
             <buildcommand>
               com.google.gdt.eclipse.core.webAppProjectValidator
             </buildcommand>
+            <buildcommand>
+                org.springframework.ide.eclipse.core.springbuilder
+            </buildcommand>
           </additionalBuildcommands>
+          <additionalProjectFacets>
+              <jpt.jpa>1.0</jpt.jpa>
+          </additionalProjectFacets>
           <classpathContainers>
             <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
             <classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer>
           </classpathContainers>
+          <additionalConfig>
+              <file>
+                  <name>.springBeans</name>
+                  <content>
+<![CDATA[<beansProjectDescription>
+    <version>1</version>
+    <configSuffixes>
+        <configSuffix>xml</configSuffix>
+    </configSuffixes>
+    <enableImports>false</enableImports>
+    <configs>
+        <config>src/main/resources/applicationContext.xml</config>
+    </configs>
+    <configSets>
+        <configSet>
+            <name>Main Config Set</name>
+            <allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+            <incomplete>false</incomplete>
+            <configs>
+                <config>src/main/resources/applicationContext.xml</config>
+            </configs>
+        </configSet>
+    </configSets>
+</beansProjectDescription>
+]]>
+                  </content>
+              </file>
+          </additionalConfig>
         </configuration>
       </plugin>
 
