@@ -8,6 +8,9 @@
 
   <properties>
     <spring.version>3.0.0.M2</spring.version>
+    <jta.scope>compile</jta.scope>
+    <appengine-local-runtime.scope>provided</appengine-local-runtime.scope>
+    <appengine-api-stubs.scope>provided</appengine-api-stubs.scope>
   </properties>
 
   <dependencies>
@@ -102,13 +105,13 @@
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-local-runtime</artifactId>
       <version>1.0</version>
-      <scope>runtime</scope>
+      <scope>${appengine-local-runtime.scope}</scope>
     </dependency>
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-stubs</artifactId>
       <version>1.0</version>
-      <scope>runtime</scope>
+      <scope>${appengine-api-stubs.scope}</scope>
     </dependency>
 
     <!-- Google App Engine API -->
