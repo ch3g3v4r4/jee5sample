@@ -49,10 +49,6 @@
       <version>1.2</version>
     </dependency>
 
-    <!--
-      Data persistence APIs: JPA and JDO. Versions of datanucleus-core
-      and datanucleus-jpa are 1.1.1 which is newer than GAE jars (1.1.0)
-    -->
     <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-jpa_3.0_spec</artifactId>
