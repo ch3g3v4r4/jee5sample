@@ -26,6 +26,7 @@ dojo.require("dijit.form.TextBox");
 <button dojoType="dijit.form.Button" id="myButton">
 Join!
 <script type="dojo/method" event="onClick">
+console.log("hello world");
 alert('You pressed the button');
 </script>
 </button>
