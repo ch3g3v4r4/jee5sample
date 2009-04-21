@@ -42,7 +42,8 @@ h2 { margin-top:1.0em; margin-bottom:0.6em; font-size:1.6em; color:#0066ff;}
 <!-- Body -->
 <h2>IMPORT</h2>
 <p>Only admin teachers are allowed to use this function!</p>
-<label for="name">Your name:</label> <input type="text" dojoType="dijit.form.TextBox" size="40" id="name"/>
+<p>Upload Excel files to import data to the system.</p>
+<label for="name">Your data:</label> <input type="text" dojoType="dijit.form.TextBox" size="40" id="name"/>
 
 <center>
 <button dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconSave" type="submit">OK</button>
