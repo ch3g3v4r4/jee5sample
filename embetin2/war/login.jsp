@@ -37,8 +37,8 @@ h2 { margin-top:1.0em; margin-bottom:0.6em; font-size:1.6em; color:#0066ff;}
 <h2>LOGIN</h2>
 <form action="home.jsp">
 <table border="0">
-<tr><td><label for="email">Email:</label></td>
-<td><input type="text" dojoType="dijit.form.ValidationTextBox" required="true" size="40" id="email"/></td></tr>
+<tr><td><label for="username">Username:</label></td>
+<td><input type="text" dojoType="dijit.form.ValidationTextBox" required="true" size="40" id="username"/></td></tr>
 <tr><td><label for="password">Password:</label></td>
 <td><input type="password" dojoType="dijit.form.ValidationTextBox" required="true" size="40" id="password"/></td></tr>
 <tr><td colspan="2" align="center"><button dojoType="dijit.form.Button" type="submit">OK</button></td></tr>

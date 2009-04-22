@@ -15,6 +15,8 @@
 dojo.require("dojo.parser");
 dojo.require("dijit.form.Button");
 dojo.require("dijit.form.TextBox");
+dojo.require("dijit.form.ValidationTextBox");
+
 </script>
 <style type="text/css">
 body, html{
