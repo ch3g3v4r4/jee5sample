@@ -33,14 +33,14 @@ h2 { margin-top:1.0em; margin-bottom:0.6em; font-size:1.6em; color:#0066ff;}
 
 <!-- menu -->
 <div id="sitelinks" style="font-size:0.8em;">
-<p>&nbsp;&nbsp;<a href="home.jsp">HOME</a>&nbsp;|&nbsp;<a href="referal.jsp">REFERAL</a>&nbsp;|&nbsp;<a href="incident_referal.jsp">INCIDENT REFERAL</a>&nbsp;|&nbsp;<a href="import.jsp">IMPORT</a>&nbsp;|&nbsp;<a href="reports.jsp">REPORTS</a>&nbsp;|&nbsp;<a href="login.jsp">LOGOUT</a></p>
+<p>&nbsp;&nbsp;<a href="home.jsp">HOME</a>&nbsp;|&nbsp;<a href="progress.jsp">PROGRESS REPORT</a>&nbsp;|&nbsp;<a href="referral_slip.jsp">STUDENT REFERRAL SLIP</a>&nbsp;|&nbsp;<a href="import.jsp">IMPORT</a>&nbsp;|&nbsp;<a href="reports.jsp">REPORTS</a>&nbsp;|&nbsp;<a href="login.jsp">LOGOUT</a></p>
 </div>
 <hr/>
 
 <!-- Body -->
 <h2>REPORTS</h2>
 <p>Only admin teachers are allowed to use this function!</p>
-<p>View reports. Filter and Export reports to Excel file.</p>
+<p>View reports. Filter and Export reports to Excel and PDF file formats.</p>
 <label for="name">Your data:</label> <input type="text" dojoType="dijit.form.TextBox" size="40" id="name"/>
 
 <center>
