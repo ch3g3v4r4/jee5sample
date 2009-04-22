@@ -33,15 +33,15 @@ h2 { margin-top:1.0em; margin-bottom:0.6em; font-size:1.6em; color:#0066ff;}
 
 <!-- menu -->
 <div id="sitelinks" style="font-size:0.8em;">
-<p>&nbsp;&nbsp;<a href="home.jsp">HOME</a>&nbsp;|&nbsp;<a href="referal.jsp">REFERAL</a>&nbsp;|&nbsp;<a href="incident_referal.jsp">INCIDENT REFERAL</a>&nbsp;|&nbsp;<a href="import.jsp">IMPORT</a>&nbsp;|&nbsp;<a href="reports.jsp">REPORTS</a>&nbsp;|&nbsp;<a href="login.jsp">LOGOUT</a></p>
+<p>&nbsp;&nbsp;<a href="home.jsp">HOME</a>&nbsp;|&nbsp;<a href="progress.jsp">PROGRESS REPORT</a>&nbsp;|&nbsp;<a href="referral_slip.jsp">STUDENT REFERRAL SLIP</a>&nbsp;|&nbsp;<a href="import.jsp">IMPORT</a>&nbsp;|&nbsp;<a href="reports.jsp">REPORTS</a>&nbsp;|&nbsp;<a href="login.jsp">LOGOUT</a></p>
 </div>
 <hr/>
 
 <!-- body -->
 <h2>Home page</h2>
 <p>Welcome to Teacher Desktop.</p>
-<p>For Teachers: You can use <a href="referal.jsp">REFERAL</a> and <a href="incident_referal.jsp">INCIDENT REFERAL</a> functions</p>
-<p>For Admin Teachers: You can use <a href="referal.jsp">REFERAL</a>, <a href="incident_referal.jsp">INCIDENT REFERAL</a>, <a href="import.jsp">IMPORT</a> and <a href="reports.jsp">REPORTS</a> functions</p>
+<p>For Teachers: You can use <a href="progress.jsp">PROGRESS REPORT</a> and <a href="referral_slip.jsp">STUDENT REFERRAL SLIP</a> functions</p>
+<p>For Admin Teachers: You can use <a href="progress.jsp">PROGRESS REPORT</a>, <a href="referral_slip.jsp">STUDENT REFERRAL SLIP</a>, <a href="import.jsp">IMPORT</a> and <a href="reports.jsp">REPORTS</a> functions</p>
 
 
 <hr/>
