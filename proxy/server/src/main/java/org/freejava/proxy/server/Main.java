@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 
+import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
@@ -17,10 +18,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Create the acceptor
         SocketAcceptor acceptor = new NioSocketAcceptor();
+        acceptor.setReuseAddress(true);
 
         // Add two filters : a logger and a codec
-        acceptor.getFilterChain().addLast( "logger", new LoggingFilter() );
-        acceptor.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
+        DefaultIoFilterChainBuilder filterChain = acceptor.getFilterChain();
+        filterChain.addLast( "logger", new LoggingFilter() );
+        filterChain.addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
 
         // Attach the business logic to the server
         acceptor.setHandler(new EchoProtocolHandler());
