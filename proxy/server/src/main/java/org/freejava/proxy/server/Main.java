@@ -24,6 +24,7 @@ public class Main {
         DefaultIoFilterChainBuilder filterChain = acceptor.getFilterChain();
         filterChain.addLast( "logger", new LoggingFilter() );
         filterChain.addLast( "codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
+        acceptor.getSessionConfig().setTcpNoDelay(true);
 
         // Attach the business logic to the server
         acceptor.setHandler(new EchoProtocolHandler());
