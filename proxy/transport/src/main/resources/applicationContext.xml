@@ -17,9 +17,6 @@
 
     <!-- ========================= RESOURCE DEFINITIONS ========================= -->
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" p:persistenceUnitName="pu"/>
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" p:entityManagerFactory-ref="entityManagerFactory" />
-
     <!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->
 
     <!--
@@ -31,25 +28,9 @@
     <context:annotation-config />
 
     <!--
-        Instruct Spring to perform declarative transaction management
-        automatically on annotated classes.
-    -->
-    <tx:annotation-driven />
-
-    <!--
-        PostProcessors to perform exception translation on @Repository classes (from native
-        exceptions such as JPA PersistenceExceptions to Spring's DataAccessException hierarchy).
-    -->
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-
-    <!--
       Autodetected POJOs labeled with the @Controller/@Service/@Repositoty/@Component annotation.
     -->
-    <context:component-scan base-package="org.example" />
+    <context:component-scan base-package="org.freejava.proxy.transport" />
 
-    <bean id="methodLoggingAdvice" class="org.example.util.MethodLoggingAdvice"/>
-    <aop:config>
-      <aop:advisor advice-ref="methodLoggingAdvice" pointcut="execution(* org.example.manager.*.*(..))" order="1"/>
-    </aop:config>
 
 </beans>
