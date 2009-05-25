@@ -5,6 +5,7 @@
   <artifactId>transport</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
+  <name>transport</name>
 
   <properties>
     <spring.version>3.0.0.M2</spring.version>
