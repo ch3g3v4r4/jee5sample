@@ -93,28 +93,30 @@
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>datanucleus-appengine</artifactId>
-      <version>1.0.0.final</version>
+      <version>1.0.1.RC1</version><!-- TODO: It should be 1.0.1.final -->
       <scope>runtime</scope>
     </dependency>
     <!-- Below two dependencies + LocalApiProxyServletFilter  are used to simulate GAE dev env on Jetty server  -->
     <dependency>
       <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-local-runtime</artifactId>
-      <version>1.0</version>
+      <artifactId>appengine-api-1.0-runtime</artifactId>
+      <version>1.2.1</version>
       <scope>${appengine-local-runtime.scope}</scope>
     </dependency>
     <dependency>
       <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-stubs</artifactId>
-      <version>1.0</version>
+      <artifactId>appengine-api-1.0-stubs</artifactId>
+      <version>1.2.1</version>
       <scope>${appengine-api-stubs.scope}</scope>
     </dependency>
+
+
 
     <!-- Google App Engine API -->
     <dependency>
       <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api</artifactId>
-      <version>1.0-sdk-1.2.0</version>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
+      <version>1.2.1</version>
     </dependency>
 
     <!-- Logging -->
@@ -433,10 +435,10 @@
               <tasks>
                 <echo message="Will download Google App Engine for Java and run appcfg tool to upload the application." />
                 <mkdir dir="${java.io.tmpdir}/gaej"/>
-                <get src="http://googleappengine.googlecode.com/files/appengine-java-sdk-1.2.0.zip" dest="${java.io.tmpdir}/gaej/sdk.zip" verbose="yes" usetimestamp="true"/>
-                <unzip src="${java.io.tmpdir}/gaej/sdk.zip" dest="${java.io.tmpdir}/gaej"/>
+                <get src="http://googleappengine.googlecode.com/files/appengine-java-sdk-1.2.1.zip" dest="${java.io.tmpdir}/gaej/appengine-java-sdk-1.2.1.zip" verbose="yes" usetimestamp="true"/>
+                <unzip src="${java.io.tmpdir}/gaej/appengine-java-sdk-1.2.1.zip" dest="${java.io.tmpdir}/gaej"/>
                 <java fork="false" classname="com.google.appengine.tools.admin.AppCfg">
-                  <sysproperty key="appengine.sdk.root" value="${java.io.tmpdir}/gaej/appengine-java-sdk-1.2.0"/>
+                  <sysproperty key="appengine.sdk.root" value="${java.io.tmpdir}/gaej/appengine-java-sdk-1.2.1"/>
                   <classpath>
                     <fileset dir="${java.io.tmpdir}/gaej">
                       <include name="**/*.jar"/>
