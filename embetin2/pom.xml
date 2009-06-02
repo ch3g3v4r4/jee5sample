@@ -91,9 +91,9 @@
     </dependency>
     <!-- Google App Engine persistence runtime -->
     <dependency>
-      <groupId>com.google.appengine</groupId>
+      <groupId>com.google.appengine.orm</groupId>
       <artifactId>datanucleus-appengine</artifactId>
-      <version>1.0.1.RC1</version><!-- TODO: It should be 1.0.1.final -->
+      <version>1.0.1</version>
       <scope>runtime</scope>
     </dependency>
     <!-- Below two dependencies + LocalApiProxyServletFilter  are used to simulate GAE dev env on Jetty server  -->
