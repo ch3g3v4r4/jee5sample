@@ -12,7 +12,7 @@ public class HelloWorldPortlet extends GenericPortlet {
 	public void doView(RenderRequest request, RenderResponse response)
 			throws IOException {
 		PrintWriter writer = response.getWriter();
-		writer.write("Hello World !");
+		writer.write("do View: Hello World from Thai Ha!");
 		writer.close();
 	}
 
