@@ -8,9 +8,10 @@
       <portlet-class>org.freejava.HelloWorldPortlet</portlet-class>
       <supports>
         <mime-type>text/html</mime-type>
+        <portlet-mode>VIEW</portlet-mode>
       </supports>
       <portlet-info>
-          <title>Simplest Hello World Portlet</title>
+          <title>Thai Ha's HelloWorld Portlet</title>
       </portlet-info>
    </portlet>
 </portlet-app>
