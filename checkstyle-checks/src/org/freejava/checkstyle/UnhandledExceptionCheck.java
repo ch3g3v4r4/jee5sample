@@ -20,7 +20,6 @@ public class UnhandledExceptionCheck extends Check {
 
 	public void visitToken(DetailAST ast) {
 		try {
-			String loggerName = findLoggerName(ast);
 			DetailAST paramDefBlock = ast
 					.findFirstToken(TokenTypes.PARAMETER_DEF);
 			DetailAST typeBlock = paramDefBlock.findFirstToken(TokenTypes.TYPE);
@@ -28,8 +27,7 @@ public class UnhandledExceptionCheck extends Check {
 			String exceptionVarName = identBlock.getText();
 
 			// Find statements like LOGGER.info(.., ex) or throw ...
-			boolean found = findLoggingStatement(ast, loggerName,
-					exceptionVarName);
+			boolean found = findLoggingStatement(ast, exceptionVarName);
 			if (!found) {
 				found = findThrowStatement(ast);
 			}
@@ -50,9 +48,11 @@ public class UnhandledExceptionCheck extends Check {
 		return (!asts.isEmpty());
 	}
 
-	private boolean findLoggingStatement(DetailAST catchAst, String loggerName,
-			String exceptionVarName) {
+	private boolean findLoggingStatement(DetailAST catchAst, String exceptionVarName) {
 		boolean result = false;
+
+		String loggerName = findLoggerName(catchAst);
+		if (loggerName == null) return false;
 		// Find all METHOD_CALL which has first IDENT equals to loggerName and
 		// exceptionVarName in param list
 		List<AST> asts = findAstByType(catchAst, TokenTypes.METHOD_CALL);
@@ -124,14 +124,16 @@ public class UnhandledExceptionCheck extends Check {
 						.findFirstToken(TokenTypes.TYPE);
 				DetailAST typeIdentBlock = typeBlock
 						.findFirstToken(TokenTypes.IDENT);
-				String typeIdent = typeIdentBlock.getText();
-				AST identBlock = typeBlock.getNextSibling();
-				String varIdent = identBlock.getText();
-				String simpleTypeName = typeIdent.substring(typeIdent
-						.lastIndexOf('.') + 1);
-				if (simpleTypeName.equals("Logger")
-						|| simpleTypeName.equals("Log")) {
-					result = varIdent;
+				if (typeIdentBlock != null) {
+					String typeIdent = typeIdentBlock.getText();
+					AST identBlock = typeBlock.getNextSibling();
+					String varIdent = identBlock.getText();
+					String simpleTypeName = typeIdent.substring(typeIdent
+							.lastIndexOf('.') + 1);
+					if (simpleTypeName.equals("Logger")
+							|| simpleTypeName.equals("Log")) {
+						result = varIdent;
+					}
 				}
 			}
 			child = child.getNextSibling();
