@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Teacher Desktop - Login</title>
+<title>Address Book - Login</title>
 
 <style type="text/css">
 @import "http://ajax.googleapis.com/ajax/libs/dojo/1.3.0/dijit/themes/tundra/tundra.css";
@@ -30,7 +30,7 @@ h2 { margin-top:1.0em; margin-bottom:0.6em; font-size:1.6em; color:#0066ff;}
 <body class="tundra">
 
 <!-- heading -->
-<h1>Teacher Desktop</h1>
+<h1>Address Book</h1>
 <hr/>
 
 <!-- Body -->
@@ -47,6 +47,6 @@ h2 { margin-top:1.0em; margin-bottom:0.6em; font-size:1.6em; color:#0066ff;}
 
 <!-- Footer -->
 <hr/>
-<p align="center">Copyright &copy; 2009 Teacher Desktop</p>
+<p align="center">Copyright &copy; 2009 Address Book</p>
 </body>
 </html>
