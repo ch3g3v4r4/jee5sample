@@ -29,7 +29,10 @@ public class HelloAppEngineServlet extends HttpServlet {
 		employee.setLastName("Ha");
 		em.add(employee);
 
-		for (Employee e : em.getAll()) System.out.println(e.getFirstName());
-		resp.getWriter().println("Hello, world");
+		String names = "";
+		for (Employee e : em.getAll()) {
+			names += e.getFirstName();
+		}
+		resp.getWriter().println(names);
 	}
 }
