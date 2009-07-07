@@ -23,7 +23,7 @@
 
   <servlet-mapping>
     <servlet-name>hello</servlet-name>
-    <url-pattern>/helloappengine</url-pattern>
+    <url-pattern>/hello</url-pattern>
   </servlet-mapping>
 
   <welcome-file-list>
