@@ -1,7 +1,0 @@
-
-{
-items: [
-{name: "Attitude 1"},
-{name: "Attitude 2"}
-]
-}
