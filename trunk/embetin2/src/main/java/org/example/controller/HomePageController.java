@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/home") // can be removed if don't need
 public class HomePageController {
 
 	private EmployeeManager employeeManager;
@@ -17,8 +18,14 @@ public class HomePageController {
 		this.employeeManager = employeeManager;
 	}
 
-	@RequestMapping("/home.htm")
+	@RequestMapping("/index.htm")
 	public ModelAndView index() {
+		/*
+		 * values of class and method annotations @RequestMapping can be merged. BUT method must have
+		 * @RequestMapping (w or w/o value)
+		 *
+		 */
+
 		Employee employee = new Employee() ;
 		employee.setFirstName("Thai");
 		employee.setLastName("Ha");
@@ -29,6 +36,6 @@ public class HomePageController {
 			names += e.getFirstName();
 		}
 
-		return new ModelAndView("home.jsp", "names", names);
+		return new ModelAndView("/home.jsp", "names", names);
 	}
 }
