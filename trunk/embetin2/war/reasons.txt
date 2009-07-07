@@ -1,6 +1,0 @@
-{
-items: [
-{name: "Reason 1"},
-{name: "Reason 2"}
-]
-}
