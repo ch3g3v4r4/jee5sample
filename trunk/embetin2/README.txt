@@ -1,5 +1,4 @@
 Deploy this app to Google App Engine:
-0. Use the command src/main/config/maven/add2repo.sh to install some artifacts
 1. Registering a new application at http://appengine.google.com/ and remember the app-id
 2. Replace all references to 'embetin2' by <app-id> in appengine-web.xml and pom.xml files
 3. Use command
@@ -8,7 +7,6 @@ to upload the application to Google App Engine server
 4. Test by browsing to http://<app-id>.appspot.com
 
 Developing with Eclipse:
-0. Use the command src/main/config/maven/add2repo.sh to install some artifacts
 1. Install 'Google Plugin for Eclipse' to your Eclipse IDE (update site: http://dl.google.com/eclipse/plugin/3.4)
 2. Use command
 mvn package eclipse:eclipse
