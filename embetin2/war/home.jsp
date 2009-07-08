@@ -1,2 +1,7 @@
+<%@ page isELIgnored="false" %> 
+
 Hello world!
-${names}
+${requestScope.names}
+<%= getServletContext().getMajorVersion() %>
+<%= getServletContext().getMinorVersion() %>
+${pageContext.servletContext.majorVersion}
