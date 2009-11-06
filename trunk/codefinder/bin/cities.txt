@@ -1,0 +1,738 @@
+[0]	Object	
+user_id	String	822784
+city	String	inuvik
+party_id	String	209692
+count	String	1
+avgCityLong	String	-133.69533
+avgCityLat	String	68.35585
+cityLong	String	-135
+cityLat	String	70
+[1]	Object	
+user_id	String	781980
+city	String	Fairbanks
+party_id	String	203287
+count	String	4
+avgCityLong	String	-147.646528
+avgCityLat	String	64.835054
+cityLong	String	-150
+cityLat	String	65
+[2]	Object	
+user_id	String	806782
+city	String	North Pole
+party_id	String	184567
+count	String	4
+avgCityLong	String	-146.87924025
+avgCityLat	String	64.5613225
+cityLong	String	-145
+cityLat	String	65
+[3]	Object	
+user_id	String	768737
+city	String	Elmendorf AFB
+party_id	String	187693
+count	String	40
+avgCityLong	String	-149.8847087425
+avgCityLat	String	61.2072341425
+cityLong	String	-150
+cityLat	String	60
+[4]	Object	
+user_id	String	825485
+city	String	Hay River
+party_id	String	183325
+count	String	2
+avgCityLong	String	-115.07546
+avgCityLat	String	61.632507
+cityLong	String	-115
+cityLat	String	60
+[5]	Object	
+user_id	String	768881
+city	String	Whitehorse
+party_id	String	178224
+count	String	3
+avgCityLong	String	-135.101564333333
+avgCityLat	String	60.7062033333333
+cityLong	String	-135
+cityLat	String	60
+[6]	Object	
+user_id	String	848574
+city	String	Fort Smith
+party_id	String	200368
+count	String	1
+avgCityLong	String	-111.880517
+avgCityLat	String	60.002781
+cityLong	String	-110
+cityLat	String	60
+[7]	Object	
+user_id	String	779288
+city	String	Fort Nelson
+party_id	String	198124
+count	String	1
+avgCityLong	String	-122.676215
+avgCityLat	String	58.807461
+cityLong	String	-125
+cityLat	String	60
+[8]	Object	
+user_id	String	776141
+city	String	Kuujjuaq
+party_id	String	180175
+count	String	1
+avgCityLong	String	-68.418839
+avgCityLat	String	58.102996
+cityLong	String	-70
+cityLat	String	60
+[9]	Object	
+user_id	String	785054
+city	String	Ketchikan
+party_id	String	199982
+count	String	5
+avgCityLong	String	-129.5531048
+avgCityLat	String	54.6462112
+cityLong	String	-130
+cityLat	String	55
+[10]	Object	
+user_id	String	769154
+city	String	Grande Prairie
+party_id	String	196673
+count	String	7
+avgCityLong	String	-119.978462142857
+avgCityLat	String	55.6277227142857
+cityLong	String	-120
+cityLat	String	55
+[11]	Object	
+user_id	String	822560
+city	String	Bonnyville
+party_id	String	186048
+count	String	6
+avgCityLong	String	-110.320009166667
+avgCityLat	String	54.7589426666667
+cityLong	String	-110
+cityLat	String	55
+[12]	Object	
+user_id	String	821930
+city	String	Prince George
+party_id	String	181864
+count	String	13
+avgCityLong	String	-123.086205692308
+avgCityLat	String	53.9458652307692
+cityLong	String	-125
+cityLat	String	55
+[13]	Object	
+user_id	String	769167
+city	String	Edmonton
+party_id	String	185732
+count	String	89
+avgCityLong	String	-113.543617932584
+avgCityLat	String	53.605414247191
+cityLong	String	-115
+cityLat	String	55
+[14]	Object	
+user_id	String	828203
+city	String	Goose Bay
+party_id	String	215665
+count	String	1
+avgCityLong	String	-60.38015
+avgCityLat	String	53.312758
+cityLong	String	-60
+cityLat	String	55
+[15]	Object	
+user_id	String	771045
+city	String	Melfort SK
+party_id	String	182264
+count	String	2
+avgCityLong	String	-105.1546155
+avgCityLat	String	53.0313575
+cityLong	String	-105
+cityLat	String	55
+[16]	Object	
+user_id	String	838355
+city	String	Barrows
+party_id	String	181901
+count	String	1
+avgCityLong	String	-101.441445
+avgCityLat	String	52.83072
+cityLong	String	-100
+cityLat	String	55
+[17]	Object	
+user_id	String	768705
+city	String	Regina
+party_id	String	203559
+count	String	36
+avgCityLong	String	-105.555938388889
+avgCityLat	String	51.1376183333333
+cityLong	String	-105
+cityLat	String	50
+[18]	Object	
+user_id	String	784493
+city	String	Winkler
+party_id	String	202236
+count	String	21
+avgCityLong	String	-100.100786857143
+avgCityLat	String	49.6127287619048
+cityLong	String	-100
+cityLat	String	50
+[19]	Object	
+user_id	String	784302
+city	String	steady brook
+party_id	String	215449
+count	String	2
+avgCityLong	String	-57.9123395
+avgCityLat	String	48.941956
+cityLong	String	-60
+cityLat	String	50
+[20]	Object	
+user_id	String	826338
+city	String	Rimouski
+party_id	String	206773
+count	String	1
+avgCityLong	String	-68.4664353
+avgCityLat	String	48.4928445
+cityLong	String	-70
+cityLat	String	50
+[21]	Object	
+user_id	String	770327
+city	String	South Porcupine
+party_id	String	203357
+count	String	8
+avgCityLong	String	-80.777091
+avgCityLat	String	48.464442375
+cityLong	String	-80
+cityLat	String	50
+[22]	Object	
+user_id	String	774447
+city	String	Tide-head
+party_id	String	214570
+count	String	2
+avgCityLong	String	-65.8445185
+avgCityLat	String	47.7494215
+cityLong	String	-65
+cityLat	String	50
+[23]	Object	
+user_id	String	769122
+city	String	Grand Forks
+party_id	String	214964
+count	String	97
+avgCityLong	String	-96.994592285567
+avgCityLat	String	49.5636064
+cityLong	String	-95
+cityLat	String	50
+[24]	Object	
+user_id	String	19872
+city	String	Snohomish
+party_id	String	201664
+count	String	419
+avgCityLong	String	-121.925272479952
+avgCityLat	String	48.0345100307877
+cityLong	String	-120
+cityLat	String	50
+[25]	Object	
+user_id	String	770600
+city	String	Ely
+party_id	String	196596
+count	String	18
+avgCityLong	String	-89.3947542222222
+avgCityLat	String	48.3824109444444
+cityLong	String	-90
+cityLat	String	50
+[26]	Object	
+user_id	String	71932
+city	String	veradale
+party_id	String	186198
+count	String	211
+avgCityLong	String	-115.065844606161
+avgCityLat	String	49.7900329090047
+cityLong	String	-115
+cityLat	String	50
+[27]	Object	
+user_id	String	61930
+city	String	Bremerton
+party_id	String	199115
+count	String	277
+avgCityLong	String	-123.107762011913
+avgCityLat	String	48.9673897772563
+cityLong	String	-125
+cityLat	String	50
+[28]	Object	
+user_id	String	769699
+city	String	St John's
+party_id	String	193133
+count	String	14
+avgCityLong	String	-52.7326014285714
+avgCityLat	String	47.5666035
+cityLong	String	-55
+cityLat	String	50
+[29]	Object	
+user_id	String	80455
+city	String	Great Falls
+party_id	String	178307
+count	String	19
+avgCityLong	String	-110.297371347368
+avgCityLat	String	49.2055230842105
+cityLong	String	-110
+cityLat	String	50
+[30]	Object	
+user_id	String	785496
+city	String	st. john's
+party_id	String	181997
+count	String	3
+avgCityLong	String	-52.8019203333333
+avgCityLat	String	47.4897883333333
+cityLong	String	-55
+cityLat	String	45
+[31]	Object	
+user_id	String	123640
+city	String	Carrington
+party_id	String	194989
+count	String	14
+avgCityLong	String	-100.087116757143
+avgCityLat	String	46.0185115214286
+cityLong	String	-100
+cityLat	String	45
+[32]	Object	
+user_id	String	768758
+city	String	Billings
+party_id	String	188383
+count	String	66
+avgCityLong	String	-110.931641084849
+avgCityLat	String	44.4192228409091
+cityLong	String	-110
+cityLat	String	45
+[33]	Object	
+user_id	String	13119
+city	String	Bark River
+party_id	String	210810
+count	String	464
+avgCityLong	String	-84.3157091219827
+avgCityLat	String	43.143090029957
+cityLong	String	-85
+cityLat	String	45
+[34]	Object	
+user_id	String	824196
+city	String	Antigonish
+party_id	String	192859
+count	String	6
+avgCityLong	String	-60.5523603333333
+avgCityLat	String	46.0662435
+cityLong	String	-60
+cityLat	String	45
+[35]	Object	
+user_id	String	75070
+city	String	Oregon City
+party_id	String	196286
+count	String	392
+avgCityLong	String	-122.858954371174
+avgCityLat	String	45.4725151882654
+cityLong	String	-125
+cityLat	String	45
+[36]	Object	
+user_id	String	147759
+city	String	Baileyville
+party_id	String	178417
+count	String	114
+avgCityLong	String	-64.6425447973684
+avgCityLat	String	45.3138522850877
+cityLong	String	-65
+cityLat	String	45
+[37]	Object	
+user_id	String	75856
+city	String	Bloomington
+party_id	String	188025
+count	String	493
+avgCityLong	String	-93.8277861610548
+avgCityLat	String	44.9404258306288
+cityLong	String	-95
+cityLat	String	45
+[38]	Object	
+user_id	String	62261
+city	String	Bend
+party_id	String	196437
+count	String	216
+avgCityLong	String	-121.487222371296
+avgCityLat	String	46.6053428078704
+cityLong	String	-120
+cityLat	String	45
+[39]	Object	
+user_id	String	69586
+city	String	watertown
+party_id	String	175888
+count	String	499
+avgCityLong	String	-74.9463518036073
+avgCityLat	String	44.327961558517
+cityLong	String	-75
+cityLat	String	45
+[40]	Object	
+user_id	String	13406
+city	String	Bath
+party_id	String	209517
+count	String	260
+avgCityLong	String	-70.7867796873077
+avgCityLat	String	43.6944241265384
+cityLong	String	-70
+cityLat	String	45
+[41]	Object	
+user_id	String	13127
+city	String	Boise
+party_id	String	198441
+count	String	122
+avgCityLong	String	-116.099141348361
+avgCityLat	String	44.2893355237705
+cityLong	String	-115
+cityLat	String	45
+[42]	Object	
+user_id	String	26277
+city	String	Middleton
+party_id	String	197070
+count	String	431
+avgCityLong	String	-89.0913649466357
+avgCityLat	String	43.6846427828306
+cityLong	String	-90
+cityLat	String	45
+[43]	Object	
+user_id	String	22849
+city	String	Buffalo
+party_id	String	195865
+count	String	863
+avgCityLong	String	-79.5405077989571
+avgCityLat	String	43.5669666954809
+cityLong	String	-80
+cityLat	String	45
+[44]	Object	
+user_id	String	499355
+city	String	Glenrock
+party_id	String	198304
+count	String	23
+avgCityLong	String	-104.612005404348
+avgCityLat	String	44.0176016782609
+cityLong	String	-105
+cityLat	String	45
+[45]	Object	
+user_id	String	13073
+city	String	Woburn
+party_id	String	176032
+count	String	391
+avgCityLong	String	-71.3603962480818
+avgCityLat	String	42.0930581161125
+cityLong	String	-70
+cityLat	String	40
+[46]	Object	
+user_id	String	22865
+city	String	Naperville
+party_id	String	193389
+count	String	1231
+avgCityLong	String	-89.0094360444355
+avgCityLat	String	40.8478516988628
+cityLong	String	-90
+cityLat	String	40
+[47]	Object	
+user_id	String	19257
+city	String	Michigan City
+party_id	String	193603
+count	String	1439
+avgCityLong	String	-84.6116910112576
+avgCityLat	String	40.3734330059069
+cityLong	String	-85
+cityLat	String	40
+[48]	Object	
+user_id	String	28148
+city	String	Barberton
+party_id	String	211208
+count	String	761
+avgCityLong	String	-80.2418379756899
+avgCityLat	String	40.4245307449409
+cityLong	String	-80
+cityLat	String	40
+[49]	Object	
+user_id	String	127408
+city	String	Cozad
+party_id	String	209953
+count	String	44
+avgCityLong	String	-98.4426298818182
+avgCityLat	String	39.3890263204545
+cityLong	String	-100
+cityLat	String	40
+[50]	Object	
+user_id	String	60822
+city	String	Salt Lake City
+party_id	String	196274
+count	String	336
+avgCityLong	String	-111.715982744048
+avgCityLat	String	40.6507323455357
+cityLong	String	-110
+cityLat	String	40
+[51]	Object	
+user_id	String	13442
+city	String	Baltimore
+party_id	String	183530
+count	String	2373
+avgCityLong	String	-75.0937664156764
+avgCityLat	String	40.2615310982722
+cityLong	String	-75
+cityLat	String	40
+[52]	Object	
+user_id	String	76182
+city	String	Peyton
+party_id	String	183157
+count	String	365
+avgCityLong	String	-104.955514756438
+avgCityLat	String	39.711071030685
+cityLong	String	-105
+cityLat	String	40
+[53]	Object	
+user_id	String	71500
+city	String	Lees Summit
+party_id	String	196191
+count	String	540
+avgCityLong	String	-95.1995247737038
+avgCityLat	String	39.864940675926
+cityLong	String	-95
+cityLat	String	40
+[54]	Object	
+user_id	String	62042
+city	String	Sacramento
+party_id	String	177676
+count	String	626
+avgCityLong	String	-121.595830135783
+avgCityLat	String	38.3368991908946
+cityLong	String	-120
+cityLat	String	40
+[55]	Object	
+user_id	String	161414
+city	String	Santa Rosa
+party_id	String	210485
+count	String	71
+avgCityLong	String	-122.936904216901
+avgCityLat	String	39.8359858971831
+cityLong	String	-125
+cityLat	String	40
+[56]	Object	
+user_id	String	780147
+city	String	Cedar City
+party_id	String	175701
+count	String	5
+avgCityLong	String	-113.7806126
+avgCityLat	String	38.2447572
+cityLong	String	-115
+cityLat	String	40
+[57]	Object	
+user_id	String	13589
+city	String	Eden
+party_id	String	192452
+count	String	774
+avgCityLong	String	-80.140110375323
+avgCityLat	String	35.4243744881138
+cityLong	String	-80
+cityLat	String	35
+[58]	Object	
+user_id	String	13328
+city	String	Elizabeth City
+party_id	String	177016
+count	String	168
+avgCityLong	String	-76.5847202107143
+avgCityLat	String	36.7236501142857
+cityLong	String	-75
+cityLat	String	35
+[59]	Object	
+user_id	String	62807
+city	String	Las Vegas
+party_id	String	193830
+count	String	590
+avgCityLong	String	-116.490705456779
+avgCityLat	String	34.0088504961018
+cityLong	String	-115
+cityLat	String	35
+[60]	Object	
+user_id	String	15367
+city	String	mountain view
+party_id	String	199098
+count	String	196
+avgCityLong	String	-90.1882547306122
+avgCityLat	String	35.0274487719388
+cityLong	String	-90
+cityLat	String	35
+[61]	Object	
+user_id	String	105506
+city	String	oklahoma city
+party_id	String	204040
+count	String	149
+avgCityLong	String	-98.7621492912752
+avgCityLat	String	34.7198343946309
+cityLong	String	-100
+cityLat	String	35
+[62]	Object	
+user_id	String	61321
+city	String	Rio Rancho
+party_id	String	204798
+count	String	73
+avgCityLong	String	-106.217825249315
+avgCityLat	String	34.9129046438356
+cityLong	String	-105
+cityLat	String	35
+[63]	Object	
+user_id	String	24725
+city	String	Valencia
+party_id	String	197913
+count	String	1133
+avgCityLong	String	-119.05084826346
+avgCityLat	String	34.8557066752869
+cityLong	String	-120
+cityLat	String	35
+[64]	Object	
+user_id	String	13395
+city	String	scottsdale
+party_id	String	192521
+count	String	354
+avgCityLong	String	-111.861314277966
+avgCityLat	String	33.5517551121469
+cityLong	String	-110
+cityLat	String	35
+[65]	Object	
+user_id	String	61406
+city	String	Auburn
+party_id	String	202010
+count	String	927
+avgCityLong	String	-85.0846575003235
+avgCityLat	String	34.6722991906149
+cityLong	String	-85
+cityLat	String	35
+[66]	Object	
+user_id	String	19613
+city	String	Longview
+party_id	String	183467
+count	String	724
+avgCityLong	String	-96.150545154558
+avgCityLat	String	34.1362892937845
+cityLong	String	-95
+cityLat	String	35
+[67]	Object	
+user_id	String	127120
+city	String	Tucson
+party_id	String	199582
+count	String	94
+avgCityLong	String	-110.809206944681
+avgCityLat	String	32.1602408702128
+cityLong	String	-110
+cityLat	String	30
+[68]	Object	
+user_id	String	759144
+city	String	El Paso
+party_id	String	196904
+count	String	38
+avgCityLong	String	-106.157403594737
+avgCityLat	String	31.8630694921053
+cityLong	String	-105
+cityLat	String	30
+[69]	Object	
+user_id	String	19486
+city	String	Mandeville
+party_id	String	214280
+count	String	205
+avgCityLong	String	-90.0645616746341
+avgCityLat	String	30.5494037770732
+cityLong	String	-90
+cityLat	String	30
+[70]	Object	
+user_id	String	12752
+city	String	Katy
+party_id	String	190172
+count	String	460
+avgCityLong	String	-95.5008727700001
+avgCityLat	String	30.1494243284783
+cityLong	String	-95
+cityLat	String	30
+[71]	Object	
+user_id	String	81726
+city	String	San Antonio
+party_id	String	182607
+count	String	413
+avgCityLong	String	-98.1559451249395
+avgCityLat	String	30.2703220861985
+cityLong	String	-100
+cityLat	String	30
+[72]	Object	
+user_id	String	75489
+city	String	Orlando
+party_id	String	180332
+count	String	625
+avgCityLong	String	-81.55007033392
+avgCityLat	String	29.01320977984
+cityLong	String	-80
+cityLat	String	30
+[73]	Object	
+user_id	String	42397
+city	String	Lutz
+party_id	String	176465
+count	String	291
+avgCityLong	String	-84.0020745804124
+avgCityLat	String	29.5845027996564
+cityLong	String	-85
+cityLat	String	30
+[74]	Object	
+user_id	String	157622
+city	String	Bradenton
+party_id	String	180385
+count	String	19
+avgCityLong	String	-82.5577956368421
+avgCityLat	String	27.4265237210526
+cityLong	String	-85
+cityLat	String	25
+[75]	Object	
+user_id	String	70443
+city	String	Pompano Beach
+party_id	String	200242
+count	String	373
+avgCityLong	String	-80.6257116356568
+avgCityLat	String	26.2697181726541
+cityLong	String	-80
+cityLat	String	25
+[76]	Object	
+user_id	String	772539
+city	String	Weslaco
+party_id	String	210256
+count	String	20
+avgCityLong	String	-98.09649356
+avgCityLat	String	26.27317339
+cityLong	String	-100
+cityLat	String	25
+[77]	Object	
+user_id	String	155238
+city	String	Brownsville
+party_id	String	196095
+count	String	6
+avgCityLong	String	-97.4255330833333
+avgCityLat	String	25.9436449
+cityLong	String	-95
+cityLat	String	25
+[78]	Object	
+user_id	String	758231
+city	String	Ewa Beach
+party_id	String	211505
+count	String	48
+avgCityLong	String	-158.003584420833
+avgCityLat	String	21.4006042458333
+cityLong	String	-160
+cityLat	String	20
+[79]	Object	
+user_id	String	789626
+city	String	Pahoa
+party_id	String	202707
+count	String	7
+avgCityLong	String	-156.0509056
+avgCityLat	String	20.3937545571429
+cityLong	String	-155
+cityLat	String	20
+[80]	Object	
+user_id	String	844113
+city	String	Tzurit
+party_id	String	175568
+count	String	1
+avgCityLong	String	-89.2257462
+avgCityLat	String	13.7218294
+cityLong	String	-90
+cityLat	String	15
+[81]	Object	
+user_id	String	851942
+city	String	Johannesburg
+party_id	String	175567
+count	String	1
+avgCityLong	String	28.1274779
+avgCityLat	String	-25.997652
+cityLong	String	30
+cityLat	String	-25
