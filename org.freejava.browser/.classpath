@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0.jar" sourcepath="lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/webdriver870/firefox/json-20080701.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/webdriver870/firefox/webdriver-common.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/webdriver870/firefox/webdriver-firefox.jar"/>

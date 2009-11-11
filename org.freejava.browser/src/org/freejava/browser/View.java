@@ -1,5 +1,9 @@
 package org.freejava.browser;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -26,6 +30,12 @@ public class View extends ViewPart {
 	private Button okButton;
 	boolean error = false;
 
+	public String getInput1(){
+		return input1Text.getText();
+	}
+	public String getInput2(){
+		return input2Text.getText();
+	}
 	/**
 	 * This is a callback that will allow us to create the viewer and initialize
 	 * it.
@@ -75,6 +85,25 @@ public class View extends ViewPart {
 				ILogger logger = new RCPLogger();
 				logger.logInfo("Processing...", null);
 				Model model = new Model();
+				try {
+					Map allProperties = new HashMap(BeanUtils.describe(View.this));
+					String[] ignores = new String[] {
+							"site",
+							"contentDescription",
+							"orientation",
+							"partName",
+							"titleToolTip",
+							"class",
+							"viewSite",
+                            "partProperties",
+                            "title",
+                            "titleImage"
+					};
+					for (String excludeKey : ignores) allProperties.remove(excludeKey);
+					model.setProperties(allProperties);
+				} catch (Exception e) {
+					logger.logError("Critical error!", e);
+				}
 				model.execute();
 				logger.logInfo("Result:" + model.getResult(), null);
 				logger.logInfo("Finished.", null);
@@ -82,7 +111,7 @@ public class View extends ViewPart {
 		});
 
 	}
-	
+
 	public void setErrorStatusLine(final String message) {
     	Activator.getDefault().getWorkbench().getDisplay().asyncExec(new Runnable() {
 			public void run() {
@@ -90,7 +119,7 @@ public class View extends ViewPart {
 			}
 		});
     }
-	
+
 	public void setMessageStatusLine(final String message) {
     	Activator.getDefault().getWorkbench().getDisplay().asyncExec(new Runnable() {
 			public void run() {
@@ -98,7 +127,7 @@ public class View extends ViewPart {
 			}
 		});
     }
-	
+
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
