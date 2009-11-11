@@ -34,4 +34,5 @@ Bundle-ClassPath: lib/webdriver870/firefox/json-20080701.jar,
  lib/webdriver870/jobbie/jna.jar,
  lib/webdriver870/jobbie/webdriver-common.jar,
  lib/webdriver870/jobbie/webdriver-jobbie.jar,
+ lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0.jar,
  .
