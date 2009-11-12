@@ -28,7 +28,7 @@ public class View extends ViewPart {
 	private Text input1Text;
 	private Text input2Text;
 	private Button okButton;
-	boolean error = false;
+	//boolean error = false;
 
 	public String getInput1(){
 		return input1Text.getText();
@@ -86,7 +86,7 @@ public class View extends ViewPart {
 				logger.logInfo("Processing...", null);
 				Model model = new Model();
 				try {
-					Map allProperties = new HashMap(BeanUtils.describe(View.this));
+					Map<String, String> allProperties = new HashMap<String, String>(BeanUtils.describe(View.this));
 					String[] ignores = new String[] {
 							"site",
 							"contentDescription",

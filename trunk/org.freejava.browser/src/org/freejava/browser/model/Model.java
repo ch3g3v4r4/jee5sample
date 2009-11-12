@@ -28,6 +28,7 @@ public class Model {
 		logger.logInfo(properties.toString(), null);
         WebDriver driver = new HtmlUnitDriver();
 
+
         // And now use this to visit Google
         driver.get("http://www.google.com/");
 
