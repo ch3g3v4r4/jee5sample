@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/commons-codec-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/commons-collections-3.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/commons-httpclient-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/commons-io-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/commons-lang-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/cssparser-0.9.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/hamcrest-all-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/htmlunit-2.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/htmlunit-core-js-2.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/jna.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/json-20080701.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/nekohtml-1.9.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/sac-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/serializer-2.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/webdriver-all.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/xalan-2.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/xercesImpl-2.9.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/webdriver7376/xml-apis-1.3.04.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0.jar" sourcepath="lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/firefox/json-20080701.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/firefox/webdriver-common.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/firefox/webdriver-firefox.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/commons-codec-1.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/commons-collections-3.2.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/commons-httpclient-3.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/commons-io-1.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/commons-lang-2.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/commons-logging-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/cssparser-0.9.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/htmlunit-2.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/htmlunit-core-js-2.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/nekohtml-1.9.11.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/sac-1.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/serializer-2.7.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/webdriver-common.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/webdriver-htmlunit.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/xalan-2.7.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/xercesImpl-2.8.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/htmlunit/xml-apis-1.3.04.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/jobbie/jna.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/jobbie/webdriver-common.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/webdriver870/jobbie/webdriver-jobbie.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
