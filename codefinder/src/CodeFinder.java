@@ -65,6 +65,7 @@ public class CodeFinder {
                 }
                 String newLine = key + " " + receiver + " " + sender + " " + date;
                 result.add(newLine);
+                System.out.println("Adding:" + newLine);
             }
         }
 
