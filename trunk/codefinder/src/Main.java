@@ -67,7 +67,7 @@ http://houseparty.com/party_map/mapDrillCluster/35/-120/2/159
         try {
             // get page 0: http://houseparty.com/party_map/mapDrillCluster/<lat>/<long>/2/159
             URL url = new URL("http://houseparty.com/party_map/mapDrillCluster/" + latlong[0] + "/" + latlong[1] + "/2/159");
-            String content = readUrl(url);
+            String content = Utils.readUrl(url);
             
             // find max page number: "/party_map/mapDrillCluster/35/-120/2/159/page:38"
             int maxNum = 1; // first page
@@ -83,7 +83,7 @@ http://houseparty.com/party_map/mapDrillCluster/35/-120/2/159
             pages.add(content); // page: 1
             for (int i = 2; i <= maxNum; i++) {
                 url = new URL("http://houseparty.com/party_map/mapDrillCluster/" + latlong[0] + "/" + latlong[1] + "/2/159/page:" + i);
-                content = readUrl(url);
+                content = Utils.readUrl(url);
                 pages.add(content);
             }
             
@@ -104,16 +104,7 @@ http://houseparty.com/party_map/mapDrillCluster/35/-120/2/159
         return result;
     }
 
-    private static String readUrl(URL url) throws IOException {
-        InputStream is = url.openStream();
-        String content = "";
-        try {
-            content = IOUtils.toString(is);
-        } catch (Exception e) {
-            IOUtils.closeQuietly(is);
-        }
-        return content;
-    }
+
 
     private static List<int[]> parseCitiesLatLongs() {
         List<int[]> result = new ArrayList<int[]>();
