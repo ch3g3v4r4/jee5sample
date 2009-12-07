@@ -30,7 +30,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
   </dependencies>
 
   <repositories>
@@ -115,9 +114,11 @@
       </plugin>
       -->
       <!-- Same function as jaxws-maven-plugin but run at generate-resources phase and NOT compile generated source, receive java files-->
+	  
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>apt-maven-plugin</artifactId>
+        <version>1.0-alpha-2</version><!-- avoid version 1.0-alpha-3 because of MOJO-1072 bug -->
           <executions>
             <execution>
               <goals>
@@ -137,7 +138,8 @@
            </dependency>
          </dependencies>
       </plugin>
-
+  
+<!--
 	<plugin>
 		<groupId>org.codehaus.mojo</groupId>
 		<artifactId>jaxws-maven-plugin</artifactId>
@@ -162,7 +164,7 @@
            </dependency>
          </dependencies>
 	</plugin>
-
+-->
       <!-- Jetty server for development -->
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
