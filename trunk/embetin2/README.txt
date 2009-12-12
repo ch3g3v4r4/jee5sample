@@ -7,7 +7,7 @@ to upload the application to Google App Engine server
 4. Test by browsing to http://<app-id>.appspot.com
 
 Developing with Eclipse:
-1. Install 'Google Plugin for Eclipse' to your Eclipse IDE (update site: http://dl.google.com/eclipse/plugin/3.4)
+1. Install 'Google Plugin for Eclipse' to your Eclipse IDE 3.5 (update site: http://dl.google.com/eclipse/plugin/3.5)
 2. Use command
 mvn package eclipse:eclipse
 to create Eclipse project files
