@@ -7,7 +7,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <spring.version>3.0.0.M3</spring.version>
+    <spring.version>3.0.0.RELEASE</spring.version>
     <jta.scope>compile</jta.scope>
     <appengine-local-runtime.scope>provided</appengine-local-runtime.scope>
     <appengine-api-stubs.scope>provided</appengine-api-stubs.scope>
@@ -61,8 +61,14 @@
     <dependency>
       <groupId>javax.jdo</groupId>
       <artifactId>jdo2-api</artifactId>
-      <version>2.3-SNAPSHOT</version>
+      <version>2.3-eb</version>
       <scope>runtime</scope>
+      <exclusions>
+        <exclusion><!-- Use geronimo-jta_1.1_spec instead -->
+          <groupId>javax.transaction</groupId>
+          <artifactId>transaction-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
@@ -72,7 +78,7 @@
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-core</artifactId>
-      <version>1.1.0</version>
+      <version>1.1.5</version>
       <scope>runtime</scope>
       <exclusions>
         <exclusion><!-- Use geronimo-jta_1.1_spec instead -->
@@ -84,7 +90,7 @@
     <dependency>
       <groupId>org.datanucleus</groupId>
       <artifactId>datanucleus-jpa</artifactId>
-      <version>1.1.0</version>
+      <version>1.1.5</version>
       <scope>runtime</scope>
       <exclusions>
         <exclusion><!-- Use geronimo-jpa_3.0_spec instead -->
@@ -95,30 +101,36 @@
     </dependency>
     <!-- Google App Engine persistence runtime -->
     <dependency>
-      <groupId>com.google.appengine</groupId>
+      <groupId>com.google.appengine.orm</groupId>
       <artifactId>datanucleus-appengine</artifactId>
-      <version>1.0.0.final</version>
+      <version>1.0.4</version>
       <scope>runtime</scope>
     </dependency>
     <!-- Below two dependencies + LocalApiProxyServletFilter  are used to simulate GAE dev env on Jetty server  -->
     <dependency>
       <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-local-runtime</artifactId>
-      <version>1.0</version>
+      <artifactId>appengine-api-1.0-runtime</artifactId>
+      <version>1.3.0</version>
       <scope>${appengine-local-runtime.scope}</scope>
     </dependency>
     <dependency>
       <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-stubs</artifactId>
-      <version>1.0</version>
+      <artifactId>appengine-api-1.0-stubs</artifactId>
+      <version>1.3.0</version>
       <scope>${appengine-api-stubs.scope}</scope>
     </dependency>
+
 
     <!-- Google App Engine API -->
     <dependency>
       <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api</artifactId>
-      <version>1.0-sdk-1.2.0</version>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
+      <version>1.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-1.0-labs</artifactId>
+      <version>1.3.0</version>
     </dependency>
 
     <!-- Logging -->
@@ -306,7 +318,7 @@
       <plugin>
         <groupId>org.datanucleus</groupId>
         <artifactId>maven-datanucleus-plugin</artifactId>
-        <version>1.1.0</version>
+        <version>1.1.4</version>
         <configuration>
           <verbose>true</verbose>
           <api>JPA</api>
@@ -326,7 +338,7 @@
           <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-jpa</artifactId>
-            <version>1.1.2</version>
+            <version>1.1.5</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -436,13 +448,13 @@
             <configuration>
               <tasks>
                 <echo message="Will download Google App Engine for Java and run appcfg tool to upload the application." />
-                <mkdir dir="${java.io.tmpdir}/gaej"/>
-                <get src="http://googleappengine.googlecode.com/files/appengine-java-sdk-1.2.0.zip" dest="${java.io.tmpdir}/gaej/sdk.zip" verbose="yes" usetimestamp="true"/>
-                <unzip src="${java.io.tmpdir}/gaej/sdk.zip" dest="${java.io.tmpdir}/gaej"/>
+                <mkdir dir="${java.io.tmpdir}/gaej1.3.0"/>
+                <get src="http://googleappengine.googlecode.com/files/appengine-java-sdk-1.3.0.zip" dest="${java.io.tmpdir}/gaej1.3.0/appengine-java-sdk-1.3.0.zip" verbose="yes" usetimestamp="true"/>
+                <unzip src="${java.io.tmpdir}/gaej1.3.0/appengine-java-sdk-1.3.0.zip" dest="${java.io.tmpdir}/gaej1.3.0" overwrite="false"/>
                 <java fork="false" classname="com.google.appengine.tools.admin.AppCfg">
-                  <sysproperty key="appengine.sdk.root" value="${java.io.tmpdir}/gaej/appengine-java-sdk-1.2.0"/>
+                  <sysproperty key="appengine.sdk.root" value="${java.io.tmpdir}/gaej1.3.0/appengine-java-sdk-1.3.0"/>
                   <classpath>
-                    <fileset dir="${java.io.tmpdir}/gaej">
+                    <fileset dir="${java.io.tmpdir}/gaej1.3.0">
                       <include name="**/*.jar"/>
                     </fileset>
                   </classpath>
@@ -472,10 +484,7 @@
       <name>DataNucleus Repository</name>
       <url>http://www.datanucleus.org/downloads/maven2</url>
     </repository>
-    <repository>
-      <id>SpringSource Enterprise Bundle Repository - External Bundle Milestones</id>
-      <url>http://repository.springsource.com/maven/bundles/milestone</url>
-    </repository>
+
     <repository>
       <id>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</id>
       <url>http://repository.springsource.com/maven/bundles/release</url>
@@ -484,6 +493,20 @@
       <id>SpringSource Enterprise Bundle Repository - External Bundle Releases</id>
       <url>http://repository.springsource.com/maven/bundles/external</url>
     </repository>
+
+    <repository>
+      <id>maven2-repository.dev.java.net</id>
+      <name>Java.net Repository for Maven</name>
+      <url>http://download.java.net/maven/2/</url>
+      <layout>default</layout>
+    </repository>
+    <repository>
+      <id>maven-repository.dev.java.net</id>
+      <name>Java.net Maven 1 Repository (legacy)</name>
+      <url>http://download.java.net/maven/1</url>
+      <layout>legacy</layout>
+    </repository>
+
   </repositories>
   <pluginRepositories>
     <pluginRepository>
@@ -492,6 +515,11 @@
       <url>http://download.java.net/maven/1</url>
       <layout>legacy</layout>
     </pluginRepository>
+    <pluginRepository>
+      <id>DataNucleus_Repos2</id>
+      <url>http://www.datanucleus.org/downloads/maven2</url>
+    </pluginRepository>
+
   </pluginRepositories>
 
 </project>
