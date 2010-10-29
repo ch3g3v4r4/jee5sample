@@ -7,6 +7,7 @@
   <classpathentry kind="var" path="M2_REPO/org/jdesktop/bsaf/bsaf/1.9/bsaf-1.9.jar" sourcepath="M2_REPO/org/jdesktop/bsaf/bsaf/1.9/bsaf-1.9-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/jgoodies/forms/1.2.1/forms-1.2.1.jar" sourcepath="M2_REPO/com/jgoodies/forms/1.2.1/forms-1.2.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/jcl-over-slf4j/1.6.0/jcl-over-slf4j-1.6.0.jar" sourcepath="M2_REPO/org/slf4j/jcl-over-slf4j/1.6.0/jcl-over-slf4j-1.6.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/jul-to-slf4j/1.6.0/jul-to-slf4j-1.6.0.jar" sourcepath="M2_REPO/org/slf4j/jul-to-slf4j/1.6.0/jul-to-slf4j-1.6.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.1/junit-4.8.1.jar" sourcepath="M2_REPO/junit/junit/4.8.1/junit-4.8.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.16/log4j-1.2.16.jar" sourcepath="M2_REPO/log4j/log4j/1.2.16/log4j-1.2.16-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/jgoodies/looks/2.2.2/looks-2.2.2.jar" sourcepath="M2_REPO/com/jgoodies/looks/2.2.2/looks-2.2.2-sources.jar"/>
