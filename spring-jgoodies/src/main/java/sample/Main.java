@@ -1,24 +1,24 @@
 package sample;
 
-import java.awt.Dimension;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JLabel;
 
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
+import org.jdesktop.application.SingleFrameApplication;
 
-import com.jgoodies.forms.builder.PanelBuilder;
-import com.jgoodies.forms.layout.CellConstraints;
-import com.jgoodies.forms.layout.FormLayout;
+public class Main extends SingleFrameApplication {
 
-public class Main {
+    @Override protected void startup() {
 
+        // Create a label and use properties label.* from Main.properties
+        JLabel label = new JLabel();
+        label.setName("mylabel");
+
+        show(label);
+    }
+    public static void main(String[] args) throws Exception {
+        launch(Main.class, args);
+    }
+/*
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
-
     public static void main(final String[] args) throws Exception {
 
         // Initialize Look and Feel
@@ -66,13 +66,6 @@ public class Main {
     private JTextField radiusField;
     private JTextField diameterField;
 
-    /**
-     * Builds the panel. Initializes and configures components first,
-     * then creates a FormLayout, configures the layout, creates a builder,
-     * sets a border, and finally adds the components.
-     *
-     * @return the built panel
-     */
     public JComponent buildPanel() {
         // Separating the component initialization and configuration
         // from the layout code makes both parts easier to read.
@@ -124,5 +117,5 @@ public class Main {
         // The builder holds the layout container that we now return.
         return builder.getPanel();
     }
-
+*/
 }
