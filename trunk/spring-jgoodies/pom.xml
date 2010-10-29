@@ -68,11 +68,6 @@
 
     <dependency>
       <groupId>com.jgoodies</groupId>
-      <artifactId>looks</artifactId>
-      <version>2.2.2</version>
-    </dependency>
-    <dependency>
-      <groupId>com.jgoodies</groupId>
       <artifactId>forms</artifactId>
       <version>1.2.1</version>
     </dependency>
@@ -83,7 +78,19 @@
       <version>1.9</version>
     </dependency>
 
-    <!-- Unit test -->
+    <dependency>
+      <groupId>org.java.net.substance</groupId>
+      <artifactId>substance</artifactId>
+      <version>6.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -96,9 +103,6 @@
       <version>${spring.version}</version>
       <scope>test</scope>
     </dependency>
-
-
-
 
   </dependencies>
 
@@ -149,6 +153,15 @@
                   <mainClass>sample.Main</mainClass>
                 </transformer>
               </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/ECLIPSE.SF</exclude>
+                    <exclude>META-INF/ECLIPSE.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
             </configuration>
           </execution>
         </executions>
