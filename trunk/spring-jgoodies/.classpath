@@ -2,7 +2,9 @@
   <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="lib" path="D:/programs/jdk1.6.0_12/jre/lib/javaws.jar"/>
   <classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" sourcepath="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jdesktop/bsaf/bsaf/1.9/bsaf-1.9.jar" sourcepath="M2_REPO/org/jdesktop/bsaf/bsaf/1.9/bsaf-1.9-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/jgoodies/forms/1.2.1/forms-1.2.1.jar" sourcepath="M2_REPO/com/jgoodies/forms/1.2.1/forms-1.2.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/jcl-over-slf4j/1.6.0/jcl-over-slf4j-1.6.0.jar" sourcepath="M2_REPO/org/slf4j/jcl-over-slf4j/1.6.0/jcl-over-slf4j-1.6.0-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.1/junit-4.8.1.jar" sourcepath="M2_REPO/junit/junit/4.8.1/junit-4.8.1-sources.jar"/>

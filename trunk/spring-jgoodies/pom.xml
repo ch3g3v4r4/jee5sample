@@ -71,6 +71,12 @@
       <version>1.2.1</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.jdesktop.bsaf</groupId>
+      <artifactId>bsaf</artifactId>
+      <version>1.9</version>
+    </dependency>
+
     <!-- Unit test -->
     <dependency>
       <groupId>junit</groupId>
@@ -127,16 +133,13 @@
             </goals>
             <configuration>
               <transformers>
-                <transformer
-                  implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                   <resource>META-INF/spring.handlers</resource>
                 </transformer>
-                <transformer
-                  implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                   <resource>META-INF/spring.schemas</resource>
                 </transformer>
-                <transformer
-                  implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <mainClass>sample.Main</mainClass>
                 </transformer>
               </transformers>
@@ -145,7 +148,7 @@
         </executions>
       </plugin>
 
-	  <plugin>
+      <plugin>
         <groupId>org.bluestemsoftware.open.maven.plugin</groupId>
         <artifactId>launch4j-plugin</artifactId>
         <version>1.5.0.0</version>
