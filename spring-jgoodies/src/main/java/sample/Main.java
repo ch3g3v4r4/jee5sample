@@ -2,6 +2,7 @@ package sample;
 
 import java.util.logging.LogManager;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -38,47 +39,52 @@ public class Main extends SingleFrameApplication {
         LOGGER.info("BEGIN - Initializing FRONT END.");
 
         SubstanceLookAndFeel.setSkin(new BusinessBlackSteelSkin());
-        getMainFrame().setJMenuBar(createMenuBar());
 
-        // Create a label and use properties label.* from Main.properties
-        JLabel label = new JLabel();
-        label.setName("mylabel");
+        // Create menu
+        getMainView().setMenuBar(createMenuBar());
 
-        show(label);
+        // Create components
+        getMainView().setComponent(createComponent());
+
+        // Display the application window
+        show(getMainView());
 
         LOGGER.info("END - Initializing FRONT END.");
     }
 
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
-        String[] viewMenuActionNames = {
-            "showWindow0",//@Action method
-            "---",
-            "quit"//@Action method
-        };
-        menuBar.add(createMenu("viewMenu", viewMenuActionNames));
-        return menuBar;
-    }
 
-    private JMenu createMenu(String menuName, String[] actionNames) {
         JMenu menu = new JMenu();
-        menu.setName(menuName);
+        menu.setName("viewMenu");
+        String[] actionNames = {
+                "action1",//@Action method
+                "---",
+                "quit"//@Action method
+            };
         for (String actionName : actionNames) {
             if (actionName.equals("---")) {
                 menu.add(new JSeparator());
-            }
-            else {
+            } else {
                 JMenuItem menuItem = new JMenuItem();
                 menuItem.setAction(getContext().getActionMap().get(actionName));
                 menu.add(menuItem);
             }
         }
-        return menu;
+        menuBar.add(menu);
+
+        return menuBar;
     }
 
+    private JComponent createComponent() {
+        // Create a label and use properties label.* from Main.properties
+        JLabel label = new JLabel();
+        label.setName("mylabel");
+        return label;
+    }
 
     @Action
-    public void showWindow0() {
+    public void action1() {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -110,6 +116,12 @@ public class Main extends SingleFrameApplication {
         LOGGER.info("END - Shutting down.");
     }
 
+    /**
+     * MAIN ENTRY POINT
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         LogManager.getLogManager().reset(); // disable default java.util.logging.ConsoleHandler which logs to stdout
