@@ -16,7 +16,21 @@
       <artifactId>groovy-all</artifactId>
       <version>1.8.0-beta-2</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.apache.ant</groupId>
+      <artifactId>ant</artifactId>
+      <version>1.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ant</groupId>
+      <artifactId>ant-jsch</artifactId>
+      <version>1.8.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.jcraft</groupId>
+      <artifactId>jsch</artifactId>
+      <version>0.1.42</version>
+    </dependency>
 
     <!-- Unit test -->
     <dependency>
@@ -91,7 +105,7 @@
         <executions>
           <execution>
             <goals>
-              <!--<goal>generateStubs</goal>  -->
+              <!--<goal>generateStubs</goal> -->
               <goal>compile</goal>
             </goals>
           </execution>
