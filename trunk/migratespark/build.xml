@@ -38,6 +38,7 @@
         <copy todir="${spark.dst}/src/main/resources" includeemptydirs="no">
             <fileset dir="${spark.src}/src/java" >
                 <exclude name="**/*.java"/>
+                <exclude name="**/package.html"/>
             </fileset>
         </copy>
     </target>
