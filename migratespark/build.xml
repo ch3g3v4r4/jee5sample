@@ -9,6 +9,7 @@
 
 		<property name="spark.src" value="/tmp/target/sparksrc"/>
         <property name="spark.dst" value="/tmp/target/spark"/>
+        <property name="smack32" value="/tmp/target/smack"/>
 	</target>
 
     <target name="svncheckout" depends="init">
@@ -18,6 +19,10 @@
         <svn>
           <checkout url="http://jee5sample.googlecode.com/svn/trunk/migratespark/newspark" revision="HEAD" destPath="${spark.dst}" />
         </svn>
+        <svn>
+          <checkout url="http://svn.igniterealtime.org/svn/repos/smack/branches/bosh" revision="HEAD" destPath="${smack}" />
+        </svn>
+
     </target>
 
     <target name="svnupdate" depends="init">
@@ -26,6 +31,9 @@
         </svn>
         <svn>
           <update dir="${spark.dst}" />
+        </svn>
+        <svn>
+          <update dir="${smack32}" />
         </svn>
     </target>
 
