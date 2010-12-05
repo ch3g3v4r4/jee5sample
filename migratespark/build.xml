@@ -1,6 +1,5 @@
-<project default="migrate">
+<project>
 	<target name="init">
-
 		<path id="svnant.classpath">
 			<fileset dir="${basedir}/lib">
 				<include name="**/*.jar" />
@@ -10,21 +9,24 @@
 
 		<property name="spark.src" value="/tmp/target/sparksrc"/>
         <property name="spark.dst" value="/tmp/target/spark"/>
-		<svn>
-		  <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.src}" />
-		</svn>
-        <svn>
-          <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.dst}" />
-        </svn>
-
 	</target>
 
     <target name="svncheckout" depends="init">
-
-
+        <svn>
+          <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.src}" />
+        </svn>
+        <svn>
+          <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.dst}" />
+        </svn>
     </target>
+
     <target name="svnupdate" depends="init">
-
-
+        <svn>
+          <update dir="${spark.src}" />
+        </svn>
+        <svn>
+          <update dir="${spark.dst}" />
+        </svn>
     </target>
+
 </project>
