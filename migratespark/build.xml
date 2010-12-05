@@ -16,7 +16,7 @@
           <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.src}" />
         </svn>
         <svn>
-          <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.dst}" />
+          <checkout url="http://jee5sample.googlecode.com/svn/trunk/migratespark/newspark" revision="HEAD" destPath="${spark.dst}" />
         </svn>
     </target>
 
@@ -27,6 +27,19 @@
         <svn>
           <update dir="${spark.dst}" />
         </svn>
+    </target>
+
+    <target name="migrate" depends="init">
+        <copy todir="${spark.dst}/src/main/java" includeemptydirs="no">
+            <fileset dir="${spark.src}/src/java" >
+            	<include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${spark.dst}/src/main/resources" includeemptydirs="no">
+            <fileset dir="${spark.src}/src/java" >
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
     </target>
 
 </project>
