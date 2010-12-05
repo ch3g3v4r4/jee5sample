@@ -39,6 +39,18 @@
       <version>1.6.1</version>
     </dependency>
     <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.lobobrowser</groupId>
+      <artifactId>lobobrowser</artifactId>
+      <version>0.98.4</version>
+    </dependency>
+
+
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
@@ -57,6 +69,11 @@
       <id>NIESS</id>
       <name>NIESS</name>
       <url>http://fara.cs.uni-potsdam.de/~niess/repository</url>
+    </repository>
+    <repository>
+      <id>lobo</id>
+      <name>lobo</name>
+      <url>http://nbpwr.kenai.com/maven-repository/releases</url>
     </repository>
   </repositories>
 
