@@ -35,12 +35,16 @@
             	<include name="**/*.java"/>
             </fileset>
         </copy>
+
         <copy todir="${spark.dst}/src/main/resources" includeemptydirs="no">
-            <fileset dir="${spark.src}/src/java" >
-                <exclude name="**/*.java"/>
-                <exclude name="**/package.html"/>
+            <fileset dir="${spark.src}/src/resources">
+                <include name="**/*"/>
+            </fileset>
+            <fileset dir="${spark.src}/src/java">
+                <include name="**/*.properties"/>
             </fileset>
         </copy>
+
     </target>
 
 </project>
