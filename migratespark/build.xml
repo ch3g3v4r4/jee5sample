@@ -1,0 +1,30 @@
+<project default="migrate">
+	<target name="init">
+
+		<path id="svnant.classpath">
+			<fileset dir="${basedir}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svnant.classpath" />
+
+		<property name="spark.src" value="/tmp/target/sparksrc"/>
+        <property name="spark.dst" value="/tmp/target/spark"/>
+		<svn>
+		  <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.src}" />
+		</svn>
+        <svn>
+          <checkout url="http://svn.igniterealtime.org/svn/repos/spark/trunk" revision="HEAD" destPath="${spark.dst}" />
+        </svn>
+
+	</target>
+
+    <target name="svncheckout" depends="init">
+
+
+    </target>
+    <target name="svnupdate" depends="init">
+
+
+    </target>
+</project>
