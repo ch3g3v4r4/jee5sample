@@ -48,7 +48,11 @@
       <artifactId>lobobrowser</artifactId>
       <version>0.98.4</version>
     </dependency>
-
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.3.1</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
