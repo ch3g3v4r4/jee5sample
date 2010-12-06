@@ -93,6 +93,8 @@
       <id>fmj</id>
       <name>fmj</name>
       <url>http://www.mmbase.org/maven2</url>
+    </repository>
+    <repository>
 
     </repository>
   </repositories>
