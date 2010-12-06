@@ -20,7 +20,7 @@
           <checkout url="http://jee5sample.googlecode.com/svn/trunk/migratespark/newspark" revision="HEAD" destPath="${spark.dst}" />
         </svn>
         <svn>
-          <checkout url="http://svn.igniterealtime.org/svn/repos/smack/branches/bosh" revision="HEAD" destPath="${smack}" />
+          <checkout url="http://svn.igniterealtime.org/svn/repos/smack/branches/bosh" revision="HEAD" destPath="${smack32}" />
         </svn>
 
     </target>
