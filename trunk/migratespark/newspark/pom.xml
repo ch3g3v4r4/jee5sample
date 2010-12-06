@@ -29,6 +29,11 @@
       <version>2.1.1e</version>
     </dependency>
     <dependency>
+      <groupId>net.sf.fmj</groupId>
+      <artifactId>fmj-nojmf</artifactId>
+      <version>2009-04-16</version>
+    </dependency>
+    <dependency>
       <groupId>org.swinglabs</groupId>
       <artifactId>swingx</artifactId>
       <version>1.6.1</version>
@@ -83,6 +88,12 @@
       <id>lobo</id>
       <name>lobo</name>
       <url>http://nbpwr.kenai.com/maven-repository/releases</url>
+    </repository>
+    <repository>
+      <id>fmj</id>
+      <name>fmj</name>
+      <url>http://www.mmbase.org/maven2</url>
+
     </repository>
   </repositories>
 
