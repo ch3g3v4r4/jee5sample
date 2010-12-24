@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.systemsplanet.plugin</groupId>
+    <artifactId>google-api-translate-java-maven-plugin-test</artifactId>
+    <packaging>war</packaging>
+    <version>1.4-SNAPSHOT</version>
+    <name>Test plugin</name>
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>com.systemsplanet.plugin</groupId>
+                <artifactId>google-api-translate-java-maven-plugin</artifactId>
+                <version>1.5</version>
+                <inherited>false</inherited>                
+                <configuration>
+                    <debug>true</debug>
+                    <sourceTranslationPath>
+                        ${basedir}/src/main/resources/
+                    </sourceTranslationPath>
+                    <languageFilePattern>
+					    openfire_i18n_{0}.properties
+                    </languageFilePattern>
+                    <sourceLanguage>
+                        en
+                    </sourceLanguage>
+                    <destinationPath>
+                        ${project.build.directory}/classes/
+                    </destinationPath>
+                    <!--  ar,zh,zh-CN,zh-TW,nl,fr,de,el,it,ja,ko,pt,ru,es -->
+                    <targetLanguages>
+                        ko
+                    </targetLanguages>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-projects</id>
+                        <goals>
+                            <goal>localize</goal>
+                        </goals>
+                    </execution>
+                </executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.json</groupId>
+						<artifactId>json</artifactId>
+						<version>20090211</version>
+					</dependency>	
+				</dependencies>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    
+  <!--  MAVEN PLUGIN REPOSITORIES  -->
+   
+  <pluginRepositories>
+      <pluginRepository>
+          <id>ossrh</id>
+          <name>Sonatype OSS Repository</name>
+          <url>http://oss.sonatype.org/content/groups/public</url>
+          <layout>default</layout>
+      </pluginRepository>
+  </pluginRepositories>
+  
+</project>
