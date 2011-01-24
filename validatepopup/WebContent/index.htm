@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Validate Popup</title>
+<!-- <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.4.min.js"></script>
+ -->
+<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.js"></script>
+<script type="text/javascript">
+<!--
+jQuery().ready(function() {
+	jQuery("#mainForm").validate({
+		rules: {
+			opt1: {
+				required: true,
+				digits: true,
+				min: 1
+			},
+			opt2: {
+				required: true,
+				digits: true,
+				min: 1
+			},
+			opt3: {
+				required: true,
+				digits: true,
+				min: 1
+			},
+			qty: {
+				required: true
+			}
+		},
+		messages: {
+			qty: "Please enter qty",
+			opt1: "Please select opt1",
+			opt2: "Please select opt2",
+			opt3: "Please select opt3"
+		},
+		errorContainer: "#tooltip",
+		errorLabelContainer:  "#tooltip ul",
+		wrapper: "li"
+	});
+
+});
+//-->
+</script>
+<style type="text/css">
+input.error, select.error {
+	border: 1px solid red;
+}
+.tooltip {
+	display:none;
+	background:transparent url(http://flowplayer.org/tools/img/tooltip/black_arrow.png);
+	font-size:12px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;	
+}
+</style>
+</head>
+<body>
+<div id="tooltip" class="tooltip" style="border: 1px solid blue">
+<ul style="border: 1px solid yellow"></ul>
+</div>
+<form id="mainForm" onsubmit="return jQuery('#mainForm').valid();">
+<table>
+<tr><td>Opt1</td><td><select name="opt1"><option value="0">0</option><option value="1">1</option></select></td></tr>
+<tr><td>Opt2</td><td><select name="opt2"><option value="0">0</option><option value="1">1</option></select></td></tr>
+<tr><td>Opt3</td><td><select name="opt3"><option value="0">0</option><option value="1">1</option></select></td></tr>
+<tr><td>Qty</td><td><input name="qty" type="text"></input></td></tr>
+<tr><td></td><td><input type="submit"></input> </td></tr>
+</table>
+</form>
+</body>
+</html>
