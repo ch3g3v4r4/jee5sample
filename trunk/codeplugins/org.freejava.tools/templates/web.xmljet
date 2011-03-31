@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<%@ jet package="org.freejava.tools.handlers.newproject" class="WEBXMLTemplate"%>
+<% NewProjectModel model = (NewProjectModel) argument; %>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+        http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+<% if (model.isSpringSupport()) { %>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+<% } %>
+
+<% if (model.isSpringSupport()) { %>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+<% } %>
+
+</web-app>

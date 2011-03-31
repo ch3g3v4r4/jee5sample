@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<associateSites>
+	<associateSite
+		url="http://download.eclipse.org/releases/ganymede"
+		label="Ganymede" />
+</associateSites>

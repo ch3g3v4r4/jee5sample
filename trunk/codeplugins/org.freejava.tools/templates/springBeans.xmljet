@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<%@ jet package="org.freejava.tools.handlers.newproject" class="SPRINGBEANSXMLTemplate"%>
+<beansProjectDescription>
+    <version>1</version>
+    <configSuffixes>
+        <configSuffix>xml</configSuffix>
+    </configSuffixes>
+    <enableImports>false</enableImports>
+    <configs>
+        <config>src/main/resources/applicationContext.xml</config>
+    </configs>
+    <configSets>
+        <configSet>
+            <name>Spring Config Set</name>
+            <allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+            <incomplete>false</incomplete>
+            <configs>
+                <config>src/main/resources/applicationContext.xml</config>
+            </configs>
+        </configSet>
+    </configSets>
+</beansProjectDescription>
