@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.freejava.podcaster.feature"
+      label="Podcaster Feature"
+      version="1.0.1"
+      provider-name="FreeJava">
+
+   <description url="http://winkjava.110mb.com/">
+      FreeJava Podcaster - a tool for downloading podcasts
+   </description>
+
+   <copyright url="http://winkjava.110mb.com/">
+      http://winkjava.110mb.com/
+   </copyright>
+
+   <license url="http://www.apache.org/licenses/LICENSE-2.0.html">
+      Apache License version 2
+   </license>
+
+   <url>
+      <discovery label="FreeJava Tools Update Site" url="http://winkjava.110mb.com/new_project/projects/site/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+   </requires>
+
+   <plugin
+         id="org.freejava.podcaster"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
