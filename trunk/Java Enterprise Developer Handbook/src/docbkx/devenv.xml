@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter xml:id="devenv"
-  version="5.0" xmlns="http://docbook.org/ns/docbook"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  xmlns:xi="http://www.w3.org/2001/XInclude"
-  xmlns:db="http://docbook.org/ns/docbook">
+<chapter xml:id="devenv" version="5.0" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:db="http://docbook.org/ns/docbook">
 
   <title>Development Environment</title>
 
@@ -15,24 +12,127 @@
   <section>
     <title>Eclipse IDE</title>
     <para>Eclipse IDE is a free, popular and powerful IDE. There are useful plug-ins which can be integrated
-      into Eclipse so you can have more power. The following section will guide you through the steps to set up an
-      Eclipse IDE with various useful features.</para>
+      into Eclipse
+      so you can have more power. The following section will guide you through the steps to set up an
+      Eclipse IDE with
+      various useful features.
+    </para>
     <note>
-        <para>A recommended way to build an Eclipse-based IDE for the development team is to begin with an original Eclipse build
-         (I often use "Eclipse IDE for Java EE Developers" build) and start to put all plugins to eclipse/dropins folder then zip it again. 
-         This way will create a typical environment for new team members and still allow experts to customize the environment if needed 
-         (i.e. removing unnecessary plugins in dropins/ folder).</para>
-        <para>How to isolate the plugin files to put into dropins folder: just unzip a "Eclipse IDE for Java EE Developers" build 
-        and install the plugin using site update URL, then use WinMerge tool to compare the features and plugins folders with 
-        original folders, copy the new files/folders to a separate folder, rename folder and copy this folder to dropins/. For example, my dropins folder often contains
-        the following folders: dropins/checkstyle/features/, dropins/checkstyle/plugins/, dropins/others/plugins/,.. etc.</para>
+      <para>A recommended way to build an Eclipse-based IDE for the development team is to begin with an original
+        Eclipse build
+        (I often use "Eclipse IDE for Java EE Developers" build) and start to put all plugins to
+        eclipse/dropins folder then
+        zip it again.
+        This way will create a typical environment for new team members and
+        still allow experts to customize the environment if
+        needed
+        (i.e. removing unnecessary plugins in dropins/ folder).
+      </para>
+      <para>How to isolate the plugin files to put into dropins folder: just unzip a "Eclipse IDE for Java EE
+        Developers" build
+        and install the plugin using site update URL, then use WinMerge tool to compare the features
+        and plugins folders with
+        original folders, copy the new files/folders to a separate folder, rename folder and
+        copy this folder to
+        dropins/. For example, my dropins folder often contains
+        the following folders:
+        dropins/checkstyle/features/,
+        dropins/checkstyle/plugins/, dropins/others/plugins/,.. etc.
+      </para>
     </note>
 
     <section>
       <title>AnyEdits plug-in</title>
       <para>AnyEdits is a very useful plug-in.</para>
     </section>
-
+    <section>
+      <title>FindBugs plug-in</title>
+    </section>
+    <section>
+      <title>Sysdeo Tomcat plug-in</title>
+    </section>
+    <section>
+      <title>Java Hex Editor plug-in</title>
+    </section>
+    <section>
+      <title>jadclipse plug-in</title>
+    </section>
+    <section>
+      <title>FileSync plug-in</title>
+    </section>
+    <section>
+      <title>JDepend plug-in</title>
+    </section>
+    <section>
+      <title>StartExplorer plug-in</title>
+    </section>
+    <section>
+      <title>ContextMenu plug-in</title>
+    </section>
+    <section>
+      <title>Colorer plug-in</title>
+    </section>
+    <section>
+      <title>WindowBuilder plug-in</title>
+    </section>
+    <section>
+      <title>Subclipse plug-in</title>
+    </section>
+    <section>
+      <title>StrutsTools plug-in</title>
+    </section>
+    <section>
+      <title>Struts Console plug-in</title>
+    </section>
+    <section>
+      <title>SpringIDE plug-in</title>
+    </section>
+    <section>
+      <title>QuickREx plug-in</title>
+    </section>
+    <section>
+      <title>PropEdit plug-in</title>
+    </section>
+    <section>
+      <title>Oracle Web Tools plug-in</title>
+    </section>
+    <section>
+      <title>OracleDB plug-in</title>
+    </section>
+    <section>
+      <title>Eclipsetidy plug-in</title>
+    </section>
+    <section>
+      <title>log4e plug-in</title>
+    </section>
+    <section>
+      <title>jseclipse plug-in</title>
+    </section>
+    <section>
+      <title>jira plug-in</title>
+    </section>
+    <section>
+      <title>Hibernate plug-in</title>
+    </section>
+    <section>
+      <title>Glassfish plug-in</title>
+    </section>
+    <section>
+      <title>FreeJavaTools plug-in</title>
+    </section>
+    <section>
+      <title>Checkstyle plug-in</title>
+    </section>
+    <section>
+      <title>Aptana plug-in</title>
+    </section>
+    <section>
+      <title>AnalitiX plug-in</title>
+    </section>
+    <section>
+      <title>Amateras plug-in</title>
+    </section>
+    
   </section>
 
 
