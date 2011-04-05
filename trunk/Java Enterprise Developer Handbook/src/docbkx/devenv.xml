@@ -17,6 +17,16 @@
     <para>Eclipse IDE is a free, popular and powerful IDE. There are useful plug-ins which can be integrated
       into Eclipse so you can have more power. The following section will guide you through the steps to set up an
       Eclipse IDE with various useful features.</para>
+    <note>
+        <para>A recommended way to build an Eclipse-based IDE for the development team is to begin with an original Eclipse build
+         (I often use "Eclipse IDE for Java EE Developers" build) and start to put all plugins to eclipse/dropins folder then zip it again. 
+         This way will create a typical environment for new team members and still allow experts to customize the environment if needed 
+         (i.e. removing unnecessary plugins in dropins/ folder).</para>
+        <para>How to isolate the plugin files to put into dropins folder: just unzip a "Eclipse IDE for Java EE Developers" build 
+        and install the plugin using site update URL, then use WinMerge tool to compare the features and plugins folders with 
+        original folders, copy the new files/folders to a separate folder, rename folder and copy this folder to dropins/. For example, my dropins folder often contains
+        the following folders: dropins/checkstyle/features/, dropins/checkstyle/plugins/, dropins/others/plugins/,.. etc.</para>
+    </note>
 
     <section>
       <title>AnyEdits plug-in</title>
