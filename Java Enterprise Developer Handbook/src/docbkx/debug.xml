@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xml:id="debug"
+  version="5.0" xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:db="http://docbook.org/ns/docbook">
+
+  <title>Debugging</title>
+
+  <para>
+    The first thing and may be the most difficult thing at the beginning of a project is to set up the development
+    environment.
+  </para>
+
+
+</chapter>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preface xml:id="preface"
+  version="5.0" xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:db="http://docbook.org/ns/docbook">
+
+  <title>Preface</title>
+
+  <para>
+    I still remember about the first days when I learned Java about ten years ago. I used
+    <productname>Notepad</productname> to write my first Java programs and used
+    <command>javac</command> to compile them. And I used <function>System.out.println()</function>
+    to debug my programs. I have to admit that learning Java was not an easy thing and today it is still very difficult.
+    I think that programming will never be an easy thing even when we already many powerful tools in hand.
+    Because the expect of users for software systems will be more and more.
+  </para>
+
+  <para>
+    Everyday I still meet many people who is new to Java and they often ask me programming
+    questions. I feel like seeing myself again writing Java in <productname>Notepad</productname>,
+    compiling using <command>javac</command> and debugging using <function>System.out.println()</function>.
+    To share my working experience with Java, I decided to write down something to make the life
+    of new Java programmers easier. And the result is the book you are reading. Although writing is not my strong
+    ability (I am a programmer, after all). I also know that sharing knowledge (even with a lot of grammar mistakes)
+    is still better then doing nothing. And I hope you can agree with me on this.
+  </para>
+
+  <para>
+    The chapters of this book is organized in the order which software project phases will happen. In this way you will
+    be able to find what you need easily. Each chapter will show you how to resolve common issues.
+    Note that there are other ways to resolve these issues which might be better in the ways documented in the book.
+    So write me and let me know your comments so I can share your experiences with people in next revision of this book.
+  </para>
+
+  <para>
+    It is enough for an introduction. Let the journey started!
+  </para>
+
+</preface>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xml:id="intro"
+  version="5.0" xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:db="http://docbook.org/ns/docbook">
+
+  <title>Introduction</title>
+
+  <para>
+    The difference of this book and other books about programming is about helping programmers to be more effective.
+    Let's think about the elements which makes an programmer effective. They includes the deep understanding about tools
+    (consider programming languages, code libraries or platforms as tools), design knowledge and domain knowledge.
+    There are already books about programming languages, libraries, platforms, designing and domain. All these books
+    can help programmers to be more effective, but there is still a need for a book which will help developers to
+    utilize the tools effectively though the phases of the project. A book which contains best practices
+    collected by experienced programmers to help the reader to avoid commons traps and improve productivity.
+    The book should also be a reference book to show programmers the best way to resolve the common issues. It should
+    be practical, specific and easy to understand and follow. Of course a book like that will be hard to be kept up to date
+    because of the development environment changing everyday. But it would be most useful.
+    This book will try to achieve these targets as much as possible. And you, as a reader, will decide if the
+    book has completed the mission or not.
+  </para>
+
+  <para>The book includes the following chapters
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="intro" /></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="devenv" /></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="program" /></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="debug" /></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="optimize" /></para>
+      </listitem>
+    </itemizedlist>
+  </para>
+
+</chapter>
