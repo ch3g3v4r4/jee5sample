@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xml:id="devenv"
+  version="5.0" xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:db="http://docbook.org/ns/docbook">
+
+  <title>Development Environment</title>
+
+  <para>
+    The first (and may be the most difficult) thing at the beginning of a project is to set up the development
+    environment. An effective and easy to use environment will save time and reduce potential bugs.
+  </para>
+
+  <section>
+    <title>Eclipse IDE</title>
+    <para>Eclipse IDE is a free, popular and powerful IDE. There are useful plug-ins which can be integrated
+      into Eclipse so you can have more power. The following section will guide you through the steps to set up an
+      Eclipse IDE with various useful features.</para>
+
+    <section>
+      <title>AnyEdits plug-in</title>
+      <para>AnyEdits is a very useful plug-in.</para>
+    </section>
+
+  </section>
+
+
+</chapter>
