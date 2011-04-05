@@ -13,7 +13,7 @@
     <productname>Notepad</productname> to write my first Java programs and used
     <command>javac</command> to compile them. And I used <function>System.out.println()</function>
     to debug my programs. I have to admit that learning Java was not an easy thing and today it is still very difficult.
-    I think that programming will never be an easy thing even when we already many powerful tools in hand.
+    I think that programming will never be an easy thing even when we already have many powerful tools in hand.
     Because the expect of users for software systems will be more and more.
   </para>
 
@@ -24,7 +24,7 @@
     To share my working experience with Java, I decided to write down something to make the life
     of new Java programmers easier. And the result is the book you are reading. Although writing is not my strong
     ability (I am a programmer, after all). I also know that sharing knowledge (even with a lot of grammar mistakes)
-    is still better then doing nothing. And I hope you can agree with me on this.
+    is still better than doing nothing. And I hope you can agree with me on this.
   </para>
 
   <para>
