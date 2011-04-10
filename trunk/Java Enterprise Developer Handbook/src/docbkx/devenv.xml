@@ -43,10 +43,20 @@
 
     <section>
       <title>AnyEdits plug-in</title>
-      <para>AnyEdits is a very useful plug-in.</para>
+      <para>AnyEdits is a very useful plug-in. You will need it when editing text-based files. I use
+        it to remove trailing spaces and replacing tabs by spaces.</para>
     </section>
     <section>
       <title>FindBugs plug-in</title>
+    </section>
+    <section>
+      <title>Checkstyle plug-in</title>
+    </section>
+    <section>
+      <title>CodePro AnalytiX plug-in</title>
+    </section>
+    <section>
+      <title>JDepend plug-in</title>
     </section>
     <section>
       <title>Sysdeo Tomcat plug-in</title>
@@ -59,9 +69,6 @@
     </section>
     <section>
       <title>FileSync plug-in</title>
-    </section>
-    <section>
-      <title>JDepend plug-in</title>
     </section>
     <section>
       <title>StartExplorer plug-in</title>
@@ -121,18 +128,12 @@
       <title>FreeJavaTools plug-in</title>
     </section>
     <section>
-      <title>Checkstyle plug-in</title>
-    </section>
-    <section>
       <title>Aptana plug-in</title>
-    </section>
-    <section>
-      <title>AnalitiX plug-in</title>
     </section>
     <section>
       <title>Amateras plug-in</title>
     </section>
-    
+
   </section>
 
 
