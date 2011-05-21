@@ -58,7 +58,7 @@ public class Main extends SingleFrameApplication {
         JMenu menu = new JMenu();
         menu.setName("viewMenu");
         String[] actionNames = {
-                "action1",//@Action method
+                "action1", //@Action method
                 "---",
                 "quit"//@Action method
             };
@@ -117,7 +117,7 @@ public class Main extends SingleFrameApplication {
     }
 
     /**
-     * MAIN ENTRY POINT
+     * MAIN ENTRY POINT.
      *
      * @param args
      * @throws Exception
