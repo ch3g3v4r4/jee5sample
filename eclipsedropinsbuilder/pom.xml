@@ -314,6 +314,8 @@
                   <excludes>
                     <exclude>META-INF/ECLIPSE.SF</exclude>
                     <exclude>META-INF/ECLIPSE.RSA</exclude>
+                    <exclude>META-INF/BCKEY.SF</exclude>
+                    <exclude>META-INF/BCKEY.DSA</exclude>
                   </excludes>
                 </filter>
               </filters>
