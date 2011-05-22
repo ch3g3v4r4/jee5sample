@@ -1,11 +1,12 @@
 package sample.ui;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 import org.jdesktop.application.Action;
@@ -73,9 +74,15 @@ public class SingleFrameUI extends SingleFrameApplication {
 
     private JComponent createComponent() {
         // Create a label and use properties label.* from Main.properties
-        JLabel label = new JLabel();
-        label.setName("mylabel");
-        return label;
+        //JLabel label = new JLabel();
+        //label.setName("mylabel");
+        //return label;
+    	JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        textArea.setRows(20);
+        textArea.setColumns(50);
+        textArea.append("AA");
+        return new JScrollPane(textArea);
     }
 
     @Action
