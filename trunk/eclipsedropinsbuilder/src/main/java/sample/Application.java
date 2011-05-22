@@ -1,5 +1,8 @@
 package sample;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,9 +18,11 @@ import java.awt.event.ActionEvent;
 
 public class Application {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class.getName());
+
     private JFrame frame;
     private JTextField textField;
-    private JTextField textField_1;
+    private JTextField textField1;
 
     /**
      * Launch the application.
@@ -29,7 +34,7 @@ public class Application {
                     Application window = new Application();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LOGGER.error("err", e);
                 }
             }
         });
@@ -51,28 +56,28 @@ public class Application {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
                 ColumnSpec.decode("left:default"),
-                ColumnSpec.decode("right:default:grow"),},
+                ColumnSpec.decode("right:default:grow")},
             new RowSpec[] {
                 FormFactory.DEFAULT_ROWSPEC,
                 FormFactory.DEFAULT_ROWSPEC,
                 FormFactory.RELATED_GAP_ROWSPEC,
                 FormFactory.DEFAULT_ROWSPEC,
-                FormFactory.PARAGRAPH_GAP_ROWSPEC,}));
-        
+                FormFactory.PARAGRAPH_GAP_ROWSPEC}));
+
         JLabel lblName = new JLabel("Name");
         frame.getContentPane().add(lblName, "1, 1, right, default");
-        
+
         textField = new JTextField();
         frame.getContentPane().add(textField, "2, 1, fill, default");
         textField.setColumns(10);
-        
+
         JLabel lblAge = new JLabel("Age");
         frame.getContentPane().add(lblAge, "1, 2, right, default");
-        
-        textField_1 = new JTextField();
-        frame.getContentPane().add(textField_1, "2, 2, fill, default");
-        textField_1.setColumns(10);
-        
+
+        textField1 = new JTextField();
+        frame.getContentPane().add(textField1, "2, 2, fill, default");
+        textField1.setColumns(10);
+
         JButton button = new JButton("New button");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
