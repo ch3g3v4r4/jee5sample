@@ -336,7 +336,7 @@
               <goal>launch4j</goal>
             </goals>
             <configuration>
-              <headerType>gui</headerType>
+              <headerType>console</headerType>
               <outfile>target/eclipse-dropins-builder.exe</outfile>
               <jar>target/eclipse-dropins-builder-1.0-SNAPSHOT.jar</jar>
               <errTitle>eclipse-dropins-builder</errTitle>

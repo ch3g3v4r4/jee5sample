@@ -12,4 +12,9 @@ public class DropInsBuilder {
 		System.out.println("Hello");
 
 	}
+
+    public String generateScript() {
+        // TODO Auto-generated method stub
+        return "System.out.println(1111)";
+    }
 }
