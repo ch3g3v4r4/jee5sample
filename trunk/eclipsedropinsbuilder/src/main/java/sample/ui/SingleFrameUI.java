@@ -14,22 +14,19 @@ import org.pushingpixels.substance.api.SubstanceLookAndFeel;
 import org.pushingpixels.substance.api.skin.BusinessBlackSteelSkin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SingleFrameUI extends SingleFrameApplication {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SingleFrameUI.class.getName());
 
-    private static ApplicationContext context;
-
-    public static void setContext(ApplicationContext context) {
-        SingleFrameUI.context = context;
-    }
+    private ClassPathXmlApplicationContext context;
 
     @Override
     protected void initialize(String[] args) {
-        LOGGER.info("BEGIN - Initializing BEFORE GUI.");
-        LOGGER.info("END - Initializing BEFORE GUI.");
+        LOGGER.info("BEGIN - Initializing Core - BEFORE GUI.");
+        this.context = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        LOGGER.info("END - Initializing Core - BEFORE GUI.");
     }
 
     @Override
@@ -108,10 +105,13 @@ public class SingleFrameUI extends SingleFrameApplication {
     @Override
     protected void shutdown() {
         LOGGER.info("BEGIN - Shutting down GUI.");
-
         super.shutdown();
-
         LOGGER.info("END - Shutting down GUI.");
+
+        LOGGER.info("BEGIN - Shutting down Core.");
+        this.context.close();
+        LOGGER.info("END - Shutting down Core.");
+
     }
 
 }
