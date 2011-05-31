@@ -2,19 +2,22 @@ package sample.core;
 
 import javax.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import sample.startup.Main;
 
 @Component
 public class DropInsBuilder {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
-	@PostConstruct
-	private void init() {
-		System.out.println("Hello");
+    @PostConstruct
+    public void init() {
+        LOGGER.debug("init");
+    }
 
-	}
-
-    public String generateScript() {
-        // TODO Auto-generated method stub
-        return "System.out.println(1111)";
+    public void build() {
+        LOGGER.debug("build");
     }
 }
