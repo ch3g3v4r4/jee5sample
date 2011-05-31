@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import sample.core.DropInsBuilder;
+import sample.core.EclipseDropInsBuilder;
 
 public class Main {
 
@@ -30,7 +30,7 @@ public class Main {
         LOGGER.info("Launching application...");
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        DropInsBuilder builder = context.getBean(DropInsBuilder.class);
+        EclipseDropInsBuilder builder = context.getBean(EclipseDropInsBuilder.class);
         builder.build();
 
         LOGGER.info("Exiting application...");
