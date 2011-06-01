@@ -6,6 +6,7 @@ public class Plugin {
     private String folderName;
     private String updateSite;
     private List<String> featureIds;
+    private String url;
 
     public String getUpdateSite() {
         return updateSite;
@@ -25,6 +26,13 @@ public class Plugin {
     public void setFolderName(String folderName) {
         this.folderName = folderName;
     }
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
 
 
 }
