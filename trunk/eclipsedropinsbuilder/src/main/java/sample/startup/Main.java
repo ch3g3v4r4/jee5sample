@@ -5,9 +5,15 @@ import java.util.logging.LogManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 
+import com.thoughtworks.xstream.XStream;
+
+import sample.core.Eclipse;
 import sample.core.EclipseDropInsBuilder;
+import sample.core.Plugin;
 
 public class Main {
 
@@ -29,9 +35,20 @@ public class Main {
 
         LOGGER.info("Launching application...");
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/applicationContext.xml");
-        EclipseDropInsBuilder builder = context.getBean(EclipseDropInsBuilder.class);
-        builder.build();
+        Resource config;
+        if (args.length > 0) {
+            config = new FileSystemResource(args[0]);
+        } else {
+            config = new ClassPathResource("/eclipse.xml");
+        }
+        XStream xstream = new XStream();
+        xstream.alias("eclipse", Eclipse.class);
+        xstream.alias("plugin", Plugin.class);
+        xstream.addImplicitCollection(Plugin.class, "featureIds", "featureId", String.class);
+        Eclipse e = (Eclipse) xstream.fromXML(config.getInputStream());
+
+        EclipseDropInsBuilder builder = new EclipseDropInsBuilder();
+        builder.build(e);
 
         LOGGER.info("Exiting application...");
     }

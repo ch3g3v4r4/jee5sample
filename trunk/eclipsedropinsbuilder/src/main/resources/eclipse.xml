@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse>
+  <workDir>/tmp</workDir>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/helios/SR2/eclipse-jee-helios-SR2-win32-x86_64.zip</url>
+  <plugins>
+    <plugin>
+      <folderName>AnyEditTools</folderName>
+      <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
+      <featureId>AnyEditTools.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <folderName>FileSync</folderName>
+      <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
+      <featureId>FileSync.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <folderName>JDepend4Eclipse</folderName>
+      <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
+      <featureId>JDepend4Eclipse.feature.group</featureId>
+    </plugin>
+  </plugins>
+</eclipse>
