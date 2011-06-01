@@ -42,33 +42,34 @@ class EclipseDropInsBuilder {
     }
 
     void copyPlugin(ant, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
-
-        def profile = "epp.package.jee"
-        def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
-        def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
-        def directorCmd = new CommandLine(javaPath)
-        ant.delete (dir: eclipseDir)
-        ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
-        def launcherPath = FileUtils.listFiles(new File(eclipseDir, "plugins"), new WildcardFileFilter("org.eclipse.equinox.launcher_*.jar"), FalseFileFilter.FALSE).get(0).absolutePath
-        directorCmd.addArgument("-jar").addArgument(launcherPath)
-        directorCmd.addArgument("-application").addArgument("org.eclipse.equinox.p2.director")
-        directorCmd.addArgument("-profile").addArgument(profile)
-        directorCmd.addArgument("-repository").addArgument(url)
-        for (String featureId : featureIds) {
-        ant.echo (message: "Will install " + featureId);
-            directorCmd.addArgument("-installIU").addArgument(featureId)
-        }
-        def executor = new DefaultExecutor();
-        executor.setExitValue(0);
-        def exitValue = executor.execute(directorCmd);
-        ant.copy(todir: new File(pluginTargetDir, "features")) {
-            fileset(dir: new File(eclipseDir, "features"), includes: "**/*") {
-                present (present: "srconly", targetdir: new File(originalEclipseDir, "features"))
+        if (!pluginTargetDir.exists()) {
+            def profile = "epp.package.jee"
+            def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
+            def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
+            def directorCmd = new CommandLine(javaPath)
+            ant.delete (dir: eclipseDir)
+            ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
+            def launcherPath = FileUtils.listFiles(new File(eclipseDir, "plugins"), new WildcardFileFilter("org.eclipse.equinox.launcher_*.jar"), FalseFileFilter.FALSE).get(0).absolutePath
+            directorCmd.addArgument("-jar").addArgument(launcherPath)
+            directorCmd.addArgument("-application").addArgument("org.eclipse.equinox.p2.director")
+            directorCmd.addArgument("-profile").addArgument(profile)
+            directorCmd.addArgument("-repository").addArgument(url)
+            for (String featureId : featureIds) {
+            ant.echo (message: "Will install " + featureId);
+                directorCmd.addArgument("-installIU").addArgument(featureId)
             }
-        }
-        ant.copy(todir: new File(pluginTargetDir, "plugins")) {
-            fileset(dir: new File(eclipseDir, "plugins"), includes: "**/*") {
-                present (present: "srconly", targetdir: new File(originalEclipseDir, "plugins"))
+            def executor = new DefaultExecutor();
+            executor.setExitValue(0);
+            def exitValue = executor.execute(directorCmd);
+            ant.copy(todir: new File(pluginTargetDir, "features")) {
+                fileset(dir: new File(eclipseDir, "features"), includes: "**/*") {
+                    present (present: "srconly", targetdir: new File(originalEclipseDir, "features"))
+                }
+            }
+            ant.copy(todir: new File(pluginTargetDir, "plugins")) {
+                fileset(dir: new File(eclipseDir, "plugins"), includes: "**/*") {
+                    present (present: "srconly", targetdir: new File(originalEclipseDir, "plugins"))
+                }
             }
         }
     }
