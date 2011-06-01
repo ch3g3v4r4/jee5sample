@@ -2,7 +2,6 @@ package sample.core;
 
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
-import javax.annotation.PostConstruct;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FalseFileFilter;
