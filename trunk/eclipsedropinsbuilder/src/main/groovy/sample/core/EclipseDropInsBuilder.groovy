@@ -34,13 +34,13 @@ class EclipseDropInsBuilder {
         def originalEclipseDir = new File(workDir, "original/eclipse")
         def eclipseDir = new File(workDir, "eclipse")
         def pluginsHomeDir =  new File(workDir, "dropins")
-        def pluginTargetDir = ""
 
         for (Plugin plugin : config.plugins) {
+            def pluginTargetDir = new File(pluginsHomeDir, plugin.folderName)
             if (plugin.updateSite != null) {
-                copyPluginFromUpdateSite(ant, profile, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
+                copyPluginFromUpdateSite(ant, profile, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
             } else {
-                copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
+                copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
             }
         }
 
