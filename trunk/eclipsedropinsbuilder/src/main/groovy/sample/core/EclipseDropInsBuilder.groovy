@@ -39,6 +39,13 @@ class EclipseDropInsBuilder {
         for (Plugin plugin : config.plugins) {
             copyPlugin(ant, profile, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
         }
+
+        ant.delete (dir: eclipseDir)
+        ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
+        ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
+
+        println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
+
     }
 
     void copyPlugin(ant, profile, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
