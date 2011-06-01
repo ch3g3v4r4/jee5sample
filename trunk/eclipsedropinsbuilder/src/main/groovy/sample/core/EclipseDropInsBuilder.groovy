@@ -37,7 +37,7 @@ class EclipseDropInsBuilder {
         def pluginTargetDir = ""
 
         for (Plugin plugin : config.plugins) {
-            copyPlugin(ant, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
+            copyPlugin(ant, profile, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
         }
     }
 
