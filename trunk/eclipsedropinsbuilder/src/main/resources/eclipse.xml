@@ -144,7 +144,9 @@
     <plugin>
       <folderName>spring</folderName>
       <updateSite>http://dist.springsource.com/milestone/TOOLS/update/e3.6</updateSite>
+      <!-- <updateSite>http://download.oracle.com/otn_software/oepe/helios</updateSite> -->
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
+      <!-- <featureId>oracle.eclipse.tools.helios.spring.feature.group</featureId> -->
     </plugin>
 
     <plugin>
@@ -152,7 +154,6 @@
       <updateSite>http://download.oracle.com/otn_software/oepe/helios</updateSite>
       <featureId>oracle.eclipse.tools.helios.database.feature.group</featureId>
       <featureId>oracle.eclipse.tools.helios.glassfish.feature.group</featureId>
-      <!-- <featureId>oracle.eclipse.tools.helios.spring.feature.group</featureId>  -->
       <featureId>oracle.eclipse.tools.helios.webtier.feature.group</featureId>
     </plugin>
 
