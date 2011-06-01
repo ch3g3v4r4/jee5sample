@@ -13,22 +13,15 @@ import org.springframework.stereotype.Component;
 
 import sample.startup.Main;
 
-@Component
+
 class EclipseDropInsBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(EclipseDropInsBuilder.class);
 
-//    @PostConstruct
-//    public void init() {
-//        LOGGER.debug("EclipseDropInsBuilder.init");
-//    }
-    public void build() {
+    public void build(Eclipse config) {
 
-        // Eclipse JEE zip file for x86_64
-        def platformUrl = "http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/helios/SR2/eclipse-jee-helios-SR2-win32-x86_64.zip"
-        // working firectory
-        def workDir = new File("/tmp")
+        def platformUrl = config.url
+        def workDir = new File(config.workDir)
 
-        // Download and unzip director app + JEE IDE app to working directory
         def ant = new AntBuilder()
         ant.mkdir (dir: workDir)
         ant.get (src: platformUrl, dest: workDir, usetimestamp: true, verbose: true)
@@ -42,21 +35,18 @@ class EclipseDropInsBuilder {
         def pluginsHomeDir =  new File(workDir, "dropins")
         def pluginTargetDir = ""
 
-        // AnyEditTools
-        url = "http://andrei.gmxhome.de/eclipse/"
-        featureId = "AnyEditTools.feature.group"
-        pluginTargetDir =  new File(pluginsHomeDir, "AnyEditTools")
-        copyPlugin(ant, url, featureId, originalEclipseDir, eclipseDir, pluginTargetDir)
+        for (Plugin plugin : config.plugins) {
+            copyPlugin(ant, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
+        }
 
     }
 
-    void copyPlugin(ant, url, featureId, originalEclipseDir, eclipseDir, pluginTargetDir) {
+    void copyPlugin(ant, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
 
         def profile = "epp.package.jee"
         def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
         def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
         def directorCmd = new CommandLine(javaPath)
-        ant.echo (message: "Will install " + featureId);
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
         def launcherPath = FileUtils.listFiles(new File(eclipseDir, "plugins"), new WildcardFileFilter("org.eclipse.equinox.launcher_*.jar"), FalseFileFilter.FALSE).get(0).absolutePath
@@ -64,7 +54,10 @@ class EclipseDropInsBuilder {
         directorCmd.addArgument("-application").addArgument("org.eclipse.equinox.p2.director")
         directorCmd.addArgument("-profile").addArgument(profile)
         directorCmd.addArgument("-repository").addArgument(url)
-        directorCmd.addArgument("-installIU").addArgument(featureId)
+        for (String featureId : featureIds) {
+        ant.echo (message: "Will install " + featureId);
+            directorCmd.addArgument("-installIU").addArgument(featureId)
+        }
         def executor = new DefaultExecutor();
         executor.setExitValue(0);
         def exitValue = executor.execute(directorCmd);
