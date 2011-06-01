@@ -29,8 +29,6 @@ class EclipseDropInsBuilder {
         ant.unzip (dest: new File(workDir, "original")) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
 
         // Define variables
-        def url = ""
-        def featureId = ""
         def originalEclipseDir = new File(workDir, "original/eclipse")
         def eclipseDir = new File(workDir, "eclipse")
         def pluginsHomeDir =  new File(workDir, "dropins")
