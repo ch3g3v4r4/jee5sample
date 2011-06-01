@@ -19,8 +19,9 @@ class EclipseDropInsBuilder {
 
     public void build(Eclipse config) {
 
-        def platformUrl = config.url
         def workDir = new File(config.workDir)
+        def platformUrl = config.url
+        def profile = config.profile
 
         def ant = new AntBuilder()
         ant.mkdir (dir: workDir)
@@ -38,12 +39,10 @@ class EclipseDropInsBuilder {
         for (Plugin plugin : config.plugins) {
             copyPlugin(ant, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
         }
-
     }
 
-    void copyPlugin(ant, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
+    void copyPlugin(ant, profile, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
         if (!pluginTargetDir.exists()) {
-            def profile = "epp.package.jee"
             def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
             def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
             def directorCmd = new CommandLine(javaPath)
