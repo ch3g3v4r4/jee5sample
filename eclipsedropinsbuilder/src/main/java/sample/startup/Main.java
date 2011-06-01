@@ -44,6 +44,7 @@ public class Main {
         XStream xstream = new XStream();
         xstream.alias("eclipse", Eclipse.class);
         xstream.alias("plugin", Plugin.class);
+        xstream.addImplicitCollection(Plugin.class, "updateSites", "updateSite", String.class);
         xstream.addImplicitCollection(Plugin.class, "featureIds", "featureId", String.class);
         Eclipse e = (Eclipse) xstream.fromXML(config.getInputStream());
 

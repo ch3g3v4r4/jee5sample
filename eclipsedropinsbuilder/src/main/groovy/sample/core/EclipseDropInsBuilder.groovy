@@ -37,8 +37,8 @@ class EclipseDropInsBuilder {
 
         for (Plugin plugin : config.plugins) {
             def pluginTargetDir = new File(pluginsHomeDir, plugin.folderName)
-            if (plugin.updateSite != null) {
-                copyPluginFromUpdateSite(ant, profile, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+            if (plugin.updateSites != null && !plugin.updateSites.empty) {
+                copyPluginFromUpdateSite(ant, profile, plugin.updateSites, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
             } else {
                 copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
             }
@@ -68,12 +68,12 @@ class EclipseDropInsBuilder {
                 ant.copy (file: downloadedFile, todir: new File(pluginTargetDir, "plugins"))
             } else if (names.contains("site.xml")) {
                 // archive update site
-                copyPluginFromUpdateSite(ant, profile, "jar:" + downloadedFile.toURI().toURL().toString() + "!", featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                copyPluginFromUpdateSite(ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!"], featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
             }
         }
     }
 
-    void copyPluginFromUpdateSite(ant, profile, updateSite, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
+    void copyPluginFromUpdateSite(ant, profile, updateSites, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
         if (!pluginTargetDir.exists()) {
             def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
             def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
@@ -84,7 +84,10 @@ class EclipseDropInsBuilder {
             directorCmd.addArgument("-jar").addArgument(launcherPath)
             directorCmd.addArgument("-application").addArgument("org.eclipse.equinox.p2.director")
             directorCmd.addArgument("-profile").addArgument(profile)
-            directorCmd.addArgument("-repository").addArgument(updateSite)
+            for (String updateSite : updateSites) {
+                directorCmd.addArgument("-repository").addArgument(updateSite)
+            }
+
             for (String featureId : featureIds) {
                 ant.echo (message: "Will install " + featureId);
                 directorCmd.addArgument("-installIU").addArgument(featureId)

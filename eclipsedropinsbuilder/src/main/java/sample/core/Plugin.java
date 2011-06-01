@@ -4,15 +4,16 @@ import java.util.List;
 
 public class Plugin {
     private String folderName;
-    private String updateSite;
+    private List<String> updateSites;
     private List<String> featureIds;
     private String url;
 
-    public String getUpdateSite() {
-        return updateSite;
+
+    public List<String> getUpdateSites() {
+        return updateSites;
     }
-    public void setUpdateSite(String updateSite) {
-        this.updateSite = updateSite;
+    public void setUpdateSites(List<String> updateSites) {
+        this.updateSites = updateSites;
     }
     public List<String> getFeatureIds() {
         return featureIds;
