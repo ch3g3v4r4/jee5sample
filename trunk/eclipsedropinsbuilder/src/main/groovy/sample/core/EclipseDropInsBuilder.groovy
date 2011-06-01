@@ -1,5 +1,7 @@
 package sample.core;
 
+import java.util.zip.ZipEntry
+import java.util.zip.ZipFile
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.io.FileUtils;
@@ -9,7 +11,6 @@ import org.apache.commons.exec.CommandLine
 import org.apache.commons.exec.DefaultExecutor
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import sample.startup.Main;
 
@@ -26,7 +27,7 @@ class EclipseDropInsBuilder {
         def ant = new AntBuilder()
         ant.mkdir (dir: workDir)
         ant.get (src: platformUrl, dest: workDir, usetimestamp: true, verbose: true)
-        ant.unzip (dest: new File(workDir, "original")) { fileset(dir: workDir){ include (name: "*.zip")} }
+        ant.unzip (dest: new File(workDir, "original")) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
 
         // Define variables
         def url = ""
@@ -37,7 +38,11 @@ class EclipseDropInsBuilder {
         def pluginTargetDir = ""
 
         for (Plugin plugin : config.plugins) {
-            copyPlugin(ant, profile, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
+            if (plugin.updateSite != null) {
+                copyPluginFromUpdateSite(ant, profile, plugin.updateSite, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
+            } else {
+                copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, new File(pluginsHomeDir, plugin.folderName))
+            }
         }
 
         ant.delete (dir: eclipseDir)
@@ -48,7 +53,28 @@ class EclipseDropInsBuilder {
 
     }
 
-    void copyPlugin(ant, profile, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
+    void copyPluginFromUrl(workDir, ant, profile, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
+        if (!pluginTargetDir.exists()) {
+            def fileName = url.substring(url.lastIndexOf('/') + 1)
+            def downloadedFile = new File(workDir, fileName);
+            ant.get (src: url, dest: downloadedFile, usetimestamp: true, verbose: true)
+            List<String> names = new ArrayList<String>();
+            ZipFile zf = new ZipFile(downloadedFile);
+            for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
+                String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
+                names.add(zipEntryName);
+            }
+            if (names.contains("plugin.xml")) {
+                // simple jar contains plugin
+                ant.copy (file: downloadedFile, todir: new File(pluginTargetDir, "plugins"))
+            } else if (names.contains("site.xml")) {
+                // archive update site
+                copyPluginFromUpdateSite(ant, profile, "jar:" + downloadedFile.toURI().toURL().toString() + "!", featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+            }
+        }
+    }
+
+    void copyPluginFromUpdateSite(ant, profile, updateSite, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
         if (!pluginTargetDir.exists()) {
             def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
             def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
@@ -59,13 +85,15 @@ class EclipseDropInsBuilder {
             directorCmd.addArgument("-jar").addArgument(launcherPath)
             directorCmd.addArgument("-application").addArgument("org.eclipse.equinox.p2.director")
             directorCmd.addArgument("-profile").addArgument(profile)
-            directorCmd.addArgument("-repository").addArgument(url)
+            directorCmd.addArgument("-repository").addArgument(updateSite)
             for (String featureId : featureIds) {
-            ant.echo (message: "Will install " + featureId);
+                ant.echo (message: "Will install " + featureId);
                 directorCmd.addArgument("-installIU").addArgument(featureId)
             }
+            directorCmd.addArgument("-consoleLog")
             def executor = new DefaultExecutor();
             executor.setExitValue(0);
+            println directorCmd
             def exitValue = executor.execute(directorCmd);
             ant.copy(todir: new File(pluginTargetDir, "features")) {
                 fileset(dir: new File(eclipseDir, "features"), includes: "**/*") {
