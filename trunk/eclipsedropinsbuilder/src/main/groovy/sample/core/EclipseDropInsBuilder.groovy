@@ -67,7 +67,7 @@ class EclipseDropInsBuilder {
     }
 
     void copyPluginFromUrl(workDir, ant, profile, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
-        if (!pluginTargetDir.exists() && !pluginTargetDir.equals(eclipseDir)) {
+        if (!pluginTargetDir.exists() || pluginTargetDir.equals(eclipseDir)) {
             def fileName = url.substring(url.lastIndexOf('/') + 1)
             def downloadedFile = new File(workDir, fileName);
             ant.get (src: url, dest: downloadedFile, usetimestamp: true, verbose: true)
@@ -98,7 +98,7 @@ class EclipseDropInsBuilder {
     }
 
     void copyPluginFromUpdateSite(ant, profile, updateSites, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
-        if (!pluginTargetDir.exists() && !pluginTargetDir.equals(eclipseDir)) {
+        if (!pluginTargetDir.exists() || pluginTargetDir.equals(eclipseDir)) {
             def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
             def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
             def directorCmd = new CommandLine(javaPath)
@@ -121,14 +121,16 @@ class EclipseDropInsBuilder {
             executor.setExitValue(0);
             println directorCmd
             def exitValue = executor.execute(directorCmd);
-            ant.copy(todir: new File(pluginTargetDir, "features")) {
-                fileset(dir: new File(eclipseDir, "features"), includes: "**/*") {
-                    present (present: "srconly", targetdir: new File(originalEclipseDir, "features"))
+            if (!pluginTargetDir.equals(eclipseDir)) {
+                ant.copy(todir: new File(pluginTargetDir, "features")) {
+                    fileset(dir: new File(eclipseDir, "features"), includes: "**/*") {
+                        present (present: "srconly", targetdir: new File(originalEclipseDir, "features"))
+                    }
                 }
-            }
-            ant.copy(todir: new File(pluginTargetDir, "plugins")) {
-                fileset(dir: new File(eclipseDir, "plugins"), includes: "**/*") {
-                    present (present: "srconly", targetdir: new File(originalEclipseDir, "plugins"))
+                ant.copy(todir: new File(pluginTargetDir, "plugins")) {
+                    fileset(dir: new File(eclipseDir, "plugins"), includes: "**/*") {
+                        present (present: "srconly", targetdir: new File(originalEclipseDir, "plugins"))
+                    }
                 }
             }
         }
