@@ -1,4 +1,0 @@
-<%@ jet package="org.freejava.tools.handlers.newproject" class="HIBERNATEPREFSTemplate"%>#Sat Aug 23 08:42:58 ICT 2008
-default.configuration=
-eclipse.preferences.version=1
-hibernate3.enabled=true

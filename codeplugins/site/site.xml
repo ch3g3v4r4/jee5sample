@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site associateSitesURL="http://winkjava.110mb.com/new_project/projects/site/associateSites.xml">
-   <description url="http://winkjava.110mb.com/new_project/projects/site/site.xml">
-      Update site for FreeJava Tools.
-   </description>
-   <feature url="features/org.freejava.podcaster.feature_1.0.1.jar" id="org.freejava.podcaster.feature" version="1.0.1"/>
-   <feature url="features/org.freejava.tools.feature_1.0.5.jar" id="org.freejava.tools.feature" version="1.0.5"/>
-</site>
