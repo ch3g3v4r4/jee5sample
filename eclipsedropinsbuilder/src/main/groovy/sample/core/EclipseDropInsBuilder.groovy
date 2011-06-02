@@ -33,25 +33,41 @@ class EclipseDropInsBuilder {
         def eclipseDir = new File(workDir, "eclipse")
         def pluginsHomeDir =  new File(workDir, "dropins")
 
+        // First install plugins which can be put into dropins/ (i.e has plugin.dropinsName != null )
         for (Plugin plugin : config.plugins) {
-            def pluginTargetDir = new File(pluginsHomeDir, plugin.folderName)
-            if (plugin.updateSites != null && !plugin.updateSites.empty) {
-                copyPluginFromUpdateSite(ant, profile, plugin.updateSites, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
-            } else {
-                copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+            if (plugin.dropinsName != null) {
+                def pluginTargetDir = new File(pluginsHomeDir, plugin.dropinsName)
+                if (plugin.updateSites != null && !plugin.updateSites.empty) {
+                    copyPluginFromUpdateSite(ant, profile, plugin.updateSites, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                } else {
+                    copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                }
             }
         }
 
+        // Build eclipse with dropins
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
         ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
+
+        // Second install remaining plugins which must be put into core eclipse (i.e has plugin.dropinsName == null )
+        for (Plugin plugin : config.plugins) {
+            if (plugin.dropinsName == null) {
+                def pluginTargetDir = eclipseDir
+                if (plugin.updateSites != null && !plugin.updateSites.empty) {
+                    copyPluginFromUpdateSite(ant, profile, plugin.updateSites, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                } else {
+                    copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                }
+            }
+        }
 
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
 
     }
 
     void copyPluginFromUrl(workDir, ant, profile, url, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
-        if (!pluginTargetDir.exists()) {
+        if (!pluginTargetDir.exists() && !pluginTargetDir.equals(eclipseDir)) {
             def fileName = url.substring(url.lastIndexOf('/') + 1)
             def downloadedFile = new File(workDir, fileName);
             ant.get (src: url, dest: downloadedFile, usetimestamp: true, verbose: true)
@@ -61,18 +77,28 @@ class EclipseDropInsBuilder {
                 String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
                 names.add(zipEntryName);
             }
+            println names
             if (names.contains("plugin.xml")) {
-                // simple jar contains plugin
+                // is simple jar contains plugin
                 ant.copy (file: downloadedFile, todir: new File(pluginTargetDir, "plugins"))
             } else if (names.contains("site.xml")) {
-                // archive update site
+                // is archive update site
                 copyPluginFromUpdateSite(ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!"], featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+            } else if (names.contains("eclipse/")) {
+                // is zipped plugins
+                def tempDir = new File(workDir, downloadedFile.name + new Date().getTime())
+                ant.unzip (src: downloadedFile, dest: tempDir)
+                ant.move(tofile: pluginTargetDir){
+                    fileset(dir: new File(tempDir, "eclipse"))
+                }
+                ant.delete(dir: tempDir)
+
             }
         }
     }
 
     void copyPluginFromUpdateSite(ant, profile, updateSites, featureIds, originalEclipseDir, eclipseDir, pluginTargetDir) {
-        if (!pluginTargetDir.exists()) {
+        if (!pluginTargetDir.exists() && !pluginTargetDir.equals(eclipseDir)) {
             def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
             def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
             def directorCmd = new CommandLine(javaPath)
