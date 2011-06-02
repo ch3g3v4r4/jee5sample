@@ -3,7 +3,7 @@ package sample.core;
 import java.util.List;
 
 public class Plugin {
-    private String folderName;
+    private String dropinsName;
     private List<String> updateSites;
     private List<String> featureIds;
     private String url;
@@ -21,11 +21,11 @@ public class Plugin {
     public void setFeatureIds(List<String> featureIds) {
         this.featureIds = featureIds;
     }
-    public String getFolderName() {
-        return folderName;
+    public String getDropinsName() {
+        return dropinsName;
     }
-    public void setFolderName(String folderName) {
-        this.folderName = folderName;
+    public void setDropinsName(String dropinsName) {
+        this.dropinsName = dropinsName;
     }
     public String getUrl() {
         return url;
