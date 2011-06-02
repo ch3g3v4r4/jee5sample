@@ -33,7 +33,7 @@ class EclipseDropInsBuilder {
         def eclipseDir = new File(workDir, "eclipse")
         def pluginsHomeDir =  new File(workDir, "dropins")
 
-        // First install plugins which can be put into dropins/ (i.e has plugin.dropinsName != null )
+        // 1. Install plugins which can be put into dropins/ folder (i.e has plugin.dropinsName != null )
         for (Plugin plugin : config.plugins) {
             if (plugin.dropinsName != null) {
                 def pluginTargetDir = new File(pluginsHomeDir, plugin.dropinsName)
@@ -45,11 +45,11 @@ class EclipseDropInsBuilder {
             }
         }
 
-        // Build eclipse with dropins
+        // 2. Install remaining plugins which must be put into core eclipse (i.e has plugin.dropinsName == null )
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
-
-        // Second install remaining plugins which must be put into core eclipse (i.e has plugin.dropinsName == null )
+        // Copy dropins
+        ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
         for (Plugin plugin : config.plugins) {
             if (plugin.dropinsName == null) {
                 def pluginTargetDir = eclipseDir
@@ -61,7 +61,7 @@ class EclipseDropInsBuilder {
             }
         }
 
-        ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
+
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
 
     }
