@@ -88,7 +88,7 @@ class EclipseDropInsBuilder {
                 // is zipped plugins
                 def tempDir = new File(workDir, downloadedFile.name + new Date().getTime())
                 ant.unzip (src: downloadedFile, dest: tempDir)
-                ant.move(tofile: pluginTargetDir){
+                ant.copy(todir: pluginTargetDir){
                     fileset(dir: new File(tempDir, "eclipse"))
                 }
                 ant.delete(dir: tempDir)
