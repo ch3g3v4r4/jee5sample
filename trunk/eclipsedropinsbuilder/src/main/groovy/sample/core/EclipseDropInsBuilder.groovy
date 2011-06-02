@@ -78,7 +78,7 @@ class EclipseDropInsBuilder {
                 names.add(zipEntryName);
             }
             println "zip file content: " + names
-            if (names.contains("plugin.xml")) {
+            if (names.contains("plugin.xml") || names.contains("META-INF/")) {
                 // is simple jar contains plugin
                 ant.copy (file: downloadedFile, todir: new File(pluginTargetDir, "plugins"))
             } else if (names.contains("site.xml")) {
