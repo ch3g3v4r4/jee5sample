@@ -102,8 +102,10 @@ class EclipseDropInsBuilder {
             def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
             def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
             def directorCmd = new CommandLine(javaPath)
-            ant.delete (dir: eclipseDir)
-            ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
+            if (!pluginTargetDir.equals(eclipseDir)) {
+                ant.delete (dir: eclipseDir)
+                ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
+            }
             def launcherPath = FileUtils.listFiles(new File(eclipseDir, "plugins"), new WildcardFileFilter("org.eclipse.equinox.launcher_*.jar"), FalseFileFilter.FALSE).get(0).absolutePath
             directorCmd.addArgument("-jar").addArgument(launcherPath)
             directorCmd.addArgument("-application").addArgument("org.eclipse.equinox.p2.director")
