@@ -1,19 +1,21 @@
 package sample.startup;
 
+import java.io.File;
 import java.util.logging.LogManager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-
-import com.thoughtworks.xstream.XStream;
 
 import sample.core.Eclipse;
 import sample.core.EclipseDropInsBuilder;
 import sample.core.Plugin;
+
+import com.thoughtworks.xstream.XStream;
 
 public class Main {
 
@@ -37,7 +39,11 @@ public class Main {
 
         Resource config;
         if (args.length > 0) {
-            config = new FileSystemResource(args[0]);
+            if (new File(args[0]).exists()) {
+                config = new FileSystemResource(args[0]);
+            } else {
+                config = new DefaultResourceLoader().getResource(args[0]);
+            }
         } else {
             config = new ClassPathResource("/eclipse.xml");
         }
