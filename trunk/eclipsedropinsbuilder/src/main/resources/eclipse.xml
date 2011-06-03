@@ -121,7 +121,7 @@
     </plugin>
 
     <plugin>
-      <dropinsName>javaexamplessearch</dropinsName>
+      <dropinsName>JavaExamplesSearch</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
     </plugin>
     <plugin>
@@ -130,11 +130,11 @@
       <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>dependencyviewer</dropinsName>
+      <dropinsName>ClassDependencyViewer</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.dependencyviewer_1.0.0.jar</url>
     </plugin>
     <plugin>
-      <dropinsName>UnhandledExceptionCheck</dropinsName>
+      <dropinsName>CheckstyleUnhandledExceptionCheck</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/UnhandledExceptionCheck_1.0.0.jar</url>
     </plugin>
 
