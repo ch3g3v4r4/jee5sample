@@ -23,15 +23,17 @@ class EclipseDropInsBuilder {
         def workDir = new File(config.workDir)
         def eclipseDir = new File(workDir, "eclipse")
         def pluginsHomeDir =  new File(workDir, "dropins")
-        def originalEclipseDir = new File(workDir, "original/eclipse")
         def platformUrl = config.url
         def profile = config.profile
+        def zipFileName = platformUrl.substring(platformUrl.lastIndexOf('/') + 1)
+        def zipFileNameNoExt = zipFileName.substring(0, zipFileName.lastIndexOf('.'))
+        def originalEclipseDir = new File(workDir, zipFileNameNoExt + "/eclipse")
 
         def ant = new AntBuilder()
         ant.mkdir (dir: workDir)
-        ant.get (src: platformUrl, dest: workDir, usetimestamp: true, verbose: true)
         if (!originalEclipseDir.exists()) {
-            ant.unzip (dest: new File(workDir, "original")) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
+            ant.get (src: platformUrl, dest: workDir, usetimestamp: true, verbose: true)
+            ant.unzip (dest: new File(workDir, zipFileNameNoExt)) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
         }
 
         // 1. Install plugins which can be put into dropins/ folder (i.e has plugin.dropinsName != null )
