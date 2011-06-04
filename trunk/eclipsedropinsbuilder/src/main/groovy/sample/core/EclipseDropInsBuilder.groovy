@@ -60,7 +60,9 @@ class EclipseDropInsBuilder {
                 }
             }
         }
-
+        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"-Xmx[0-9]+m", replace:"-Xmx1024m", byline:"true");
+        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"[0-9]+m", replace:"512m", byline:"true");
+        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"[0-9]+M", replace:"512M", byline:"true");
 
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
 
