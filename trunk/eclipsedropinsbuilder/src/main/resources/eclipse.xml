@@ -179,12 +179,11 @@
       <url>http://download.oracle.com/otn_software/oepe/helios/oepe-helios-11.1.1.7.2.201103302044.zip</url>
     </plugin>
 
+    <!-- NOT use dropinsName so groovy will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core org.eclipse.jdt.core -->
     <plugin>
-      <!-- DO NOT use dropinsName so plugins will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core as org.eclipse.jdt.core_3.6.2.xx-20110531-1400-e36.jar -->
-      <updateSite>http://dist.codehaus.org/groovy/distributions/greclipse/snapshot/e3.6/</updateSite>
+      <url>http://ci.repository.codehaus.org/greclipse/snapshot/e36/old/archive-2.5.1.xx-20110603-1800-e36.zip</url>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
     </plugin>
-
   </plugins>
 </eclipse>
