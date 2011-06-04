@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/helios/SR2/eclipse-jee-helios-SR2-win32-x86_64.zip</url>
-  <!--<url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/helios/SR2/eclipse-jee-helios-SR2-win32.zip</url>-->
+  <!--<url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/helios/SR2/eclipse-jee-helios-SR2-win32-x86_64.zip</url>-->
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/helios/SR2/eclipse-jee-helios-SR2-win32.zip</url>
   <profile>epp.package.jee</profile>
   <plugins>
     <plugin>
@@ -120,6 +120,10 @@
       <featureId>de.babe.eclipse.features.QuickREx.feature.group</featureId>
     </plugin>
 
+    <plugin>
+      <dropinsName>JavaSourceAttacher</dropinsName>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javasourceattacher_1.0.0.jar</url>
+    </plugin>
     <plugin>
       <dropinsName>JavaExamplesSearch</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
