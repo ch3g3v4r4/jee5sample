@@ -3,11 +3,10 @@ package sample.core;
 import java.util.List;
 
 public class Plugin {
-    private String name;
+    private String dropinsName;
     private List<String> updateSites;
     private List<String> featureIds;
     private String url;
-    private String dropin;
 
 
     public List<String> getUpdateSites() {
@@ -22,11 +21,11 @@ public class Plugin {
     public void setFeatureIds(List<String> featureIds) {
         this.featureIds = featureIds;
     }
-    public String getName() {
-        return name;
+    public String getDropinsName() {
+        return dropinsName;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setDropinsName(String dropinsName) {
+        this.dropinsName = dropinsName;
     }
     public String getUrl() {
         return url;
@@ -34,13 +33,6 @@ public class Plugin {
     public void setUrl(String url) {
         this.url = url;
     }
-    public String getDropin() {
-        return dropin;
-    }
-    public void setDropin(String dropin) {
-        this.dropin = dropin;
-    }
-
 
 
 
