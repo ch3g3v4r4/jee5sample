@@ -36,7 +36,7 @@ class EclipseDropInsBuilder {
             ant.unzip (dest: new File(workDir, zipFileNameNoExt)) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
         }
 
-        // 1. Install plugins which can be put into dropins/ folder (i.e has plugin.dropinsName != null )
+        // 1. Cache plugins which can be put into dropins/ folder later (i.e has plugin.dropinsName != null )
         for (Plugin plugin : config.plugins) {
             if (plugin.dropinsName != null) {
                 def pluginTargetDir = new File(pluginsHomeDir, plugin.dropinsName)
@@ -48,14 +48,9 @@ class EclipseDropInsBuilder {
             }
         }
 
-        // 2. Install remaining plugins which must be put into core eclipse (i.e has plugin.dropinsName == null )
+        // 2. Install plugins which must be put into core eclipse (i.e has plugin.dropinsName == null )
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
-        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^\\-Xmx[0-9]+m", replace:"-Xmx800m", byline:"true");
-        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+m", replace:"400m", byline:"true");
-        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+M", replace:"400M", byline:"true");
-        // Copy dropins
-        ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
         for (Plugin plugin : config.plugins) {
             if (plugin.dropinsName == null) {
                 def pluginTargetDir = eclipseDir
@@ -66,6 +61,14 @@ class EclipseDropInsBuilder {
                 }
             }
         }
+
+        // 3. Copy dropins
+        ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
+
+        // 4. Increase memory settings
+        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^\\-Xmx[0-9]+m", replace:"-Xmx800m", byline:"true");
+        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+m", replace:"400m", byline:"true");
+        ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+M", replace:"400M", byline:"true");
 
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
 
