@@ -6,59 +6,59 @@
   <profile>epp.package.jee</profile>
   <plugins>
     <plugin>
-      <dropinsName>AnyEditTools</dropinsName>
+      <name>AnyEditTools</name>
       <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
       <featureId>AnyEditTools.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>FileSync</dropinsName>
+      <name>FileSync</name>
       <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
       <featureId>FileSync.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>JDepend4Eclipse</dropinsName>
+      <name>JDepend4Eclipse</name>
       <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
       <featureId>JDepend4Eclipse.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>contextmenu</dropinsName>
+      <name>contextmenu</name>
       <url>http://timealias.bplaced.net/ContextMenuPlugin/contextmenu_1.2.3.jar</url>
     </plugin>
     <plugin>
-      <dropinsName>startexplorer</dropinsName>
+      <name>startexplorer</name>
       <updateSite>https://startexplorer.svn.sourceforge.net/svnroot/startexplorer/update-site/trunk/</updateSite>
       <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>ucdetector</dropinsName>
+      <name>ucdetector</name>
       <updateSite>http://ucdetector.sourceforge.net/update</updateSite>
       <featureId>org.ucdetector.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>javahexeditor</dropinsName>
+      <name>javahexeditor</name>
       <url>http://nchc.dl.sourceforge.net/project/javahexeditor/javahexeditor/0.4.1/net.sourceforge.javahexeditor_0.4.1.jar</url>
     </plugin>
     <plugin>
-      <dropinsName>jadclipse</dropinsName>
+      <name>jadclipse</name>
       <url>http://nchc.dl.sourceforge.net/project/jadclipse/jadclipse3.3/3.3.0%20%28for%20Eclipse%20_%3D3.3M6%29/net.sf.jadclipse_3.3.0.jar</url>
     </plugin>
     <plugin>
-      <dropinsName>findbugs</dropinsName>
+      <name>findbugs</name>
       <updateSite>http://findbugs.cs.umd.edu/eclipse</updateSite>
       <featureId>edu.umd.cs.findbugs.plugin.eclipse.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>propedit</dropinsName>
+      <name>propedit</name>
       <updateSite>http://propedit.sourceforge.jp/eclipse/updates</updateSite>
       <featureId>jp.gr.java_conf.ussiy.app.propedit.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>eSpell</dropinsName>
+      <name>eSpell</name>
       <url>http://www.bdaum.de/eclipse/eSpell3/eSpell_3.2.1_site.zip</url>
       <featureId>com.bdaum.SpellChecker3.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>subclipse</dropinsName>
+      <name>subclipse</name>
       <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
       <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
       <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
@@ -67,12 +67,12 @@
       <featureId>org.tmatesoft.svnkit.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>checkstyle</dropinsName>
+      <name>checkstyle</name>
       <updateSite>http://eclipse-cs.sf.net/update/</updateSite>
       <featureId>net.sf.eclipsecs.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>codepro</dropinsName>
+      <name>codepro</name>
       <updateSite>http://dl.google.com/eclipse/inst/codepro/latest/3.6</updateSite>
       <featureId>com.instantiations.eclipse.coverage.codepro.feature.group</featureId>
       <featureId>com.instantiations.assist.eclipse.coverage.feature.group</featureId>
@@ -85,65 +85,70 @@
       <featureId>com.instantiations.eclipse.shared.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>jira</dropinsName>
+      <name>jira</name>
       <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.6</updateSite>
       <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>freemarker</dropinsName>
+      <name>freemarker</name>
       <updateSite>http://download.jboss.org/jbosstools/updates/stable/helios/</updateSite>
       <featureId>org.jboss.ide.eclipse.freemarker.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>hibernate</dropinsName>
+      <name>hibernate</name>
       <updateSite>http://download.jboss.org/jbosstools/updates/stable/helios/</updateSite>
       <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>struts</dropinsName>
+      <name>struts</name>
       <updateSite>http://download.jboss.org/jbosstools/updates/stable/helios/</updateSite>
       <featureId>org.jboss.tools.struts.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>log4e</dropinsName>
+      <name>log4e</name>
       <updateSite>http://log4e.jayefem.de/update</updateSite>
       <featureId>de.jayefem.log4e.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>eclipsetidy</dropinsName>
+      <name>eclipsetidy</name>
       <url>http://nchc.dl.sourceforge.net/project/eclipsetidy/eclipsetidy/1.2.2/net.sf.eclipsetidy_1.2.2_local_site.zip</url>
       <featureId>net.sf.eclipsetidy.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>QuickREx</dropinsName>
+      <name>QuickREx</name>
       <updateSite>http://www.bastian-bergerhoff.com/eclipse/features</updateSite>
       <featureId>de.babe.eclipse.features.QuickREx.feature.group</featureId>
     </plugin>
 
     <plugin>
-      <dropinsName>JavaSourceAttacher</dropinsName>
+      <name>JavaSourceAttacher</name>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javasourceattacher_1.0.0.jar</url>
     </plugin>
     <plugin>
-      <dropinsName>JavaExamplesSearch</dropinsName>
+      <name>JavaExamplesSearch</name>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
     </plugin>
     <plugin>
-      <dropinsName>zest</dropinsName>
+      <name>zest</name>
       <updateSite>http://download.eclipse.org/tools/gef/updates/releases/</updateSite>
       <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>ClassDependencyViewer</dropinsName>
+      <name>ClassDependencyViewer</name>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.dependencyviewer_1.0.0.jar</url>
     </plugin>
     <plugin>
-      <dropinsName>CheckstyleUnhandledExceptionCheck</dropinsName>
+      <name>byecycle</name>
+      <updateSite>https://github.com/klauswuestefeld/byecycle/raw/master/updatesite/</updateSite>
+      <featureId>byecycle-feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>CheckstyleUnhandledExceptionCheck</name>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/UnhandledExceptionCheck_1.0.0.jar</url>
     </plugin>
 
     <plugin>
-      <dropinsName>WindowsBuilderPro</dropinsName>
+      <name>WindowsBuilderPro</name>
       <updateSite>http://dl.google.com/eclipse/inst/d2wbpro/latest/3.6</updateSite>
       <featureId>com.google.gdt.eclipse.designer.feature.feature.group</featureId>
       <featureId>com.google.gdt.eclipse.designer.hosted.feature.feature.group</featureId>
@@ -165,21 +170,23 @@
     </plugin>
 
     <plugin>
-      <dropinsName>spring</dropinsName>
+      <name>spring</name>
       <updateSite>http://dist.springsource.com/milestone/TOOLS/update/e3.6</updateSite>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
 
     <plugin>
-      <dropinsName>oracle</dropinsName>
+      <name>oracle</name>
       <url>http://download.oracle.com/otn_software/oepe/helios/oepe-helios-11.1.1.7.2.201103302044.zip</url>
     </plugin>
 
     <plugin>
-      <!-- DO NOT use dropinsName so plugins will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core as org.eclipse.jdt.core_3.6.2.xx-20110531-1400-e36.jar -->
+      <name>groovy</name>
       <updateSite>http://dist.codehaus.org/groovy/distributions/greclipse/snapshot/e3.6/</updateSite>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
+      <!-- NOT install groovy as dropin because groovy eclipse has a patch on Eclipse core and so cannot run in dropins/ -->
+      <dropin>false</dropin>
     </plugin>
 
   </plugins>
