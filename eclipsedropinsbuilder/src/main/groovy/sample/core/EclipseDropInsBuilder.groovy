@@ -34,29 +34,34 @@ class EclipseDropInsBuilder {
             ant.unzip (dest: new File(workDir, "original")) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
         }
 
-        // 1. Cache all plugins
+        // 1. Install plugins which can be put into dropins/ folder (i.e has plugin.dropinsName != null )
         for (Plugin plugin : config.plugins) {
-            def pluginTargetDir = new File(pluginsHomeDir, plugin.name)
-            if (plugin.updateSites != null && !plugin.updateSites.empty) {
-                copyPluginFromUpdateSite(ant, profile, plugin.updateSites, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
-            } else {
-                copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+            if (plugin.dropinsName != null) {
+                def pluginTargetDir = new File(pluginsHomeDir, plugin.dropinsName)
+                if (plugin.updateSites != null && !plugin.updateSites.empty) {
+                    copyPluginFromUpdateSite(ant, profile, plugin.updateSites, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                } else {
+                    copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                }
             }
         }
 
-        // 2. Install base eclipse, modify memory settings
+        // 2. Install remaining plugins which must be put into core eclipse (i.e has plugin.dropinsName == null )
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: originalEclipseDir)}
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^\\-Xmx[0-9]+m", replace:"-Xmx1024m", byline:"true");
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+m", replace:"512m", byline:"true");
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+M", replace:"512M", byline:"true");
-
-        // 3. Install plugins
+        // Copy dropins
+        ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
         for (Plugin plugin : config.plugins) {
-            if ("false".equalsIgnoreCase(plugin.dropin)) {
-                ant.copy(todir: eclipseDir) {fileset(dir: new File(pluginsHomeDir, plugin.name))}
-            } else {
-                ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir, includes: plugin.name)}
+            if (plugin.dropinsName == null) {
+                def pluginTargetDir = eclipseDir
+                if (plugin.updateSites != null && !plugin.updateSites.empty) {
+                    copyPluginFromUpdateSite(ant, profile, plugin.updateSites, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                } else {
+                    copyPluginFromUrl(workDir, ant, profile, plugin.url, plugin.featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
+                }
             }
         }
 
