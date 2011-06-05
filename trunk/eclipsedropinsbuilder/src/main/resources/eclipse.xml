@@ -6,6 +6,11 @@
   <profile>epp.package.jee</profile>
   <plugins>
     <plugin>
+      <dropinsName>PlatformSDK</dropinsName>
+      <updateSite>http://download.eclipse.org/eclipse/updates/3.6</updateSite>
+      <featureId>org.eclipse.platform.sdk</featureId>
+    </plugin>
+    <plugin>
       <dropinsName>AnyEditTools</dropinsName>
       <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
       <featureId>AnyEditTools.feature.group</featureId>
