@@ -183,7 +183,10 @@
       <dropinsName>oracle</dropinsName>
       <url>http://download.oracle.com/otn_software/oepe/helios/oepe-helios-11.1.1.7.2.201103302044.zip</url>
     </plugin>
-
+    <plugin>
+      <dropinsName>sqlexplorer</dropinsName>
+      <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
+    </plugin>
     <!-- NOT use dropinsName so groovy will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core org.eclipse.jdt.core -->
     <plugin>
       <url>http://ci.repository.codehaus.org/greclipse/snapshot/e36/old/archive-2.5.1.xx-20110603-1800-e36.zip</url>
