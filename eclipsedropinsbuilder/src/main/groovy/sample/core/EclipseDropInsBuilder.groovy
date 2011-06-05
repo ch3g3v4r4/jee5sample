@@ -92,12 +92,12 @@ class EclipseDropInsBuilder {
             } else if (names.contains("site.xml")) {
                 // is archive update site
                 copyPluginFromUpdateSite(ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!"], featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
-            } else if (names.contains("eclipse/")) {
+            } else if (names.contains("eclipse/") || names.contains("plugins/")) {
                 // is zipped plugins
                 def tempDir = new File(workDir, downloadedFile.name + new Date().getTime())
                 ant.unzip (src: downloadedFile, dest: tempDir)
                 ant.copy(todir: pluginTargetDir){
-                    fileset(dir: new File(tempDir, "eclipse"))
+                    fileset(dir: names.contains("eclipse/") ? new File(tempDir, "eclipse") : tempDir)
                 }
                 ant.delete(dir: tempDir)
 
