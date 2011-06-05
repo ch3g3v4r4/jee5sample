@@ -48,6 +48,11 @@
       <featureId>edu.umd.cs.findbugs.plugin.eclipse.feature.group</featureId>
     </plugin>
     <plugin>
+      <dropinsName>lint4j</dropinsName>
+      <url>http://www.jutils.com/eclipse-update/lint4j-eclipse-plugin.zip</url>
+      <featureId>com.jutils.lint4j.core.feature.group</featureId>
+    </plugin>
+    <plugin>
       <dropinsName>propedit</dropinsName>
       <updateSite>http://propedit.sourceforge.jp/eclipse/updates</updateSite>
       <featureId>jp.gr.java_conf.ussiy.app.propedit.feature.group</featureId>
