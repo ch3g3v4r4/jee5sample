@@ -78,7 +78,9 @@ class EclipseDropInsBuilder {
         if (!pluginTargetDir.exists() || pluginTargetDir.equals(eclipseDir)) {
             def fileName = url.substring(url.lastIndexOf('/') + 1)
             def downloadedFile = new File(workDir, fileName);
-            ant.get (src: url, dest: downloadedFile, usetimestamp: true, verbose: true)
+            if (!downloadedFile.exists()) {
+                ant.get (src: url, dest: downloadedFile, usetimestamp: true, verbose: true)
+            }
             List<String> names = new ArrayList<String>();
             ZipFile zf = new ZipFile(downloadedFile);
             for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
