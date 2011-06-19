@@ -63,7 +63,11 @@ class EclipseDropInsBuilder {
         }
 
         // 3. Copy dropins
-        ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir)}
+        for (Plugin plugin : config.plugins) {
+            if (plugin.dropinsName != null) {
+                ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir){ include (name: plugin.dropinsName)}}
+            }
+        }
 
         // 4. Increase memory settings
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^\\-Xmx[0-9]+m", replace:"-Xmx800m", byline:"true");
