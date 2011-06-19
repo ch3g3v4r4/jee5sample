@@ -194,7 +194,7 @@
     </plugin>
     <!-- NOT use dropinsName so groovy will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core org.eclipse.jdt.core -->
     <plugin>
-      <url>http://ci.repository.codehaus.org/greclipse/snapshot/e36/old/archive-2.5.1.xx-20110603-1800-e36.zip</url>
+      <url>http://ci.repository.codehaus.org/greclipse/snapshot/e36/old/archive-2.5.1.xx-20110618-0900-e36.zip</url>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
