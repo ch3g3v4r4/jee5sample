@@ -65,7 +65,7 @@ class EclipseDropInsBuilder {
         // 3. Copy dropins
         for (Plugin plugin : config.plugins) {
             if (plugin.dropinsName != null) {
-                ant.copy(todir: new File(eclipseDir, "dropins")) {fileset(dir: pluginsHomeDir){ include (name: plugin.dropinsName)}}
+                ant.copy(todir: new File(eclipseDir, "dropins/" + plugin.dropinsName)) {fileset(dir: new File(pluginsHomeDir, plugin.dropinsName))}
             }
         }
 
