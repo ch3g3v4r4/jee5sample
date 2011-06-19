@@ -91,7 +91,7 @@ class EclipseDropInsBuilder {
             if (names.contains("plugin.xml") || names.contains("META-INF/")) {
                 // is simple jar contains plugin
                 ant.copy (file: downloadedFile, todir: new File(pluginTargetDir, "plugins"))
-            } else if (names.contains("site.xml")) {
+            } else if (names.contains("site.xml") || names.contains("content.jar") || names.contains("artifacts.jar")) {
                 // is archive update site
                 copyPluginFromUpdateSite(ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!"], featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
             } else if (names.contains("eclipse/") || names.contains("plugins/")) {
