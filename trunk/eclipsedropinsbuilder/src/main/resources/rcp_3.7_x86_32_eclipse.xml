@@ -59,16 +59,13 @@
     </plugin>
     <plugin>
       <dropinsName>QuickREx</dropinsName>
-      <updateSite>http://www.bastian-bergerhoff.com/eclipse/features</updateSite>
-      <featureId>de.babe.eclipse.features.QuickREx.feature.group</featureId>
+      <url>http://nchc.dl.sourceforge.net/project/quickrex/QuickREx%20Plug-In/Version%203.5.0/QuickREx_3.5.0.jar</url>
     </plugin>
-
 
     <!-- Java -->
     <plugin>
       <dropinsName>JDepend4Eclipse</dropinsName>
-      <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
-      <featureId>JDepend4Eclipse.feature.group</featureId>
+      <url>http://jdepend4eclipse.eclipselabs.org.codespot.com/files/de.loskutov.eclipse.jdepend_1.2.2.201005301956.jar</url>
     </plugin>
     <plugin>
       <dropinsName>ucdetector</dropinsName>
