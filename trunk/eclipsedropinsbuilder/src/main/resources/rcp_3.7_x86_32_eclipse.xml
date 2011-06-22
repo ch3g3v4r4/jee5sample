@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
+  <url>http://mirror.yongbok.net/eclipse//eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
-      <dropinsName>swt_designer_WTP_web_spring_indigo</dropinsName>
+      <dropinsName>swt__WTP_hibernate_spring_indigo</dropinsName>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
       <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
@@ -16,6 +16,9 @@
 
       <updateSite>http://dist.springsource.com/snapshot/TOOLS/nightly/e3.7</updateSite>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
+
+      <updateSite>http://download.jboss.org/jbosstools/updates/development/indigo/</updateSite>
+      <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <dropinsName>subclipse</dropinsName>
@@ -136,11 +139,6 @@
     </plugin>
 
     <!-- Java EE -->
-    <plugin>
-      <dropinsName>hibernate</dropinsName>
-      <updateSite>http://download.jboss.org/jbosstools/updates/stable/helios/</updateSite>
-      <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
-    </plugin>
     <plugin>
       <dropinsName>sqlexplorer</dropinsName>
       <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
