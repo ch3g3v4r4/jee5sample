@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/S-3.7RC4-201106030909/eclipse-SDK-3.7RC4-win32.zip</url>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
@@ -103,8 +103,7 @@
     </plugin>
     <plugin>
       <dropinsName>log4e</dropinsName>
-      <updateSite>http://log4e.jayefem.de/update</updateSite>
-      <featureId>de.jayefem.log4e.feature.group</featureId>
+      <url>http://log4e.jayefem.de/download/eclipse3/de.jayefem.log4e_free_1.3.3.zip</url>
     </plugin>
     <plugin>
       <dropinsName>JavaSourceAttacher</dropinsName>
