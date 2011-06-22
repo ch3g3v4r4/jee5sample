@@ -177,6 +177,11 @@
       <dropinsName>sqlexplorer</dropinsName>
       <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
     </plugin>
+    <plugin>
+      <dropinsName>tomcatPlugin</dropinsName>
+      <url>http://www.eclipsetotale.com/tomcatPlugin/tomcatPluginV33.zip</url>
+    </plugin>
+
 
     <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
     <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
