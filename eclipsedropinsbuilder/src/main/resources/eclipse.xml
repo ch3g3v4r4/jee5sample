@@ -169,9 +169,10 @@
       <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
     </plugin>
     <plugin>
-      <!-- TODO: change Aptana theme to Eclipse otherwise you will have problems -->
-      <dropinsName>aptana</dropinsName>
-      <updateSite>http://download.aptana.com/studio3/plugin/install</updateSite>
+      <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
+      <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
+      <dropinsName>aptananightly</dropinsName>
+      <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
       <featureId>com.aptana.feature.feature.group</featureId>
     </plugin>
