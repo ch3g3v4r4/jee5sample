@@ -5,14 +5,26 @@
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
-      <dropinsName>WTP_web_spring_indigo</dropinsName>
+      <dropinsName>swt_designer_WTP_web_spring_indigo</dropinsName>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
       <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
       <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
       <featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wb.rcp.feature.feature.group</featureId>
+      <featureId>org.eclipse.zest.feature.group</featureId>
+
       <updateSite>http://dist.springsource.com/snapshot/TOOLS/nightly/e3.7</updateSite>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>subclipse</dropinsName>
+      <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
+      <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.svnkit.feature.feature.group</featureId>
+      <featureId>org.tmatesoft.svnkit.feature.group</featureId>
     </plugin>
 
     <plugin>
@@ -52,15 +64,7 @@
       <url>http://www.jutils.com/eclipse-update/lint4j-eclipse-plugin.zip</url>
       <featureId>com.jutils.lint4j.core.feature.group</featureId>
     </plugin>
-    <plugin>
-      <dropinsName>subclipse</dropinsName>
-      <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
-      <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
-      <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
-      <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
-      <featureId>org.tigris.subversion.clientadapter.svnkit.feature.feature.group</featureId>
-      <featureId>org.tmatesoft.svnkit.feature.group</featureId>
-    </plugin>
+
     <plugin>
       <dropinsName>checkstyle</dropinsName>
       <updateSite>http://eclipse-cs.sf.net/update/</updateSite>
@@ -86,11 +90,6 @@
     <plugin>
       <dropinsName>JavaExamplesSearch</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
-    </plugin>
-    <plugin>
-      <dropinsName>zest_indigo</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
     <plugin>
       <dropinsName>ClassDependencyViewer</dropinsName>
