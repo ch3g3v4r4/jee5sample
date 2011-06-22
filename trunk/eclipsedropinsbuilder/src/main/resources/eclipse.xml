@@ -200,5 +200,12 @@
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
     </plugin>
+
+    <!--
+    amateras-html-2.0.4
+    aptana http://download.aptana.com/studio3/plugin/install com.aptana.webkitbrowser.feature.group com.aptana.feature.feature.group
+    com.oxygenxml.editor_12.1.0.v2011031114
+    jseclipse http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml
+     -->
   </plugins>
 </eclipse>
