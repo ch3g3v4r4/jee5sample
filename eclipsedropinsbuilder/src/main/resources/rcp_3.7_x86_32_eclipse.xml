@@ -35,7 +35,6 @@
       <dropinsName>FileSync</dropinsName>
       <url>http://filesync4eclipse.eclipselabs.org.codespot.com/files/de.loskutov.FileSync_1.3.8.201104160944.jar</url>
     </plugin>
-
     <plugin>
       <dropinsName>contextmenu</dropinsName>
       <url>http://timealias.bplaced.net/ContextMenuPlugin/contextmenu_1.2.3.jar</url>
@@ -46,14 +45,37 @@
       <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
     </plugin>
     <plugin>
+      <dropinsName>javahexeditor</dropinsName>
+      <url>http://nchc.dl.sourceforge.net/project/javahexeditor/javahexeditor/0.4.1/net.sourceforge.javahexeditor_0.4.1.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>propedit</dropinsName>
+      <url>http://iij.dl.sourceforge.jp/propedit/40156/jp.gr.java_conf.ussiy.app.propedit_5.3.3.zip</url>
+    </plugin>
+    <plugin>
+      <dropinsName>eSpell</dropinsName>
+      <url>http://www.bdaum.de/eclipse/eSpell3/eSpell_3.2.1_site.zip</url>
+      <featureId>com.bdaum.SpellChecker3.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>QuickREx</dropinsName>
+      <updateSite>http://www.bastian-bergerhoff.com/eclipse/features</updateSite>
+      <featureId>de.babe.eclipse.features.QuickREx.feature.group</featureId>
+    </plugin>
+
+
+    <!-- Java -->
+    <plugin>
+      <dropinsName>JDepend4Eclipse</dropinsName>
+      <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
+      <featureId>JDepend4Eclipse.feature.group</featureId>
+    </plugin>
+    <plugin>
       <dropinsName>ucdetector</dropinsName>
       <updateSite>http://ucdetector.sourceforge.net/update</updateSite>
       <featureId>org.ucdetector.feature.feature.group</featureId>
     </plugin>
-    <plugin>
-      <dropinsName>javahexeditor</dropinsName>
-      <url>http://nchc.dl.sourceforge.net/project/javahexeditor/javahexeditor/0.4.1/net.sourceforge.javahexeditor_0.4.1.jar</url>
-    </plugin>
+
     <plugin>
       <dropinsName>findbugs</dropinsName>
       <updateSite>http://findbugs.cs.umd.edu/eclipse</updateSite>
@@ -64,7 +86,6 @@
       <url>http://www.jutils.com/eclipse-update/lint4j-eclipse-plugin.zip</url>
       <featureId>com.jutils.lint4j.core.feature.group</featureId>
     </plugin>
-
     <plugin>
       <dropinsName>checkstyle</dropinsName>
       <updateSite>http://eclipse-cs.sf.net/update/</updateSite>
@@ -84,6 +105,11 @@
       <featureId>com.instantiations.eclipse.shared.feature.group</featureId>
     </plugin>
     <plugin>
+      <dropinsName>log4e</dropinsName>
+      <updateSite>http://log4e.jayefem.de/update</updateSite>
+      <featureId>de.jayefem.log4e.feature.group</featureId>
+    </plugin>
+    <plugin>
       <dropinsName>JavaSourceAttacher</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javasourceattacher_1.0.0.jar</url>
     </plugin>
@@ -99,6 +125,11 @@
       <dropinsName>CheckstyleUnhandledExceptionCheck</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/UnhandledExceptionCheck_1.0.0.jar</url>
     </plugin>
+    <plugin>
+      <dropinsName>byecycle</dropinsName>
+      <updateSite>https://github.com/klauswuestefeld/byecycle/raw/master/updatesite/</updateSite>
+      <featureId>byecycle-feature.feature.group</featureId>
+    </plugin>
 
     <!-- NOT use dropinsName so groovy will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core org.eclipse.jdt.core -->
     <plugin>
@@ -108,5 +139,43 @@
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
     </plugin>
+
+    <!-- Java EE -->
+    <plugin>
+      <dropinsName>hibernate</dropinsName>
+      <updateSite>http://download.jboss.org/jbosstools/updates/stable/helios/</updateSite>
+      <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>sqlexplorer</dropinsName>
+      <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
+    </plugin>
+    <plugin>
+      <dropinsName>tomcatPlugin</dropinsName>
+      <url>http://www.eclipsetotale.com/tomcatPlugin/tomcatPluginV33.zip</url>
+    </plugin>
+
+
+    <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
+    <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
+    <!-- http://jira.appcelerator.org/browse/APSTUD-1902  -->
+    <plugin>
+      <dropinsName>aptana-nightly</dropinsName>
+      <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
+      <featureId>com.aptana.webkitbrowser.feature.group</featureId>
+      <featureId>com.aptana.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>jseclipse</dropinsName>
+      <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
+      <featureId>com.interaktonline.jseclipse.feature.group</featureId>
+    </plugin>
+    <!-- oxygenxmleditor license: see http://pastebin.com/pztScWXM  -->
+    <plugin>
+      <dropinsName>oxygenxmleditor</dropinsName>
+      <updateSite>http://www.oxygenxml.com/InstData/Editor/Eclipse/site.xml</updateSite>
+      <featureId>com.oxygenxml.editor.feature.group</featureId>
+    </plugin>
+
   </plugins>
 </eclipse>
