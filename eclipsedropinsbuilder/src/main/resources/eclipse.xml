@@ -168,10 +168,12 @@
       <dropinsName>sqlexplorer</dropinsName>
       <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
     </plugin>
+
+    <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
+    <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
+    <!-- http://jira.appcelerator.org/browse/APSTUD-1902  -->
     <plugin>
-      <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
-      <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
-      <dropinsName>aptananightly</dropinsName>
+      <dropinsName>aptana-nightly</dropinsName>
       <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
       <featureId>com.aptana.feature.feature.group</featureId>
@@ -181,12 +183,17 @@
       <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
       <featureId>com.interaktonline.jseclipse.feature.group</featureId>
     </plugin>
-
-    <!--
-    amateras-html-2.0.4
-    com.oxygenxml.editor_12.1.0.v2011031114
-     -->
-
+    <!-- oxygenxmleditor license: see http://pastebin.com/pztScWXM  -->
+    <plugin>
+      <dropinsName>oxygenxmleditor</dropinsName>
+      <updateSite>http://www.oxygenxml.com/InstData/Editor/Eclipse/site.xml</updateSite>
+      <featureId>com.oxygenxml.editor.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>amateras-html-2.1.0</dropinsName>
+      <url>http://iij.dl.sourceforge.jp/amateras/51002/tk.eclipse.plugin.htmleditor_2.1.0.jar</url>
+      <featureId>com.oxygenxml.editor.feature.group</featureId>
+    </plugin>
 
     <!-- Java Desktop -->
     <plugin>
