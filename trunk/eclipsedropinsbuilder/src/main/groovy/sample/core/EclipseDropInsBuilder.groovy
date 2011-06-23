@@ -3,15 +3,15 @@ package sample.core;
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.FalseFileFilter;
-import org.apache.commons.io.filefilter.WildcardFileFilter
 import org.apache.commons.exec.CommandLine
 import org.apache.commons.exec.DefaultExecutor
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import sample.startup.Main;
+import org.apache.commons.io.FileUtils
+import org.apache.commons.io.filefilter.FalseFileFilter
+import org.apache.commons.io.filefilter.NameFileFilter
+import org.apache.commons.io.filefilter.TrueFileFilter
+import org.apache.commons.io.filefilter.WildcardFileFilter
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 
 class EclipseDropInsBuilder {
@@ -98,14 +98,27 @@ class EclipseDropInsBuilder {
             } else if (names.contains("site.xml") || names.contains("content.jar") || names.contains("artifacts.jar")) {
                 // is archive update site
                 copyPluginFromUpdateSite(ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!"], featureIds, originalEclipseDir, eclipseDir, pluginTargetDir)
-            } else if (names.contains("eclipse/") || names.contains("plugins/")) {
+            } else {
                 // is zipped plugins
                 def tempDir = new File(workDir, downloadedFile.name + new Date().getTime())
                 ant.unzip (src: downloadedFile, dest: tempDir)
-                ant.copy(todir: pluginTargetDir){
-                    fileset(dir: names.contains("eclipse/") ? new File(tempDir, "eclipse") : tempDir)
+                try {
+                    if (names.contains("eclipse/") || names.contains("plugins/")) {
+                        ant.copy(todir: pluginTargetDir){
+                            fileset(dir: names.contains("eclipse/") ? new File(tempDir, "eclipse") : tempDir)
+                        }
+                    } else {
+                        Collection files = FileUtils.listFiles(tempDir, new NameFileFilter("plugin.xml"), TrueFileFilter.INSTANCE);
+                        if (!files.isEmpty()) {
+                            File file = files.iterator().next();
+                            ant.copy(todir: new File(pluginTargetDir, "plugins")){
+                                fileset(dir: file.getParentFile().getParentFile())
+                            }
+                        }
+                    }
+                } finally {
+                    ant.delete(dir: tempDir)
                 }
-                ant.delete(dir: tempDir)
 
             }
         }
