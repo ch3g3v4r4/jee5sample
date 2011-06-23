@@ -147,8 +147,8 @@
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>oracle</dropinsName>
-      <url>http://download.oracle.com/otn_software/oepe/helios/oepe-helios-11.1.1.7.2.201103302044.zip</url>
+      <dropinsName>oracle_indigo</dropinsName>
+      <url>http://download.oracle.com/otn_software/oepe/indigo/oepe-indigo-all-in-one-11.1.1.7.2.201104061504-win32.zip</url>
     </plugin>
     <plugin>
       <dropinsName>sqlexplorer</dropinsName>
