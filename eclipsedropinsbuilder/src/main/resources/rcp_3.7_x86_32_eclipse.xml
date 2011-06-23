@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://mirror.yongbok.net/eclipse//eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
+  <url>http://eclipse.stu.edu.tw/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
@@ -17,8 +17,6 @@
       <updateSite>http://dist.springsource.com/snapshot/TOOLS/nightly/e3.7</updateSite>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
 
-      <updateSite>http://download.jboss.org/jbosstools/updates/development/indigo/</updateSite>
-      <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <dropinsName>subclipse</dropinsName>
@@ -123,10 +121,6 @@
     <plugin>
       <dropinsName>CheckstyleUnhandledExceptionCheck</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/UnhandledExceptionCheck_1.0.0.jar</url>
-    </plugin>
-    <plugin>
-      <dropinsName>byecycle</dropinsName>
-      <url>https://github.com/klauswuestefeld/byecycle/raw/master/updatesite/plugins/byecycle_0.1.0.jar</url>
     </plugin>
 
     <!-- NOT use dropinsName so groovy will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core org.eclipse.jdt.core -->
