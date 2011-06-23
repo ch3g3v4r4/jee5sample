@@ -160,7 +160,7 @@
     <!-- oxygenxmleditor license: see http://pastebin.com/pztScWXM  -->
     <plugin>
       <dropinsName>oxygenxmleditor</dropinsName>
-      <updateSite>http://www.oxygenxml.com/InstData/Editor/Eclipse/site.xml</updateSite>
+      <url>http://mirror.oxygenxml.com/InstData/Editor/Eclipse3.4/com.oxygenxml.editor_12.2.0.v2011053115.zip</url>
       <featureId>com.oxygenxml.editor.feature.group</featureId>
     </plugin>
 
