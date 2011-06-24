@@ -142,13 +142,13 @@
       <featureId>org.jboss.tools.struts.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>spring</dropinsName>
+      <dropinsName>spring_e37</dropinsName>
       <updateSite>http://dist.springsource.com/snapshot/TOOLS/nightly/e3.7</updateSite>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>oracle_indigo</dropinsName>
-      <url>http://download.oracle.com/otn_software/oepe/indigo/oepe-indigo-all-in-one-11.1.1.7.2.201104061504-win32.zip</url>
+      <dropinsName>oepe_indigo</dropinsName>
+      <url>http://download.oracle.com/otn_software/oepe/indigo/oepe-indigo-11.1.1.7.2.201104061504.zip</url>
     </plugin>
     <plugin>
       <dropinsName>sqlexplorer</dropinsName>
