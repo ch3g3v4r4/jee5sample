@@ -149,7 +149,7 @@ class EclipseDropInsBuilder {
             ant.copy (file: downloadedFile, todir: new File(eclipseDir, "plugins"))
         } else if (names.contains("site.xml") || names.contains("content.jar") || names.contains("artifacts.jar")) {
             // is archive update site
-            installFromUpdateSite(eclipseDir, ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!"], featureIds)
+            installFromUpdateSite(eclipseDir, ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!/"], featureIds)
         } else {
             // is zipped plugins
             def tempDir = new File(workDir, downloadedFile.name + new Date().getTime())
