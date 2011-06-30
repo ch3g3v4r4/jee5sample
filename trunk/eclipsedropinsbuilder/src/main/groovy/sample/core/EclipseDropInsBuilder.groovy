@@ -1,5 +1,7 @@
+
 package sample.core;
 
+import java.security.MessageDigest;
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 
@@ -12,6 +14,8 @@ import org.apache.commons.io.filefilter.TrueFileFilter
 import org.apache.commons.io.filefilter.WildcardFileFilter
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.digest.DigestUtils;
 
 
 class EclipseDropInsBuilder {
@@ -22,13 +26,6 @@ class EclipseDropInsBuilder {
 
         def workDir = new File(config.workDir)
         ant.mkdir (dir: workDir)
-
-        def cacheHomeDir =  new File(workDir, hash + "/cached")
-        ant.mkdir (dir: cacheHomeDir)
-
-        def tmpCacheHomeDir =  new File(workDir, "cached.tmp")
-        ant.delete (dir: tmpCacheHomeDir)
-        ant.mkdir (dir: tmpCacheHomeDir)
 
         def platformUrl = config.url
         def profile = config.profile
@@ -45,14 +42,20 @@ class EclipseDropInsBuilder {
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
         Map<Plugin, File> cachedPlugins = new Hashtable<Plugin, File>();
+        MessageDigest md = MessageDigest.getInstance("SHA");
+        md.update(platformUrl.getBytes("UTF-8"))
         for (Plugin plugin : config.plugins) {
             // try the cache first
-            File cachedPlugin;
-            if (plugin.dropinsName != null) {
-                cachedPlugin = new File(cacheHomeDir, plugin.dropinsName);
-            } else  {
-                cachedPlugin = new File(tmpCacheHomeDir, "tmp" + new Date().getTime())
+            List<String> values = new ArrayList<String>();
+            values.add(plugin.url)
+            for (String s : plugin.updateSites) values.add(s)
+            for (String s : plugin.featureIds) values.add(s)
+            for (String s : values) {
+                if (s != null) md.update(s.getBytes("UTF-8"))
             }
+            String id = Hex.encodeHexString(md.clone().digest())
+            File cachedPlugin = new File(workDir, id);
+
             cachedPlugins.put(plugin, cachedPlugin)
             if (cachedPlugin.exists()) {
                 // find cached files for plugin, use them
