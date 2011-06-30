@@ -41,6 +41,8 @@ class EclipseDropInsBuilder {
         def eclipseDir = new File(workDir, "eclipse")
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
+        def snapshotDir = new File(workDir, "snapshot")
+        ant.delete (dir: snapshotDir)
         Map<Plugin, File> cachedPlugins = new Hashtable<Plugin, File>();
         MessageDigest md = MessageDigest.getInstance("SHA");
         md.update(platformUrl.getBytes("UTF-8"))
@@ -58,14 +60,13 @@ class EclipseDropInsBuilder {
 
             cachedPlugins.put(plugin, cachedPlugin)
             if (cachedPlugin.exists()) {
+                // 1. create a snapshot
+                ant.copy(todir: snapshotDir) {fileset(dir: eclipseDir)}
                 // find cached files for plugin, use them
                 ant.copy(todir: eclipseDir) {fileset(dir: cachedPlugin)}
             } else {
                 // 1. create a snapshot
-                def snapshotDir = new File(workDir, "snapshot")
-                ant.delete (dir: snapshotDir)
                 ant.copy(todir: snapshotDir) {fileset(dir: eclipseDir)}
-
                 // 2. install
                 if (plugin.url != null) {
                     installFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
