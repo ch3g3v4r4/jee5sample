@@ -3,6 +3,7 @@ package sample.startup;
 import java.io.File;
 import java.util.logging.LogManager;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
@@ -53,9 +54,9 @@ public class Main {
         xstream.addImplicitCollection(Plugin.class, "updateSites", "updateSite", String.class);
         xstream.addImplicitCollection(Plugin.class, "featureIds", "featureId", String.class);
         Eclipse e = (Eclipse) xstream.fromXML(config.getInputStream());
-
+        String hash = DigestUtils.md5Hex(config.getInputStream());
         EclipseDropInsBuilder builder = new EclipseDropInsBuilder();
-        builder.build(e);
+        builder.build(e, hash);
 
         LOGGER.info("Exiting application...");
     }

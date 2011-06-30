@@ -17,13 +17,13 @@ import org.slf4j.LoggerFactory
 class EclipseDropInsBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(EclipseDropInsBuilder.class);
 
-    public void build(Eclipse config) {
+    public void build(Eclipse config, String hash) {
         def ant = new AntBuilder()
 
         def workDir = new File(config.workDir)
         ant.mkdir (dir: workDir)
 
-        def cacheHomeDir =  new File(workDir, "cached")
+        def cacheHomeDir =  new File(workDir, hash + "/cached")
         ant.mkdir (dir: cacheHomeDir)
 
         def tmpCacheHomeDir =  new File(workDir, "cached.tmp")
@@ -65,7 +65,7 @@ class EclipseDropInsBuilder {
 
                 // 2. install
                 if (plugin.url != null) {
-                    installFromUrl(eclipseDir, ant, profile, plugin.url, plugin.featureIds)
+                    installFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
                 } else {
                     installFromUpdateSite(eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
                 }
@@ -128,7 +128,7 @@ class EclipseDropInsBuilder {
 
     }
 
-    void installFromUrl(eclipseDir, ant, profile, url, featureIds) {
+    void installFromUrl(eclipseDir, workDir, ant, profile, url, featureIds) {
         def fileName = url.substring(url.lastIndexOf('/') + 1)
         def downloadedFile = new File(workDir, fileName);
         if (!downloadedFile.exists()) {

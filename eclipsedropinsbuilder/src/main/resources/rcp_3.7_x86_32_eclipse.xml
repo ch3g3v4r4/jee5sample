@@ -4,8 +4,9 @@
   <url>http://eclipse.stu.edu.tw/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
   <profile>SDKProfile</profile>
   <plugins>
+
     <plugin>
-      <dropinsName>swt__WTP_hibernate_spring_indigo</dropinsName>
+      <dropinsName>wtpwb</dropinsName>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
       <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
@@ -13,11 +14,14 @@
       <featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
       <featureId>org.eclipse.wb.rcp.feature.feature.group</featureId>
       <featureId>org.eclipse.zest.feature.group</featureId>
-
-      <updateSite>http://dist.springsource.com/snapshot/TOOLS/nightly/e3.7</updateSite>
-      <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
-
     </plugin>
+
+    <plugin>
+      <dropinsName>spring</dropinsName>
+      <url>https://build.springsource.org/browse/IDE-NIGHTLY-JOB1-1179/artifact/site/spring-ide-2.7.0.201106292205-CI-B1179-updatesite.zip</url>
+      <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
+    </plugin>
+
     <plugin>
       <dropinsName>subclipse</dropinsName>
       <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
@@ -125,7 +129,7 @@
 
     <!-- NOT use dropinsName so groovy will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core org.eclipse.jdt.core -->
     <plugin>
-      <updateSite>http://dist.codehaus.org/groovy/distributions/greclipse/snapshot/e3.7/</updateSite>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.5.1.xx-20110628-1600-e37.zip</url>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
