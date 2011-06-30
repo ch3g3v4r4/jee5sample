@@ -57,7 +57,7 @@ class EclipseDropInsBuilder {
             }
             String id = Hex.encodeHexString(md.clone().digest())
             File cachedPlugin = new File(workDir, id);
-
+            println "Install plugin ${plugin.dropinsName} into ${id}"
             cachedPlugins.put(plugin, cachedPlugin)
             if (cachedPlugin.exists()) {
                 // 1. create a snapshot
