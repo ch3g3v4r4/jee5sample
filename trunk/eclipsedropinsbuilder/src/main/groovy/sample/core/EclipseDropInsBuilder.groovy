@@ -21,7 +21,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 class EclipseDropInsBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(EclipseDropInsBuilder.class);
 
-    public void build(Eclipse config, String hash) {
+    public void build(Eclipse config) {
         def ant = new AntBuilder()
 
         def workDir = new File(config.workDir)
