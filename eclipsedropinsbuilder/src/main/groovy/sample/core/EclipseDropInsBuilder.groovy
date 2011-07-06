@@ -56,6 +56,7 @@ class EclipseDropInsBuilder {
                 if (s != null) md.update(s.getBytes("UTF-8"))
             }
             String id = Hex.encodeHexString(md.clone().digest())
+            id = (plugin.dropinsName != null ? plugin.dropinsName : "") + "_" + id.substring(0, 5)
             File cachedPlugin = new File(workDir, id);
             println "Install plugin ${plugin.dropinsName} into ${id}"
             cachedPlugins.put(plugin, cachedPlugin)
