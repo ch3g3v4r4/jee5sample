@@ -106,7 +106,7 @@ class EclipseDropInsBuilder {
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+M", replace:"400M", byline:"true");
 
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
-
+        println "Remember to remove spring-uaa, spring-roo plugins/features and change Aptana theme to eclipse theme"
     }
     void installFromUpdateSite(eclipseDir, ant, profile, updateSites, featureIds) {
         def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
