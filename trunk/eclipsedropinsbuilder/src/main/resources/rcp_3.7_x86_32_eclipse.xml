@@ -150,17 +150,21 @@
     <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
     <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
     <!-- http://jira.appcelerator.org/browse/APSTUD-1902  -->
+    <!--
     <plugin>
       <dropinsName>aptana-nightly</dropinsName>
       <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
       <featureId>com.aptana.feature.feature.group</featureId>
     </plugin>
+     -->
+<!--
     <plugin>
       <dropinsName>jseclipse</dropinsName>
       <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
       <featureId>com.interaktonline.jseclipse.feature.group</featureId>
     </plugin>
+ -->
     <!-- oxygenxmleditor license: see http://pastebin.com/pztScWXM  -->
     <plugin>
       <dropinsName>oxygenxmleditor</dropinsName>

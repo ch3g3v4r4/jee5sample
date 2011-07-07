@@ -1,9 +1,9 @@
-
 package sample.core;
 
 import java.security.MessageDigest;
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
+import java.util.Comparator
 
 import org.apache.commons.exec.CommandLine
 import org.apache.commons.exec.DefaultExecutor
@@ -164,9 +164,23 @@ class EclipseDropInsBuilder {
                 } else {
                     Collection files = FileUtils.listFiles(tempDir, new NameFileFilter("plugin.xml"), TrueFileFilter.INSTANCE);
                     if (!files.isEmpty()) {
-                        File file = files.iterator().next();
-                        ant.copy(todir: new File(eclipseDir, "plugins")){
-                            fileset(dir: file.getParentFile().getParentFile())
+                        def fileList = []
+                        fileList.addAll(files);
+                        Collections.sort(fileList, new Comparator<File>(){
+                                public int compare(File f1, File f2) {
+                                        return f1.getAbsolutePath().length() - f2.getAbsolutePath().length();
+                                }
+
+                        });
+                        File file = fileList.iterator().next();
+                        if (file.getParentFile().getParentFile().getName().equals("plugins")) {
+                                ant.copy(todir: eclipseDir){
+                                        fileset(dir: file.getParentFile().getParentFile().getParentFile())
+                                }
+                        } else {
+                            ant.copy(todir: new File(eclipseDir, "plugins")){
+                                fileset(dir: file.getParentFile().getParentFile())
+                            }
                         }
                     }
                 }
