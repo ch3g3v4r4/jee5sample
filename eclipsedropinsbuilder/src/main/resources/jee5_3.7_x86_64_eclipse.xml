@@ -11,9 +11,16 @@
       <featureId>org.eclipse.zest.feature.group</featureId>
       <featureId>org.eclipse.platform.sdk</featureId>
     </plugin>
+
+    <plugin>
+      <dropinsName>glassfish</dropinsName>
+      <updateSite>http://dlc.sun.com.edgesuite.net/glassfish/eclipse/indigo/</updateSite>
+      <featureId>oracle.eclipse.tools.indigo.glassfish.feature.group</featureId>
+    </plugin>
+
     <!-- NOT use dropinsName so groovy will be installed into core eclipse, installing into dropins will not work because groovy eclipse has a patch on Eclipse core org.eclipse.jdt.core -->
     <plugin>
-      <updateSite>http://dist.codehaus.org/groovy/distributions/greclipse/snapshot/e3.7/</updateSite>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.5.1.xx-20110628-1600-e37.zip</url>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
@@ -142,20 +149,19 @@
       <featureId>org.jboss.tools.struts.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <dropinsName>spring_e37</dropinsName>
-      <updateSite>http://dist.springsource.com/snapshot/TOOLS/nightly/e3.7</updateSite>
+      <dropinsName>spring</dropinsName>
+      <url>https://build.springsource.org/browse/IDE-NIGHTLY-JOB1-1179/artifact/site/spring-ide-2.7.0.201106292205-CI-B1179-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
-    </plugin>
-    <plugin>
-      <dropinsName>oepe_indigo</dropinsName>
-      <url>http://download.oracle.com/otn_software/oepe/indigo/oepe-indigo-11.1.1.7.2.201104061504.zip</url>
     </plugin>
     <plugin>
       <dropinsName>sqlexplorer</dropinsName>
       <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
     </plugin>
 
-
+    <plugin>
+      <dropinsName>oepe_indigo</dropinsName>
+      <url>http://download.oracle.com/otn_software/oepe/indigo/oepe-indigo-11.1.1.7.2.201104061504.zip</url>
+    </plugin>
     <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
     <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
     <!-- http://jira.appcelerator.org/browse/APSTUD-1902  -->
@@ -170,6 +176,5 @@
       <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
       <featureId>com.interaktonline.jseclipse.feature.group</featureId>
     </plugin>
-
   </plugins>
 </eclipse>
