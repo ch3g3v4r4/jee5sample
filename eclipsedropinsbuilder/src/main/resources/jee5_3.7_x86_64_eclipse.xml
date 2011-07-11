@@ -150,7 +150,7 @@
     </plugin>
     <plugin>
       <dropinsName>spring</dropinsName>
-      <url>https://build.springsource.org/browse/IDE-NIGHTLY-JOB1-1186/artifact/site/spring-ide-2.8.0.201107060641-CI-B1186-updatesite.zip</url>
+      <url>http://download.springsource.com/release/TOOLS/update/2.7.0.RELEASE/e3.7/springsource-tool-suite-2.7.0.RELEASE-e3.7-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
