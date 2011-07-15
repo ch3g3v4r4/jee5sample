@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://download.eclipse.org/technology/epp/downloads/release/indigo/R/eclipse-jee-indigo-win32-x86_64.zip</url>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/indigo/R/eclipse-jee-indigo-win32-x86_64.zip</url>
   <profile>epp.package.jee</profile>
   <plugins>
     <plugin>
