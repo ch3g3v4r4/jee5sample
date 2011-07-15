@@ -8,17 +8,38 @@
     <plugin>
       <dropinsName>wtpwb</dropinsName>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
+
+<featureId>org.eclipse.datatools.enablement.feature.feature.group</featureId>
+<featureId>org.eclipse.datatools.sdk.feature.feature.group</featureId>
+
+<featureId>org.eclipse.wst.common.fproj.feature.group</featureId>
+<featureId>org.eclipse.wst.common_ui.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.server_adapters.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.server_ui.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.ws_wsdl15.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.xml.xpath2.processor.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+<featureId>org.eclipse.wst.xsl.feature.feature.group</featureId>
+
+<featureId>org.eclipse.jst.common.fproj.enablement.jdt.feature.group</featureId>
+<featureId>org.eclipse.jst.enterprise_ui.feature.feature.group</featureId>
+<featureId>org.eclipse.jst.server_adapters.ext.feature.feature.group</featureId>
+<featureId>org.eclipse.jst.server_adapters.feature.feature.group</featureId>
+<featureId>org.eclipse.jst.server_ui.feature.feature.group</featureId>
+<featureId>org.eclipse.jst.webpageeditor.feature.feature.group</featureId>
+<featureId>org.eclipse.jst.web_ui.feature.feature.group</featureId>
+
+
       <featureId>org.eclipse.wb.rcp.feature.feature.group</featureId>
       <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
 
     <plugin>
       <dropinsName>spring</dropinsName>
-      <url>https://build.springsource.org/browse/IDE-NIGHTLY-JOB1-1179/artifact/site/spring-ide-2.7.0.201106292205-CI-B1179-updatesite.zip</url>
+      <url>http://download.springsource.com/release/TOOLS/update/2.7.0.RELEASE/e3.7/springsource-tool-suite-2.7.0.RELEASE-e3.7-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
 
@@ -150,27 +171,28 @@
     <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
     <!-- or use http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/ -->
     <!-- http://jira.appcelerator.org/browse/APSTUD-1902  -->
-    <!--
+
     <plugin>
       <dropinsName>aptana-nightly</dropinsName>
       <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
       <featureId>com.aptana.feature.feature.group</featureId>
     </plugin>
-     -->
-<!--
+
+
     <plugin>
       <dropinsName>jseclipse</dropinsName>
       <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
       <featureId>com.interaktonline.jseclipse.feature.group</featureId>
     </plugin>
- -->
+
     <!-- oxygenxmleditor license: see http://pastebin.com/pztScWXM  -->
+    <!--
     <plugin>
       <dropinsName>oxygenxmleditor</dropinsName>
       <url>http://mirror.oxygenxml.com/InstData/Editor/Eclipse3.4/com.oxygenxml.editor_12.2.0.v2011053115.zip</url>
       <featureId>com.oxygenxml.editor.feature.group</featureId>
     </plugin>
-
+    -->
   </plugins>
 </eclipse>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse>
+  <workDir>/tmp</workDir>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
+  <profile>SDKProfile</profile>
+  <plugins>
+
+    <plugin>
+      <dropinsName>PDT</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+
+      <featureId>org.eclipse.datatools.enablement.feature.feature.group</featureId>
+      <featureId>org.eclipse.datatools.sdk.feature.feature.group</featureId>
+
+      <featureId>org.eclipse.wst.common.fproj.feature.group</featureId>
+      <featureId>org.eclipse.wst.common_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.server_adapters.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.server_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.ws_wsdl15.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xml.xpath2.processor.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xsl.feature.feature.group</featureId>
+
+      <featureId>org.eclipse.php.sdk.feature.group</featureId>
+
+    </plugin>
+
+    <plugin>
+      <dropinsName>subclipse</dropinsName>
+      <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
+      <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.svnkit.feature.feature.group</featureId>
+      <featureId>org.tmatesoft.svnkit.feature.group</featureId>
+    </plugin>
+
+    <plugin>
+      <dropinsName>ZendPHPDebugger</dropinsName>
+      <url>http://downloads.zend.com/pdt/debugger/org.zend.php.debug_feature-I20081217.zip</url>
+      <featureId>org.zend.php.debug_feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>AnyEditTools</dropinsName>
+      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.0.201101292156.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>FileSync</dropinsName>
+      <url>http://filesync4eclipse.eclipselabs.org.codespot.com/files/de.loskutov.FileSync_1.3.8.201104160944.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>contextmenu</dropinsName>
+      <url>http://timealias.bplaced.net/ContextMenuPlugin/contextmenu_1.2.3.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>startexplorer</dropinsName>
+      <updateSite>https://startexplorer.svn.sourceforge.net/svnroot/startexplorer/update-site/trunk/</updateSite>
+      <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>aptana-nightly</dropinsName>
+      <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
+      <featureId>com.aptana.webkitbrowser.feature.group</featureId>
+      <featureId>com.aptana.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>jseclipse</dropinsName>
+      <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
+      <featureId>com.interaktonline.jseclipse.feature.group</featureId>
+    </plugin>
+  </plugins>
+</eclipse>
