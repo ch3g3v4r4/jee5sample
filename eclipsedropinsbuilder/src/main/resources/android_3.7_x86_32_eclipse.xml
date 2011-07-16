@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse>
+  <workDir>/tmp</workDir>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
+  <profile>SDKProfile</profile>
+  <plugins>
+    <plugin>
+      <dropinsName>android</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <updateSite>http://dl-ssl.google.com/android/eclipse/</updateSite>
+      <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.hierarchyviewer.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.traceview.feature.group</featureId>
+    </plugin>
+
+    <plugin>
+      <dropinsName>subclipse</dropinsName>
+      <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
+      <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.svnkit.feature.feature.group</featureId>
+      <featureId>org.tmatesoft.svnkit.feature.group</featureId>
+    </plugin>
+
+    <plugin>
+      <dropinsName>AnyEditTools</dropinsName>
+      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.0.201101292156.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>contextmenu</dropinsName>
+      <url>http://timealias.bplaced.net/ContextMenuPlugin/contextmenu_1.2.3.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>startexplorer</dropinsName>
+      <updateSite>https://startexplorer.svn.sourceforge.net/svnroot/startexplorer/update-site/trunk/</updateSite>
+      <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>javahexeditor</dropinsName>
+      <url>http://nchc.dl.sourceforge.net/project/javahexeditor/javahexeditor/0.4.1/net.sourceforge.javahexeditor_0.4.1.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>propedit</dropinsName>
+      <url>http://iij.dl.sourceforge.jp/propedit/40156/jp.gr.java_conf.ussiy.app.propedit_5.3.3.zip</url>
+    </plugin>
+    <plugin>
+      <dropinsName>JavaSourceAttacher</dropinsName>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javasourceattacher_1.0.0.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>JavaExamplesSearch</dropinsName>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
+    </plugin>
+    <plugin>
+      <dropinsName>ClassDependencyViewer</dropinsName>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.dependencyviewer_1.0.0.jar</url>
+    </plugin>
+
+
+  </plugins>
+</eclipse>
