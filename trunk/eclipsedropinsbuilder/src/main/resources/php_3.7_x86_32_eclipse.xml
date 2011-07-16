@@ -61,15 +61,16 @@
       <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
     </plugin>
     <plugin>
+      <dropinsName>jseclipse</dropinsName>
+      <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
+      <featureId>com.interaktonline.jseclipse.feature.group</featureId>
+    </plugin>
+    <plugin>
       <dropinsName>aptana-nightly</dropinsName>
       <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
       <featureId>com.aptana.feature.feature.group</featureId>
-    </plugin>
-    <plugin>
-      <dropinsName>jseclipse</dropinsName>
-      <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
-      <featureId>com.interaktonline.jseclipse.feature.group</featureId>
+      <featureId>com.aptana.php.feature.feature.group</featureId>
     </plugin>
   </plugins>
 </eclipse>
