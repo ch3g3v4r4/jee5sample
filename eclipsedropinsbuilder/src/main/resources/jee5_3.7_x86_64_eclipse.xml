@@ -160,7 +160,7 @@
 <!--
     <plugin>
       <dropinsName>oepe_indigo</dropinsName>
-      <url>http://download.oracle.com/otn_software/oepe/indigo/oepe-indigo-11.1.1.7.2.201104061504.zip</url>
+      <url>http://download.oracle.com/otn_software/oepe/indigo/oepe-indigo-11.1.1.7.3.201107052114.zip</url>
     </plugin>
  -->
     <!-- http://download.aptana.com/studio3/plugin/install, change Aptana theme to Eclipse otherwise you will have problems -->
