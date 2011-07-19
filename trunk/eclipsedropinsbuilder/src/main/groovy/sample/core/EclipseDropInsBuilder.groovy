@@ -107,6 +107,7 @@ class EclipseDropInsBuilder {
 
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
         println "Remember to remove spring-uaa, spring-roo plugins/features and change Aptana theme to eclipse theme"
+        println "Using consolas font or Envy Code R (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released)"
     }
     void installFromUpdateSite(eclipseDir, ant, profile, updateSites, featureIds) {
         def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
