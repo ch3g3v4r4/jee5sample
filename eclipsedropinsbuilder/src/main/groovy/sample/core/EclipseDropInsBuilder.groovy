@@ -105,6 +105,26 @@ class EclipseDropInsBuilder {
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+m", replace:"400m", byline:"true");
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+M", replace:"400M", byline:"true");
 
+		// 5. Remove conflicting key binding from Aptana plugin (if any)
+		def files = FileUtils.listFiles(new File(eclipseDir, "dropins"), new WildcardFileFilter("com.aptana.editor.common_*.jar"), TrueFileFilter.INSTANCE);
+		if (!files.isEmpty()) {
+			ant.delete(file: new File(workDir, "plugin.xml"))
+			ant.unzip (src: files.get(0), dest: workDir){
+				patternset {include (name:"plugin.xml")}
+			}
+			ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+CTRL\\+SHIFT\\+R[^<]+</key>", replace:"", flags:"s");
+			ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
+		}
+		files = FileUtils.listFiles(new File(eclipseDir, "dropins"), new WildcardFileFilter("com.aptana.syncing.ui_*.jar"), TrueFileFilter.INSTANCE);
+		if (!files.isEmpty()) {
+			ant.delete(file: new File(workDir, "plugin.xml"))
+			ant.unzip (src: files.get(0), dest: workDir){
+				patternset {include (name:"plugin.xml")}
+			}
+			ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+M1\\+M2\\+U[^<]+</key>", replace:"", flags:"s");
+			ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
+		}
+
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
         println "Remember to remove spring-uaa, spring-roo plugins/features and change Aptana theme to eclipse theme"
 		println "You may want to use Envy Code R font (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released)"
