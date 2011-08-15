@@ -7,6 +7,7 @@ public class Eclipse {
     private String url;
     private String profile;
     private List<Plugin> plugins;
+    private List<Launch> launchs;
 
     public String getWorkDir() {
         return workDir;
@@ -32,5 +33,12 @@ public class Eclipse {
     }
     public void setPlugins(List<Plugin> plugins) {
         this.plugins = plugins;
+    }
+
+    public List<Launch> getLaunchs() {
+        return launchs;
+    }
+    public void setLaunchs(List<Launch> launchs) {
+        this.launchs = launchs;
     }
 }
