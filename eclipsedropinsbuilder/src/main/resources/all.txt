@@ -8,8 +8,9 @@ non-java
       <dropinsName>propedit</dropinsName>
       <dropinsName>eSpell</dropinsName>
       <dropinsName>QuickREx</dropinsName>
-	  <dropinsName>jira</dropinsName>
+
 common java
+
       <dropinsName>JDepend4Eclipse</dropinsName>
       <dropinsName>ucdetector</dropinsName>
       <dropinsName>findbugs</dropinsName>
@@ -20,24 +21,36 @@ common java
       <dropinsName>log4e</dropinsName>
       <dropinsName>JavaSourceAttacher</dropinsName>
       <dropinsName>JavaExamplesSearch</dropinsName>
+      <dropinsName>zest</dropinsName>
       <dropinsName>ClassDependencyViewer</dropinsName>
+
 desktop java
-      <dropinsName>wb_zest_platformsdk</dropinsName>
-enterprise java
-      <dropinsName>eclipsetidy</dropinsName>
-      <dropinsName>hibernate_struts</dropinsName>
-      <dropinsName>spring</dropinsName>
-      <dropinsName>sqlexplorer</dropinsName>
-      <dropinsName>oepe_indigo</dropinsName>
-      <dropinsName>aptana-nightly</dropinsName>
-      <dropinsName>jseclipse</dropinsName>
-      <dropinsName>wtpwb</dropinsName>
-      <dropinsName>oxygenxmleditor</dropinsName>
-      <dropinsName>glassfish</dropinsName>
-      <dropinsName>tomcatPlugin</dropinsName>
-php
-      <dropinsName>PDT</dropinsName>
-      <dropinsName>ZendPHPDebugger</dropinsName>
+
+      <dropinsName>windowbuilder</dropinsName>
 
 android
       <dropinsName>android</dropinsName>
+
+web
+      <dropinsName>web</dropinsName>
+
+php web
+
+      <dropinsName>PDT</dropinsName>
+      <dropinsName>ZendPHPDebugger</dropinsName>
+
+java web
+	  <dropinsName>jira</dropinsName>
+      <dropinsName>glassfish</dropinsName>
+      <dropinsName>tomcatPlugin</dropinsName>
+      <dropinsName>eclipsetidy</dropinsName>
+      <dropinsName>hibernate_struts</dropinsName>
+      <dropinsName>spring</dropinsName>
+      <dropinsName>oepe_indigo</dropinsName>
+      <dropinsName>aptana-nightly</dropinsName>
+      <dropinsName>jseclipse</dropinsName>
+      <dropinsName>oxygenxmleditor</dropinsName>
+      <dropinsName>sqlexplorer</dropinsName>
+      <dropinsName>wtpwb</dropinsName>
+
+
