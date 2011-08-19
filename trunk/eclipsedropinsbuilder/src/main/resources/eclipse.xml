@@ -261,15 +261,6 @@
       <dropinsName>startexplorer</dropinsName>
       <dropinsName>web</dropinsName>
       <dropinsName>php</dropinsName>
-    </launch>
-    <launch>
-      <launchName>php</launchName>
-      <dropinsName>subclipse</dropinsName>
-      <dropinsName>AnyEditTools</dropinsName>
-      <dropinsName>contextmenu</dropinsName>
-      <dropinsName>startexplorer</dropinsName>
-      <dropinsName>web</dropinsName>
-      <dropinsName>php</dropinsName>
       <dropinsName>ZendPHPDebugger</dropinsName>
     </launch>
     <launch>
