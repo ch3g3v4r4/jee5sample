@@ -244,11 +244,60 @@
 
 
   <launchs>
+
     <launch>
-      <launchName>min</launchName>
+      <launchName>android</launchName>
+      <dropinsName>subclipse</dropinsName>
       <dropinsName>AnyEditTools</dropinsName>
-        <dropinsName>FileSync</dropinsName>
+      <dropinsName>contextmenu</dropinsName>
+      <dropinsName>startexplorer</dropinsName>
+      <dropinsName>android</dropinsName>
     </launch>
+    <launch>
+      <launchName>php</launchName>
+      <dropinsName>subclipse</dropinsName>
+      <dropinsName>AnyEditTools</dropinsName>
+      <dropinsName>contextmenu</dropinsName>
+      <dropinsName>startexplorer</dropinsName>
+      <dropinsName>web</dropinsName>
+      <dropinsName>php</dropinsName>
+    </launch>
+    <launch>
+      <launchName>php</launchName>
+      <dropinsName>subclipse</dropinsName>
+      <dropinsName>AnyEditTools</dropinsName>
+      <dropinsName>contextmenu</dropinsName>
+      <dropinsName>startexplorer</dropinsName>
+      <dropinsName>web</dropinsName>
+      <dropinsName>php</dropinsName>
+      <dropinsName>ZendPHPDebugger</dropinsName>
+    </launch>
+    <launch>
+      <launchName>jsp</launchName>
+      <dropinsName>subclipse</dropinsName>
+      <dropinsName>AnyEditTools</dropinsName>
+      <dropinsName>contextmenu</dropinsName>
+      <dropinsName>startexplorer</dropinsName>
+      <dropinsName>web</dropinsName>
+      <dropinsName>jsp</dropinsName>
+    </launch>
+    <launch>
+      <launchName>j2ee</launchName>
+      <dropinsName>subclipse</dropinsName>
+      <dropinsName>AnyEditTools</dropinsName>
+      <dropinsName>contextmenu</dropinsName>
+      <dropinsName>startexplorer</dropinsName>
+      <dropinsName>j2ee</dropinsName>
+    </launch>
+    <launch>
+      <launchName>desktop</launchName>
+      <dropinsName>subclipse</dropinsName>
+      <dropinsName>AnyEditTools</dropinsName>
+      <dropinsName>contextmenu</dropinsName>
+      <dropinsName>startexplorer</dropinsName>
+      <dropinsName>desktop</dropinsName>
+    </launch>
+
   </launchs>
 
 </eclipse>
