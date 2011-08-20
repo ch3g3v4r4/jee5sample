@@ -14,6 +14,87 @@
       <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
     </plugin>
 
+    <!-- zest -->
+    <plugin>
+      <dropinsName>zest</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.zest.feature.group</featureId>
+    </plugin>
+
+    <!-- desktop -->
+    <plugin>
+      <dropinsName>desktop</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>epp.package.java</featureId>
+    </plugin>
+
+    <!-- web -->
+    <plugin>
+      <dropinsName>web</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.datatools.enablement.feature.feature.group</featureId>
+      <featureId>org.eclipse.datatools.sdk.feature.feature.group</featureId>
+
+      <featureId>org.eclipse.wst.common.fproj.feature.group</featureId>
+      <featureId>org.eclipse.wst.common_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.server_adapters.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.server_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.ws_wsdl15.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xml.xpath2.processor.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xsl.feature.feature.group</featureId>
+    </plugin>
+
+    <!-- jsp -->
+    <plugin>
+      <dropinsName>jsp</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.jst.common.fproj.enablement.jdt.feature.group</featureId>
+      <featureId>org.eclipse.jst.enterprise_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.server_adapters.ext.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.server_adapters.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.server_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.webpageeditor.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.web_ui.feature.feature.group</featureId>
+    </plugin>
+
+    <!-- j2ee -->
+    <plugin>
+      <dropinsName>j2ee</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>epp.package.jee</featureId>
+    </plugin>
+
+
+    <!-- php -->
+    <plugin>
+      <dropinsName>php</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.php.sdk.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <dropinsName>ZendPHPDebugger</dropinsName>
+      <url>http://downloads.zend.com/pdt/debugger/org.zend.php.debug_feature-I20081217.zip</url>
+      <featureId>org.zend.php.debug_feature.feature.group</featureId>
+    </plugin>
+
+    <!-- android -->
+    <plugin>
+      <dropinsName>android</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <updateSite>http://dl-ssl.google.com/android/eclipse/</updateSite>
+      <updateSite>http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/</updateSite>
+      <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.hierarchyviewer.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.traceview.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.source.feature.feature.group</featureId>
+    </plugin>
+
+
     <!-- tools -->
     <plugin>
       <dropinsName>subclipse</dropinsName>
@@ -37,79 +118,6 @@
       <updateSite>https://startexplorer.svn.sourceforge.net/svnroot/startexplorer/update-site/trunk/</updateSite>
       <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
     </plugin>
-
-    <!-- android -->
-    <plugin>
-      <dropinsName>android</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <updateSite>http://dl-ssl.google.com/android/eclipse/</updateSite>
-      <updateSite>http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/</updateSite>
-      <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
-      <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
-      <featureId>com.android.ide.eclipse.hierarchyviewer.feature.group</featureId>
-      <featureId>com.android.ide.eclipse.traceview.feature.group</featureId>
-      <featureId>com.android.ide.eclipse.source.feature.feature.group</featureId>
-    </plugin>
-
-    <!-- web -->
-    <plugin>
-      <dropinsName>web</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>org.eclipse.datatools.enablement.feature.feature.group</featureId>
-      <featureId>org.eclipse.datatools.sdk.feature.feature.group</featureId>
-
-      <featureId>org.eclipse.wst.common.fproj.feature.group</featureId>
-      <featureId>org.eclipse.wst.common_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.server_adapters.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.server_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.ws_wsdl15.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.xml.xpath2.processor.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.wst.xsl.feature.feature.group</featureId>
-    </plugin>
-
-    <!-- php -->
-    <plugin>
-      <dropinsName>php</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>org.eclipse.php.sdk.feature.group</featureId>
-    </plugin>
-    <plugin>
-      <dropinsName>ZendPHPDebugger</dropinsName>
-      <url>http://downloads.zend.com/pdt/debugger/org.zend.php.debug_feature-I20081217.zip</url>
-      <featureId>org.zend.php.debug_feature.feature.group</featureId>
-    </plugin>
-
-    <!-- jsp -->
-    <plugin>
-      <dropinsName>jsp</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>org.eclipse.jst.common.fproj.enablement.jdt.feature.group</featureId>
-      <featureId>org.eclipse.jst.enterprise_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.jst.server_adapters.ext.feature.feature.group</featureId>
-      <featureId>org.eclipse.jst.server_adapters.feature.feature.group</featureId>
-      <featureId>org.eclipse.jst.server_ui.feature.feature.group</featureId>
-      <featureId>org.eclipse.jst.webpageeditor.feature.feature.group</featureId>
-      <featureId>org.eclipse.jst.web_ui.feature.feature.group</featureId>
-    </plugin>
-
-    <!-- j2ee -->
-    <plugin>
-      <dropinsName>j2ee</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>epp.package.jee</featureId>
-    </plugin>
-
-    <!-- desktop -->
-    <plugin>
-      <dropinsName>desktop</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>epp.package.java</featureId>
-    </plugin>
-
     <!-- java tools -->
     <plugin>
       <dropinsName>JDepend4Eclipse</dropinsName>
@@ -151,11 +159,7 @@
       <dropinsName>JavaExamplesSearch</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
     </plugin>
-    <plugin>
-      <dropinsName>zest</dropinsName>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>org.eclipse.zest.feature.group</featureId>
-    </plugin>
+
     <plugin>
       <dropinsName>ClassDependencyViewer</dropinsName>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.dependencyviewer_1.0.0.jar</url>
@@ -243,18 +247,18 @@
 
 
 
-  <launchs>
+  <profiles>
 
-    <launch>
-      <launchName>android</launchName>
+    <profile>
+      <profileName>android</profileName>
       <dropinsName>subclipse</dropinsName>
       <dropinsName>AnyEditTools</dropinsName>
       <dropinsName>contextmenu</dropinsName>
       <dropinsName>startexplorer</dropinsName>
       <dropinsName>android</dropinsName>
-    </launch>
-    <launch>
-      <launchName>php</launchName>
+    </profile>
+    <profile>
+      <profileName>php</profileName>
       <dropinsName>subclipse</dropinsName>
       <dropinsName>AnyEditTools</dropinsName>
       <dropinsName>contextmenu</dropinsName>
@@ -262,33 +266,33 @@
       <dropinsName>web</dropinsName>
       <dropinsName>php</dropinsName>
       <dropinsName>ZendPHPDebugger</dropinsName>
-    </launch>
-    <launch>
-      <launchName>jsp</launchName>
+    </profile>
+    <profile>
+      <profileName>jsp</profileName>
       <dropinsName>subclipse</dropinsName>
       <dropinsName>AnyEditTools</dropinsName>
       <dropinsName>contextmenu</dropinsName>
       <dropinsName>startexplorer</dropinsName>
       <dropinsName>web</dropinsName>
       <dropinsName>jsp</dropinsName>
-    </launch>
-    <launch>
-      <launchName>j2ee</launchName>
+    </profile>
+    <profile>
+      <profileName>j2ee</profileName>
       <dropinsName>subclipse</dropinsName>
       <dropinsName>AnyEditTools</dropinsName>
       <dropinsName>contextmenu</dropinsName>
       <dropinsName>startexplorer</dropinsName>
       <dropinsName>j2ee</dropinsName>
-    </launch>
-    <launch>
-      <launchName>desktop</launchName>
+    </profile>
+    <profile>
+      <profileName>desktop</profileName>
       <dropinsName>subclipse</dropinsName>
       <dropinsName>AnyEditTools</dropinsName>
       <dropinsName>contextmenu</dropinsName>
       <dropinsName>startexplorer</dropinsName>
       <dropinsName>desktop</dropinsName>
-    </launch>
+    </profile>
 
-  </launchs>
+  </profiles>
 
 </eclipse>
