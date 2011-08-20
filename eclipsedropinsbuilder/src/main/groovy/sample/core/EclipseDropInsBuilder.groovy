@@ -137,18 +137,18 @@ class EclipseDropInsBuilder {
 	void configureProfiles(ant, eclipseDir, Eclipse config) {
 		def profilesDir = new File(eclipseDir, "profiles")
 		ant.move (todir: new File(profilesDir, "dropins")){fileset(dir: new File(eclipseDir, "dropins"))}
-		for (Launch launch : config.launchs) {
-			File linksDir = new File(profilesDir, "profile_" + launch.getLaunchName())
+		for (Profile profile : config.profiles) {
+			File linksDir = new File(profilesDir, "profile_" + profile.getProfileName())
 			ant.mkdir(dir: linksDir)
-			for (String name : launch.getDropinsNames()) {
+			for (String name : profile.getDropinsNames()) {
 				String path = "path=profiles/dropins/" + name;
 				FileUtils.write(new File(linksDir, name + ".link"), path)
 			}
 			String batch = 'rmdir /S /Q "%~dp0..\\links"' +
 			"\r\n" +  'mkdir "%~dp0..\\links"' +
-			"\r\n" +  'xcopy /E "%~dp0profile_' + launch.getLaunchName() + '" "%~dp0..\\links"' +
+			"\r\n" +  'xcopy /E "%~dp0profile_' + profile.getProfileName() + '" "%~dp0..\\links"' +
 			"\r\n" +  'start "" "%~dp0..\\eclipse.exe"' + "\r\n";
-			FileUtils.write(new File(profilesDir, "profile_" + launch.getLaunchName() + ".bat"), batch)
+			FileUtils.write(new File(profilesDir, "profile_" + profile.getProfileName() + ".bat"), batch)
 		}
 		File linksDir = new File(profilesDir, "profile_all")
 		ant.mkdir(dir: linksDir)
@@ -166,12 +166,12 @@ class EclipseDropInsBuilder {
 	}
 
 	void configureProfiless(ant, eclipseDir, Eclipse config) {
-		if (config.launchs != null && !config.launchs.isEmpty()) {
+		if (config.profiles != null && !config.profiles.isEmpty()) {
 			ant.rename (src: new File(eclipseDir, "dropins"), dest: new File(eclipseDir, "links_content"))
 			ant.mkdir(dir: new File(eclipseDir, "links"))
-			for (Launch launch : config.launchs) {
-				FileWriter w = new FileWriter(new File(new File(eclipseDir, "links"), launch.getLaunchName() + ".link"));
-				for (String name : launch.getDropinsNames()) {
+			for (Profile profile : config.profiles) {
+				FileWriter w = new FileWriter(new File(new File(eclipseDir, "links"), profile.getProfileName() + ".link"));
+				for (String name : profile.getDropinsNames()) {
 					w.write("path=links_content/" + name + "\n")
 				}
 				w.close();
