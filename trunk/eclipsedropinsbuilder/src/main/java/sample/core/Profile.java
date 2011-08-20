@@ -2,15 +2,15 @@ package sample.core;
 
 import java.util.List;
 
-public class Launch {
-    private String launchName;
+public class Profile {
+    private String profileName;
     private List<String> dropinsNames;
 
-    public String getLaunchName() {
-        return launchName;
+    public String getProfileName() {
+        return profileName;
     }
-    public void setLaunchName(String launchName) {
-        this.launchName = launchName;
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
     public List<String> getDropinsNames() {
         return dropinsNames;
