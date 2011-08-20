@@ -14,8 +14,8 @@ import org.springframework.core.io.Resource;
 
 import sample.core.Eclipse;
 import sample.core.EclipseDropInsBuilder;
-import sample.core.Launch;
 import sample.core.Plugin;
+import sample.core.Profile;
 
 import com.thoughtworks.xstream.XStream;
 
@@ -52,10 +52,10 @@ public class Main {
         XStream xstream = new XStream();
         xstream.alias("eclipse", Eclipse.class);
         xstream.alias("plugin", Plugin.class);
-        xstream.alias("launch", Launch.class);
+        xstream.alias("profile", Profile.class);
         xstream.addImplicitCollection(Plugin.class, "updateSites", "updateSite", String.class);
         xstream.addImplicitCollection(Plugin.class, "featureIds", "featureId", String.class);
-        xstream.addImplicitCollection(Launch.class, "dropinsNames", "dropinsName", String.class);
+        xstream.addImplicitCollection(Profile.class, "dropinsNames", "dropinsName", String.class);
         Eclipse e = (Eclipse) xstream.fromXML(config.getInputStream());
         int exitValue;
         do {
