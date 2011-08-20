@@ -74,7 +74,6 @@ class EclipseDropInsBuilder {
                 } else {
                     installFromUpdateSite(eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
                 }
-
                 // 3. compare with the snapshot and save new files to cachedPlugin folder
                 ant.copy(todir: new File(cachedPlugin, "features")) {
                         fileset(dir: new File(eclipseDir, "features"), includes: "**/*") {
@@ -86,6 +85,16 @@ class EclipseDropInsBuilder {
                         present (present: "srconly", targetdir: new File(snapshotDir, "plugins"))
                     }
                 }
+				// 4. test new jar/zip files broken or not
+				try {
+					ant.delete (dir: new File(workDir, "unzipped"))
+					ant.unzip(dest: new File(workDir, "unzipped")) {
+						fileset(dir: cachedPlugin, includes: "**/*.jar **/*.zip")
+					}
+				} catch (Exception e) {
+					ant.delete (dir: cachedPlugin)
+					throw e;
+				}
             }
         }
 

@@ -2,6 +2,7 @@ package sample.startup;
 
 import java.io.File;
 import java.util.logging.LogManager;
+import java.util.zip.ZipException;
 
 import org.apache.commons.exec.ExecuteException;
 import org.slf4j.Logger;
@@ -66,8 +67,11 @@ public class Main {
             } catch (ExecuteException ex) {
                 LOGGER.debug("exception", ex);
                 exitValue = ex.getExitValue();
+            } catch (ZipException ex) {
+                LOGGER.debug("exception", ex);
+                exitValue = 14;
             }
-        } while (exitValue == 13);
+        } while (exitValue == 13 || exitValue == 14);
 
         LOGGER.info("Exiting application...");
     }
