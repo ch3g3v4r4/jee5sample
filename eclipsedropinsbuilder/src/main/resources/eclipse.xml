@@ -21,11 +21,20 @@
       <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
 
+    <!-- xml -->
+    <plugin>
+      <dropinsName>xml</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+    </plugin>
+
     <!-- desktop -->
     <plugin>
       <dropinsName>desktop</dropinsName>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>epp.package.java</featureId>
+      <featureId>org.eclipse.wb.swing.feature.feature.group</featureId>
+      <featureId>org.eclipse.wb.swt.feature.feature.group</featureId>
+      <featureId>org.eclipse.wb.rcp.feature.feature.group</featureId>
     </plugin>
 
     <!-- web -->
@@ -233,16 +242,21 @@
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
       <featureId>com.aptana.feature.feature.group</featureId>
     </plugin>
+    <!--
     <plugin>
       <dropinsName>jira</dropinsName>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.6</updateSite>
       <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
+      com.atlassian.connector.eclipse.feature.group
+      com.atlassian.connector.eclipse.jira.feature.group
     </plugin>
     <plugin>
       <dropinsName>glassfish</dropinsName>
       <updateSite>http://dlc.sun.com.edgesuite.net/glassfish/eclipse/indigo/</updateSite>
       <featureId>oracle.eclipse.tools.indigo.glassfish.feature.group</featureId>
     </plugin>
+-->
   </plugins>
 
 
