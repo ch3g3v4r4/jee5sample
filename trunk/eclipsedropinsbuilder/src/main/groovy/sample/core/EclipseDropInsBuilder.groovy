@@ -147,20 +147,27 @@ class EclipseDropInsBuilder {
 		def profilesDir = new File(eclipseDir, "profiles")
 		ant.move (todir: new File(profilesDir, "dropins")){fileset(dir: new File(eclipseDir, "dropins"))}
 		for (Profile profile : config.profiles) {
-			File linksDir = new File(profilesDir, "profile_" + profile.getProfileName())
+			String profileName = profile.profileName
+			File profileDir = new File(profilesDir, profileName)
+			File linksDir = new File(profileDir, "links")
+			File configurationDir = new File(profileDir, "configuration")
 			ant.mkdir(dir: linksDir)
+			ant.mkdir(dir: configurationDir)
 			for (String name : profile.getDropinsNames()) {
 				String path = "path=profiles/dropins/" + name;
 				FileUtils.write(new File(linksDir, name + ".link"), path)
 			}
 			String batch = 'rmdir /S /Q "%~dp0..\\links"' +
 			"\r\n" +  'mkdir "%~dp0..\\links"' +
-			"\r\n" +  'xcopy /E "%~dp0profile_' + profile.getProfileName() + '" "%~dp0..\\links"' +
-			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0\\configuration"' + "\r\n";
-			FileUtils.write(new File(profilesDir, "profile_" + profile.getProfileName() + ".bat"), batch)
+			"\r\n" +  'xcopy /E "%~dp0${profileName}\\links" "%~dp0..\\links"' +
+			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0${profileName}\\configuration"' + "\r\n";
+			FileUtils.write(new File(profilesDir, "profile_" + propName + ".bat"), batch)
 		}
-		File linksDir = new File(profilesDir, "profile_all")
+		File profileDir = new File(profilesDir, "all")
+		File linksDir = new File(profileDir, "links")
+		File configurationDir = new File(profileDir, "configuration")
 		ant.mkdir(dir: linksDir)
+		ant.mkdir(dir: configurationDir)
 		for (Plugin plugin : config.plugins) {
 			if (plugin.dropinsName != null) {
 				String path = "path=profiles/dropins/" + plugin.dropinsName;
@@ -169,8 +176,8 @@ class EclipseDropInsBuilder {
 		}
 		String batch = 'rmdir /S /Q "%~dp0..\\links"' +
 			"\r\n" +  'mkdir "%~dp0..\\links"' +
-			"\r\n" +  'xcopy /E "%~dp0profile_all" "%~dp0..\\links"' +
-			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0\\configuration"' + "\r\n";
+			"\r\n" +  'xcopy /E "%~dp0all\\links" "%~dp0..\\links"' +
+			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0all\\configuration"' + "\r\n";
 		FileUtils.write(new File(profilesDir, "profile_all.bat"), batch)
 	}
 
