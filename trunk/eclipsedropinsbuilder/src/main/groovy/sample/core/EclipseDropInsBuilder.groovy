@@ -159,9 +159,9 @@ class EclipseDropInsBuilder {
 			}
 			String batch = 'rmdir /S /Q "%~dp0..\\links"' +
 			"\r\n" +  'mkdir "%~dp0..\\links"' +
-			"\r\n" +  'xcopy /E "%~dp0${profileName}\\links" "%~dp0..\\links"' +
-			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0${profileName}\\configuration"' + "\r\n";
-			FileUtils.write(new File(profilesDir, "profile_" + propName + ".bat"), batch)
+			"\r\n" +  'xcopy /E "%~dp0'+profileName+'\\links" "%~dp0..\\links"' +
+			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0'+profileName+'\\configuration"' + "\r\n";
+			FileUtils.write(new File(profilesDir, "profile_" + profileName + ".bat"), batch)
 		}
 		File profileDir = new File(profilesDir, "all")
 		File linksDir = new File(profileDir, "links")
