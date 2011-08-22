@@ -222,7 +222,7 @@
     </plugin>
     <plugin>
       <dropinsName>spring</dropinsName>
-      <url>http://download.springsource.com/milestone/STS/2.8.0.M1/dist/e3.7/springsource-tool-suite-2.8.0.M1-e3.7-win32.zip</url>
+      <url>http://download.springsource.com/milestone/TOOLS/update/2.8.0.M1/e3.7/springsource-tool-suite-2.8.0.M1-e3.7-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
