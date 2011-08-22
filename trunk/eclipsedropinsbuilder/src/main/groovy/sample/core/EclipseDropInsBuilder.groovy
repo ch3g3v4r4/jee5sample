@@ -156,7 +156,7 @@ class EclipseDropInsBuilder {
 			String batch = 'rmdir /S /Q "%~dp0..\\links"' +
 			"\r\n" +  'mkdir "%~dp0..\\links"' +
 			"\r\n" +  'xcopy /E "%~dp0profile_' + profile.getProfileName() + '" "%~dp0..\\links"' +
-			"\r\n" +  'start "" "%~dp0..\\eclipse.exe"' + "\r\n";
+			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0\\configuration"' + "\r\n";
 			FileUtils.write(new File(profilesDir, "profile_" + profile.getProfileName() + ".bat"), batch)
 		}
 		File linksDir = new File(profilesDir, "profile_all")
@@ -170,7 +170,7 @@ class EclipseDropInsBuilder {
 		String batch = 'rmdir /S /Q "%~dp0..\\links"' +
 			"\r\n" +  'mkdir "%~dp0..\\links"' +
 			"\r\n" +  'xcopy /E "%~dp0profile_all" "%~dp0..\\links"' +
-			"\r\n" +  'start "" "%~dp0..\\eclipse.exe"' + "\r\n";
+			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0\\configuration"' + "\r\n";
 		FileUtils.write(new File(profilesDir, "profile_all.bat"), batch)
 	}
 
@@ -219,11 +219,17 @@ class EclipseDropInsBuilder {
             ant.get (src: url, dest: downloadedFile, usetimestamp: true, verbose: true)
         }
         List<String> names = new ArrayList<String>();
-        ZipFile zf = new ZipFile(downloadedFile);
-        for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
-            String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
-            names.add(zipEntryName);
-        }
+        ZipFile zf;
+		try {
+			zf = new ZipFile(downloadedFile);
+	        for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
+	            String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
+	            names.add(zipEntryName);
+	        }
+		} catch (Exception e) {
+			ant.delete(file: downloadedFile);
+			throw e;
+		}
         println "zip file content: " + names
         if (names.contains("plugin.xml") || names.contains("META-INF/")) {
             // is simple jar contains plugin
