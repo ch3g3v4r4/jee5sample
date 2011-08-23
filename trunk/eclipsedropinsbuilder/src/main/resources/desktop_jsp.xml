@@ -84,7 +84,7 @@
       <name>Spring</name>
     </plugin>
     <plugin>
-      <name>Terminal</name>
+      <name>Aptana-Nightly</name>
     </plugin>
 
   </plugins>

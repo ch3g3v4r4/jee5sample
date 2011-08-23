@@ -244,10 +244,5 @@
       <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.6</updateSite>
       <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
     </plugin>
-    <plugin>
-      <name>Terminal</name>
-      <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
-      <featureId>com.aptana.terminal</featureId>
-    </plugin>
   </plugins>
 </eclipse>
