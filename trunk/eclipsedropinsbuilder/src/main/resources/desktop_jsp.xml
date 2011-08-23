@@ -83,6 +83,10 @@
     <plugin>
       <name>Spring</name>
     </plugin>
+    <plugin>
+      <name>Terminal</name>
+    </plugin>
+
   </plugins>
 
 </eclipse>
