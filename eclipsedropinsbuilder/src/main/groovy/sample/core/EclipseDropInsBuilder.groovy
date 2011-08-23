@@ -56,9 +56,9 @@ class EclipseDropInsBuilder {
                 if (s != null) md.update(s.getBytes("UTF-8"))
             }
             String id = Hex.encodeHexString(md.clone().digest())
-            id = (plugin.dropinsName != null ? plugin.dropinsName : "") + "_" + id.substring(0, 5)
+            id = plugin.name + "_" + id.substring(0, 5)
             File cachedPlugin = new File(new File(workDir,"cached"), id);
-            println "Install plugin ${plugin.dropinsName} into ${id}"
+            println "Install plugin ${plugin.name} into ${id}"
             cachedPlugins.put(plugin, cachedPlugin)
             if (cachedPlugin.exists()) {
                 // 1. create a snapshot
@@ -102,8 +102,8 @@ class EclipseDropInsBuilder {
         ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
         for (Plugin plugin : config.plugins) {
             File cachedPlugin = cachedPlugins.get(plugin);
-            if (plugin.dropinsName != null) {
-                ant.copy(todir: new File(eclipseDir, "dropins/" + plugin.dropinsName)) {fileset(dir: cachedPlugin)}
+            if (!plugin.isEmbeded()) {
+                ant.copy(todir: new File(eclipseDir, "dropins/" + plugin.name)) {fileset(dir: cachedPlugin)}
             } else {
                 ant.copy(todir: eclipseDir) {fileset(dir: cachedPlugin)}
             }
@@ -134,66 +134,12 @@ class EclipseDropInsBuilder {
 			ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
 		}
 
-		// 6. Launch profiles support
-		configureProfiles(ant, eclipseDir, config)
-
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
         println "Remember to remove spring-uaa, spring-roo plugins/features and change Aptana theme to eclipse theme"
 		println "You may want to use Envy Code R font (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released)"
 		println "Or consolas font (on WinXP): 1. http://www.hanselman.com/blog/ConsolasFontFamilyNowAvailableForDownload.aspx  2.turn on ClearType(http://blogs.microsoft.co.il/blogs/kim/archive/2006/05/03/289.aspx)"
     }
 
-	void configureProfiles(ant, eclipseDir, Eclipse config) {
-		def profilesDir = new File(eclipseDir, "profiles")
-		ant.move (todir: new File(profilesDir, "dropins")){fileset(dir: new File(eclipseDir, "dropins"))}
-		for (Profile profile : config.profiles) {
-			String profileName = profile.profileName
-			File profileDir = new File(profilesDir, profileName)
-			File linksDir = new File(profileDir, "links")
-			File configurationDir = new File(profileDir, "configuration")
-			ant.mkdir(dir: linksDir)
-			ant.mkdir(dir: configurationDir)
-			for (String name : profile.getDropinsNames()) {
-				String path = "path=profiles/dropins/" + name;
-				FileUtils.write(new File(linksDir, name + ".link"), path)
-			}
-			String batch = 'rmdir /S /Q "%~dp0..\\links"' +
-			"\r\n" +  'mkdir "%~dp0..\\links"' +
-			"\r\n" +  'xcopy /E "%~dp0'+profileName+'\\links" "%~dp0..\\links"' +
-			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0'+profileName+'\\configuration"' + "\r\n";
-			FileUtils.write(new File(profilesDir, "profile_" + profileName + ".bat"), batch)
-		}
-		File profileDir = new File(profilesDir, "all")
-		File linksDir = new File(profileDir, "links")
-		File configurationDir = new File(profileDir, "configuration")
-		ant.mkdir(dir: linksDir)
-		ant.mkdir(dir: configurationDir)
-		for (Plugin plugin : config.plugins) {
-			if (plugin.dropinsName != null) {
-				String path = "path=profiles/dropins/" + plugin.dropinsName;
-				FileUtils.write(new File(linksDir, plugin.dropinsName + ".link"), path)
-			}
-		}
-		String batch = 'rmdir /S /Q "%~dp0..\\links"' +
-			"\r\n" +  'mkdir "%~dp0..\\links"' +
-			"\r\n" +  'xcopy /E "%~dp0all\\links" "%~dp0..\\links"' +
-			"\r\n" +  'start "" "%~dp0..\\eclipse.exe" -configuration "%~dp0all\\configuration"' + "\r\n";
-		FileUtils.write(new File(profilesDir, "profile_all.bat"), batch)
-	}
-
-	void configureProfiless(ant, eclipseDir, Eclipse config) {
-		if (config.profiles != null && !config.profiles.isEmpty()) {
-			ant.rename (src: new File(eclipseDir, "dropins"), dest: new File(eclipseDir, "links_content"))
-			ant.mkdir(dir: new File(eclipseDir, "links"))
-			for (Profile profile : config.profiles) {
-				FileWriter w = new FileWriter(new File(new File(eclipseDir, "links"), profile.getProfileName() + ".link"));
-				for (String name : profile.getDropinsNames()) {
-					w.write("path=links_content/" + name + "\n")
-				}
-				w.close();
-			}
-		}
-	}
     void installFromUpdateSite(eclipseDir, ant, profile, updateSites, featureIds) {
         def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
         def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")

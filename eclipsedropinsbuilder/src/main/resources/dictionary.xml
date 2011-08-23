@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse>
+  <plugins>
+
+    <plugin>
+      <name>Groovy</name>
+      <embeded>true</embeded>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.5.1.xx-20110628-1600-e37.zip</url>
+      <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
+      <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
+    </plugin>
+
+    <!-- zest -->
+    <plugin>
+      <name>Zest</name>
+      <updateSite>file:/indigop2/</updateSite>
+      <featureId>org.eclipse.zest.feature.group</featureId>
+    </plugin>
+
+    <!-- desktop -->
+    <plugin>
+      <name>Desktop</name>
+      <updateSite>file:/indigop2/</updateSite>
+      <featureId>org.eclipse.wb.swing.feature.feature.group</featureId>
+      <featureId>org.eclipse.wb.swt.feature.feature.group</featureId>
+      <featureId>org.eclipse.wb.rcp.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+    </plugin>
+
+    <!-- web -->
+    <plugin>
+      <name>Web</name>
+      <updateSite>file:/indigop2/</updateSite>
+      <featureId>org.eclipse.datatools.enablement.feature.feature.group</featureId>
+      <featureId>org.eclipse.datatools.sdk.feature.feature.group</featureId>
+
+      <featureId>org.eclipse.wst.common.fproj.feature.group</featureId>
+      <featureId>org.eclipse.wst.common_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.jsdt.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.server_adapters.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.server_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.web_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.ws_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.ws_wsdl15.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xml.xpath2.processor.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.wst.xsl.feature.feature.group</featureId>
+    </plugin>
+
+    <!-- jsp -->
+    <plugin>
+      <name>JSP</name>
+      <updateSite>file:/indigop2/</updateSite>
+      <featureId>org.eclipse.jst.common.fproj.enablement.jdt.feature.group</featureId>
+      <featureId>org.eclipse.jst.enterprise_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.server_adapters.ext.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.server_adapters.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.server_ui.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.webpageeditor.feature.feature.group</featureId>
+      <featureId>org.eclipse.jst.web_ui.feature.feature.group</featureId>
+    </plugin>
+
+    <!-- j2ee -->
+    <plugin>
+      <name>JEE</name>
+      <updateSite>file:/indigop2/</updateSite>
+      <featureId>epp.package.jee</featureId>
+    </plugin>
+
+
+    <!-- php -->
+    <plugin>
+      <name>PHP</name>
+      <updateSite>file:/indigop2/</updateSite>
+      <featureId>org.eclipse.php.sdk.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>ZendPHPDebugger</name>
+      <url>http://downloads.zend.com/pdt/debugger/org.zend.php.debug_feature-I20081217.zip</url>
+      <featureId>org.zend.php.debug_feature.feature.group</featureId>
+    </plugin>
+
+    <!-- android -->
+    <plugin>
+      <name>Android</name>
+      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://dl-ssl.google.com/android/eclipse/</updateSite>
+      <updateSite>http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/</updateSite>
+      <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.hierarchyviewer.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.traceview.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.source.feature.feature.group</featureId>
+    </plugin>
+
+
+    <!-- tools -->
+    <plugin>
+      <name>Subclipse</name>
+      <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
+      <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
+      <featureId>org.tigris.subversion.clientadapter.svnkit.feature.feature.group</featureId>
+      <featureId>org.tmatesoft.svnkit.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>AnyEditTools</name>
+      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.0.201101292156.jar</url>
+    </plugin>
+    <plugin>
+      <name>ContextMenu</name>
+      <url>http://timealias.bplaced.net/ContextMenuPlugin/contextmenu_1.2.3.jar</url>
+    </plugin>
+    <plugin>
+      <name>StartExplorer</name>
+      <updateSite>https://startexplorer.svn.sourceforge.net/svnroot/startexplorer/update-site/trunk/</updateSite>
+      <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
+    </plugin>
+    <!-- java tools -->
+    <plugin>
+      <name>JDepend4Eclipse</name>
+      <url>http://jdepend4eclipse.eclipselabs.org.codespot.com/files/de.loskutov.eclipse.jdepend_1.2.2.201005301956.jar</url>
+    </plugin>
+    <plugin>
+      <name>UCDetector</name>
+      <updateSite>http://ucdetector.sourceforge.net/update</updateSite>
+      <featureId>org.ucdetector.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>FindBugs</name>
+      <updateSite>http://findbugs.cs.umd.edu/eclipse</updateSite>
+      <featureId>edu.umd.cs.findbugs.plugin.eclipse.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Lint4J</name>
+      <url>http://www.jutils.com/eclipse-update/lint4j-eclipse-plugin.zip</url>
+      <featureId>com.jutils.lint4j.core.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Checkstyle</name>
+      <updateSite>http://eclipse-cs.sf.net/update/</updateSite>
+      <featureId>net.sf.eclipsecs.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>CheckstyleUnhandledExceptionCheck</name>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/UnhandledExceptionCheck_1.0.0.jar</url>
+    </plugin>
+    <plugin>
+      <name>Log4E</name>
+      <url>http://log4e.jayefem.de/download/eclipse3/de.jayefem.log4e_free_1.3.3.zip</url>
+    </plugin>
+    <plugin>
+      <name>JavaSourceAttacher</name>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javasourceattacher_1.0.0.jar</url>
+    </plugin>
+    <plugin>
+      <name>JavaExamplesSearch</name>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
+    </plugin>
+
+    <plugin>
+      <name>ClassDependencyViewer</name>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.dependencyviewer_1.0.0.jar</url>
+    </plugin>
+    <plugin>
+      <name>TomcatPlugin</name>
+      <url>http://www.eclipsetotale.com/tomcatPlugin/tomcatPluginV33.zip</url>
+    </plugin>
+    <plugin>
+      <name>FileSync</name>
+      <url>http://filesync4eclipse.eclipselabs.org.codespot.com/files/de.loskutov.FileSync_1.3.8.201104160944.jar</url>
+    </plugin>
+    <plugin>
+      <name>JavaHexEditor</name>
+      <url>http://nchc.dl.sourceforge.net/project/javahexeditor/javahexeditor/0.4.1/net.sourceforge.javahexeditor_0.4.1.jar</url>
+    </plugin>
+    <plugin>
+      <name>PropEdit</name>
+      <url>http://iij.dl.sourceforge.jp/propedit/40156/jp.gr.java_conf.ussiy.app.propedit_5.3.3.zip</url>
+    </plugin>
+    <plugin>
+      <name>eSpell</name>
+      <url>http://www.bdaum.de/eclipse/eSpell3/eSpell_3.2.1_site.zip</url>
+      <featureId>com.bdaum.SpellChecker3.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>QuickREx</name>
+      <url>http://nchc.dl.sourceforge.net/project/quickrex/QuickREx%20Plug-In/Version%203.5.0/QuickREx_3.5.0.jar</url>
+    </plugin>
+    <plugin>
+      <name>SQLExplorer</name>
+      <url>http://nchc.dl.sourceforge.net/project/eclipsesql/SQL%20Explorer%20Plugin/3.6.1/sqlexplorer_plugin-3.6.1_SR2.zip</url>
+    </plugin>
+    <plugin>
+      <name>CodePro</name>
+      <updateSite>http://dl.google.com/eclipse/inst/codepro/latest/3.6</updateSite>
+      <featureId>com.instantiations.eclipse.coverage.codepro.feature.group</featureId>
+      <featureId>com.instantiations.assist.eclipse.coverage.feature.group</featureId>
+      <featureId>com.instantiations.assist.eclipse.ant.feature.group</featureId>
+      <featureId>com.instantiations.assist.eclipse.audit.feature.group</featureId>
+      <featureId>com.instantiations.eclipse.core.feature.feature.group</featureId>
+      <featureId>com.instantiations.eclipse.analysis.appanalysis.feature.feature.group</featureId>
+      <featureId>com.instantiations.eclipse.unittester.feature.feature.group</featureId>
+      <featureId>com.instantiations.eclipse.analysis.utilities.feature.group</featureId>
+      <featureId>com.instantiations.eclipse.shared.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>JSEclipse</name>
+      <updateSite>http://download.macromedia.com/pub/labs/jseclipse/autoinstall/site.xml</updateSite>
+      <featureId>com.interaktonline.jseclipse.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Spring</name>
+      <url>http://download.springsource.com/milestone/TOOLS/update/2.8.0.M1/e3.7/springsource-tool-suite-2.8.0.M1-e3.7-updatesite.zip</url>
+      <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>EclipseTidy</name>
+      <url>http://nchc.dl.sourceforge.net/project/eclipsetidy/eclipsetidy/1.2.2/net.sf.eclipsetidy_1.2.2_local_site.zip</url>
+      <featureId>net.sf.eclipsetidy.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Hibernate_Struts</name>
+      <updateSite>http://download.jboss.org/jbosstools/updates/development/indigo/</updateSite>
+      <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
+      <featureId>org.jboss.tools.struts.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Aptana-Nightly</name>
+      <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
+      <featureId>com.aptana.webkitbrowser.feature.group</featureId>
+      <featureId>com.aptana.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>GlassFish</name>
+      <updateSite>http://dlc.sun.com.edgesuite.net/glassfish/eclipse/indigo/</updateSite>
+      <featureId>oracle.eclipse.tools.indigo.glassfish.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>JIRA</name>
+      <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.6</updateSite>
+      <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
+    </plugin>
+  </plugins>
+</eclipse>

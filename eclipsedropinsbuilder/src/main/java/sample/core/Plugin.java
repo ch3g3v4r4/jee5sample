@@ -3,7 +3,8 @@ package sample.core;
 import java.util.List;
 
 public class Plugin {
-    private String dropinsName;
+    private String name;
+    private boolean embeded;
     private List<String> updateSites;
     private List<String> featureIds;
     private String url;
@@ -21,11 +22,11 @@ public class Plugin {
     public void setFeatureIds(List<String> featureIds) {
         this.featureIds = featureIds;
     }
-    public String getDropinsName() {
-        return dropinsName;
+    public String getName() {
+        return name;
     }
-    public void setDropinsName(String dropinsName) {
-        this.dropinsName = dropinsName;
+    public void setName(String name) {
+        this.name = name;
     }
     public String getUrl() {
         return url;
@@ -33,7 +34,11 @@ public class Plugin {
     public void setUrl(String url) {
         this.url = url;
     }
-
-
+    public boolean isEmbeded() {
+        return embeded;
+    }
+    public void setEmbeded(boolean embeded) {
+        this.embeded = embeded;
+    }
 
 }
