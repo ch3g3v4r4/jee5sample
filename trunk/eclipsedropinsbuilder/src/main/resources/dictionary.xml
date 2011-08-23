@@ -15,14 +15,14 @@
     <!-- zest -->
     <plugin>
       <name>Zest</name>
-      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
 
     <!-- desktop -->
     <plugin>
       <name>Desktop</name>
-      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.wb.swing.feature.feature.group</featureId>
       <featureId>org.eclipse.wb.swt.feature.feature.group</featureId>
       <featureId>org.eclipse.wb.rcp.feature.feature.group</featureId>
@@ -32,7 +32,7 @@
     <!-- web -->
     <plugin>
       <name>Web</name>
-      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.datatools.enablement.feature.feature.group</featureId>
       <featureId>org.eclipse.datatools.sdk.feature.feature.group</featureId>
 
@@ -52,7 +52,7 @@
     <!-- jsp -->
     <plugin>
       <name>JSP</name>
-      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.jst.common.fproj.enablement.jdt.feature.group</featureId>
       <featureId>org.eclipse.jst.enterprise_ui.feature.feature.group</featureId>
       <featureId>org.eclipse.jst.server_adapters.ext.feature.feature.group</featureId>
@@ -65,7 +65,7 @@
     <!-- j2ee -->
     <plugin>
       <name>JEE</name>
-      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>epp.package.jee</featureId>
     </plugin>
 
@@ -73,7 +73,7 @@
     <!-- php -->
     <plugin>
       <name>PHP</name>
-      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.php.sdk.feature.group</featureId>
     </plugin>
     <plugin>
@@ -85,7 +85,7 @@
     <!-- android -->
     <plugin>
       <name>Android</name>
-      <updateSite>file:/indigop2/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <updateSite>http://dl-ssl.google.com/android/eclipse/</updateSite>
       <updateSite>http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/</updateSite>
       <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
