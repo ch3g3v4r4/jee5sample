@@ -225,6 +225,7 @@
     <plugin>
       <name>Hibernate_Struts</name>
       <updateSite>http://download.jboss.org/jbosstools/updates/development/indigo/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
       <featureId>org.jboss.tools.struts.feature.feature.group</featureId>
     </plugin>
