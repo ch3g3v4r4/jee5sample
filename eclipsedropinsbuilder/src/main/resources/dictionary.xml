@@ -245,5 +245,17 @@
       <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.6</updateSite>
       <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
     </plugin>
+
+    <plugin>
+      <name>Terminal</name>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.rse.feature.group</featureId>
+      <featureId>org.eclipse.rse.useractions.feature.group</featureId>
+      <featureId>org.eclipse.tm.terminal.feature.group</featureId>
+      <featureId>org.eclipse.tm.terminal.ssh.feature.group</featureId>
+      <featureId>org.eclipse.tm.terminal.telnet.feature.group</featureId>
+      <featureId>org.eclipse.tm.terminal.view.feature.group</featureId>
+    </plugin>
+
   </plugins>
 </eclipse>
