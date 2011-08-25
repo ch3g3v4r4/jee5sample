@@ -86,7 +86,9 @@
     <plugin>
       <name>Aptana-Nightly</name>
     </plugin>
-
+    <plugin>
+      <name>Terminal</name>
+    </plugin>
   </plugins>
 
 </eclipse>
