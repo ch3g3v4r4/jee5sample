@@ -257,5 +257,13 @@
       <featureId>org.eclipse.tm.terminal.view.feature.group</featureId>
     </plugin>
 
+    <plugin>
+      <name>BytecodeOutline</name>
+      <updateSite>http://andrei.gmxhome.de/eclipse/</updateSite>
+      <featureId>de.loskutov.BytecodeOutline.feature.feature.group</featureId>
+    </plugin>
+
+
+
   </plugins>
 </eclipse>
