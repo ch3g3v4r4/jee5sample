@@ -263,7 +263,11 @@
       <featureId>de.loskutov.BytecodeOutline.feature.feature.group</featureId>
     </plugin>
 
-
+    <plugin>
+      <name>AJDT</name>
+      <updateSite>http://download.eclipse.org/tools/ajdt/37/update</updateSite>
+      <featureId>org.eclipse.ajdt.feature.group</featureId>
+    </plugin>
 
   </plugins>
 </eclipse>
