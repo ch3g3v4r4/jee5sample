@@ -84,10 +84,13 @@
       <name>Spring</name>
     </plugin>
     <plugin>
-      <name>Aptana-Nightly</name>
+      <name>Terminal</name>
     </plugin>
     <plugin>
-      <name>Terminal</name>
+      <name>BytecodeOutline</name>
+    </plugin>
+    <plugin>
+      <name>AJDT</name>
     </plugin>
   </plugins>
 
