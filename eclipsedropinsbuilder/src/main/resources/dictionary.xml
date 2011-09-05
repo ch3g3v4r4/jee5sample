@@ -11,6 +11,14 @@
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
     </plugin>
+    <plugin>
+      <name>AJDT</name>
+      <embeded>true</embeded>
+      <updateSite>http://download.eclipse.org/tools/ajdt/37/update</updateSite>
+      <featureId>org.eclipse.ajdt.feature.group</featureId>
+      <!--osgi.framework.extensions=reference\:file\:org.eclipse.equinox.weaving.hook_1.0.100.HEAD.jar -->
+      <nocache>true</nocache>
+    </plugin>
 
     <!-- zest -->
     <plugin>
@@ -263,11 +271,6 @@
       <featureId>de.loskutov.BytecodeOutline.feature.feature.group</featureId>
     </plugin>
 
-    <plugin>
-      <name>AJDT</name>
-      <updateSite>http://download.eclipse.org/tools/ajdt/37/update</updateSite>
-      <featureId>org.eclipse.ajdt.feature.group</featureId>
-    </plugin>
 
   </plugins>
 </eclipse>
