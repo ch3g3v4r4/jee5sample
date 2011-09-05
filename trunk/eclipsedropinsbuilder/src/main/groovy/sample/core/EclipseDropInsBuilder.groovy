@@ -112,7 +112,7 @@ class EclipseDropInsBuilder {
             } else {
                 ant.copy(todir: eclipseDir) {fileset(dir: cachedPlugin, excludes: "configuration/**")}
             }
-			ant.copy(todir: eclipseDir, overwrite: true) {fileset(dir: cachedPlugin, includes: "configuration/config.ini")}
+			ant.copy(todir: eclipseDir, overwrite: true) {fileset(dir: cachedPlugin, includes: "configuration/**/config.ini configuration/**/bundles.info configuration/**/source.info configuration/**/platform.xml")}
         }
 
         // 4. Increase memory settings
