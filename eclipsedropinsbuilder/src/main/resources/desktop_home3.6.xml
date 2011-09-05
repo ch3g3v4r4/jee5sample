@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse>
+  <workDir>/tmp</workDir>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.6.2-201102101200/eclipse-SDK-3.6.2-win32.zip</url>
+  <profile>SDKProfile</profile>
+  <plugins>
+    <plugin>
+      <name>Groovy</name>
+      <embeded>true</embeded>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e3.6/archive-2.5.1.xx-20110627-1300-e36.zip</url>
+      <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
+      <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>AJDT</name>
+      <embeded>true</embeded>
+      <updateSite>http://download.eclipse.org/tools/ajdt/36/update</updateSite>
+      <featureId>org.eclipse.ajdt.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>XML</name>
+      <updateSite>http://download.eclipse.org/releases/helios/</updateSite>
+      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Subclipse</name>
+    </plugin>
+    <plugin>
+      <name>AnyEditTools</name>
+    </plugin>
+    <plugin>
+      <name>JDepend4Eclipse</name>
+    </plugin>
+    <plugin>
+      <name>JavaSourceAttacher</name>
+    </plugin>
+    <plugin>
+      <name>JavaExamplesSearch</name>
+    </plugin>
+    <plugin>
+      <name>Zest</name>
+      <updateSite>http://download.eclipse.org/tools/gef/updates/releases/</updateSite>
+      <featureId>org.eclipse.zest.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>ClassDependencyViewer</name>
+    </plugin>
+  </plugins>
+
+</eclipse>
