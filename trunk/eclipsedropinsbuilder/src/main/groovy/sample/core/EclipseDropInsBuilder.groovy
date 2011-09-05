@@ -60,7 +60,7 @@ class EclipseDropInsBuilder {
             File cachedPlugin = new File(new File(workDir,"cached"), id);
             println "Install plugin ${plugin.name} into ${id}"
             cachedPlugins.put(plugin, cachedPlugin)
-            if (cachedPlugin.exists()) {
+            if (cachedPlugin.exists() && !plugin.nocache) {
                 // 1. create a snapshot
                 ant.copy(todir: snapshotDir) {fileset(dir: eclipseDir)}
                 // find cached files for plugin, use them
@@ -74,6 +74,9 @@ class EclipseDropInsBuilder {
                 } else {
                     installFromUpdateSite(eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
                 }
+
+                if (cachedPlugin.exists()) ant.delete (dir: cachedPlugin)
+
                 // 3. compare with the snapshot and save new files to cachedPlugin folder
                 ant.copy(todir: new File(cachedPlugin, "features")) {
                         fileset(dir: new File(eclipseDir, "features"), includes: "**/*") {
@@ -85,21 +88,24 @@ class EclipseDropInsBuilder {
                         present (present: "srconly", targetdir: new File(snapshotDir, "plugins"))
                     }
                 }
-				// 4. test new jar/zip files broken or not
-				try {
-					ant.delete (dir: new File(workDir, "unzipped"))
-					ant.unzip(dest: new File(workDir, "unzipped")) {
-						fileset(dir: cachedPlugin, includes: "**/*.jar **/*.zip")
-					}
-				} catch (Exception e) {
-					ant.delete (dir: cachedPlugin)
-					throw e;
-				}
+                // 4. test new jar/zip files broken or not
+                try {
+                  ant.delete (dir: new File(workDir, "unzipped"))
+                  ant.unzip(dest: new File(workDir, "unzipped")) {
+                    fileset(dir: cachedPlugin, includes: "**/*.jar **/*.zip")
+                  }
+                } catch (Exception e) {
+                  ant.delete (dir: cachedPlugin)
+                  throw e;
+                }
             }
         }
 
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
+
+        ant.copy(todir: eclipseDir) {fileset(dir: snapshotDir, includes: "configuration/config.ini", overwrite: true)}
+
         for (Plugin plugin : config.plugins) {
             File cachedPlugin = cachedPlugins.get(plugin);
             if (!plugin.isEmbeded()) {
@@ -114,30 +120,30 @@ class EclipseDropInsBuilder {
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+m", replace:"400m", byline:"true");
         ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+M", replace:"400M", byline:"true");
 
-		// 5. Remove conflicting key binding from Aptana plugin (if any)
-		def files = FileUtils.listFiles(new File(eclipseDir, "dropins"), new WildcardFileFilter("com.aptana.editor.common_*.jar"), TrueFileFilter.INSTANCE);
-		if (!files.isEmpty()) {
-			ant.delete(file: new File(workDir, "plugin.xml"))
-			ant.unzip (src: files.get(0), dest: workDir){
-				patternset {include (name:"plugin.xml")}
-			}
-			ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+CTRL\\+SHIFT\\+R[^<]+</key>", replace:"", flags:"s");
-			ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
-		}
-		files = FileUtils.listFiles(new File(eclipseDir, "dropins"), new WildcardFileFilter("com.aptana.syncing.ui_*.jar"), TrueFileFilter.INSTANCE);
-		if (!files.isEmpty()) {
-			ant.delete(file: new File(workDir, "plugin.xml"))
-			ant.unzip (src: files.get(0), dest: workDir){
-				patternset {include (name:"plugin.xml")}
-			}
-			ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+M1\\+M2\\+U[^<]+</key>", replace:"", flags:"s");
-			ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
-		}
+    // 5. Remove conflicting key binding from Aptana plugin (if any)
+    def files = FileUtils.listFiles(new File(eclipseDir, "dropins"), new WildcardFileFilter("com.aptana.editor.common_*.jar"), TrueFileFilter.INSTANCE);
+    if (!files.isEmpty()) {
+      ant.delete(file: new File(workDir, "plugin.xml"))
+      ant.unzip (src: files.get(0), dest: workDir){
+        patternset {include (name:"plugin.xml")}
+      }
+      ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+CTRL\\+SHIFT\\+R[^<]+</key>", replace:"", flags:"s");
+      ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
+    }
+    files = FileUtils.listFiles(new File(eclipseDir, "dropins"), new WildcardFileFilter("com.aptana.syncing.ui_*.jar"), TrueFileFilter.INSTANCE);
+    if (!files.isEmpty()) {
+      ant.delete(file: new File(workDir, "plugin.xml"))
+      ant.unzip (src: files.get(0), dest: workDir){
+        patternset {include (name:"plugin.xml")}
+      }
+      ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+M1\\+M2\\+U[^<]+</key>", replace:"", flags:"s");
+      ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
+    }
 
         println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
         println "Remember to remove spring-uaa, spring-roo plugins/features and change Aptana theme to eclipse theme"
-		println "You may want to use Envy Code R font (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released)"
-		println "Or consolas font (on WinXP): 1. http://www.hanselman.com/blog/ConsolasFontFamilyNowAvailableForDownload.aspx  2.turn on ClearType(http://blogs.microsoft.co.il/blogs/kim/archive/2006/05/03/289.aspx)"
+    println "You may want to use Envy Code R font (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released)"
+    println "Or consolas font (on WinXP): 1. http://www.hanselman.com/blog/ConsolasFontFamilyNowAvailableForDownload.aspx  2.turn on ClearType(http://blogs.microsoft.co.il/blogs/kim/archive/2006/05/03/289.aspx)"
     }
 
     void installFromUpdateSite(eclipseDir, ant, profile, updateSites, featureIds) {
@@ -173,16 +179,16 @@ class EclipseDropInsBuilder {
         }
         List<String> names = new ArrayList<String>();
         ZipFile zf;
-		try {
-			zf = new ZipFile(downloadedFile);
-	        for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
-	            String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
-	            names.add(zipEntryName);
-	        }
-		} catch (Exception e) {
-			ant.delete(file: downloadedFile);
-			throw e;
-		}
+    try {
+      zf = new ZipFile(downloadedFile);
+          for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
+              String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
+              names.add(zipEntryName);
+          }
+    } catch (Exception e) {
+      ant.delete(file: downloadedFile);
+      throw e;
+    }
         println "zip file content: " + names
         if (names.contains("plugin.xml") || names.contains("META-INF/")) {
             // is simple jar contains plugin

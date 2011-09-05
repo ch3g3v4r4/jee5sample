@@ -5,6 +5,9 @@
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
+      <name>AJDT</name>
+    </plugin>
+    <plugin>
       <name>Groovy</name>
     </plugin>
     <plugin>
@@ -78,9 +81,6 @@
       <name>Spring</name>
     </plugin>
     <plugin>
-      <name>Aptana-Nightly</name>
-    </plugin>
-    <plugin>
       <name>Hibernate_Struts</name>
     </plugin>
     <plugin>
@@ -88,6 +88,9 @@
     </plugin>
     <plugin>
       <name>JIRA</name>
+    </plugin>
+    <plugin>
+      <name>Terminal</name>
     </plugin>
 
   </plugins>
