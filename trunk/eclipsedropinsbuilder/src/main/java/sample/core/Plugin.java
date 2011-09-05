@@ -5,7 +5,6 @@ import java.util.List;
 public class Plugin {
     private String name;
     private boolean embeded;
-    private boolean nocache;
     private List<String> updateSites;
     private List<String> featureIds;
     private String url;
@@ -41,11 +40,4 @@ public class Plugin {
     public void setEmbeded(boolean embeded) {
         this.embeded = embeded;
     }
-    public boolean isNocache() {
-        return nocache;
-    }
-    public void setNocache(boolean nocache) {
-        this.nocache = nocache;
-    }
-
 }
