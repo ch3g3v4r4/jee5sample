@@ -60,11 +60,11 @@ class EclipseDropInsBuilder {
             File cachedPlugin = new File(new File(workDir,"cached"), id);
             println "Install plugin ${plugin.name} into ${id}"
             cachedPlugins.put(plugin, cachedPlugin)
-            if (cachedPlugin.exists() && !plugin.nocache) {
+            if (cachedPlugin.exists()) {
                 // 1. create a snapshot
                 ant.copy(todir: snapshotDir) {fileset(dir: eclipseDir)}
                 // find cached files for plugin, use them
-                ant.copy(todir: eclipseDir) {fileset(dir: cachedPlugin)}
+                ant.copy(todir: eclipseDir, overwrite: true) {fileset(dir: cachedPlugin)}
             } else {
                 // 1. create a snapshot
                 ant.copy(todir: snapshotDir) {fileset(dir: eclipseDir)}
@@ -74,8 +74,6 @@ class EclipseDropInsBuilder {
                 } else {
                     installFromUpdateSite(eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
                 }
-
-                if (cachedPlugin.exists()) ant.delete (dir: cachedPlugin)
 
                 // 3. compare with the snapshot and save new files to cachedPlugin folder
                 ant.copy(todir: new File(cachedPlugin, "features")) {
@@ -88,6 +86,9 @@ class EclipseDropInsBuilder {
                         present (present: "srconly", targetdir: new File(snapshotDir, "plugins"))
                     }
                 }
+				ant.copy(todir: new File(cachedPlugin, "configuration")) {
+					fileset(dir: new File(eclipseDir, "configuration"))
+				}
                 // 4. test new jar/zip files broken or not
                 try {
                   ant.delete (dir: new File(workDir, "unzipped"))
@@ -104,15 +105,14 @@ class EclipseDropInsBuilder {
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
 
-        ant.copy(todir: eclipseDir) {fileset(dir: snapshotDir, includes: "configuration/config.ini", overwrite: true)}
-
         for (Plugin plugin : config.plugins) {
             File cachedPlugin = cachedPlugins.get(plugin);
             if (!plugin.isEmbeded()) {
-                ant.copy(todir: new File(eclipseDir, "dropins/" + plugin.name)) {fileset(dir: cachedPlugin)}
+                ant.copy(todir: new File(eclipseDir, "dropins/" + plugin.name)) {fileset(dir: cachedPlugin, excludes: "configuration/**")}
             } else {
-                ant.copy(todir: eclipseDir) {fileset(dir: cachedPlugin)}
+                ant.copy(todir: eclipseDir) {fileset(dir: cachedPlugin, excludes: "configuration/**")}
             }
+			ant.copy(todir: eclipseDir, overwrite: true) {fileset(dir: cachedPlugin, includes: "configuration/config.ini")}
         }
 
         // 4. Increase memory settings
