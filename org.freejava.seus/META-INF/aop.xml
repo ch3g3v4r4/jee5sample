@@ -1,0 +1,7 @@
+<aspectj>
+	<aspects>
+		<aspect name="org.freejava.seus.MyAspect" />
+	</aspects>
+	<weaver options="-verbose">
+	</weaver>
+</aspectj>
