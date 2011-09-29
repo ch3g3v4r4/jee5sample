@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: sampleapphtml Plug-in
+Bundle-SymbolicName: org.freejava.sampleapphtml.ui; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.freejava.sampleapp.Activator
+Bundle-Vendor: freejava
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms,
+ org.eclipse.ui.views.log
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
