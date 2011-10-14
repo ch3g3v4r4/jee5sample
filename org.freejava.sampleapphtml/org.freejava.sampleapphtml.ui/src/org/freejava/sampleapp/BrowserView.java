@@ -80,7 +80,7 @@ public class BrowserView extends ViewPart {
 				    IOUtils.closeQuietly(os);
 				}
 			}
-			String url = new File(tmpDir, "ui/index.html").toURI().toURL().toString();
+			String url = "http://localhost/ui/index.html";//new File(tmpDir, "ui/index.html").toURI().toURL().toString();
 			browser.setUrl(url);
 			BrowserFunction function = new CustomFunction(browser, "javahandle");
 		} catch (Exception e) {
