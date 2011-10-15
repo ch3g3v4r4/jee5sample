@@ -11,7 +11,7 @@
          </run>
       </application>
    </extension>
-   
+
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
@@ -56,5 +56,9 @@
             base-name="/ui">
       </resource>
    </extension>
-
+  <extension point="org.eclipse.equinox.http.registry.servlets">
+    <servlet
+      alias="/service"
+      class="org.freejava.sampleapp.ServiceServlet"/>
+  </extension>
 </plugin>
