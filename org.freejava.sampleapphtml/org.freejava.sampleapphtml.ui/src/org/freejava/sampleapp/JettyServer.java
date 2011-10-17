@@ -14,10 +14,10 @@ import org.osgi.framework.ServiceReference;
 
 public class JettyServer {
 	private static String host;
-	private static int port = 9999;
+	private static int port = -1;
 	private static final int AUTO_SELECT_JETTY_PORT = 0;
 
-	public static void start(String webappName) throws Exception {
+	public static int start(String webappName) throws Exception {
 		Dictionary d = new Hashtable();
 		d.put("http.port", new Integer(getPortParameter())); //$NON-NLS-1$
 		// set the base URL
@@ -26,6 +26,7 @@ public class JettyServer {
 		Logger.getLogger("org.mortbay").setLevel(Level.WARNING);
 		JettyConfigurator.startServer(webappName, d);
 		checkBundle();
+		return port;
 	}
 
 	/*

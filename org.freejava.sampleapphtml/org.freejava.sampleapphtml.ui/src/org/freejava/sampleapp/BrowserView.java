@@ -78,9 +78,11 @@ public class BrowserView extends ViewPart {
 				    IOUtils.closeQuietly(os);
 				}
 			}
-			JettyServer.start("freejava");
-			String url = "http://127.0.0.1:9999/ui/index.html";//new File(tmpDir, "ui/index.html").toURI().toURL().toString();
+			int port = JettyServer.start("freejava");
+			String url = "http://127.0.0.1:" + port + "/ui/index.html";//new File(tmpDir, "ui/index.html").toURI().toURL().toString();
 			browser.setUrl(url);
+			new RCPLogger().logInfo("Accessing application URL at: " + url, null);
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
