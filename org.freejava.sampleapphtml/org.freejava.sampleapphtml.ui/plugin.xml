@@ -60,5 +60,13 @@
     <servlet
       alias="/service"
       class="org.freejava.sampleapp.ServiceServlet"/>
+    <servlet
+          alias="/jersey-http-service"
+          class="com.sun.jersey.spi.container.servlet.ServletContainer">
+       <init-param
+             name="javax.ws.rs.Application"
+             value="org.freejava.sampleapp.JerseyApplication">
+       </init-param>
+    </servlet>
   </extension>
 </plugin>
