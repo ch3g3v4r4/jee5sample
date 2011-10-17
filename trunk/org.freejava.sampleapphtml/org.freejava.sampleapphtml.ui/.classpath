@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/asm-3.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jackson-core-asl-1.8.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jackson-jaxrs-1.8.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jackson-mapper-asl-1.8.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jackson-xc-1.8.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jersey-client-1.9.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jersey-core-1.9.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jersey-json-1.9.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jersey-server-1.9.1.jar" sourcepath="C:/Documents and Settings/Thai Ha/.m2/repository/com/sun/jersey/jersey-server/1.9.1/jersey-server-1.9.1-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jettison-1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jersey/jsr311-api-1.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-codec-1.5.jar" sourcepath="C:/Documents and Settings/Thai Ha/.sourceattacher/commons-codec-1.5-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-exec-1.1.jar" sourcepath="C:/Documents and Settings/Thai Ha/.sourceattacher/commons-exec-1.1-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-io-2.0.1.jar" sourcepath="C:/Documents and Settings/Thai Ha/.sourceattacher/commons-io-2.0.1-sources.jar"/>

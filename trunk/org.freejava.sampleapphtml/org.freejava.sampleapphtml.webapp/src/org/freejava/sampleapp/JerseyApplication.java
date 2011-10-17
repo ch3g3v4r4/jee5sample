@@ -1,5 +1,6 @@
 package org.freejava.sampleapp;
 
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.core.Application;

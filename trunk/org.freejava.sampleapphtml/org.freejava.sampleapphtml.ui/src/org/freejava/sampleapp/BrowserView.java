@@ -64,36 +64,15 @@ public class BrowserView extends ViewPart {
 	public void createPartControl(Composite parent) {
 		browser = createBrowser(parent, getViewSite().getActionBars());
 		try {
-			Enumeration<URL> e = Activator.getDefault().getBundle().findEntries("ui", "*", true);
-			tmpDir = Files.createTempDir();
-			for (;e.hasMoreElements();) {
-				URL url = e.nextElement();
-				String urlpath = url.getFile();
-				if (!urlpath.endsWith("/")) {
-				    File file = createFile(tmpDir, urlpath);
-				    InputStream is = url.openStream();
-				    OutputStream os = new FileOutputStream(file);
-				    IOUtils.copy(is, os);
-				    IOUtils.closeQuietly(is);
-				    IOUtils.closeQuietly(os);
-				}
-			}
 			int port = JettyServer.start("freejava");
-			String url = "http://127.0.0.1:" + port + "/ui/index.html";//new File(tmpDir, "ui/index.html").toURI().toURL().toString();
+			String url = "http://127.0.0.1:" + port + "/index.html";//new File(tmpDir, "ui/index.html").toURI().toURL().toString();
 			browser.setUrl(url);
 			new RCPLogger().logInfo("Accessing application URL at: " + url, null);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
 		}
-	}
-
-	private File createFile(File parent, String filename) {
-		String path = FilenameUtils.getPath(filename);
-		String name = FilenameUtils.getName(filename);
-		File dir = new File(parent, path);
-		dir.mkdirs();
-		return new File(dir, name);
 	}
 
 	public void setFocus() {
