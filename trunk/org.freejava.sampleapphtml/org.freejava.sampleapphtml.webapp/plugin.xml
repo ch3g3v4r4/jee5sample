@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
-         point="org.eclipse.equinox.http.registry.resources">
-      <resource
-            alias="/"
-            base-name="/static">
-      </resource>
-   </extension>
-  <extension point="org.eclipse.equinox.http.registry.servlets">
-    <servlet
-          alias="/service"
-          class="com.sun.jersey.spi.container.servlet.ServletContainer">
-       <init-param
-             name="javax.ws.rs.Application"
-             value="org.freejava.sampleapp.JerseyApplication">
-       </init-param>
-    </servlet>
-  </extension>
 </plugin>
