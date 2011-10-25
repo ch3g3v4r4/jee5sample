@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.freejava.sampleapphtml.webapp; singleton:=true
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
+ WEB-INF/classes,
  lib/asm-3.1.jar,
  lib/jackson-core-asl-1.8.3.jar,
  lib/jackson-jaxrs-1.8.3.jar,

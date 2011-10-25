@@ -8,6 +8,7 @@
 
   <modules>
     <module>org.freejava.sampleapphtml.ui</module>
+    <module>webapp</module>
     <module>org.freejava.sampleapphtml.webapp</module>
     <module>org.freejava.sampleapphtml.ui.product</module>
   </modules>
