@@ -9,7 +9,55 @@
   <artifactId>org.freejava.sampleapphtml.webapp</artifactId>
   <version>1.0.0</version>
   <packaging>eclipse-plugin</packaging>
+  <dependencies>
+    <dependency>
+	<groupId>org.freejava.sampleapphtml</groupId>
+	<artifactId>webapp</artifactId>
+    <version>1.0.0</version>
+    <type>war</type>
+    <scope>runtime</scope>
+    </dependency>
+  </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.handlers</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.schemas</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>sample.startup.Main</mainClass>
+                </transformer>
+              </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/ECLIPSE.SF</exclude>
+                    <exclude>META-INF/ECLIPSE.RSA</exclude>
+                    <exclude>META-INF/BCKEY.SF</exclude>
+                    <exclude>META-INF/BCKEY.DSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>
