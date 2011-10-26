@@ -313,6 +313,7 @@
         <configuration>
           <downloadSources>true</downloadSources>
           <wtpversion>1.5</wtpversion>
+		  <wtpapplicationxml>true</wtpapplicationxml>
           <additionalProjectnatures>
             <projectnature>org.eclipse.jdt.groovy.core.groovyNature</projectnature>
             <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
