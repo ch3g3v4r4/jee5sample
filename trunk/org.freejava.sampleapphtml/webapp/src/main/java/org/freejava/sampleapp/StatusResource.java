@@ -5,7 +5,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 
-@Path("status")
+@Path("/status")
 public class StatusResource {
 
     @GET @Produces("text/plain")
