@@ -4,18 +4,5 @@ Bundle-Name: org.freejava.sampleapphtml.webapp
 Bundle-SymbolicName: org.freejava.sampleapphtml.webapp; singleton:=true
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-ClassPath: .,
- WEB-INF/classes,
- lib/asm-3.1.jar,
- lib/jackson-core-asl-1.8.3.jar,
- lib/jackson-jaxrs-1.8.3.jar,
- lib/jackson-mapper-asl-1.8.3.jar,
- lib/jackson-xc-1.8.3.jar,
- lib/jersey-client-1.9.1.jar,
- lib/jersey-core-1.9.1.jar,
- lib/jersey-json-1.9.1.jar,
- lib/jersey-server-1.9.1.jar,
- lib/jettison-1.1.jar,
- lib/jsr311-api-1.1.1.jar
 Import-Package: javax.servlet;version="2.5.0"
 Web-ContextPath: /
