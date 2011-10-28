@@ -65,7 +65,7 @@ public class BrowserView extends ViewPart {
 		browser = createBrowser(parent, getViewSite().getActionBars());
 		try {
 			int port = JettyServer.start("freejava");
-			String url = "http://127.0.0.1:8080/static/index.html";//new File(tmpDir, "ui/index.html").toURI().toURL().toString();
+			String url = "http://127.0.0.1:" + port + "/index.html";//new File(tmpDir, "ui/index.html").toURI().toURL().toString();
 			browser.setUrl(url);
 			new RCPLogger().logInfo("Accessing application URL at: " + url, null);
 
