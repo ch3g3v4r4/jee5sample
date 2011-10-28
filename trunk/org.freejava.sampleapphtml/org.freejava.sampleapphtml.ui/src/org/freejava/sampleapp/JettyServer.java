@@ -1,5 +1,8 @@
 package org.freejava.sampleapp;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.channels.ServerSocketChannel;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.logging.Level;
@@ -14,19 +17,46 @@ import org.osgi.framework.ServiceReference;
 
 public class JettyServer {
 	private static String host;
-	private static int port = 8080;
+	private static int port = 0;
 	private static final int AUTO_SELECT_JETTY_PORT = 0;
 
 	public static int start(String webappName) throws Exception {
-		Dictionary d = new Hashtable();
-		d.put("http.port", new Integer(getPortParameter())); //$NON-NLS-1$
+		//Dictionary d = new Hashtable();
+		//d.put("http.port", new Integer(getPortParameter())); //$NON-NLS-1$
 		// set the base URL
-		d.put("context.path", "/"); //$NON-NLS-1$ //$NON-NLS-2$
-		d.put("other.info", "freejava"); //$NON-NLS-1$ //$NON-NLS-2$
-		Logger.getLogger("org.mortbay").setLevel(Level.WARNING);
+		//d.put("context.path", "/"); //$NON-NLS-1$ //$NON-NLS-2$
+		//d.put("other.info", "freejava"); //$NON-NLS-1$ //$NON-NLS-2$
+		//Logger.getLogger("org.mortbay").setLevel(Level.WARNING);
 		//JettyConfigurator.startServer(webappName, d);
 		checkBundle();
 		return port;
+	}
+
+	private static void selectPort() {
+		if (port <= 0) {
+			try {
+			// Create a new server socket
+			ServerSocketChannel _acceptChannel = ServerSocketChannel.open();
+			// Set to blocking mode
+			_acceptChannel.configureBlocking(true);
+
+			// Bind the server socket to the local host and port
+			_acceptChannel.socket().setReuseAddress(true);
+			InetSocketAddress addr = getHost() == null ? new InetSocketAddress(
+					getPort()) : new InetSocketAddress(getHost(), getPort());
+			_acceptChannel.socket().bind(addr, 1);
+
+			port = _acceptChannel.socket().getLocalPort();
+			if (port <= 0)
+				throw new IOException("Server channel not bound");
+			// Set to non blocking mode
+			_acceptChannel.configureBlocking(false);
+			_acceptChannel.socket().close();
+			_acceptChannel.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/*
@@ -34,6 +64,10 @@ public class JettyServer {
 	 * version is started and reads the port number
 	 */
 	private static void checkBundle() throws InvalidSyntaxException, BundleException  {
+
+
+
+
 		//Bundle bundle = Platform.getBundle("org.eclipse.equinox.http.registry"); //$NON-NLS-1$if (bundle != null) {
 		//if (bundle.getState() == Bundle.RESOLVED) {
 		//	bundle.start(Bundle.START_TRANSIENT);
@@ -44,7 +78,10 @@ public class JettyServer {
 		}
 		Bundle bundle2 = Platform.getBundle("org.eclipse.jetty.osgi.boot"); //$NON-NLS-1$if (bundle != null) {
 		if (bundle2.getState() == Bundle.RESOLVED) {
+			selectPort();
 			System.setProperty("jetty.home.bundle", "org.eclipse.jetty.osgi.boot");
+			System.setProperty("jetty.port", "" + port);
+
 			bundle2.start(Bundle.START_TRANSIENT);
 		}
 		if (port == -1) {

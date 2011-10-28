@@ -220,6 +220,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -281,10 +282,11 @@
           </dependency>
         </dependencies>
       </plugin>
-<!--
+
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
         <version>2.3.5</version>
         <executions>
           <execution>
@@ -297,15 +299,33 @@
         </executions>
         <configuration>
           <supportedProjectTypes>
+            <supportedProjectType>jar</supportedProjectType>
+            <supportedProjectType>bundle</supportedProjectType>
             <supportedProjectType>war</supportedProjectType>
           </supportedProjectTypes>
           <instructions>
-
-            <Bundle-ClassPath>WEB-INF/classes,{maven-dependencies}</Bundle-ClassPath>
+            <Import-Package>javax.servlet,javax.servlet.http,javax.servlet.*,javax.servlet.jsp.*,javax.servlet.jsp.jstl.*</Import-Package>
+            <DynamicImport-Package>javax.*, org.xml.sax, org.xml.sax.*, org.w3c.*</DynamicImport-Package>
+            <Bundle-ClassPath>WEB-INF/classes</Bundle-ClassPath>
+            <Embed-Directory>WEB-INF/lib</Embed-Directory>
+            <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+            <Embed-Transitive>true</Embed-Transitive>
+            <Import-Package>*;resolution:=optional</Import-Package>
+            <Webapp-Context>/</Webapp-Context>
+            <Web-ContextPath>/</Web-ContextPath>
           </instructions>
         </configuration>
+      </plugin><!-- http://jira.codehaus.org/browse/MWAR-167 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <configuration>
+          <archive>
+            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
+        </configuration>
       </plugin>
- -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -347,9 +367,10 @@
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
-        <version>6.0.1</version>
+        <version>6.1.26</version>
         <configuration>
           <scanIntervalSeconds>10</scanIntervalSeconds>
+          <contextPath>/</contextPath>
         </configuration>
       </plugin>
     </plugins>
