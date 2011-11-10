@@ -4,16 +4,17 @@ import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.commons.io.FilenameUtils;
 
+def filter = 'system-image,doc,source,platform-tool,android-10,sample-10'
+def url = "http://dl.google.com/android/android-sdk_r15-windows.zip"
+if (SystemUtils.IS_OS_LINUX ) {
+	url = "http://dl.google.com/android/android-sdk_r15-linux.tgz"
+}
 
 if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.path"] == null) {
 
 	println "=================================================================="
 	println "No value found for ANDROID_HOME environment variable. Will install latest ANDROID SDK from Internet."
 
-	def url = "http://dl.google.com/android/android-sdk_r15-windows.zip"
-	if (SystemUtils.IS_OS_LINUX ) {
-		url = "http://dl.google.com/android/android-sdk_r15-linux.tgz"
-	}
 	def filename = FilenameUtils.getName(url)
 	def name = FilenameUtils.getBaseName(url)
 	def workdir = new File(System.getProperty("java.io.tmpdir"), name)
@@ -48,13 +49,13 @@ if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.pat
 		}
 		if (SystemUtils.IS_OS_WINDOWS ) {
 			ant.exec(dir:sdkDir, executable:"cmd.exe"){
-				arg(line:"/c tools\\android.bat update sdk --no-ui")
+				arg(line:"/c tools\\android.bat update sdk --no-ui --filter " + filter)
 			}
 		}
 
 		if (SystemUtils.IS_OS_LINUX ) {
 			ant.exec(dir:sdkDir, executable:"bash"){
-				arg(line:" tools/android.sh update sdk --no-ui")
+				arg(line:" tools/android.sh update sdk --no-ui --filter " + filter)
 			}
 		}
 	}
