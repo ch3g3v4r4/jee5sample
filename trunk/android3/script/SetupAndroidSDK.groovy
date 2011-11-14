@@ -1,10 +1,20 @@
+import java.io.ByteArrayOutputStream;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import org.apache.commons.lang.SystemUtils;
 import org.apache.commons.io.filefilter.AndFileFilter;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.commons.io.FilenameUtils;
 
-def filter = 'system-image,doc,source,platform-tool,android-10,sample-10'
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
+import org.apache.commons.exec.PumpStreamHandler;
+
+def filter = 'system-image,platform-tool,android-10'
 def url = "http://dl.google.com/android/android-sdk_r15-windows.zip"
 if (SystemUtils.IS_OS_LINUX ) {
 	url = "http://dl.google.com/android/android-sdk_r15-linux.tgz"
@@ -17,6 +27,7 @@ if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.pat
 
 	def filename = FilenameUtils.getName(url)
 	def name = FilenameUtils.getBaseName(url)
+	def tempdir = System.getProperty("java.io.tmpdir")
 	def workdir = new File(System.getProperty("java.io.tmpdir"), name)
 
 
@@ -29,11 +40,19 @@ if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.pat
 		println sdkDir
 	} else {
 
-		ant.get(src:url, dest: new File(workdir, filename), verbose:"yes", usetimestamp:"true")
+		ant.get(src:url, dest: new File(tempdir, filename), verbose:"yes", usetimestamp:"true")
 
-		ant.unzip(dest:workdir,overwrite:"false"){
-			fileset(dir:workdir){
-				include(name:"*.zip")
+		if (filename.endsWith(".zip")) {
+			ant.unzip(dest:workdir,overwrite:"false"){
+				fileset(dir:tempdir){
+					include(name:filename)
+				}
+			}
+		} else {
+			ant.untar(dest:workdir, compression:"gzip", overwrite:"false"){
+				fileset(dir:tempdir){
+					include(name:filename)
+				}
 			}
 		}
 
@@ -42,22 +61,31 @@ if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.pat
 		sdkDir = new File(workdir, files[0])
 		println sdkDir
 
-		ant.untar(dest:workdir, compression:"gzip", overwrite:"false"){
-			fileset(dir:workdir){
-				include(name:"*.tgz")
-			}
-		}
-		if (SystemUtils.IS_OS_WINDOWS ) {
-			ant.exec(dir:sdkDir, executable:"cmd.exe"){
-				arg(line:"/c tools\\android.bat update sdk --no-ui --filter " + filter)
-			}
-		}
+		// workaround for http://code.google.com/p/android/issues/detail?id=18868
+		CommandLine adbCmdLine = new CommandLine(new File(sdkDir, "platform-tools/adb.exe"));
+		adbCmdLine.addArgument("kill-server");
+		DefaultExecutor adbExecutor = new DefaultExecutor();
+		adbExecutor.setWorkingDirectory(new File(sdkDir, "platform-tools"));
 
-		if (SystemUtils.IS_OS_LINUX ) {
-			ant.exec(dir:sdkDir, executable:"bash"){
-				arg(line:" tools/android.sh update sdk --no-ui --filter " + filter)
-			}
-		}
+		CommandLine cmdLine = new CommandLine("cmd.exe");
+		cmdLine.addArgument("/c");
+		cmdLine.addArgument("tools\\android.bat");
+		cmdLine.addArgument("update");
+		cmdLine.addArgument("sdk");
+		cmdLine.addArgument("--no-ui");
+		cmdLine.addArgument("--filter");
+		cmdLine.addArgument(filter);
+
+		DefaultExecutor executor = new DefaultExecutor();
+
+		StopAdbOutputStream tos = new StopAdbOutputStream(System.out, adbCmdLine, adbExecutor);
+		PumpStreamHandler streamHandler = new PumpStreamHandler(tos, System.err);
+
+		executor.setStreamHandler(streamHandler);
+		executor.setWorkingDirectory(sdkDir);
+
+		int exitValue = executor.execute(cmdLine);
+
 	}
 
 	project.properties["android.sdk.path"] = sdkDir.absolutePath
