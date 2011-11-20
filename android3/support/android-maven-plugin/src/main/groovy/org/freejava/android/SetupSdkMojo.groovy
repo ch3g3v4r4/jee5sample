@@ -31,6 +31,9 @@ class SetupSdkMojo extends GroovyMojo {
 	void execute() {
 		println "${message}"
 
+		int r = new POSIX().setenv("ANDROID_HOME", "1", 0)
+println System.getenv("ANDROID_HOME")
+
 		def filter = 'system-image,platform-tool,android-10'
 		def url = "http://dl.google.com/android/android-sdk_r15-windows.zip"
 		if (SystemUtils.IS_OS_LINUX ) {
