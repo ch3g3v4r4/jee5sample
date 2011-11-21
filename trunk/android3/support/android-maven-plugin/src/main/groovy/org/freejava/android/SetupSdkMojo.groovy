@@ -16,17 +16,13 @@ import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.exec.PumpStreamHandler;
+import org.jfrog.maven.annomojo.annotations.MojoGoal;
+import org.jfrog.maven.annomojo.annotations.MojoParameter;
 
-/**
- *
- * @goal setupsdk
- */
+@MojoGoal("setupsdk")
 class SetupSdkMojo extends GroovyMojo {
-	/**
-	 *
-	 * @parameter expression="${message}" default-value="Hello World"
-	 */
-	String message
+
+	public String message
 
 	void execute() {
 		println "${message}"
