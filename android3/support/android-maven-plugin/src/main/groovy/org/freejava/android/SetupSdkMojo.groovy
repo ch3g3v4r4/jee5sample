@@ -11,7 +11,7 @@ import org.apache.commons.io.filefilter.AndFileFilter;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 import org.apache.commons.io.FilenameUtils;
-
+import org.apache.maven.project.MavenProject
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
@@ -22,19 +22,17 @@ import org.jfrog.maven.annomojo.annotations.MojoParameter;
 @MojoGoal("setupsdk")
 class SetupSdkMojo extends GroovyMojo {
 
-	public String message
+	@MojoParameter( expression = '${project}' )
+	public MavenProject project
+
+    @MojoParameter(required=true, defaultValue='system-image,platform-tool,android-10')
+	public String filter
+
+
+	@MojoParameter(required=true, defaultValue="http://dl.google.com/android/android-sdk_r15-windows.zip")
+	public String url
 
 	void execute() {
-		println "${message}"
-
-		int r = new POSIX().setenv("ANDROID_HOME", "1", 0)
-println System.getenv("ANDROID_HOME")
-
-		def filter = 'system-image,platform-tool,android-10'
-		def url = "http://dl.google.com/android/android-sdk_r15-windows.zip"
-		if (SystemUtils.IS_OS_LINUX ) {
-			url = "http://dl.google.com/android/android-sdk_r15-linux.tgz"
-		}
 
 		if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.path"] == null) {
 
