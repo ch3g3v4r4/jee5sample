@@ -18,8 +18,10 @@ import org.apache.commons.exec.ExecuteException;
 import org.apache.commons.exec.PumpStreamHandler;
 import org.jfrog.maven.annomojo.annotations.MojoGoal;
 import org.jfrog.maven.annomojo.annotations.MojoParameter;
+import org.jfrog.maven.annomojo.annotations.MojoPhase;
 
 @MojoGoal("setupsdk")
+@MojoPhase("initialize")
 class SetupSdkMojo extends GroovyMojo {
 
 	@MojoParameter( expression = '${project}' )
@@ -36,8 +38,8 @@ class SetupSdkMojo extends GroovyMojo {
 
 		if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.path"] == null) {
 
-			println "=================================================================="
-			println "No value found for ANDROID_HOME environment variable. Will install latest ANDROID SDK from Internet."
+			log.info("==================================================================")
+			log.info("No value found for ANDROID_HOME environment variable. Will install latest ANDROID SDK from Internet.")
 
 			def filename = FilenameUtils.getName(url)
 			def name = FilenameUtils.getBaseName(url)
@@ -104,7 +106,7 @@ class SetupSdkMojo extends GroovyMojo {
 
 			project.properties["android.sdk.path"] = sdkDir.absolutePath
 
-			println "Set android.sdk.path=${sdkDir.absolutePath}"
+			log.info("Set android.sdk.path=${sdkDir.absolutePath}")
 		}
 	}
 }
