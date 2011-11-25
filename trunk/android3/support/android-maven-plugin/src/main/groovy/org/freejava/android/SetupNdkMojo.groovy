@@ -20,26 +20,22 @@ import org.jfrog.maven.annomojo.annotations.MojoGoal;
 import org.jfrog.maven.annomojo.annotations.MojoParameter;
 import org.jfrog.maven.annomojo.annotations.MojoPhase;
 
-@MojoGoal("setupsdk")
+@MojoGoal("setupndk")
 @MojoPhase("initialize")
-class SetupSdkMojo extends GroovyMojo {
+class SetupNdkMojo extends GroovyMojo {
 
 	@MojoParameter( expression = '${project}' )
 	public MavenProject project
 
-    @MojoParameter(required=true, defaultValue='system-image,platform-tool,android-10')
-	public String filter
-
-
-	@MojoParameter(required=true, defaultValue="http://dl.google.com/android/android-sdk_r15-windows.zip")
+	@MojoParameter(required=true, defaultValue="http://dl.google.com/android/ndk/android-ndk-r7-windows.zip")
 	public String url
 
 	void execute() {
 
-		if (System.getenv("ANDROID_HOME") == null && project.properties["android.sdk.path"] == null) {
+		if (System.getenv("ANDROID_NDK_HOME") == null && project.properties["android.ndk.path"] == null) {
 
 			log.info("==================================================================")
-			log.info("No value found for ANDROID_HOME environment variable. Will install latest ANDROID SDK from Internet.")
+			log.info("No value found for ANDROID_NDK_HOME environment variable. Will install latest ANDROID NDK from Internet.")
 
 			def filename = FilenameUtils.getName(url)
 			def name = FilenameUtils.getBaseName(url)
@@ -49,7 +45,7 @@ class SetupSdkMojo extends GroovyMojo {
 
 			ant.mkdir(dir:workdir)
 
-			String[] files = workdir.list( new AndFileFilter(new WildcardFileFilter("android-sdk*"), new DirectoryFileFilter()))
+			String[] files = workdir.list( new AndFileFilter(new WildcardFileFilter("android-ndk*"), new DirectoryFileFilter()))
 			File sdkDir
 			if (files.length > 0) {
 				sdkDir = new File(workdir, files[0])
@@ -72,41 +68,15 @@ class SetupSdkMojo extends GroovyMojo {
 					}
 				}
 
-				files = workdir.list( new AndFileFilter(new WildcardFileFilter("android-sdk*"), new DirectoryFileFilter()))
+				files = workdir.list( new AndFileFilter(new WildcardFileFilter("android-ndk*"), new DirectoryFileFilter()))
 
 				sdkDir = new File(workdir, files[0])
 				println sdkDir
-
-				// workaround for http://code.google.com/p/android/issues/detail?id=18868
-				CommandLine adbCmdLine = new CommandLine(new File(sdkDir, "platform-tools/adb.exe"))
-				adbCmdLine.addArgument("kill-server")
-				DefaultExecutor adbExecutor = new DefaultExecutor()
-				adbExecutor.setWorkingDirectory(new File(sdkDir, "platform-tools"))
-
-				CommandLine cmdLine = new CommandLine("cmd.exe")
-				cmdLine.addArgument("/c");
-				cmdLine.addArgument("tools\\android.bat")
-				cmdLine.addArgument("update")
-				cmdLine.addArgument("sdk")
-				cmdLine.addArgument("--no-ui")
-				cmdLine.addArgument("--filter")
-				cmdLine.addArgument(filter)
-
-				DefaultExecutor executor = new DefaultExecutor()
-
-				StopAdbOutputStream tos = new StopAdbOutputStream(System.out, adbCmdLine, adbExecutor)
-				PumpStreamHandler streamHandler = new PumpStreamHandler(tos, System.err)
-
-				executor.setStreamHandler(streamHandler)
-				executor.setWorkingDirectory(sdkDir)
-
-				int exitValue = executor.execute(cmdLine)
-
 			}
 
-			project.properties["android.sdk.path"] = sdkDir.absolutePath
+			project.properties["android.ndk.path"] = sdkDir.absolutePath
 
-			log.info("Set android.sdk.path=${sdkDir.absolutePath}")
+			log.info("Set android.ndk.path=${sdkDir.absolutePath}")
 		}
 	}
 }
