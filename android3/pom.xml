@@ -15,6 +15,13 @@
 			<version>2.3.3</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.freejava.android</groupId>
+			<artifactId>hello</artifactId>
+			<version>1.0</version>
+            <classifier>armeabi</classifier>
+            <type>so</type>
+        </dependency>
 	</dependencies>
 
 	<build>
