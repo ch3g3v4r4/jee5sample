@@ -31,7 +31,7 @@
       <name>JavaSourceAttacher</name>
     </plugin>
     <plugin>
-      <name>WindowsTool</name>
+      <name>WindowsTools</name>
     </plugin>
     <plugin>
       <name>JavaExamplesSearch</name>
