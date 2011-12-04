@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse>
+  <workDir>/tmp</workDir>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
+  <profile>SDKProfile</profile>
+  <plugins>
+    <plugin>
+      <name>Groovy</name>
+    </plugin>
+    <plugin>
+      <name>AJDT</name>
+    </plugin>
+    <plugin>
+      <name>XML</name>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Subclipse</name>
+    </plugin>
+    <plugin>
+      <name>AnyEditTools</name>
+    </plugin>
+    <plugin>
+      <name>JDepend4Eclipse</name>
+    </plugin>
+    <plugin>
+      <name>JavaSourceAttacher</name>
+    </plugin>
+    <plugin>
+      <name>WindowsTool</name>
+    </plugin>
+    <plugin>
+      <name>JavaExamplesSearch</name>
+    </plugin>
+    <plugin>
+      <name>Zest</name>
+      <updateSite>http://download.eclipse.org/tools/gef/updates/releases/</updateSite>
+      <featureId>org.eclipse.zest.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>ClassDependencyViewer</name>
+    </plugin>
+  </plugins>
+
+</eclipse>
