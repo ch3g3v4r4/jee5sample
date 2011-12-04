@@ -167,7 +167,10 @@
       <name>JavaExamplesSearch</name>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
     </plugin>
-
+    <plugin>
+      <name>WindowsTools</name>
+      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.windowstools_1.0.0.jar</url>
+    </plugin>
     <plugin>
       <name>ClassDependencyViewer</name>
       <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.dependencyviewer_1.0.0.jar</url>
