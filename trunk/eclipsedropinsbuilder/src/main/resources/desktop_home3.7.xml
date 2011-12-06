@@ -11,9 +11,7 @@
       <name>AJDT</name>
     </plugin>
     <plugin>
-      <name>XML</name>
-      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
-      <featureId>org.eclipse.wst.xml_ui.feature.feature.group</featureId>
+      <name>Web</name>
     </plugin>
     <plugin>
       <name>Android</name>
