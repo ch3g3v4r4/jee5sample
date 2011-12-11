@@ -7,9 +7,9 @@
 import groovy.swing.SwingBuilder
 import java.awt.BorderLayout as BL
 import javax.swing.*
-import com.jgoodies.looks.plastic.PlasticLookAndFeel;
-import com.jgoodies.looks.plastic.PlasticXPLookAndFeel;
-import com.jgoodies.looks.windows.WindowsLookAndFeel;
+import com.jgoodies.looks.plastic.PlasticLookAndFeel
+import com.jgoodies.looks.plastic.PlasticXPLookAndFeel
+import com.jgoodies.looks.windows.WindowsLookAndFeel
 
 public class SwingUI {
 	public static void main(String[] args) {
