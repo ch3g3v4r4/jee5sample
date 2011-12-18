@@ -161,19 +161,19 @@
     </plugin>
     <plugin>
       <name>JavaSourceAttacher</name>
-      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javasourceattacher_1.0.0.jar</url>
+      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.javasourceattacher_1.0.0.jar</url>
     </plugin>
     <plugin>
       <name>JavaExamplesSearch</name>
-      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.javaexamplessearch_1.0.0.jar</url>
+      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.javaexamplessearch_1.0.0.jar</url>
     </plugin>
     <plugin>
       <name>WindowsTools</name>
-      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.windowstools_1.0.0.jar</url>
+      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.windowstools_1.0.0.jar</url>
     </plugin>
     <plugin>
       <name>ClassDependencyViewer</name>
-      <url>http://free-plugins.eclipselabs.org.codespot.com/files/org.freejava.dependencyviewer_1.0.0.jar</url>
+      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.dependencyviewer_1.0.0.jar</url>
     </plugin>
     <plugin>
       <name>TomcatPlugin</name>
