@@ -5,7 +5,13 @@
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
-      <name>Groovy</name>
+      <name>Groovy26</name>
+      <embeded>true</embeded>
+      <updateSite>http://dist.codehaus.org/groovy/distributions/greclipse/snapshot/e3.7/</updateSite>
+      <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
+      <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
     </plugin>
     <plugin>
       <name>AJDT</name>
