@@ -24,6 +24,9 @@
       <name>Subclipse</name>
     </plugin>
     <plugin>
+      <name>egit</name>
+    </plugin>
+    <plugin>
       <name>AnyEditTools</name>
     </plugin>
     <plugin>
