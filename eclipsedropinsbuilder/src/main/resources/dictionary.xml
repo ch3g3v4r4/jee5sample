@@ -5,7 +5,7 @@
     <plugin>
       <name>Groovy</name>
       <embeded>true</embeded>
-      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.5.2.xx-20110929-1800-e37.zip</url>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.6.0.xx-20111212-0900-e37-RELEASE.zip</url>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
@@ -114,6 +114,13 @@
       <featureId>org.tmatesoft.svnkit.feature.group</featureId>
     </plugin>
     <plugin>
+      <name>egit</name>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.egit.feature.group</featureId>
+      <featureId>org.eclipse.egit.mylyn.feature.group</featureId>
+      <featureId></featureId>
+    </plugin>
+    <plugin>
       <name>AnyEditTools</name>
       <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.0.201101292156.jar</url>
     </plugin>
@@ -206,7 +213,7 @@
     </plugin>
     <plugin>
       <name>CodePro</name>
-      <updateSite>http://dl.google.com/eclipse/inst/codepro/latest/3.6</updateSite>
+      <updateSite>http://dl.google.com/eclipse/inst/codepro/latest/3.7</updateSite>
       <featureId>com.instantiations.eclipse.coverage.codepro.feature.group</featureId>
       <featureId>com.instantiations.assist.eclipse.coverage.feature.group</featureId>
       <featureId>com.instantiations.assist.eclipse.ant.feature.group</featureId>
@@ -224,7 +231,7 @@
     </plugin>
     <plugin>
       <name>Spring</name>
-      <url>http://download.springsource.com/milestone/TOOLS/update/2.8.0.M1/e3.7/springsource-tool-suite-2.8.0.M1-e3.7-updatesite.zip</url>
+      <url>http://download.springsource.com/release/TOOLS/update/2.8.1.RELEASE/e3.7/springsource-tool-suite-2.8.1.RELEASE-e3.7.1-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
@@ -252,7 +259,7 @@
     </plugin>
     <plugin>
       <name>JIRA</name>
-      <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.6</updateSite>
+      <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.7</updateSite>
       <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
     </plugin>
 
