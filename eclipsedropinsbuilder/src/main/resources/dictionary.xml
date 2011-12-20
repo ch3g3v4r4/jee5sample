@@ -117,8 +117,6 @@
       <name>egit</name>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>org.eclipse.egit.feature.group</featureId>
-      <featureId>org.eclipse.egit.mylyn.feature.group</featureId>
-      <featureId>org.eclipse.mylyn.github.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
