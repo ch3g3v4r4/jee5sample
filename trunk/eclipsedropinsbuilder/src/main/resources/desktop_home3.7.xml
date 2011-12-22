@@ -5,13 +5,7 @@
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
-      <name>Groovy26</name>
-      <embeded>true</embeded>
-      <updateSite>http://dist.codehaus.org/groovy/distributions/greclipse/snapshot/e3.7/</updateSite>
-      <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
-      <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
-      <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
-      <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
+      <name>Groovy</name>
     </plugin>
     <plugin>
       <name>AJDT</name>
@@ -42,12 +36,14 @@
     </plugin>
     <plugin>
       <name>Zest</name>
-      <updateSite>http://download.eclipse.org/tools/gef/updates/releases/</updateSite>
-      <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
     <plugin>
       <name>ClassDependencyViewer</name>
     </plugin>
+    <plugin>
+      <name>MarketplaceClient</name>
+    </plugin>
+
   </plugins>
 
 </eclipse>
