@@ -26,6 +26,14 @@
       <featureId>org.eclipse.zest.feature.group</featureId>
     </plugin>
 
+    <!-- MarketplaceClient -->
+    <plugin>
+      <name>MarketplaceClient</name>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.epp.mpc.feature.group</featureId>
+    </plugin>
+
+
     <!-- desktop -->
     <plugin>
       <name>Desktop</name>
@@ -99,7 +107,7 @@
       <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
       <featureId>com.android.ide.eclipse.hierarchyviewer.feature.group</featureId>
       <featureId>com.android.ide.eclipse.traceview.feature.group</featureId>
-      <featureId>com.android.ide.eclipse.source.feature.feature.group</featureId>
+      <featureId>com.android.ide.eclipse.source.feature.group</featureId>
     </plugin>
 
 
