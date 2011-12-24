@@ -93,7 +93,7 @@
     </plugin>
     <plugin>
       <name>ZendPHPDebugger</name>
-      <url>http://downloads.zend.com/pdt/debugger/org.zend.php.debug_feature-I20081217.zip</url>
+      <updateSite>http://downloads.zend.com/pdt/</updateSite>
       <featureId>org.zend.php.debug_feature.feature.group</featureId>
     </plugin>
 
