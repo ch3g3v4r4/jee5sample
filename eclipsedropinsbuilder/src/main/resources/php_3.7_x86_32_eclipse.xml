@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7-201106131736/eclipse-SDK-3.7-win32.zip</url>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7.1-201109091335/eclipse-SDK-3.7.1-win32.zip</url>
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
@@ -27,6 +27,9 @@
     </plugin>
     <plugin>
       <name>StartExplorer</name>
+    </plugin>
+    <plugin>
+      <name>MarketplaceClient</name>
     </plugin>
   </plugins>
 </eclipse>
