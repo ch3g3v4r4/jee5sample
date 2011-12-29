@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7.1-201109091335/eclipse-SDK-3.7.1-win32-x86_64.zip</url>
-  <profile>SDKProfile</profile>
+  <url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/indigo/SR1/eclipse-jee-indigo-SR1-win32-x86_64.zip</url>
+  <profile>epp.package.jee</profile>
   <plugins>
-    <plugin>
-      <name>AJDT</name>
-    </plugin>
-    <plugin>
-      <name>Groovy</name>
-    </plugin>
-    <plugin>
-      <name>Web</name>
-    </plugin>
-    <plugin>
-      <name>Desktop</name>
-    </plugin>
-    <plugin>
-      <name>JSP</name>
-    </plugin>
-
     <plugin>
       <name>Subclipse</name>
     </plugin>
@@ -36,25 +20,7 @@
       <name>StartExplorer</name>
     </plugin>
     <plugin>
-      <name>JDepend4Eclipse</name>
-    </plugin>
-    <plugin>
-      <name>UCDetector</name>
-    </plugin>
-    <plugin>
       <name>FindBugs</name>
-    </plugin>
-    <plugin>
-      <name>Lint4J</name>
-    </plugin>
-    <plugin>
-      <name>Checkstyle</name>
-    </plugin>
-    <plugin>
-      <name>CheckstyleUnhandledExceptionCheck</name>
-    </plugin>
-    <plugin>
-      <name>Log4E</name>
     </plugin>
     <plugin>
       <name>JavaSourceAttacher</name>
@@ -63,19 +29,10 @@
       <name>JavaExamplesSearch</name>
     </plugin>
     <plugin>
-      <name>Zest</name>
-    </plugin>
-    <plugin>
-      <name>ClassDependencyViewer</name>
-    </plugin>
-    <plugin>
       <name>FileSync</name>
     </plugin>
     <plugin>
       <name>PropEdit</name>
-    </plugin>
-    <plugin>
-      <name>CodePro</name>
     </plugin>
     <plugin>
       <name>JSEclipse</name>
@@ -95,7 +52,9 @@
     <plugin>
       <name>Terminal</name>
     </plugin>
-
+    <plugin>
+      <name>MarketplaceClient</name>
+    </plugin>
   </plugins>
 
 </eclipse>
