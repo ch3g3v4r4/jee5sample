@@ -93,7 +93,8 @@
     </plugin>
     <plugin>
       <name>ZendPHPDebugger</name>
-      <updateSite>http://downloads.zend.com/pdt/</updateSite>
+      <!-- http://blog.gbinghan.com/2011/08/eclipse-zend-pdt-installation-error.html -->
+      <url>http://downloads.zend.com/pdt/</url>
       <featureId>org.zend.php.debug_feature.feature.group</featureId>
     </plugin>
 
