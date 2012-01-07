@@ -69,7 +69,9 @@ class EclipseDropInsBuilder {
                 // 1. create a snapshot
                 ant.copy(todir: snapshotDir) {fileset(dir: eclipseDir)}
                 // 2. install
-                if (plugin.url != null) {
+                if (plugin.url == 'http://downloads.zend.com/pdt/') {
+					installPHPFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
+				} else if (plugin.url != null) {
                     installFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
                 } else {
                     installFromUpdateSite(eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
@@ -233,4 +235,25 @@ class EclipseDropInsBuilder {
             }
         }
     }
+	void installPHPFromUrl(eclipseDir, workDir, ant, profile, url, featureIds) {
+
+		def downloadedFile = new File(workDir, "org.zend.php.debug_feature_5.3.18.v20110322.jar");
+		if (!downloadedFile.exists()) {
+			ant.get (src: "http://downloads.zend.com/pdt/features/org.zend.php.debug_feature_5.3.18.v20110322.jar",
+				dest: downloadedFile, usetimestamp: true, verbose: true)
+		}
+        ant.unzip (src: downloadedFile, dest: new File(eclipseDir, "features/" + downloadedFile.name))
+		downloadedFile = new File(workDir, "org.zend.php.debug.debugger.win32.x86_5.3.18.v20110322.jar");
+		if (!downloadedFile.exists()) {
+			ant.get (src: "http://downloads.zend.com/pdt/plugins/org.zend.php.debug.debugger.win32.x86_5.3.18.v20110322.jar",
+				dest: downloadedFile, usetimestamp: true, verbose: true)
+		}
+        ant.unzip (src: downloadedFile, dest: new File(eclipseDir, "plugins/" + downloadedFile.name))
+		downloadedFile = new File(workDir, "org.zend.php.debug.debugger_5.3.18.v20110322.jar");
+		if (!downloadedFile.exists()) {
+			ant.get (src: "http://downloads.zend.com/pdt/plugins/org.zend.php.debug.debugger_5.3.18.v20110322.jar",
+				dest: downloadedFile, usetimestamp: true, verbose: true)
+		}
+        ant.unzip (src: downloadedFile, dest: new File(eclipseDir, "plugins/" + downloadedFile.name))
+	}
 }
