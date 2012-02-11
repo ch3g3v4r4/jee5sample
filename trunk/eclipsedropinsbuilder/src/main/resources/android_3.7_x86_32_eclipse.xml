@@ -8,6 +8,9 @@
       <name>Android</name>
     </plugin>
     <plugin>
+      <name>ARMDevStudio5</name>
+    </plugin>
+    <plugin>
       <name>Subclipse</name>
     </plugin>
     <plugin>
