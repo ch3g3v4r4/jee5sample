@@ -111,6 +111,13 @@
       <featureId>com.android.ide.eclipse.source.feature.group</featureId>
     </plugin>
 
+    <!-- ARM Development Studio 5 Community Edition for Eclipse version 3.7 (Indigo) 32-bit-->
+    <plugin>
+      <name>ARMDevStudio5</name>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <updateSite>http://tools.arm.com/eclipse/</updateSite>
+      <featureId>com.arm.ds.community.feature.feature.group</featureId>
+    </plugin>
 
     <!-- tools -->
     <plugin>
