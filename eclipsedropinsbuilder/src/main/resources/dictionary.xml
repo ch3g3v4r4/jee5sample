@@ -182,7 +182,7 @@
     </plugin>
     <plugin>
       <name>JavaSourceAttacher</name>
-      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.javasourceattacher_1.0.0.jar</url>
+      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</url>
     </plugin>
     <plugin>
       <name>JavaExamplesSearch</name>
