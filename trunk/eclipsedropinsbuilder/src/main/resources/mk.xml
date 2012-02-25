@@ -5,6 +5,9 @@
   <profile>epp.package.jee</profile>
   <plugins>
     <plugin>
+      <name>Groovy</name>
+    </plugin>
+    <plugin>
       <name>Subclipse</name>
     </plugin>
     <plugin>
@@ -18,6 +21,12 @@
     </plugin>
     <plugin>
       <name>StartExplorer</name>
+    </plugin>
+    <plugin>
+      <name>Checkstyle</name>
+    </plugin>
+    <plugin>
+      <name>CheckstyleUnhandledExceptionCheck</name>
     </plugin>
     <plugin>
       <name>FindBugs</name>
