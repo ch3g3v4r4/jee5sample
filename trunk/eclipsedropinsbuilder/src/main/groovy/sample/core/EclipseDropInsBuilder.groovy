@@ -34,8 +34,13 @@ class EclipseDropInsBuilder {
         def zipFileNameNoExt = zipFileName.substring(0, zipFileName.lastIndexOf('.'))
         def platformEclipseDir = new File(workDir, zipFileNameNoExt + "/eclipse")
         if (!platformEclipseDir.exists()) {
-             ant.get (src: platformUrl, dest: workDir, usetimestamp: true, verbose: true)
-             ant.unzip (dest: new File(workDir, zipFileNameNoExt)) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
+             ant.get (src: platformUrl, dest: workDir, usetimestamp: false, skipexisting: true, verbose: true)
+			 try {
+				 ant.unzip (dest: new File(workDir, zipFileNameNoExt)) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
+			 } catch (Exception e) {
+			 	ant.delete(file: new File(workDir, platformUrl.substring(platformUrl.lastIndexOf('/') + 1)))
+				 throw e;
+			 }
         }
 
         def eclipseDir = new File(workDir, "eclipse")
