@@ -118,7 +118,7 @@
       <updateSite>http://tools.arm.com/eclipse/</updateSite>
       <featureId>com.arm.ds.community.feature.feature.group</featureId>
     </plugin>
-
+    
     <!-- tools -->
     <plugin>
       <name>Subclipse</name>
@@ -144,7 +144,7 @@
     </plugin>
     <plugin>
       <name>StartExplorer</name>
-      <updateSite>https://startexplorer.svn.sourceforge.net/svnroot/startexplorer/update-site/trunk/</updateSite>
+      <updateSite>http://startexplorer.sourceforge.net/update/</updateSite>
       <featureId>de.bastiankrol.startexplorer.feature.feature.group</featureId>
     </plugin>
     <!-- java tools -->
@@ -182,19 +182,23 @@
     </plugin>
     <plugin>
       <name>JavaSourceAttacher</name>
-      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</url>
+      <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
+      <featureId>org.freejava.javasourceattacher.feature</featureId>
     </plugin>
     <plugin>
       <name>JavaExamplesSearch</name>
-      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.javaexamplessearch_1.0.0.jar</url>
+      <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
+      <featureId>org.freejava.javaexamplessearch.feature</featureId>
     </plugin>
     <plugin>
       <name>WindowsTools</name>
-      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.windowstools_1.0.0.jar</url>
+      <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
+      <featureId>org.freejava.windowstools.feature</featureId>
     </plugin>
     <plugin>
       <name>ClassDependencyViewer</name>
-      <url>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/plugins/org.freejava.dependencyviewer_1.0.0.jar</url>
+      <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
+      <featureId>org.freejava.dependencyviewer.feature</featureId>
     </plugin>
     <plugin>
       <name>TomcatPlugin</name>
