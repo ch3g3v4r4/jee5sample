@@ -118,7 +118,7 @@
       <updateSite>http://tools.arm.com/eclipse/</updateSite>
       <featureId>com.arm.ds.community.feature.feature.group</featureId>
     </plugin>
-    
+
     <!-- tools -->
     <plugin>
       <name>Subclipse</name>
@@ -150,7 +150,7 @@
     <!-- java tools -->
     <plugin>
       <name>JDepend4Eclipse</name>
-      <url>http://jdepend4eclipse.eclipselabs.org.codespot.com/files/de.loskutov.eclipse.jdepend_1.2.2.201005301956.jar</url>
+      <url>http://jdepend4eclipse.eclipselabs.org.codespot.com/files/de.loskutov.eclipse.jdepend_1.2.3.201108071203.jar</url>
     </plugin>
     <plugin>
       <name>UCDetector</name>
@@ -183,22 +183,22 @@
     <plugin>
       <name>JavaSourceAttacher</name>
       <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
-      <featureId>org.freejava.javasourceattacher.feature</featureId>
+      <featureId>org.freejava.javasourceattacher.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <name>JavaExamplesSearch</name>
       <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
-      <featureId>org.freejava.javaexamplessearch.feature</featureId>
+      <featureId>org.freejava.javaexamplessearch.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <name>WindowsTools</name>
       <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
-      <featureId>org.freejava.windowstools.feature</featureId>
+      <featureId>org.freejava.windowstools.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <name>ClassDependencyViewer</name>
       <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
-      <featureId>org.freejava.dependencyviewer.feature</featureId>
+      <featureId>org.freejava.dependencyviewer.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <name>TomcatPlugin</name>
