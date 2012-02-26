@@ -38,6 +38,12 @@
       <name>JavaExamplesSearch</name>
     </plugin>
     <plugin>
+      <name>WindowsTools</name>
+    </plugin>
+    <plugin>
+      <name>ClassDependencyViewer</name>
+    </plugin>
+    <plugin>
       <name>FileSync</name>
     </plugin>
     <plugin>
