@@ -41,6 +41,9 @@
       <name>WindowsTools</name>
     </plugin>
     <plugin>
+      <name>Zest</name>
+    </plugin>
+    <plugin>
       <name>ClassDependencyViewer</name>
     </plugin>
     <plugin>
