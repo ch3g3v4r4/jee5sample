@@ -7,7 +7,7 @@
 
     <!-- PhoneGap -->
 	<script type="text/javascript" charset="utf-8" src="json2.js"></script>
-	<script type="text/javascript" src="phonegap.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
     <!-- JQuery Mobile -->
 	<link rel="stylesheet" href="jquery.mobile-1.0.1.min.css" />
@@ -18,12 +18,17 @@
 
 <body>
 
-<h1>PhoneGap and JQuery Mobile on My Devices</h1>
+     <div data-role="page" id="home">
+          .....home
+     </div>
 
-<form>
-  Search: <input type="search">
-  <input type="submit" value="Find It" onclick="navigator.notification.beep(2);navigator.notification.vibrate(2000);navigator.notification.alert('You are the winner!', function(){}, 'Game Over', 'Done');">
-</form>
+     <div data-role="page" id="search">
+          .....search
+     </div>
+
+     <div data-role="page" id="recent">
+          .....recent
+     </div>
 
 </body>
 </html>
