@@ -1,8 +1,16 @@
 <html>
 <head>
 <title>My First Application</title>
+<link rel="stylesheet" href="master.css" />
 </head>
 <body>
+
+<form>
+Search: <input type="text">
+<input type="search" value="Find It">
+</form>
+
+<script type="text/javascript" src="phonegap.js"></script>
 
 <div id="example"></div>
 
@@ -16,7 +24,15 @@ txt+= "<p>Platform: " + navigator.platform + "</p>";
 txt+= "<p>User-agent header: " + navigator.userAgent + "</p>";
 
 document.getElementById("example").innerHTML=txt;
+
+navigator.notification.alert(
+    'You are the winner!',  // message
+    function(){},         // callback
+    'Game Over',            // title
+    'Done'                  // buttonName
+);
 </script>
+
 
 </body>
 </html>
