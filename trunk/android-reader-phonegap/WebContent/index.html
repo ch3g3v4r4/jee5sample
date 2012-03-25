@@ -8,7 +8,7 @@
 
 <form>
   Search: <input type="search">
-  <input type="submit" value="Find It" onclick="navigator.notification.alert('You are the winner!', function(){}, 'Game Over', 'Done');">
+  <input type="submit" value="Find It" onclick="navigator.notification.beep(2);navigator.notification.vibrate(2000);navigator.notification.alert('You are the winner!', function(){}, 'Game Over', 'Done');">
 </form>
 
 </body>
