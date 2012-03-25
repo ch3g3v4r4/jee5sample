@@ -1,11 +1,17 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>My First Application</title>
-<link rel="stylesheet" href="master.css" />
-<script type="text/javascript" src="phonegap.js"></script>
-</head>
-<body>
+	<head>
+	<title>Page Title</title>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="phonegap.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+</head>
+
+<body>
+jquery mobile+phonegap:
 <form>
   Search: <input type="search">
   <input type="submit" value="Find It" onclick="navigator.notification.beep(2);navigator.notification.vibrate(2000);navigator.notification.alert('You are the winner!', function(){}, 'Game Over', 'Done');">
