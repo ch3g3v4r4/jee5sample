@@ -19,11 +19,21 @@
 <body>
 
      <div data-role="page" id="home">
-          .....home
+		  <div data-role="header"><!-- This div with data-role is the header, shown in the black -->
+		    <h1>AlternativeTo Home</h1>
+		  </div>
+		  <div data-role="content"><!-- This div is the body of the page -->
+		    <p>Find Alternatives To Your favourite Softwares </p>
+		    <p><a href="#search" data-role="button">Search Alternatives</a></p><!-- navigation button's href points to other page -->
+		    <p><a href="#recent" data-role="button">Recent Alternatives</a></p>
+		  </div>
      </div>
 
      <div data-role="page" id="search">
-          .....search
+          <div data-role="content">
+               <ul data-role="listview" id="list"><!-- Special Widget which is List View to show data in a list -->
+              </ul>
+         </div>
      </div>
 
      <div data-role="page" id="recent">
