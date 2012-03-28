@@ -73,6 +73,9 @@
     <plugin>
       <name>MarketplaceClient</name>
     </plugin>
+    <plugin>
+      <name>EclipseCodeRecommenders</name>
+    </plugin>
   </plugins>
 
 </eclipse>
