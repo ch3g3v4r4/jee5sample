@@ -18,6 +18,7 @@ import sample.core.Eclipse;
 import sample.core.EclipseDropInsBuilder;
 import sample.core.Plugin;
 
+import com.google.common.io.Files;
 import com.thoughtworks.xstream.XStream;
 
 public class Main {
@@ -64,6 +65,7 @@ public class Main {
                 EclipseDropInsBuilder builder = new EclipseDropInsBuilder();
                 merge(profile, dictionary);
                 builder.build(profile);
+                xstream.toXML(profile, Files.newOutputStreamSupplier(new File(new File(profile.getWorkDir()), "eclipse/builConfig.xml")).getOutput());
             } catch (ExecuteException ex) {
                 LOGGER.debug("exception", ex);
                 exitValue = ex.getExitValue();

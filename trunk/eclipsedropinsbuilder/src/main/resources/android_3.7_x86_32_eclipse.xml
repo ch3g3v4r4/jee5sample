@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
-  <url>http://mirror-fpt-telecom.fpt.net/eclipse/eclipse/downloads/drops/R-3.7.1-201109091335/eclipse-SDK-3.7.1-win32.zip</url>
-  <profile>SDKProfile</profile>
+  <url>http://download.eclipse.org/technology/epp/downloads/release/indigo/SR2/eclipse-java-indigo-SR2-win32.zip</url>
+  <profile>epp.package.java</profile>
   <plugins>
+    <plugin>
+      <name>Groovy</name>
+    </plugin>
     <plugin>
       <name>Android</name>
     </plugin>
@@ -12,6 +15,9 @@
     </plugin>
     <plugin>
       <name>Subclipse</name>
+    </plugin>
+    <plugin>
+      <name>egit</name>
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
@@ -30,6 +36,9 @@
     </plugin>
     <plugin>
       <name>JavaExamplesSearch</name>
+    </plugin>
+    <plugin>
+      <name>WindowsTools</name>
     </plugin>
     <plugin>
       <name>Zest</name>
