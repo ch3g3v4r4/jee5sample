@@ -300,7 +300,7 @@
 
     <plugin>
       <name>EclipseCodeRecommenders</name>
-      <updateSite>http://download.eclipse.org/recommenders/updates/stable/e37/</updateSite>
+      <updateSite>http://download.eclipse.org/recommenders/updates/dev/e37</updateSite>
       <featureId>org.eclipse.recommenders.feature.completion.rcp.intellig.e37.feature.group</featureId>
     </plugin>
 
