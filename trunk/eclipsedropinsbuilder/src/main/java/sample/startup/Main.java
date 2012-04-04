@@ -1,10 +1,12 @@
 package sample.startup;
 
 import java.io.File;
+import java.io.OutputStream;
 import java.util.logging.LogManager;
 import java.util.zip.ZipException;
 
 import org.apache.commons.exec.ExecuteException;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,7 +67,10 @@ public class Main {
                 EclipseDropInsBuilder builder = new EclipseDropInsBuilder();
                 merge(profile, dictionary);
                 builder.build(profile);
-                xstream.toXML(profile, Files.newOutputStreamSupplier(new File(new File(profile.getWorkDir()), "eclipse/builConfig.xml")).getOutput());
+                OutputStream os = Files.newOutputStreamSupplier(new File(new File(profile.getWorkDir()),
+                        "eclipse/builConfig.xml")).getOutput();
+                xstream.toXML(profile, os);
+                IOUtils.closeQuietly(os);
             } catch (ExecuteException ex) {
                 LOGGER.debug("exception", ex);
                 exitValue = ex.getExitValue();
