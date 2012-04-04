@@ -68,9 +68,6 @@
       <name>JIRA</name>
     </plugin>
     <plugin>
-      <name>Terminal</name>
-    </plugin>
-    <plugin>
       <name>EclipseCodeRecommenders</name>
     </plugin>
   </plugins>
