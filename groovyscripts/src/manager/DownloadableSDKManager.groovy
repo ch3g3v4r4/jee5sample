@@ -12,7 +12,7 @@ class DownloadableSDKManager {
 
 			def tempDir = System.getProperty("java.io.tmpdir")
 			def fileName = downloadSDKUrl.toString().substring(downloadSDKUrl.toString().lastIndexOf('/') + 1)
-			ant.get(src:downloadSDKUrl, dest: new File(tempDir, fileName), verbose:"yes", usetimestamp:"true")
+			ant.get(src:downloadSDKUrl, dest: new File(tempDir, fileName), verbose:"yes", skipexisting:"true")
 
 			ant.mkdir(dir: sdkDir)
 			byte[] bytes = new File(tempDir, fileName).bytes
