@@ -8,7 +8,7 @@ import java.net.URL;
 class DownloadableSDKManager {
 
 	void install(AntBuilder ant, URL downloadSDKUrl, File sdkDir) {
-		if (!sdkDir.exists()) {
+		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
 
 			def tempDir = System.getProperty("java.io.tmpdir")
 			def fileName = downloadSDKUrl.toString().substring(downloadSDKUrl.toString().lastIndexOf('/') + 1)
