@@ -33,7 +33,7 @@ class Downloader {
 			if (sdkDir.listFiles().length == 1 && sdkDir.listFiles()[0].isDirectory()) {
 				File fromDir = sdkDir.listFiles()[0]
 				ant.move(todir: sdkDir) {
-					fileset(dir:fromDir)
+					fileset(dir:fromDir, defaultexcludes: 'no')
 				}
 			}
 		}
