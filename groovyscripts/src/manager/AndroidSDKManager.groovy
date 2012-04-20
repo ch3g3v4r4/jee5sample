@@ -10,7 +10,32 @@ class AndroidSDKManager {
 	Downloader downloader = new Downloader()
 
 	void install() {
+		// Install SDK
 		downloader.install(ant, downloadSDKUrl, sdkDir)
+
+		// Update components
+		File toolsDir = new File(sdkDir, "tools")
+		if (System.properties['os.name'].toLowerCase().contains('windows')) {
+			ant.exec(dir: toolsDir, executable: "cmd.exe") {
+				arg(value: "/c")
+				arg(value: "android.bat")
+				arg(value: "update")
+				arg(value: "sdk")
+				arg(value: "--no-ui")
+				arg(value: "--filter")
+				arg(value: filter)
+			}
+		} else {
+			ant.exec(dir: toolsDir, executable: "/bin/sh") {
+				arg(value: "-c")
+				arg(value: "android.sh")
+				arg(value: "update")
+				arg(value: "sdk")
+				arg(value: "--no-ui")
+				arg(value: "--filter")
+				arg(value: filter)
+			}
+		}
 	}
 
 	public static void main(String[] args) {
