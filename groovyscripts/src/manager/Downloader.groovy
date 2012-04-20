@@ -5,7 +5,7 @@ import groovy.util.AntBuilder;
 import java.io.File;
 import java.net.URL;
 
-class DownloadableSDKManager {
+class Downloader {
 
 	void install(AntBuilder ant, URL downloadSDKUrl, File sdkDir) {
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
