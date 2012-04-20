@@ -28,7 +28,7 @@ class AndroidSDKManager {
 		} else {
 			ant.exec(dir: toolsDir, executable: "/bin/sh") {
 				arg(value: "-c")
-				arg(value: "android.sh")
+				arg(value: "android")
 				arg(value: "update")
 				arg(value: "sdk")
 				arg(value: "--no-ui")
