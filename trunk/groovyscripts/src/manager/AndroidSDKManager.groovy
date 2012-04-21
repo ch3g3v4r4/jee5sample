@@ -30,24 +30,30 @@ class AndroidSDKManager {
 		// Create filter
 		String filter = this.optionalFilter
 		if (filter == null || filter.equals('')) {
-			ant.echo(message: 'Will build Android sdk component filter.')
+			ant.echo(message: 'Will build Android SDK component filter.')
+
+			// execute command android list sdk to get list of components
 			String cmd0 = androidCmd + ' list sdk'
 			ant.echo(message: 'Executing ' + cmd0)
 			Process p0 = cmd0.execute(null, toolsDir)
-			Thread.start{
-				def reader = new BufferedReader(new InputStreamReader(p0.in))
-				String line
-				while ((line = reader.readLine()) != null) {
-					ant.echo(message: line)
-					if (line.contains('Android SDK Tools') || line.contains('Android SDK Platform-tools') ||
-						line.contains('SDK Platform Android') || line.contains('ARM EABI')) {
-						if (!filter.equals('')) filter+= ','
-						filter += line.split("\\-")[0].trim()
-					}
+			def out = new StringBuilder()
+			def err = new StringBuilder()
+			p0.waitForProcessOutput(out, err)
+			ant.echo(message: out.toString())
+
+			// parse output to find necessary numbers
+			ant.echo(message: 'Parsing output.')
+			def reader = new BufferedReader(new StringReader(out.toString()))
+			String line
+			while ((line = reader.readLine()) != null) {
+				ant.echo(message: line)
+				if (line.contains('Android SDK Tools') || line.contains('Android SDK Platform-tools') ||
+					line.contains('SDK Platform Android') || line.contains('ARM EABI')) {
+					if (!filter.equals('')) filter+= ','
+					filter += line.split("\\-")[0].trim()
 				}
-				ant.echo(message: 'DONE reading command output.')
 			}
-			p0.waitFor()
+			ant.echo(message: 'Selected filter=' + filter)
 		}
 
 		// Download components
