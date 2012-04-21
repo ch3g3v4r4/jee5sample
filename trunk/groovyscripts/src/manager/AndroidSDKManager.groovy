@@ -10,11 +10,12 @@ class AndroidSDKManager {
 	Downloader downloader = new Downloader()
 
 	void install() {
-		// Install SDK
-		downloader.install(ant, downloadSDKUrl, sdkDir)
-
-		// Download more components
-		downloadAndroidSDKComponents()
+		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
+			// Install SDK
+			downloader.install(ant, downloadSDKUrl, sdkDir)
+			// Download more components
+			downloadAndroidSDKComponents()
+		}
 	}
 
 	public void downloadAndroidSDKComponents() {
