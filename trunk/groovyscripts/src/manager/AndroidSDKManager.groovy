@@ -64,7 +64,7 @@ class AndroidSDKManager {
 				if (line.contains('Android SDK Tools') ||
 					line.contains('Android SDK Platform-tools') ||
 					line.contains('SDK Platform Android') && (line.contains(maxAPI) || line.contains(compatAPI)) ||
-					line.contains('ARM EABI') && (line.contains(maxAPI) || line.contains(compatAPI)) {
+					line.contains('ARM EABI') && (line.contains(maxAPI) || line.contains(compatAPI))) {
 					if (filter != null && !filter.equals('')) filter += ',' else filter = ''
 					filter += line.split("\\-")[0].trim()
 				}
