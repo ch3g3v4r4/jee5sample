@@ -4,7 +4,7 @@ class AndroidSDKManager {
 
 	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r18-windows.zip')
 	File sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
-	String filter = 'system-image,platform-tool,android-10'
+	String optionalFilter
 
 	AntBuilder ant = new AntBuilder()
 	Downloader downloader = new Downloader()
@@ -28,24 +28,27 @@ class AndroidSDKManager {
 		}
 
 		// Create filter
-		String filter = ''
-		String cmd0 = androidCmd + ' list sdk'
-		ant.echo(message: 'Executing ' + cmd0)
-		Process p0 = cmd0.execute(null, toolsDir)
-		Thread.start{
-			def reader = new BufferedReader(new InputStreamReader(p0.in))
-			String line
-			while ((line = reader.readLine()) != null) {
-				ant.echo(message: line)
-				if (line.contains('Android SDK Tools') || line.contains('Android SDK Platform-tools') ||
-					line.contains('SDK Platform Android') || line.contains('ARM EABI')) {
-					if (!filter.equals('')) filter+= ','
-					filter += line.split("\\-")[0].trim()
+		String filter = this.optionalFilter
+		if (filter == null || filter.equals('')) {
+			ant.echo(message: 'Will build Android sdk component filter.')
+			String cmd0 = androidCmd + ' list sdk'
+			ant.echo(message: 'Executing ' + cmd0)
+			Process p0 = cmd0.execute(null, toolsDir)
+			Thread.start{
+				def reader = new BufferedReader(new InputStreamReader(p0.in))
+				String line
+				while ((line = reader.readLine()) != null) {
+					ant.echo(message: line)
+					if (line.contains('Android SDK Tools') || line.contains('Android SDK Platform-tools') ||
+						line.contains('SDK Platform Android') || line.contains('ARM EABI')) {
+						if (!filter.equals('')) filter+= ','
+						filter += line.split("\\-")[0].trim()
+					}
 				}
+				ant.echo(message: 'DONE reading command output.')
 			}
-			ant.echo(message: 'DONE reading command output.')
+			p0.waitFor()
 		}
-		p0.waitFor()
 
 		// Download components
 		String cmd1 = androidCmd + ' update sdk --no-ui --filter ' + filter
