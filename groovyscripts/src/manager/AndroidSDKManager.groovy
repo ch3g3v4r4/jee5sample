@@ -11,8 +11,9 @@ class AndroidSDKManager {
 
 	AntBuilder ant = new AntBuilder()
 	Downloader downloader = new Downloader()
+	PhoneGapSDKManager phonegap = new PhoneGapSDKManager()
 
-	void install() {
+	void installSDK() {
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
 			// Install SDK
 			downloader.install(ant, downloadSDKUrl, sdkDir)
@@ -96,8 +97,44 @@ class AndroidSDKManager {
 		p1.waitFor()
 	}
 
+	public createProject(String projectName, String targetID, File path, String packageName, String activityName) {
+		installSDK()
+
+		File toolsDir = new File(sdkDir, "tools")
+		String androidCmd = 'cmd.exe /c android.bat'
+		String adbCmd = new File(sdkDir, "platform-tools/adb.exe").absolutePath
+		if (!System.properties['os.name'].toLowerCase().contains('windows')) {
+			androidCmd = '/bin/sh -c android'
+			adbCmd = new File(sdkDir, "platform-tools/adb").absolutePath
+		}
+
+		// Create Android project
+		String cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + path.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
+		ant.echo(message: 'Executing ' + cmd)
+		Process p = cmd.execute(null, toolsDir)
+		def out = new StringBuilder()
+		def err = new StringBuilder()
+		p.waitForProcessOutput(out, err)
+		ant.echo(message: err.toString())
+		ant.echo(message: out.toString())
+
+		// Configure Android project with PhoneGap
+		if (!phonegap.sdkDir.exists() || phonegap.sdkDir.isDirectory() && phonegap.sdkDir.listFiles().length == 0) {
+			phonegap.install()
+		}
+		ant.copy(todir: new File(path.absolutePath, "libs")){
+			fileset(dir: new File(phonegap.sdkDir, 'lib/android'), includes: "*.jar")
+		}
+		ant.copy(todir: new File(path.absolutePath, "assets/www")){
+			fileset(dir: new File(phonegap.sdkDir, 'lib/android'), includes: "*.js")
+		}
+
+
+	}
+
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
-		main.install()
+		//main.installSDK()
+		main.createProject('myapp', 'android-10', new File("D:\\myapp"), 'com.freejava.myapp', 'MyActivity')
 	}
 }
