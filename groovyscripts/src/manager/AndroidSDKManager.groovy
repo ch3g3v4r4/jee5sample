@@ -46,10 +46,9 @@ class AndroidSDKManager {
 			def reader = new BufferedReader(new StringReader(out.toString()))
 			String line
 			while ((line = reader.readLine()) != null) {
-				ant.echo(message: line)
 				if (line.contains('Android SDK Tools') || line.contains('Android SDK Platform-tools') ||
 					line.contains('SDK Platform Android') || line.contains('ARM EABI')) {
-					if (!filter.equals('')) filter+= ','
+					if (filter != null && !filter.equals('')) filter += ',' else filter = ''
 					filter += line.split("\\-")[0].trim()
 				}
 			}
