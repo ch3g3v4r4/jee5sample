@@ -1,5 +1,8 @@
 package manager
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 class AndroidSDKManager {
 
 	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r18-windows.zip')
@@ -43,11 +46,25 @@ class AndroidSDKManager {
 
 			// parse output to find necessary numbers
 			ant.echo(message: 'Parsing output.')
-			def reader = new BufferedReader(new StringReader(out.toString()))
+
+			def maxAPI = '0'
+			Reader reader = new BufferedReader(new StringReader(out.toString()))
 			String line
 			while ((line = reader.readLine()) != null) {
-				if (line.contains('Android SDK Tools') || line.contains('Android SDK Platform-tools') ||
-					line.contains('SDK Platform Android') || line.contains('ARM EABI')) {
+				Matcher matcher = Pattern.compile('Android .+ API ([0-9]+)').matcher(line)
+				if (matcher.find()) {
+					if (Integer.parseInt(matcher.group(1)) > Integer.parseInt(maxAPI)) maxAPI = matcher.group(1)
+				}
+			}
+
+			def compatAPI = '10' // Android 2.3.3, API 10
+
+			reader = new BufferedReader(new StringReader(out.toString()))
+			while ((line = reader.readLine()) != null) {
+				if (line.contains('Android SDK Tools') ||
+					line.contains('Android SDK Platform-tools') ||
+					line.contains('SDK Platform Android') && (line.contains(maxAPI) || line.contains(compatAPI)) ||
+					line.contains('ARM EABI') && (line.contains(maxAPI) || line.contains(compatAPI)) {
 					if (filter != null && !filter.equals('')) filter += ',' else filter = ''
 					filter += line.split("\\-")[0].trim()
 				}
