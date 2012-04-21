@@ -56,8 +56,8 @@ class AndroidSDKManager {
 					if (Integer.parseInt(matcher.group(1)) > Integer.parseInt(maxAPI)) maxAPI = matcher.group(1)
 				}
 			}
-
-			def compatAPI = '10' // Android 2.3.3, API 10
+			maxAPI = 'API ' + maxAPI
+			def compatAPI = 'API 10' // Android 2.3.3, API 10
 
 			reader = new BufferedReader(new StringReader(out.toString()))
 			while ((line = reader.readLine()) != null) {
