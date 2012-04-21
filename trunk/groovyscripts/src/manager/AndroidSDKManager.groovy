@@ -42,7 +42,7 @@ class AndroidSDKManager {
 					filter += line.split("\\-")[0].trim()
 				}
 			}
-			ant.echo(message: 'DONE reading output ')
+			ant.echo(message: 'DONE reading command output.')
 		}
 		p0.waitFor()
 
