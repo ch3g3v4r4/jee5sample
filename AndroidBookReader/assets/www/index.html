@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Online Book Reader Application</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- PhoneGap -->
+	<script type="text/javascript" charset="utf-8" src="json2.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+
+    <!-- JQuery Mobile -->
+	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
+	<script src="jquery/jquery-1.7.2.min.js"></script>
+	<script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script>
+
+    <!-- Configuration to allow cross domain requests-->
+	<script>
+	    $(document).bind( "mobileinit", function(){
+	        $('#home').css('background-color', 'red');
+	        $.support.cors = true;
+	        $.mobile.allowCrossDomainPages = true;
+	    });
+	</script>
+</head>
+
+<body>
+     <div data-role="page" id="home">
+		  <div data-role="header">
+		    <h1>Online Book Reader</h1>
+		  </div>
+		  <div data-role="content">
+		    <ul data-role="listview" data-inset="true" data-filter="true">
+				<li><a href="#">Acura</a></li>
+				<li><a href="#">Audi</a></li>
+				<li><a href="#">BMW</a></li>
+				<li><a href="#">Cadillac</a></li>
+				<li><a href="#">Ferrari</a></li>
+			</ul>
+		  </div>
+		  <div data-role="footer">
+		    <h1>Copyright@2012 SmartApps</h1>
+		  </div>
+     </div>
+</body>
+</html>
