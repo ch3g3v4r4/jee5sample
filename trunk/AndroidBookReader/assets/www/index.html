@@ -16,10 +16,19 @@
 
     <!-- Configuration to allow cross domain requests-->
 	<script>
-	    $(document).bind( "mobileinit", function(){
-	        $('#home').css('background-color', 'red');
+	    $(function(){
 	        $.support.cors = true;
+
 	        $.mobile.allowCrossDomainPages = true;
+
+	        $.mobile.ajaxEnabled = false;
+	        $.mobile.pushStateEnabled = false;
+	        $.mobile.hashListeningEnabled = false;
+	        $.mobile.buttonMarkup.hoverDelay = 0;
+	        $.mobile.defaultDialogTransition = 'none';
+	        $.mobile.defaultPageTransition = 'none';
+
+
 	    });
 	</script>
 </head>
@@ -37,6 +46,7 @@
 				<li><a href="#">Cadillac</a></li>
 				<li><a href="#">Ferrari</a></li>
 			</ul>
+			<input type="button" name="Button" value="Click Me!">
 		  </div>
 		  <div data-role="footer">
 		    <h1>Copyright@2012 SmartApps</h1>
