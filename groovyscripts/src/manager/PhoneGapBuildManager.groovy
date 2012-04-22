@@ -122,6 +122,6 @@ class PhoneGapBuildManager {
 
 	public static void main(String[] args) {
 		PhoneGapBuildManager main = new PhoneGapBuildManager()
-		main.createAndroidBasedPhoneGapProject('myapp', 'android-10', new File("D:\\myapp"), 'com.freejava.myapp', 'MyActivity', null)
+		main.createAndroidBasedPhoneGapProject('BookReader', 'android-10', new File("d:\\projects\\jee5sample\\BookReader"), 'com.freejava.bookreader', 'BookReader', null)
 	}
 }
