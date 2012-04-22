@@ -92,6 +92,16 @@ class PhoneGapBuildManager {
 				new File(path, "assets/www/index.html").text =
 					'<!DOCTYPE html>\n<html>\n<head>\n<title>PhoneGap</title>\n<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>\n</head>\n<body>\n<h1>Hello World</h1>\n</body>\n</html>'
 			}
+
+			// create install.bat script
+			String adbCmd = new File(androidSDK.sdkDir, "platform-tools/adb.exe").absolutePath
+			if (!System.properties['os.name'].toLowerCase().contains('windows')) {
+				adbCmd = new File(androidSDK.sdkDir, "platform-tools/adb").absolutePath
+			}
+			new File(path, "installDebug.bat").text =
+				'call ant debug\r\n' +
+				'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
+				'"' + adbCmd + '"  kill-server'
 		} else {
 			ant.echo(message: 'Will not create new project. Found existing project at specified path :' + path.absolutePath)
 		}
@@ -105,7 +115,7 @@ class PhoneGapBuildManager {
 		int nextLineAfterManifestEnd = manifestEnd
 		while (text.charAt(nextLineAfterManifestEnd) == '\r' || text.charAt(nextLineAfterManifestEnd) == '\n') nextLineAfterManifestEnd++
 		int lastPermissionStart = text.lastIndexOf('<uses-permission')
-		int lastPermissionEnd = text.indexOf('/>', lastPermissionStart)
+		int lastPermissionEnd = text.indexOf('/>', lastPermissionStart) + 1
 		String result = text.substring(nextLineAfterManifestEnd, lastPermissionEnd + 1)
 		return result
 	}
