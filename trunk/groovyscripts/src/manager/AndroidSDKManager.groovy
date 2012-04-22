@@ -11,7 +11,6 @@ class AndroidSDKManager {
 
 	AntBuilder ant = new AntBuilder()
 	Downloader downloader = new Downloader()
-	PhoneGapSDKManager phonegap = new PhoneGapSDKManager()
 
 	void installSDK() {
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
@@ -118,16 +117,6 @@ class AndroidSDKManager {
 		ant.echo(message: err.toString())
 		ant.echo(message: out.toString())
 
-		// Configure Android project with PhoneGap
-		if (!phonegap.sdkDir.exists() || phonegap.sdkDir.isDirectory() && phonegap.sdkDir.listFiles().length == 0) {
-			phonegap.install()
-		}
-		ant.copy(todir: new File(path.absolutePath, "libs")){
-			fileset(dir: new File(phonegap.sdkDir, 'lib/android'), includes: "*.jar")
-		}
-		ant.copy(todir: new File(path.absolutePath, "assets/www")){
-			fileset(dir: new File(phonegap.sdkDir, 'lib/android'), includes: "*.js")
-		}
 
 
 	}
