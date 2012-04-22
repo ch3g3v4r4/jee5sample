@@ -93,7 +93,7 @@ class PhoneGapBuildManager {
 					'<!DOCTYPE html>\n<html>\n<head>\n<title>PhoneGap</title>\n<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>\n</head>\n<body>\n<h1>Hello World</h1>\n</body>\n</html>'
 			}
 
-			// create install.bat script
+			// create installDebug.bat script
 			String adbCmd = new File(androidSDK.sdkDir, "platform-tools/adb.exe").absolutePath
 			if (!System.properties['os.name'].toLowerCase().contains('windows')) {
 				adbCmd = new File(androidSDK.sdkDir, "platform-tools/adb").absolutePath
