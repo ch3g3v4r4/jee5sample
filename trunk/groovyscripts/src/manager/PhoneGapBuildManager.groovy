@@ -122,6 +122,8 @@ class PhoneGapBuildManager {
 
 	public static void main(String[] args) {
 		PhoneGapBuildManager main = new PhoneGapBuildManager()
+		main.androidSDK.sdkDir = new File('d:\\programs\\android_sdk')
+		main.phonegap.sdkDir = new File('d:\\programs\\phonegap_sdk')
 		main.createAndroidBasedPhoneGapProject('AndroidBookReader', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReader"), 'com.freejava.bookreader', 'AndroidBookReader', null)
 	}
 }
