@@ -123,7 +123,7 @@ class AndroidSDKManager {
 
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
-		//main.installSDK()
-		main.createProject('myapp', 'android-10', new File("D:\\myapp"), 'com.freejava.myapp', 'MyActivity')
+		main.sdkDir = new File('d:\\programs\\android_sdk')
+		main.createProject('AndroidBookReader', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReader2"), 'com.freejava.bookreader', 'AndroidBookReader')
 	}
 }
