@@ -118,7 +118,11 @@ class AndroidSDKManager {
 		ant.echo(message: out.toString())
 
 
-
+		// create installDebug.bat script
+		new File(path, "installDebug.bat").text =
+			'call ant debug\r\n' +
+			'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
+			'"' + adbCmd + '"  kill-server'
 	}
 
 	public static void main(String[] args) {
