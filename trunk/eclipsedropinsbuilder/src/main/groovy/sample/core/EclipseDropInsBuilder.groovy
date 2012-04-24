@@ -35,12 +35,12 @@ class EclipseDropInsBuilder {
         def platformEclipseDir = new File(workDir, zipFileNameNoExt + "/eclipse")
         if (!platformEclipseDir.exists()) {
              ant.get (src: platformUrl, dest: workDir, usetimestamp: false, skipexisting: true, verbose: true)
-			 try {
-				 ant.unzip (dest: new File(workDir, zipFileNameNoExt)) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
-			 } catch (Exception e) {
-			 	ant.delete(file: new File(workDir, platformUrl.substring(platformUrl.lastIndexOf('/') + 1)))
-				 throw e;
-			 }
+       try {
+         ant.unzip (dest: new File(workDir, zipFileNameNoExt)) { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1))} }
+       } catch (Exception e) {
+         ant.delete(file: new File(workDir, platformUrl.substring(platformUrl.lastIndexOf('/') + 1)))
+         throw e;
+       }
         }
 
         def eclipseDir = new File(workDir, "eclipse")
@@ -75,9 +75,9 @@ class EclipseDropInsBuilder {
                 ant.copy(todir: snapshotDir) {fileset(dir: eclipseDir)}
                 // 2. install
                 if (plugin.url == 'http://downloads.zend.com/pdt/') {
-					installPHPFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
-				} else if (plugin.url != null) {
-                    installFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
+                    installPHPFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
+                } else if (plugin.url != null) {
+                    installFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.updateSites, plugin.featureIds)
                 } else {
                     installFromUpdateSite(eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
                 }
@@ -93,9 +93,9 @@ class EclipseDropInsBuilder {
                         present (present: "srconly", targetdir: new File(snapshotDir, "plugins"))
                     }
                 }
-				ant.copy(todir: new File(cachedPlugin, "configuration")) {
-					fileset(dir: new File(eclipseDir, "configuration"))
-				}
+		        ant.copy(todir: new File(cachedPlugin, "configuration")) {
+		          fileset(dir: new File(eclipseDir, "configuration"))
+		        }
                 // 4. test new jar/zip files broken or not
                 try {
                   ant.delete (dir: new File(workDir, "unzipped"))
@@ -119,7 +119,7 @@ class EclipseDropInsBuilder {
             } else {
                 ant.copy(todir: eclipseDir) {fileset(dir: cachedPlugin, excludes: "configuration/**")}
             }
-			ant.copy(todir: eclipseDir, overwrite: true) {fileset(dir: cachedPlugin, includes: "configuration/**/config.ini configuration/**/bundles.info configuration/**/source.info configuration/**/platform.xml")}
+      ant.copy(todir: eclipseDir, overwrite: true) {fileset(dir: cachedPlugin, includes: "configuration/**/config.ini configuration/**/bundles.info configuration/**/source.info configuration/**/platform.xml")}
         }
 
         // 4. Increase memory settings
@@ -178,7 +178,7 @@ class EclipseDropInsBuilder {
 
     }
 
-    void installFromUrl(eclipseDir, workDir, ant, profile, url, featureIds) {
+    void installFromUrl(eclipseDir, workDir, ant, profile, url, updateSites, featureIds) {
         def fileName = url.substring(url.lastIndexOf('/') + 1)
         def downloadedFile = new File(workDir, fileName);
         if (!downloadedFile.exists()) {
@@ -186,23 +186,26 @@ class EclipseDropInsBuilder {
         }
         List<String> names = new ArrayList<String>();
         ZipFile zf;
-    try {
-      zf = new ZipFile(downloadedFile);
-          for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
-              String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
-              names.add(zipEntryName);
-          }
-    } catch (Exception e) {
-      ant.delete(file: downloadedFile);
-      throw e;
-    }
+	    try {
+	      zf = new ZipFile(downloadedFile);
+	          for (Enumeration entries = zf.entries(); entries.hasMoreElements();) {
+	              String zipEntryName = ((ZipEntry)entries.nextElement()).getName();
+	              names.add(zipEntryName);
+	          }
+	    } catch (Exception e) {
+	      ant.delete(file: downloadedFile);
+	      throw e;
+	    }
         println "zip file content: " + names
         if (names.contains("plugin.xml") || names.contains("META-INF/")) {
             // is simple jar contains plugin
             ant.copy (file: downloadedFile, todir: new File(eclipseDir, "plugins"))
         } else if (names.contains("site.xml") || names.contains("content.jar") || names.contains("artifacts.jar")) {
             // is archive update site
-            installFromUpdateSite(eclipseDir, ant, profile, ["jar:" + downloadedFile.toURI().toURL().toString() + "!/"], featureIds)
+			def updateSites2 = new ArrayList<String>();
+			updateSites2.add("jar:" + downloadedFile.toURI().toURL().toString() + "!/")
+			if (updateSites != null) updateSites2.addAll(updateSites)
+            installFromUpdateSite(eclipseDir, ant, profile, updateSites2, featureIds)
         } else {
             // is zipped plugins
             def tempDir = new File(workDir, downloadedFile.name + new Date().getTime())
@@ -240,25 +243,25 @@ class EclipseDropInsBuilder {
             }
         }
     }
-	void installPHPFromUrl(eclipseDir, workDir, ant, profile, url, featureIds) {
+  void installPHPFromUrl(eclipseDir, workDir, ant, profile, url, featureIds) {
 
-		def downloadedFile = new File(workDir, "org.zend.php.debug_feature_5.3.18.v20110322.jar");
-		if (!downloadedFile.exists()) {
-			ant.get (src: "http://downloads.zend.com/pdt/features/org.zend.php.debug_feature_5.3.18.v20110322.jar",
-				dest: downloadedFile, usetimestamp: true, verbose: true)
-		}
+    def downloadedFile = new File(workDir, "org.zend.php.debug_feature_5.3.18.v20110322.jar");
+    if (!downloadedFile.exists()) {
+      ant.get (src: "http://downloads.zend.com/pdt/features/org.zend.php.debug_feature_5.3.18.v20110322.jar",
+        dest: downloadedFile, usetimestamp: true, verbose: true)
+    }
         ant.unzip (src: downloadedFile, dest: new File(eclipseDir, "features/" + downloadedFile.name))
-		downloadedFile = new File(workDir, "org.zend.php.debug.debugger.win32.x86_5.3.18.v20110322.jar");
-		if (!downloadedFile.exists()) {
-			ant.get (src: "http://downloads.zend.com/pdt/plugins/org.zend.php.debug.debugger.win32.x86_5.3.18.v20110322.jar",
-				dest: downloadedFile, usetimestamp: true, verbose: true)
-		}
+    downloadedFile = new File(workDir, "org.zend.php.debug.debugger.win32.x86_5.3.18.v20110322.jar");
+    if (!downloadedFile.exists()) {
+      ant.get (src: "http://downloads.zend.com/pdt/plugins/org.zend.php.debug.debugger.win32.x86_5.3.18.v20110322.jar",
+        dest: downloadedFile, usetimestamp: true, verbose: true)
+    }
         ant.unzip (src: downloadedFile, dest: new File(eclipseDir, "plugins/" + downloadedFile.name))
-		downloadedFile = new File(workDir, "org.zend.php.debug.debugger_5.3.18.v20110322.jar");
-		if (!downloadedFile.exists()) {
-			ant.get (src: "http://downloads.zend.com/pdt/plugins/org.zend.php.debug.debugger_5.3.18.v20110322.jar",
-				dest: downloadedFile, usetimestamp: true, verbose: true)
-		}
+    downloadedFile = new File(workDir, "org.zend.php.debug.debugger_5.3.18.v20110322.jar");
+    if (!downloadedFile.exists()) {
+      ant.get (src: "http://downloads.zend.com/pdt/plugins/org.zend.php.debug.debugger_5.3.18.v20110322.jar",
+        dest: downloadedFile, usetimestamp: true, verbose: true)
+    }
         ant.unzip (src: downloadedFile, dest: new File(eclipseDir, "plugins/" + downloadedFile.name))
-	}
+  }
 }
