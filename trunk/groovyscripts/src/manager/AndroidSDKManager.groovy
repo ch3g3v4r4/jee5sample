@@ -118,16 +118,25 @@ class AndroidSDKManager {
 		ant.echo(message: out.toString())
 
 
-		// create installDebug.bat script
+		// create installDebug.bat script - build.xml
 		new File(path, "installDebug.bat").text =
 			'call ant debug\r\n' +
 			'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
 			'"' + adbCmd + '"  kill-server'
+
+		// ADT Eclipse Plugin support - .project
+		String projectText = getClass().getResourceAsStream("/resources/project").text
+		new File(path, ".project").text = projectText.replaceAll("\\\$\\{projectName\\}", projectName)
+		String classpathText = getClass().getResourceAsStream("/resources/classpath").text
+		new File(path, ".classpath").text = classpathText.replaceAll("\\\$\\{projectName\\}", projectName)
+
+		// Android Maven Plugin support - pom.xml
+
 	}
 
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('AndroidBookReader', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReader2"), 'com.freejava.bookreader', 'AndroidBookReader')
+		main.createProject('AndroidBookReaderx', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReaderx"), 'com.freejava.bookreader', 'AndroidBookReader')
 	}
 }
