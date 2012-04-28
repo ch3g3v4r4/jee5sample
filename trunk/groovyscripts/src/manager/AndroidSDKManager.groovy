@@ -117,26 +117,35 @@ class AndroidSDKManager {
 		ant.echo(message: err.toString())
 		ant.echo(message: out.toString())
 
-
-		// create installDebug.bat script - build.xml
-		new File(path, "installDebug.bat").text =
-			'call ant debug\r\n' +
-			'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
-			'"' + adbCmd + '"  kill-server'
-
+		// REMOVE ANT BUILD FILES
 		// ADT Eclipse Plugin support - .project
-		String projectText = getClass().getResourceAsStream("/resources/project").text
-		new File(path, ".project").text = projectText.replaceAll("\\\$\\{projectName\\}", projectName)
-		String classpathText = getClass().getResourceAsStream("/resources/classpath").text
-		new File(path, ".classpath").text = classpathText.replaceAll("\\\$\\{projectName\\}", projectName)
+		//String projectText = getClass().getResourceAsStream("/resources/project").text
+		//new File(path, ".project").text = projectText.replaceAll("\\\$\\{projectName\\}", projectName)
+		//String classpathText = getClass().getResourceAsStream("/resources/classpath").text
+		//new File(path, ".classpath").text = classpathText.replaceAll("\\\$\\{projectName\\}", projectName)
+		// create installDebug.bat script - build.xml
+		//new File(path, "installDebug.bat").text =
+		//	'call ant debug\r\n' +
+		//	'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
+		//	'"' + adbCmd + '"  kill-server'
+		ant.delete{
+			fileset(dir: path, includes: "local.properties, ant.properties, build.xml")
+		}
 
-		// Android Maven Plugin support - pom.xml
+		// ADD Maven support - pom.xml
+		String androidJarVer = '2.3.3'
+		String androidAPINumber = targetID.split('-')[1]
+		String pomText = getClass().getResourceAsStream("/resources/pom.xml").text
+		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidJarVer\\}", androidJarVer).replaceAll("\\\$\\{androidAPINumber\\}", androidAPINumber)
+		new File(path, "env.bat").text = 'if "%ANDROID_HOME%"=="" goto setDefaultAndroidHome\r\ngoto done\r\n:setDefaultAndroidHome\r\nset ANDROID_HOME=' + sdkDir.absolutePath + '\r\n:done'
+		new File(path, "eclipse.bat").text = 'call env.bat\r\ncall mvn eclipse:eclipse'
+		new File(path, "build.bat").text = 'call env.bat\r\ncall mvn package'
 
 	}
 
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('AndroidBookReaderx', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReaderx"), 'com.freejava.bookreader', 'AndroidBookReader')
+		main.createProject('AndroidBookReaderx', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReaderx"), 'com.freejava.bookreader', 'AndroidBookReaderx')
 	}
 }
