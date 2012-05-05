@@ -128,9 +128,9 @@ class AndroidSDKManager {
 		//	'call ant debug\r\n' +
 		//	'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
 		//	'"' + adbCmd + '"  kill-server'
-		ant.delete{
-			fileset(dir: path, includes: "local.properties, ant.properties, build.xml")
-		}
+		//ant.delete{
+		//	fileset(dir: path, includes: "local.properties, ant.properties, build.xml")
+		//}
 
 		// ADD Maven support - pom.xml
 		String androidJarVer = '4.0.1.2' // TODO: 4.0.1.2 is for platform=android-14 but platform=android-15 is not available on maven repo, how to fix it?
