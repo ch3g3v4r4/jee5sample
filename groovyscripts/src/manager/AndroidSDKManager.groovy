@@ -133,7 +133,7 @@ class AndroidSDKManager {
 		}
 
 		// ADD Maven support - pom.xml
-		String androidJarVer = '2.3.3'
+		String androidJarVer = '4.0.1.2' // TODO: 4.0.1.2 is for platform=android-14 but platform=android-15 is not available on maven repo, how to fix it?
 		String androidAPINumber = targetID.split('-')[1]
 		String pomText = getClass().getResourceAsStream("/resources/pom.xml").text
 		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidJarVer\\}", androidJarVer).replaceAll("\\\$\\{androidAPINumber\\}", androidAPINumber)
@@ -146,6 +146,6 @@ class AndroidSDKManager {
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('AndroidBookReaderx', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReaderx"), 'com.freejava.bookreader', 'AndroidBookReaderx')
+		main.createProject('AndroidPodcasterx', 'android-15', new File("d:\\projects\\jee5sample\\AndroidPodcasterx"), 'com.freejava.podcast', 'AndroidPodcasterx')
 	}
 }
