@@ -137,8 +137,7 @@ class AndroidSDKManager {
 		String androidAPINumber = targetID.split('-')[1]
 		String pomText = getClass().getResourceAsStream("/resources/pom.xml").text
 		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidJarVer\\}", androidJarVer).replaceAll("\\\$\\{androidAPINumber\\}", androidAPINumber)
-		//new File(path, "env.bat").text = 'if "%ANDROID_HOME%"=="" goto setDefaultAndroidHome\r\ngoto done\r\n:setDefaultAndroidHome\r\nset ANDROID_HOME=' + sdkDir.absolutePath + '\r\n:done'
-		new File(path, "eclipse.bat").text = 'call mvn eclipse:eclipse'
+		new File(path, "eclipse.bat").text = 'call mvn eclipse:eclipse\r\necho REMOVE JRE FROM CLASSPATH.\r\nren .classpath .classpath.bak\r\nfindstr /v JRE_CONTAINER .classpath.bak > .classpath\r\ndel .classpath.bak'
 		new File(path, "build.bat").text = 'call mvn package'
 
 	}
