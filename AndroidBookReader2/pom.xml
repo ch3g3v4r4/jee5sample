@@ -6,6 +6,7 @@
   <artifactId>AndroidBookReader</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>apk</packaging>
+
   <dependencies>
     <dependency>
       <groupId>com.google.android</groupId>
@@ -14,10 +15,32 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
   <build>
     <finalName>${project.artifactId}</finalName>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0-alpha-2</version>
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+            <goals>
+              <goal>read-project-properties</goal>
+            </goals>
+            <configuration>
+              <files>
+                <file>${basedir}/local.properties</file>
+                <file>${basedir}/project.properties</file>
+              </files>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -27,6 +50,7 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+
       <!-- maven-android-plugin doesn't delete files from bin, only from
         target, we are deleting them here -->
       <plugin>
@@ -50,6 +74,7 @@
           </filesets>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>com.jayway.maven.plugins.android.generation2</groupId>
         <artifactId>android-maven-plugin</artifactId>
@@ -64,18 +89,30 @@
             <debug>true</debug>
           </run>
           <sdk>
-            <platform>15</platform>
+            <path>${sdk.dir}</path>
           </sdk>
           <emulator>
             <avd>device1</avd>
           </emulator>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
         <version>2.9</version>
         <configuration>
+          <excludes>
+            <exclude>com.google.android:android</exclude>
+            <exclude>commons-logging:commons-logging</exclude>
+            <exclude>org.apache.httpcomponents:httpclient</exclude>
+            <exclude>org.apache.httpcomponents:httpcore</exclude>
+            <exclude>commons-codec:commons-codec</exclude>
+            <exclude>org.khronos:opengl-api</exclude>
+            <exclude>xerces:xmlParserAPIs</exclude>
+            <exclude>xpp3:xpp3</exclude>
+            <exclude>org.json:json</exclude>
+          </excludes>
           <downloadSources>true</downloadSources>
           <additionalProjectnatures>
             <projectnature>com.android.ide.eclipse.adt.AndroidNature</projectnature>
@@ -86,8 +123,13 @@
             <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
             <buildcommand>com.android.ide.eclipse.adt.ApkBuilder</buildcommand>
           </buildcommands>
+          <classpathContainers>
+            <classpathContainer>com.android.ide.eclipse.adt.ANDROID_FRAMEWORK</classpathContainer>
+            <classpathContainer>com.android.ide.eclipse.adt.LIBRARIES</classpathContainer>
+          </classpathContainers>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 </project>
