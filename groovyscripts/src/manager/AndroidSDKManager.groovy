@@ -96,7 +96,7 @@ class AndroidSDKManager {
 		p1.waitFor()
 	}
 
-	public createProject(String projectName, String targetID, File path, String packageName, String activityName) {
+	public createProject(String projectName, File path, String packageName, String activityName) {
 		installSDK()
 
 		File toolsDir = new File(sdkDir, "tools")
@@ -107,8 +107,11 @@ class AndroidSDKManager {
 			adbCmd = new File(sdkDir, "platform-tools/adb").absolutePath
 		}
 
+		// Find latest API level
+		int maxApiLevel = 0
+		String targetID;
 		// Create Android project
-		String cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + path.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
+		String cmd = androidCmd + ' list targets'
 		ant.echo(message: 'Executing ' + cmd)
 		Process p = cmd.execute(null, toolsDir)
 		def out = new StringBuilder()
@@ -116,27 +119,28 @@ class AndroidSDKManager {
 		p.waitForProcessOutput(out, err)
 		ant.echo(message: err.toString())
 		ant.echo(message: out.toString())
+		Pattern pattern = Pattern.compile("android-([0-9]+)")
+		Matcher matcher = pattern.matcher(out.toString())
+		while (matcher.find()) {
+			String levelStr = matcher.group(1)
+			if (Integer.parseInt(levelStr) > maxApiLevel) maxApiLevel = Integer.parseInt(levelStr)
+		}
+		targetID = "android-" + maxApiLevel
 
-		// REMOVE ANT BUILD FILES
-		// ADT Eclipse Plugin support - .project
-		//String projectText = getClass().getResourceAsStream("/resources/project").text
-		//new File(path, ".project").text = projectText.replaceAll("\\\$\\{projectName\\}", projectName)
-		//String classpathText = getClass().getResourceAsStream("/resources/classpath").text
-		//new File(path, ".classpath").text = classpathText.replaceAll("\\\$\\{projectName\\}", projectName)
-		// create installDebug.bat script - build.xml
-		//new File(path, "installDebug.bat").text =
-		//	'call ant debug\r\n' +
-		//	'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
-		//	'"' + adbCmd + '"  kill-server'
-		//ant.delete{
-		//	fileset(dir: path, includes: "local.properties, ant.properties, build.xml")
-		//}
+		// Create Android project
+		cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + path.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
+		ant.echo(message: 'Executing ' + cmd)
+		p = cmd.execute(null, toolsDir)
+		out = new StringBuilder()
+		err = new StringBuilder()
+		p.waitForProcessOutput(out, err)
+		ant.echo(message: err.toString())
+		ant.echo(message: out.toString())
 
 		// ADD Maven support - pom.xml
 		String androidJarVer = '4.0.1.2' // TODO: 4.0.1.2 is for platform=android-14 but platform=android-15 is not available on maven repo, how to fix it?
-		String androidAPINumber = targetID.split('-')[1]
 		String pomText = getClass().getResourceAsStream("/resources/pom.xml").text
-		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidJarVer\\}", androidJarVer).replaceAll("\\\$\\{androidAPINumber\\}", androidAPINumber)
+		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidJarVer\\}", androidJarVer)
 		new File(path, "eclipse.bat").text = 'call mvn eclipse:eclipse\r\necho REMOVE JRE FROM CLASSPATH.\r\nren .classpath .classpath.bak\r\nfindstr /v JRE_CONTAINER .classpath.bak > .classpath\r\ndel .classpath.bak'
 		new File(path, "build.bat").text = 'call mvn package'
 
@@ -145,6 +149,6 @@ class AndroidSDKManager {
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('AndroidPodcasterx', 'android-15', new File("d:\\projects\\jee5sample\\AndroidPodcasterx"), 'com.freejava.podcast', 'AndroidPodcasterx')
+		main.createProject('AndroidPodcasterx', new File("d:\\projects\\jee5sample\\AndroidPodcasterx"), 'com.freejava.podcast', 'AndroidPodcasterx')
 	}
 }
