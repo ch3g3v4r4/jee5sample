@@ -11,9 +11,11 @@
     <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android</artifactId>
-      <version>${androidJarVer}</version>
+      <version>4.0.1.2</version>
       <scope>provided</scope>
     </dependency>
+
+
   </dependencies>
 
   <build>
@@ -21,6 +23,7 @@
     <sourceDirectory>src</sourceDirectory>
     <plugins>
 
+      <!--  read sdk.dir property from local.properties -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>properties-maven-plugin</artifactId>
@@ -90,6 +93,7 @@
           </run>
           <sdk>
             <path>${sdk.dir}</path>
+            <platform>${androidAPINumber}</platform>
           </sdk>
           <emulator>
             <avd>device1</avd>

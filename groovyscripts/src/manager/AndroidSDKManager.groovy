@@ -63,6 +63,7 @@ class AndroidSDKManager {
 			while ((line = reader.readLine()) != null) {
 				if (line.contains('Android SDK Tools') ||
 					line.contains('Android SDK Platform-tools') ||
+					line.contains('Android Support') ||
 					line.contains('SDK Platform Android') && (line.contains(maxAPI) || line.contains(compatAPI)) ||
 					line.contains('ARM EABI') && (line.contains(maxAPI) || line.contains(compatAPI))) {
 					if (filter != null && !filter.equals('')) filter += ',' else filter = ''
@@ -137,10 +138,17 @@ class AndroidSDKManager {
 		ant.echo(message: err.toString())
 		ant.echo(message: out.toString())
 
+		// add <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="15" /> to manifest file before <application> tag if it is missing
+		def manifest = new File(path, "AndroidManifest.xml").text
+		if (manifest.indexOf('uses-sdk') == -1) {
+			new File(path, "AndroidManifest.xml").text = manifest.replaceAll("<application", '<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="' + maxApiLevel + '" />\r\n    <application')
+		}
+
 		// ADD Maven support - pom.xml
-		String androidJarVer = '4.0.1.2' // TODO: 4.0.1.2 is for platform=android-14 but platform=android-15 is not available on maven repo, how to fix it?
 		String pomText = getClass().getResourceAsStream("/resources/pom.xml").text
-		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidJarVer\\}", androidJarVer)
+		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidAPINumber\\}", Integer.toString(maxApiLevel))
+		//String androidJarVer = '4.0.1.2' // TODO: 4.0.1.2 is for platform=android-14 but platform=android-15 is not available on maven repo, how to fix it?
+		//.replaceAll("\\\$\\{androidJarVer\\}", androidJarVer)
 		new File(path, "eclipse.bat").text = 'call mvn eclipse:eclipse\r\necho REMOVE JRE FROM CLASSPATH.\r\nren .classpath .classpath.bak\r\nfindstr /v JRE_CONTAINER .classpath.bak > .classpath\r\ndel .classpath.bak'
 		new File(path, "build.bat").text = 'call mvn package'
 
