@@ -129,7 +129,9 @@ class AndroidSDKManager {
 		targetID = "android-" + maxApiLevel
 
 		// Create Android project
-		cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + path.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
+		File projectPath = new File(path, projectName)
+		projectPath.mkdirs()
+		cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + projectPath.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
 		ant.echo(message: 'Executing ' + cmd)
 		p = cmd.execute(null, toolsDir)
 		out = new StringBuilder()
@@ -137,20 +139,24 @@ class AndroidSDKManager {
 		p.waitForProcessOutput(out, err)
 		ant.echo(message: err.toString())
 		ant.echo(message: out.toString())
+		ant.delete{
+			fileset(dir: projectPath, includes: "ant.properties, build.xml")
+		}
 
 		// add <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="15" /> to manifest file before <application> tag if it is missing
-		def manifest = new File(path, "AndroidManifest.xml").text
+		def manifest = new File(projectPath, "AndroidManifest.xml").text
 		if (manifest.indexOf('uses-sdk') == -1) {
-			new File(path, "AndroidManifest.xml").text = manifest.replaceAll("<application", '<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="' + maxApiLevel + '" />\r\n    <application')
+			new File(projectPath, "AndroidManifest.xml").text = manifest.replaceAll("<application", '<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="' + maxApiLevel + '" />\r\n    <application')
 		}
 
 		// ADD Maven support - pom.xml
 		String pomText = getClass().getResourceAsStream("/resources/pom.xml").text
-		new File(path, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidAPINumber\\}", Integer.toString(maxApiLevel))
+		new File(projectPath, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidAPINumber\\}", Integer.toString(maxApiLevel))
 		//String androidJarVer = '4.0.1.2' // TODO: 4.0.1.2 is for platform=android-14 but platform=android-15 is not available on maven repo, how to fix it?
 		//.replaceAll("\\\$\\{androidJarVer\\}", androidJarVer)
-		new File(path, "eclipse.bat").text = 'call mvn eclipse:eclipse\r\necho REMOVE JRE FROM CLASSPATH.\r\nren .classpath .classpath.bak\r\nfindstr /v JRE_CONTAINER .classpath.bak > .classpath\r\ndel .classpath.bak'
-		new File(path, "build.bat").text = 'call mvn package'
+		new File(projectPath, "eclipse.bat").text = 'call mvn eclipse:eclipse groovy:execute'
+		new File(projectPath, "build.bat").text = 'call mvn package'
+
 
 	}
 
