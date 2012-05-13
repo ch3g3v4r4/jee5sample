@@ -1,9 +1,10 @@
 package com.freejava.friends;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-public class AndroidFriends extends Activity
+import com.actionbarsherlock.app.SherlockActivity;
+
+public class AndroidFriends extends SherlockActivity
 {
     /** Called when the activity is first created. */
     @Override
