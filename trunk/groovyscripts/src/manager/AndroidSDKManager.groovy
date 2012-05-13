@@ -143,10 +143,10 @@ class AndroidSDKManager {
 			fileset(dir: projectPath, includes: "ant.properties, build.xml")
 		}
 
-		// add <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="15" /> to manifest file before <application> tag if it is missing
+		// add <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="15" /> to manifest file before <application> tag if it is missing
 		def manifest = new File(projectPath, "AndroidManifest.xml").text
 		if (manifest.indexOf('uses-sdk') == -1) {
-			new File(projectPath, "AndroidManifest.xml").text = manifest.replaceAll("<application", '<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="' + maxApiLevel + '" />\r\n    <application')
+			new File(projectPath, "AndroidManifest.xml").text = manifest.replaceAll("<application", '<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="' + maxApiLevel + '" />\r\n    <application')
 		}
 
 		// ADD Maven support - pom.xml
@@ -163,6 +163,6 @@ class AndroidSDKManager {
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('AndroidPodcasterx', new File("d:\\projects\\jee5sample\\AndroidPodcasterx"), 'com.freejava.podcast', 'AndroidPodcasterx')
+		main.createProject('AndroidFriends', new File("d:\\projects\\jee5sample\\AndroidFriends"), 'com.freejava.friends', 'AndroidFriends')
 	}
 }
