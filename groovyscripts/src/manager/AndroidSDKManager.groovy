@@ -157,6 +157,25 @@ class AndroidSDKManager {
 		new File(projectPath, "eclipse.bat").text = 'call mvn eclipse:eclipse groovy:execute'
 		new File(projectPath, "build.bat").text = 'call mvn package'
 
+		// modify Activity class to use SherlockActivity and modify Activity declaration to use android:theme="@style/Theme.Sherlock.Light"
+		if (new File(projectPath, "pom.xml").text.indexOf('actionbarsherlock') != -1 && new File(projectPath, "AndroidManifest.xml").text.indexOf('SherlockActivity') == -1) {
+			ant.replaceregexp(match: "import.+Activity;", replace: "import com.actionbarsherlock.app.SherlockActivity;", byline: "true") {
+				fileset(dir:projectPath) {
+					include(name: '**/' + activityName + ".java")
+				}
+			}
+			ant.replaceregexp(match: "extends\\s+Activity", replace: "extends SherlockActivity", byline: "true") {
+				fileset(dir:projectPath) {
+					include(name: '**/' + activityName + ".java")
+				}
+			}
+			// add android:theme="@style/Theme.Sherlock.Light" to Activity declaration
+			ant.replaceregexp(match: "<activity ", replace: '<activity android:theme="@style/Theme.Sherlock.Light" ', byline: "true") {
+				fileset(dir:projectPath) {
+					include(name: 'AndroidManifest.xml')
+				}
+			}
+		}
 
 	}
 
