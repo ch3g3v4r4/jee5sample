@@ -277,7 +277,9 @@
     <plugin>
       <name>m2e</name>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <updateSite>http://download.jboss.org/jbosstools/updates/m2eclipse-wtp/</updateSite>
       <featureId>org.eclipse.m2e.feature.feature.group</featureId>
+      <featureId>org.maven.ide.eclipse.wtp.feature.feature.group</featureId>
     </plugin>
 
     <plugin>
