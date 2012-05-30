@@ -70,6 +70,9 @@
     <plugin>
       <name>EclipseCodeRecommenders</name>
     </plugin>
+    <plugin>
+      <name>JAXRS</name>
+    </plugin>
   </plugins>
 
 </eclipse>
