@@ -269,6 +269,12 @@
       <featureId>org.jboss.tools.struts.feature.feature.group</featureId>
     </plugin>
     <plugin>
+      <name>JAXRS</name>
+      <updateSite>http://download.jboss.org/jbosstools/updates/development/indigo/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.jboss.tools.ws.jaxrs.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
       <name>Aptana-Nightly</name>
       <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
