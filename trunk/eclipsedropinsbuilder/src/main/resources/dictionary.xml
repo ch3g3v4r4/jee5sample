@@ -275,6 +275,12 @@
       <featureId>org.jboss.tools.ws.jaxrs.feature.feature.group</featureId>
     </plugin>
     <plugin>
+      <name>m2e</name>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.eclipse.m2e.feature.feature.group</featureId>
+    </plugin>
+
+    <plugin>
       <name>Aptana-Nightly</name>
       <updateSite>http://preview.appcelerator.com/aptana/studio3/plugin/update/nightly/</updateSite>
       <featureId>com.aptana.webkitbrowser.feature.group</featureId>
