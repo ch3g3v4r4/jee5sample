@@ -11,7 +11,7 @@ class PhoneGapBuildManager {
 
 	public createAndroidBasedPhoneGapProject(String projectName, String targetID, File path, String packageName, String activityName, File wwwDir) {
 		if (!path.exists() || path.isDirectory() && path.listFiles().length == 0) {
-			androidSDK.createProject(projectName, targetID, path, packageName, activityName)
+			androidSDK.createBaseProjectForPhoneGap(projectName, targetID, path, packageName, activityName)
 
 			// Configure Android project with PhoneGap
 			if (!phonegap.sdkDir.exists() || phonegap.sdkDir.isDirectory() && phonegap.sdkDir.listFiles().length == 0) {
@@ -116,6 +116,6 @@ class PhoneGapBuildManager {
 		PhoneGapBuildManager main = new PhoneGapBuildManager()
 		main.androidSDK.sdkDir = new File('d:\\programs\\android_sdk')
 		main.phonegap.sdkDir = new File('d:\\programs\\phonegap_sdk')
-		main.createAndroidBasedPhoneGapProject('AndroidBookReader', 'android-10', new File("d:\\projects\\jee5sample\\AndroidBookReader"), 'com.freejava.bookreader', 'AndroidBookReader', null)
+		main.createAndroidBasedPhoneGapProject('DroidGapMap', 'android-10', new File("d:\\projects\\jee5sample\\DroidGapMap"), 'com.freejava.droidgapmap', 'DroidGapMap', null)
 	}
 }
