@@ -97,6 +97,41 @@ class AndroidSDKManager {
 		p1.waitFor()
 	}
 
+	public createBaseProjectForPhoneGap(String projectName, String targetID, File path, String packageName, String activityName) {
+		installSDK()
+
+		File toolsDir = new File(sdkDir, "tools")
+		String androidCmd = 'cmd.exe /c android.bat'
+		String adbCmd = new File(sdkDir, "platform-tools/adb.exe").absolutePath
+		if (!System.properties['os.name'].toLowerCase().contains('windows')) {
+			androidCmd = '/bin/sh -c android'
+			adbCmd = new File(sdkDir, "platform-tools/adb").absolutePath
+		}
+
+		// Create Android project
+		String cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + path.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
+		ant.echo(message: 'Executing ' + cmd)
+		Process p = cmd.execute(null, toolsDir)
+		def out = new StringBuilder()
+		def err = new StringBuilder()
+		p.waitForProcessOutput(out, err)
+		ant.echo(message: err.toString())
+		ant.echo(message: out.toString())
+
+
+		// create installDebug.bat script - build.xml
+		new File(path, "installDebug.bat").text =
+			'call ant debug\r\n' +
+			'"' + adbCmd + '"  install -r bin\\' + projectName + '-debug.apk\r\n' +
+			'"' + adbCmd + '"  kill-server'
+
+		// ADT Eclipse Plugin support - .project
+		String projectText = getClass().getResourceAsStream("/resources/project").text
+		new File(path, ".project").text = projectText.replaceAll("\\\$\\{projectName\\}", projectName)
+		String classpathText = getClass().getResourceAsStream("/resources/classpath").text
+		new File(path, ".classpath").text = classpathText.replaceAll("\\\$\\{projectName\\}", projectName)
+
+	}
 	public createProject(String projectName, File path, String packageName, String activityName) {
 		installSDK()
 
@@ -182,6 +217,6 @@ class AndroidSDKManager {
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('AndroidFriends', new File("d:\\projects\\jee5sample\\AndroidFriends"), 'com.freejava.friends', 'AndroidFriends')
+		main.createProject('socialnetwork', new File("d:\\projects\\chatgroup"), 'com.vnandroidgroup.socialnetwork', 'MembersActivity')
 	}
 }
