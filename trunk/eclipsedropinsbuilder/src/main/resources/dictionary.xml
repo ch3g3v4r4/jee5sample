@@ -140,7 +140,7 @@
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
-      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.0.201101292156.jar</url>
+      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.2.201205131655.jar</url>
     </plugin>
     <plugin>
       <name>ContextMenu</name>
