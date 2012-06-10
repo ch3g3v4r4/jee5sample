@@ -253,13 +253,19 @@
     </plugin>
     <plugin>
       <name>Spring</name>
-      <url>http://download.springsource.com/release/TOOLS/update/2.8.1.RELEASE/e3.7/springsource-tool-suite-2.8.1.RELEASE-e3.7.1-updatesite.zip</url>
+      <url>http://download.springsource.com/release/TOOLS/update/2.9.2.RELEASE/e3.7/springsource-tool-suite-2.9.2.RELEASE-e3.7.2-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <name>EclipseTidy</name>
       <url>http://nchc.dl.sourceforge.net/project/eclipsetidy/eclipsetidy/1.2.2/net.sf.eclipsetidy_1.2.2_local_site.zip</url>
       <featureId>net.sf.eclipsetidy.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>Hibernate</name>
+      <updateSite>http://download.jboss.org/jbosstools/updates/development/indigo/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <featureId>org.hibernate.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
       <name>Hibernate_Struts</name>
