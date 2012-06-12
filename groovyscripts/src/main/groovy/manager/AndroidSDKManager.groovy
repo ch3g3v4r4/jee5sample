@@ -217,6 +217,6 @@ class AndroidSDKManager {
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('socialnetwork', new File("d:\\projects\\chatgroup"), 'com.vnandroidgroup.socialnetwork', 'MembersActivity')
+		main.createProject('RSSReaderDemo', new File("d:\\projects\\android2\\RSSReaderDemo"), 'com.btloc.rssreaderdemo', 'RSSReaderDemoActivity')
 	}
 }
