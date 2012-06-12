@@ -1,3 +1,4 @@
+package ui
 
 class AndroidSampleProjectCreator {
 

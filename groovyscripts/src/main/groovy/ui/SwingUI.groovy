@@ -1,3 +1,4 @@
+package ui
 @Grab('com.jgoodies:looks:2.2.2')
 @Grab('com.jgoodies:forms:1.2.1')
 @Grab('com.jgoodies:validation:2.0.1')
