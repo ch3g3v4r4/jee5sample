@@ -249,9 +249,10 @@
         <configuration>
           <executable>java</executable>
           <arguments>
+            <argument>-Dgroovy.grape.enable=false</argument>
             <argument>-classpath</argument>
             <classpath/>
-            <argument>app</argument>
+            <argument>SwingUI</argument>
           </arguments>
         </configuration>
       </plugin>
