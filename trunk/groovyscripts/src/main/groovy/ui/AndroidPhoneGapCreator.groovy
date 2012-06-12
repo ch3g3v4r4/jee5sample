@@ -1,3 +1,4 @@
+package ui
 
 public class AndroidPhoneGapCreator {
 	public static void main(String[] args) {
