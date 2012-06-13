@@ -304,6 +304,12 @@
       <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.7</updateSite>
       <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
     </plugin>
+    <plugin>
+      <name>Jetty</name>
+      <updateSite>http://download.eclipse.org/jetty/updates/jetty-wtp/</updateSite>
+      <featureId>org.eclipse.jst.server.jetty.feature.feature.group</featureId>
+    </plugin>
+
 
     <plugin>
       <name>Terminal</name>

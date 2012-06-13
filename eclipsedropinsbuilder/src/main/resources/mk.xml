@@ -65,6 +65,9 @@
       <name>GlassFish</name>
     </plugin>
     <plugin>
+      <name>Jetty</name>
+    </plugin>
+    <plugin>
       <name>JIRA</name>
     </plugin>
     <plugin>
