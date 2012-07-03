@@ -116,6 +116,6 @@ class PhoneGapBuildManager {
 		PhoneGapBuildManager main = new PhoneGapBuildManager()
 		main.androidSDK.sdkDir = new File('d:\\programs\\android_sdk')
 		main.phonegap.sdkDir = new File('d:\\programs\\phonegap_sdk')
-		main.createAndroidBasedPhoneGapProject('DroidGapMap', 'android-10', new File("d:\\projects\\jee5sample\\DroidGapMap"), 'com.freejava.droidgapmap', 'DroidGapMap', null)
+		main.createAndroidBasedPhoneGapProject('SocialNetwork', 'android-10', new File("d:\\projects\\android2\\SocialNetwork2\\"), 'com.droidbrain.socialnetwork', 'MapController', null)
 	}
 }

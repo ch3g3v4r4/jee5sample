@@ -5,7 +5,7 @@ import java.util.regex.Pattern
 
 class AndroidSDKManager {
 
-	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r18-windows.zip')
+	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r20-windows.zip')
 	File sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
 	String optionalFilter
 
@@ -126,9 +126,9 @@ class AndroidSDKManager {
 			'"' + adbCmd + '"  kill-server'
 
 		// ADT Eclipse Plugin support - .project
-		String projectText = getClass().getResourceAsStream("/resources/project").text
+		String projectText = getClass().getResourceAsStream("/project").text
 		new File(path, ".project").text = projectText.replaceAll("\\\$\\{projectName\\}", projectName)
-		String classpathText = getClass().getResourceAsStream("/resources/classpath").text
+		String classpathText = getClass().getResourceAsStream("/classpath").text
 		new File(path, ".classpath").text = classpathText.replaceAll("\\\$\\{projectName\\}", projectName)
 
 	}
@@ -185,7 +185,7 @@ class AndroidSDKManager {
 		}
 
 		// ADD Maven support - pom.xml
-		String pomText = getClass().getResourceAsStream("/resources/pom.xml").text
+		String pomText = getClass().getResourceAsStream("/pom.xml").text
 		new File(projectPath, "pom.xml").text = pomText.replaceAll("\\\$\\{projectName\\}", projectName).replaceAll("\\\$\\{packageName\\}", packageName).replaceAll("\\\$\\{androidAPINumber\\}", Integer.toString(maxApiLevel))
 		//String androidJarVer = '4.0.1.2' // TODO: 4.0.1.2 is for platform=android-14 but platform=android-15 is not available on maven repo, how to fix it?
 		//.replaceAll("\\\$\\{androidJarVer\\}", androidJarVer)
@@ -217,6 +217,6 @@ class AndroidSDKManager {
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
 		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('RSSReaderDemo', new File("d:\\projects\\android2\\RSSReaderDemo"), 'com.btloc.rssreaderdemo', 'RSSReaderDemoActivity')
+		main.createProject('socialnetwork', new File("d:\\projects\\android2\\SocialNetwork"), 'com.droidbrain.socialnetwork', 'MainController')
 	}
 }
