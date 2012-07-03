@@ -5,7 +5,7 @@
     <plugin>
       <name>Groovy</name>
       <embeded>true</embeded>
-      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.6.0.xx-20111212-0900-e37-RELEASE.zip</url>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.6.1.xx-20120301-1000-e37-RELEASE.zip</url>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
@@ -101,7 +101,7 @@
     <!-- android -->
     <plugin>
       <name>Android</name>
-      <url>http://dl.google.com/android/ADT-18.0.0.zip</url>
+      <url>http://dl.google.com/android/ADT-20.0.0.zip</url>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
       <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
