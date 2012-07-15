@@ -11,6 +11,6 @@ public class Main {
     public static final String ANSI_WHITEONBLUE = "\u001b[37;44m";
 
     public static void main(String[] args) {
-        AnsiConsole.out.print(ANSI_BOLD + "Press a key..." + ANSI_NORMAL);
+        AnsiConsole.out.println(ANSI_BOLD + "Press a key..." + ANSI_NORMAL);
     }
 }
