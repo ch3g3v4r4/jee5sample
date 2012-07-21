@@ -7,7 +7,7 @@ import java.net.URL;
 
 class PhoneGapSDKManager {
 
-	URL downloadSDKUrl = new URL('https://github.com/phonegap/phonegap/zipball/1.9.0')
+	URL downloadSDKUrl = new URL('https://github.com/phonegap/phonegap/zipball/2.0.0')
 	File sdkDir = new File(System.getProperty("java.io.tmpdir"), 'phonegap_sdk')
 
 	AntBuilder ant = new AntBuilder()
