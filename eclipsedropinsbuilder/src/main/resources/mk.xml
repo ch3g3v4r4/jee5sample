@@ -50,9 +50,6 @@
       <name>FileSync</name>
     </plugin>
     <plugin>
-      <name>PropEdit</name>
-    </plugin>
-    <plugin>
       <name>JSEclipse</name>
     </plugin>
     <plugin>
