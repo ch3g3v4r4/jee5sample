@@ -32,10 +32,6 @@ class PhoneGapBuildManager {
 				fileset(dir: new File(phonegap.sdkDir, 'lib/android'), includes: "cordova-*.js")
 				globmapper(from:"*", to:"cordova.js")
 			}
-			ant.copy(todir: new File(path, "assets/www")){
-				fileset(dir: new File(phonegap.sdkDir, 'lib/android'), includes: "cordova-*.js")
-				globmapper(from:"*", to:"phonegap.js")
-			}
 
 			// modify Activity class to load index.html
 			ant.replaceregexp(match: "import.+Activity;", replace: "import org.apache.cordova.*;", byline: "true") {
@@ -90,7 +86,7 @@ class PhoneGapBuildManager {
 			// create index.html if it is not available exist from developer assets
 			if (!new File(path, "assets/www/index.html").exists()) {
 				new File(path, "assets/www/index.html").text =
-					'<!DOCTYPE html>\n<html>\n<head>\n<title>PhoneGap</title>\n<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>\n</head>\n<body>\n<h1>Hello World</h1>\n</body>\n</html>'
+					'<!DOCTYPE html>\n<html>\n<head>\n<title>PhoneGap</title>\n<script type="text/javascript" charset="utf-8" src="cordova.js"></script>\n</head>\n<body>\n<h1>Hello World</h1>\n</body>\n</html>'
 			}
 
 
