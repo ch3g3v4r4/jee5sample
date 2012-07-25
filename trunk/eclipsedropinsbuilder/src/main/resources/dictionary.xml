@@ -126,7 +126,7 @@
     <!-- tools -->
     <plugin>
       <name>Subclipse</name>
-      <updateSite>http://subclipse.tigris.org/update_1.6.x</updateSite>
+      <updateSite>http://subclipse.tigris.org/update_1.8.x/</updateSite>
       <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
       <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
       <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
@@ -302,6 +302,8 @@
     <plugin>
       <name>JIRA</name>
       <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.7</updateSite>
+      <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
+      <updateSite>http://download.eclipse.org/mylyn/releases/latest</updateSite>
       <featureId>com.atlassian.connector.eclipse.jira.feature.group</featureId>
     </plugin>
     <plugin>
