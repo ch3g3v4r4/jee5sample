@@ -5,7 +5,7 @@
     <plugin>
       <name>Groovy</name>
       <embeded>true</embeded>
-      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.6.1.xx-20120301-1000-e37-RELEASE.zip</url>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e3.7/archive-2.7.0.xx-20120703-1400-e37-RELEASE.zip</url>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
