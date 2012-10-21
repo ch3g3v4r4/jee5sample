@@ -15,8 +15,11 @@ class Downloader {
 			ant.get(src:downloadSDKUrl, dest: new File(tempDir, fileName), verbose:"yes", skipexisting:"true")
 
 			ant.mkdir(dir: sdkDir)
-			byte[] bytes = new File(tempDir, fileName).bytes
 
+			InputStream is = new File(tempDir, fileName).newInputStream()
+			byte[] bytes = new byte[2]
+			is.read(bytes)
+			is.close()
 			if (bytes[0] == 0x50 && bytes[1] == 0x4b) { // 'PK' : zip
 				ant.unzip(dest:sdkDir,overwrite:"false"){
 					fileset(dir:tempDir){
