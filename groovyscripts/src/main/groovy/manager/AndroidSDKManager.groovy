@@ -5,7 +5,7 @@ import java.util.regex.Pattern
 
 class AndroidSDKManager {
 
-	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r20-windows.zip')
+	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r20.0.3-windows.zip')
 	File sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
 	String optionalFilter
 
