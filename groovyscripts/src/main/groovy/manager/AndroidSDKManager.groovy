@@ -216,7 +216,7 @@ class AndroidSDKManager {
 
 	public static void main(String[] args) {
 		AndroidSDKManager main = new AndroidSDKManager()
-		main.sdkDir = new File('d:\\programs\\android_sdk')
-		main.createProject('socialnetwork', new File("d:\\projects\\android2\\SocialNetwork"), 'com.droidbrain.socialnetwork', 'MainController')
+		main.sdkDir = new File('d:\\programs\\android_sdk_2003')
+		main.createProject('salvageautosauction', new File("d:\\projects\\jesus\\salvageautosauction\\"), 'com.salvageautosauction', 'MainController')
 	}
 }
