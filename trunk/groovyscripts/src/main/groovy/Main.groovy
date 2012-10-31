@@ -1,4 +1,7 @@
+
 import org.fusesource.jansi.AnsiConsole;
+import static org.fusesource.jansi.Ansi.*;
+import static org.fusesource.jansi.Ansi.Color.*;
 
 public class Main {
 
@@ -11,6 +14,7 @@ public class Main {
     public static final String ANSI_WHITEONBLUE = "\u001b[37;44m";
 
     public static void main(String[] args) {
-        AnsiConsole.out.println(ANSI_BOLD + "Press a key..." + ANSI_NORMAL);
+		AnsiConsole.systemInstall();
+		System.out.println( ansi().eraseScreen().fg(RED).a("Hello").fg(GREEN).a(" World").reset() );
     }
 }
