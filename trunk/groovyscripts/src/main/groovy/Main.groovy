@@ -1,4 +1,3 @@
-
 import org.fusesource.jansi.AnsiConsole
 import org.fusesource.jansi.Ansi
 import org.fusesource.jansi.Ansi.Color
@@ -9,6 +8,6 @@ import org.fusesource.jansi.Ansi.Color
 public class Main {
 	public static void main(String[] args) {
 		AnsiConsole.systemInstall();
-		System.out.println(Ansi.ansi().eraseScreen().fg(Color.RED).a("Hello").fg(Color.GREEN).a(" World").reset());
+		System.out.println(Ansi.ansi().fg(Color.RED).a("Hello").fg(Color.GREEN).a(" World").reset());
 	}
 }
