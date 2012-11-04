@@ -50,9 +50,6 @@
       <name>FileSync</name>
     </plugin>
     <plugin>
-      <name>JSEclipse</name>
-    </plugin>
-    <plugin>
       <name>Spring</name>
     </plugin>
     <plugin>
@@ -62,16 +59,7 @@
       <name>GlassFish</name>
     </plugin>
     <plugin>
-      <name>Jetty</name>
-    </plugin>
-    <plugin>
       <name>JIRA</name>
-    </plugin>
-    <plugin>
-      <name>EclipseCodeRecommenders</name>
-    </plugin>
-    <plugin>
-      <name>JAXRS</name>
     </plugin>
   </plugins>
 
