@@ -7,6 +7,10 @@
 	<packaging>nar</packaging>
 	<version>1.0</version>
 
+	<properties>
+		<skipTests>true</skipTests>
+	</properties>
+
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
