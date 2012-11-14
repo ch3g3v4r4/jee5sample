@@ -77,7 +77,7 @@ public class RssMirror {
 			def mp3Url = it.@url
 			def filename = Hex.encodeHexString(DigestUtils.md5(mp3Url))
 			def newMp3Url = siteurl + '/' + id + "/" + filename
-			ant.get(src: mp3Url, dest: new File(dir, filename))
+			ant.get(src: mp3Url, dest: new File(dir, filename), skipexisting: true)
 			it.@url = newMp3Url
 		}
 
