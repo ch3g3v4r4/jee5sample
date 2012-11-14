@@ -11,6 +11,9 @@ import org.fusesource.jansi.Ansi.Color
 public class RssMirror {
 	public static void main(String[] args) {
 
+		String sitedir = args[0]
+		String siteurl = args[1]
+
 		AnsiConsole.systemInstall()
 
 		Scanner scanIn = new Scanner(System.in)
@@ -54,12 +57,12 @@ public class RssMirror {
 			if ("q".equals(choice)) break
 			Map feed = feeds[Integer.parseInt(choice)]
 
-			downloadFeed(feed.id, feed.url)
+			downloadFeed(feed.id, feed.url, sitedir, siteurl)
 		}
 	}
 
-	private static void downloadFeed(String id, String url) {
-		def dir = new File(System.getProperty("user.dir"), id)
+	private static void downloadFeed(String id, String url, String sitedir, String siteurl) {
+		def dir = new File(sitedir, id)
 		def feed = new File(dir, 'feed.xml')
 
 		AntBuilder ant = new AntBuilder()
