@@ -1,5 +1,7 @@
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import org.apache.commons.codec.binary.Hex
+import org.apache.commons.codec.digest.DigestUtils
 import org.fusesource.jansi.AnsiConsole
 import org.fusesource.jansi.Ansi
 import org.fusesource.jansi.Ansi.Color
@@ -7,7 +9,7 @@ import org.fusesource.jansi.Ansi.Color
 @Grab(group='commons-lang', module='commons-lang', version='2.6')
 @Grab(group='commons-io', module='commons-io', version='2.4')
 @Grab(group='com.google.guava', module='guava', version='13.0.1')
-
+@Grab(group='commons-codec', module='commons-codec', version='1.5')
 public class RssMirror {
 	public static void main(String[] args) {
 
@@ -38,6 +40,7 @@ public class RssMirror {
 			[id: 'voanation', name: 'VOA The Making of a Nation', url : 'http://feed.voanews.com/f/KI6AEB/6rN5mTvs_mv6'],
 			[id: 'voawords', name: 'VOA Words and Their Stories', url : 'http://feed.voanews.com/f/KI6AEB/TAx6FSvAJOmT']
 		]
+
 		while (true) {
 
 			System.out.println(Ansi.ansi().fg(Color.GREEN).a("MENU:").reset())
@@ -69,8 +72,22 @@ public class RssMirror {
 		ant.mkdir(dir : dir)
 		ant.get(src: url, dest: feed)
 
-		System.out.println(id);
-		System.out.println(url);
+		def rss = new XmlParser().parse(feed)
+		int i=0
+		rss.channel.item.enclosure.each {
+			if (i == 0) {i++
+			def mp3Url = it.@url
+			def filename = Hex.encodeHexString(DigestUtils.md5(mp3Url))
+			def newMp3Url = new URL(new URL(siteurl), id + "/" + filename)
+			ant.get(src: mp3Url, dest: new File(dir, filename))
+			it.@url = newMp3Url
+			}
+		}
+
+
+		def writer = new StringWriter()
+		new XmlNodePrinter(new PrintWriter(writer)).print(rss)
+		feed.text = writer.toString()
 
 	}
 }
