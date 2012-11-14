@@ -73,15 +73,12 @@ public class RssMirror {
 		ant.get(src: url, dest: feed)
 
 		def rss = new XmlParser().parse(feed)
-		int i=0
 		rss.channel.item.enclosure.each {
-			if (i == 0) {i++
 			def mp3Url = it.@url
 			def filename = Hex.encodeHexString(DigestUtils.md5(mp3Url))
 			def newMp3Url = siteurl + '/' + id + "/" + filename
 			ant.get(src: mp3Url, dest: new File(dir, filename))
 			it.@url = newMp3Url
-			}
 		}
 
 
