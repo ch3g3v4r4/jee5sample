@@ -102,7 +102,7 @@
     <!-- android -->
     <plugin>
       <name>Android</name>
-      <url>http://dl.google.com/android/ADT-20.0.3.zip</url>
+      <url>http://dl.google.com/android/ADT-21.0.0.zip</url>
       <updateSite>http://download.eclipse.org/releases/indigo/</updateSite>
       <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
       <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
@@ -141,7 +141,7 @@
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
-      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.2.201205131655.jar</url>
+      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.3.201211022220.jar</url>
     </plugin>
     <plugin>
       <name>ContextMenu</name>
