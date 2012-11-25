@@ -4,6 +4,7 @@ class AndroidSampleProjectCreator {
 
 	static main(args) {
 		def dir = new File('d:/programs/android_sdk_r21/samples/android-17')
+		dir = new File('d:/programs/android_sdk_r21/extras/android/support/samples')
 		dir.eachDir {
 			File projectDir = it
 			gen(projectDir)
