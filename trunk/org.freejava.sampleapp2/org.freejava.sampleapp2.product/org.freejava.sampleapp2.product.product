@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Sample Application" id="org.freejava.sampleapp2.plugin.product" application="org.freejava.sampleapp2.plugin.application" version="1.0.0" useFeatures="false">
+<product name="Sample Application" uid="org.freejava.sampleapp2.product.id" id="org.freejava.sampleapp2.plugin.product" application="org.freejava.sampleapp2.plugin.application" version="1.0.0" useFeatures="false">
 
 
    <configIni use="default">
@@ -39,11 +39,11 @@
       <plugin id="org.eclipse.core.expressions"/>
       <plugin id="org.eclipse.core.filesystem"/>
       <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true" os="win32" arch="x86"/>
+      <plugin id="org.eclipse.core.filesystem.win32.x86_64" fragment="true" os="win32" arch="x86_64"/>
       <plugin id="org.eclipse.core.filesystem.linux.x86_64" fragment="true" os="win32" arch="x86_64"/>
 
       <plugin id="org.eclipse.core.jobs"/>
       <plugin id="org.eclipse.core.resources"/>
-      <plugin id="org.eclipse.core.resources.win32.x86" fragment="true" os="win32" arch="x86"/>
       <plugin id="org.eclipse.core.runtime"/>
       <plugin id="org.eclipse.core.runtime.compatibility.auth"/>
       <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
@@ -65,6 +65,7 @@
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.equinox.security"/>
       <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true" os="win32" arch="x86"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86_64" fragment="true" os="win32" arch="x86_64"/>
       <plugin id="org.eclipse.help"/>
       <plugin id="org.eclipse.jface"/>
       <plugin id="org.eclipse.jface.databinding"/>
@@ -73,6 +74,7 @@
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.swt"/>
       <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true" os="win32" ws="win32" arch="x86"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86_64" fragment="true" os="win32" ws="win32" arch="x86_64"/>
       <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true" os="linux" ws="gtk" arch="x86_64"/>
 
       <plugin id="org.eclipse.text"/>
@@ -82,9 +84,23 @@
       <plugin id="org.eclipse.ui.views"/>
       <plugin id="org.eclipse.ui.views.log"/>
       <plugin id="org.eclipse.ui.win32" fragment="true" os="win32" ws="win32" arch="x86"/>
+      <plugin id="org.eclipse.ui.win32" fragment="true" os="win32" ws="win32" arch="x86_64"/>
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.freejava.sampleapp2.plugin"/>
    </plugins>
 
+  <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+
+      <!-- Disable update manager. It seems as if this could be achieved by the first line, but in 
+           fact the second line sets reconcile to false (see org.eclipse.equinox.p2.publisher.eclipse.ConfigCUsAction#publishBundleCUs) -->
+      <property name="org.eclipse.update.reconcile" value="false" />
+      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4"/>
+                                              
+   </configurations>
 
 </product>
