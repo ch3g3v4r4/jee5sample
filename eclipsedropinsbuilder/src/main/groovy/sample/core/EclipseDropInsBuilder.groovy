@@ -43,7 +43,7 @@ class EclipseDropInsBuilder {
         throw e;
       }
     }
-
+	def javaDir =  config.javaDir
     def eclipseDir = new File(workDir, "eclipse")
     ant.delete (dir: eclipseDir)
     ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
@@ -78,9 +78,9 @@ class EclipseDropInsBuilder {
         if (plugin.url == 'http://downloads.zend.com/pdt/') {
           installPHPFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.featureIds)
         } else if (plugin.url != null) {
-          installFromUrl(eclipseDir, workDir, ant, profile, plugin.url, plugin.updateSites, plugin.featureIds)
+          installFromUrl(javaDir, eclipseDir, workDir, ant, profile, plugin.url, plugin.updateSites, plugin.featureIds)
         } else {
-          installFromUpdateSite(eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
+          installFromUpdateSite(javaDir, eclipseDir, ant, profile, plugin.updateSites, plugin.featureIds)
         }
 
         // 3. compare with the snapshot and save new files to cachedPlugin folder
@@ -154,9 +154,11 @@ class EclipseDropInsBuilder {
     println "Or consolas font (on WinXP): 1. http://www.hanselman.com/blog/ConsolasFontFamilyNowAvailableForDownload.aspx  2.turn on ClearType(http://blogs.microsoft.co.il/blogs/kim/archive/2006/05/03/289.aspx)"
   }
 
-  void installFromUpdateSite(eclipseDir, ant, profile, updateSites, featureIds) {
+  void installFromUpdateSite(javaDir, eclipseDir, ant, profile, updateSites, featureIds) {
     def isWindows = (System.getProperty("os.name").indexOf("Windows") != -1);
     def javaPath = System.getProperty("java.home") + "/bin/java" + (isWindows ? ".exe" : "")
+	if (javaDir != null && !javaDir.equals("")) javaPath = javaDir
+
     def directorCmd = new CommandLine(javaPath)
 
     def launcherPath = FileUtils.listFiles(new File(eclipseDir, "plugins"), new WildcardFileFilter("org.eclipse.equinox.launcher_*.jar"), FalseFileFilter.FALSE).get(0).absolutePath
@@ -181,7 +183,7 @@ class EclipseDropInsBuilder {
 
   }
 
-  void installFromUrl(eclipseDir, workDir, ant, profile, url, updateSites, featureIds) {
+  void installFromUrl(javaDir, eclipseDir, workDir, ant, profile, url, updateSites, featureIds) {
     def fileName = url.substring(url.lastIndexOf('/') + 1)
     def downloadedFile = new File(workDir, fileName);
     if (!downloadedFile.exists()) {
@@ -208,7 +210,7 @@ class EclipseDropInsBuilder {
       def updateSites2 = new ArrayList<String>();
       updateSites2.add("jar:" + downloadedFile.toURI().toURL().toString() + "!/")
       if (updateSites != null) updateSites2.addAll(updateSites)
-      installFromUpdateSite(eclipseDir, ant, profile, updateSites2, featureIds)
+      installFromUpdateSite(javaDir, eclipseDir, ant, profile, updateSites2, featureIds)
     } else {
       // is zipped plugins
       def tempDir = new File(workDir, downloadedFile.name + new Date().getTime())

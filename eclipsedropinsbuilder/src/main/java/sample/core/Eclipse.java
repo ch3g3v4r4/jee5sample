@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Eclipse {
     private String workDir;
+    private String javaDir;
     private String url;
     private String profile;
     private List<Plugin> plugins;
