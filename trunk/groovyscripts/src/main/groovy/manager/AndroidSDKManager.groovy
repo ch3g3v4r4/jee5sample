@@ -84,7 +84,7 @@ class AndroidSDKManager {
 		}
 
 		// Download components
-		String cmd1 = androidCmd + ' update sdk --all --no-ui --filter ' + filter
+		String cmd1 = androidCmd + ' update sdk --all --no-ui --force --filter ' + filter
 		ant.echo(message: 'Executing ' + cmd1)
 		Process p1 = cmd1.execute(null, toolsDir)
 
