@@ -134,9 +134,9 @@ class EclipseDropInsBuilder {
     }
 
     // 4. Increase memory settings
-    ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^\\-Xmx[0-9]+m", replace:"-Xmx800m", byline:"true");
-    ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+m", replace:"400m", byline:"true");
-    ant.replaceregexp (file: new File(eclipseDir, "eclipse.ini"),  match:"^[0-9]+M", replace:"400M", byline:"true");
+    ant.replaceregexp (match:"^\\-Xmx[0-9]+m", replace:"-Xmx800m", byline:"true"){ fileset(dir:eclipseDir, includes:"**/eclipse.ini") }
+    ant.replaceregexp (match:"^[0-9]+m", replace:"400m", byline:"true") { fileset(dir:eclipseDir, includes:"**/eclipse.ini") }
+    ant.replaceregexp (match:"^[0-9]+M", replace:"400M", byline:"true") { fileset(dir:eclipseDir, includes:"**/eclipse.ini") }
 
     // 5. Remove conflicting key binding from Aptana plugin (if any)
     def files = FileUtils.listFiles(new File(eclipseDir, "dropins"), new WildcardFileFilter("com.aptana.editor.common_*.jar"), TrueFileFilter.INSTANCE);
@@ -157,6 +157,9 @@ class EclipseDropInsBuilder {
       ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+M1\\+M2\\+U[^<]+</key>", replace:"", flags:"s");
       ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
     }
+	
+	// 6. set execution permission for eclipse binaries
+	ant.chmod(perm:"uog+x") { fileset(dir:eclipseDir, includes:"**/eclipse, **/eclipse.exe, **/eclipsec.exe, **/eclipsec")}
 
     println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
     println "Remember to remove spring-uaa, spring-roo plugins/features and change Aptana theme to eclipse theme"
