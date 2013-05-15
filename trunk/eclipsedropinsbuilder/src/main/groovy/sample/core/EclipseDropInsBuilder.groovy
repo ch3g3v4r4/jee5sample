@@ -31,25 +31,25 @@ class EclipseDropInsBuilder {
     def profile = config.profile
 
     def zipFileName = platformUrl.substring(platformUrl.lastIndexOf('/') + 1)
-    def zipFileNameNoExt = zipFileName.substring(0, zipFileName.lastIndexOf('.'))
+    def zipFileNameNoExt = zipFileName + "_unzipped"
     def platformEclipseDir = new File(workDir, zipFileNameNoExt + "/eclipse")
     if (!platformEclipseDir.exists()) {
       ant.get (src: platformUrl, dest: workDir, usetimestamp: false, skipexisting: true, verbose: true)
       try {
 		  
-		FileInputStream fin = new FileInputStream(new File(workDir, platformUrl.substring(platformUrl.lastIndexOf('/') + 1)))
+		FileInputStream fin = new FileInputStream(new File(workDir, zipFileName))
 		byte[] bytes = new byte[2]
 		fin.read(bytes)
 		fin.close()
 
 		if (bytes[0] == 0x50 && bytes[1] == 0x4b) { // 'PK' : zip
-			ant.unzip (dest: new File(workDir, zipFileNameNoExt), overwrite:"false") { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1)) } }
+			ant.unzip (dest: new File(workDir, zipFileNameNoExt), overwrite:"false") { fileset(dir: workDir){ include (name: zipFileName) } }
 		} else {
-			ant.untar(dest:new File(workDir, zipFileNameNoExt), compression:"gzip", overwrite:"false") { fileset(dir: workDir){ include (name: platformUrl.substring(platformUrl.lastIndexOf('/') + 1)) } }
+			ant.untar(dest:new File(workDir, zipFileNameNoExt), compression:"gzip", overwrite:"false") { fileset(dir: workDir){ include (name: zipFileName) } }
 		}
 
       } catch (Exception e) {
-        ant.delete(file: new File(workDir, platformUrl.substring(platformUrl.lastIndexOf('/') + 1)))
+        ant.delete(file: new File(workDir, zipFileName))
         throw e;
       }
     }
