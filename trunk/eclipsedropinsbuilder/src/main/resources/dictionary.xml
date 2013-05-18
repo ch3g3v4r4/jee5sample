@@ -493,8 +493,12 @@
     </plugin>
 
 
-
-
+    <plugin>
+      <name>GoogleAppEngine</name>
+      <updateSite>https://dl.google.com/eclipse/plugin/4.2</updateSite>
+      <featureId>com.google.gdt.eclipse.suite.e42.feature.feature.group</featureId>
+      <featureId>com.google.appengine.eclipse.sdkbundle.feature.feature.group</featureId>
+    </plugin>
 
   </plugins>
 </eclipse>
