@@ -2,13 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
-  <artifactId>helloworld</artifactId>
+  <artifactId>gae-helloorm</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <spring.version>3.0.0.RELEASE</spring.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>3.2.2.RELEASE</spring.version>
     <jta.scope>compile</jta.scope>
+    <appengine.target.version>1.8.0</appengine.target.version>
     <appengine-local-runtime.scope>provided</appengine-local-runtime.scope>
     <appengine-api-stubs.scope>provided</appengine-api-stubs.scope>
   </properties>
@@ -18,7 +20,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.11</version>
       <scope>test</scope>
     </dependency>
 
@@ -49,89 +51,86 @@
       <version>1.2</version>
     </dependency>
 
-    <!--
-      Data persistence APIs: JPA and JDO. Versions of datanucleus-core
-      and datanucleus-jpa are 1.1.1 which is newer than GAE jars (1.1.0)
-    -->
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jpa_3.0_spec</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.jdo</groupId>
-      <artifactId>jdo2-api</artifactId>
-      <version>2.3-eb</version>
-      <scope>runtime</scope>
-      <exclusions>
-        <exclusion><!-- Use geronimo-jta_1.1_spec instead -->
-          <groupId>javax.transaction</groupId>
-          <artifactId>transaction-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jta_1.1_spec</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.datanucleus</groupId>
-      <artifactId>datanucleus-core</artifactId>
-      <version>1.1.5</version>
-      <scope>runtime</scope>
-      <exclusions>
-        <exclusion><!-- Use geronimo-jta_1.1_spec instead -->
-          <groupId>javax.transaction</groupId>
-          <artifactId>transaction-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.datanucleus</groupId>
-      <artifactId>datanucleus-jpa</artifactId>
-      <version>1.1.5</version>
-      <scope>runtime</scope>
-      <exclusions>
-        <exclusion><!-- Use geronimo-jpa_3.0_spec instead -->
-          <groupId>javax.persistence</groupId>
-          <artifactId>persistence-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <!-- Google App Engine persistence runtime -->
-    <dependency>
-      <groupId>com.google.appengine.orm</groupId>
-      <artifactId>datanucleus-appengine</artifactId>
-      <version>1.0.4</version>
-      <scope>runtime</scope>
-    </dependency>
-    <!-- Below two dependencies + LocalApiProxyServletFilter  are used to simulate GAE dev env on Jetty server  -->
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-1.0-runtime</artifactId>
-      <version>1.3.0</version>
-      <scope>${appengine-local-runtime.scope}</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-1.0-stubs</artifactId>
-      <version>1.3.0</version>
-      <scope>${appengine-api-stubs.scope}</scope>
-    </dependency>
-
-
     <!-- Google App Engine API -->
     <dependency>
       <groupId>com.google.appengine</groupId>
       <artifactId>appengine-api-1.0-sdk</artifactId>
-      <version>1.3.0</version>
+      <version>${appengine.target.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-1.0-labs</artifactId>
-      <version>1.3.0</version>
+      <artifactId>appengine-api-labs</artifactId>
+      <version>${appengine.target.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-jsr107cache</artifactId>
+      <version>${appengine.target.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.jsr107cache</groupId>
+      <artifactId>jsr107cache</artifactId>
+      <version>1.1</version>
+    </dependency>
+
+    <!-- JPA 2.0 -->
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jpa_2.0_spec</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>jta</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-core</artifactId>
+      <version>3.1.3</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-api-jpa</artifactId>
+      <version>3.1.3</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.datanucleus</groupId>
+      <artifactId>datanucleus-api-jdo</artifactId>
+      <version>3.1.3</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Google App Engine persistence runtime -->
+    <dependency>
+      <groupId>com.google.appengine.orm</groupId>
+      <artifactId>datanucleus-appengine</artifactId>
+      <version>2.1.2</version>
+      <scope>runtime</scope>
+    </dependency>
+
+
+    <!-- Below two dependencies + LocalApiProxyServletFilter  are used to simulate GAE dev env on Jetty server  -->
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-testing</artifactId>
+      <version>${appengine.target.version}</version>
+      <scope>${appengine-local-runtime.scope}</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-stubs</artifactId>
+      <version>${appengine.target.version}</version>
+      <scope>${appengine-api-stubs.scope}</scope>
+    </dependency>
+<!--     <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-endpoints</artifactId>
+      <version>${appengine.target.version}</version>
+    </dependency> -->
+
 
     <!-- Logging -->
     <dependency>
@@ -160,135 +159,22 @@
       <version>1.5.6</version>
     </dependency>
 
-    <!-- Spring framework, remove all commons-logging b/c we have jcl-over-slf4j -->
+    <!-- Spring framework -->
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.aop</artifactId>
+      <artifactId>spring-webmvc</artifactId>
       <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
     </dependency>
     <dependency>
       <groupId>org.aspectj</groupId>
-      <artifactId>com.springsource.org.aspectj.weaver</artifactId>
-      <version>1.6.3.RELEASE</version>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.7.2</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.aspects</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.beans</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.context</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.context.support</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.core</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.expression</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.orm</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.web</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.web.servlet</artifactId>
-      <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>org.springframework.test</artifactId>
-      <version>${spring.version}</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>com.springsource.org.apache.commons.logging</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
   </dependencies>
 
   <build>
@@ -298,7 +184,9 @@
     <plugins>
 
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
         <configuration>
           <warSourceDirectory>${basedir}/war</warSourceDirectory>
         </configuration>
@@ -309,6 +197,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -318,7 +207,7 @@
       <plugin>
         <groupId>org.datanucleus</groupId>
         <artifactId>maven-datanucleus-plugin</artifactId>
-        <version>1.1.4</version>
+        <version>3.1.3</version>
         <configuration>
           <verbose>true</verbose>
           <api>JPA</api>
@@ -337,8 +226,8 @@
         <dependencies>
           <dependency>
             <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-jpa</artifactId>
-            <version>1.1.5</version>
+            <artifactId>datanucleus-api-jpa</artifactId>
+            <version>3.1.3</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -359,9 +248,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <excludes><!-- GAE_CONTAINER already have these jars -->
+        <version>2.9</version>
+        <configuration><!-- GAE_CONTAINER already have these jars -->
+        <!--
+          <excludes>
             <exclude>org.datanucleus:datanucleus-core</exclude>
             <exclude>org.datanucleus:datanucleus-jpa</exclude>
             <exclude>com.google.appengine:datanucleus-appengine</exclude>
@@ -373,6 +263,7 @@
             <exclude>javax.jdo:jdo2-api</exclude>
             <exclude>com.google.appengine:appengine-api</exclude>
           </excludes>
+           -->
           <downloadSources>true</downloadSources>
           <buildOutputDirectory>${basedir}/war/WEB-INF/classes</buildOutputDirectory>
           <wtpversion>1.5</wtpversion>
@@ -448,13 +339,13 @@
             <configuration>
               <tasks>
                 <echo message="Will download Google App Engine for Java and run appcfg tool to upload the application." />
-                <mkdir dir="${java.io.tmpdir}/gaej1.3.0"/>
-                <get src="http://googleappengine.googlecode.com/files/appengine-java-sdk-1.3.0.zip" dest="${java.io.tmpdir}/gaej1.3.0/appengine-java-sdk-1.3.0.zip" verbose="yes" usetimestamp="true"/>
-                <unzip src="${java.io.tmpdir}/gaej1.3.0/appengine-java-sdk-1.3.0.zip" dest="${java.io.tmpdir}/gaej1.3.0" overwrite="false"/>
+                <mkdir dir="${java.io.tmpdir}/gaej${appengine.target.version}"/>
+                <get src="http://googleappengine.googlecode.com/files/appengine-java-sdk-${appengine.target.version}.zip" dest="${java.io.tmpdir}/gaej${appengine.target.version}/appengine-java-sdk-${appengine.target.version}.zip" verbose="yes" usetimestamp="true"/>
+                <unzip src="${java.io.tmpdir}/gaej${appengine.target.version}/appengine-java-sdk-${appengine.target.version}.zip" dest="${java.io.tmpdir}/gaej${appengine.target.version}" overwrite="false"/>
                 <java fork="false" classname="com.google.appengine.tools.admin.AppCfg">
-                  <sysproperty key="appengine.sdk.root" value="${java.io.tmpdir}/gaej1.3.0/appengine-java-sdk-1.3.0"/>
+                  <sysproperty key="appengine.sdk.root" value="${java.io.tmpdir}/gaej${appengine.target.version}/appengine-java-sdk-${appengine.target.version}"/>
                   <classpath>
-                    <fileset dir="${java.io.tmpdir}/gaej1.3.0">
+                    <fileset dir="${java.io.tmpdir}/gaej${appengine.target.version}">
                       <include name="**/*.jar"/>
                     </fileset>
                   </classpath>
@@ -469,57 +360,11 @@
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+          <groupId>com.google.appengine</groupId>
+          <artifactId>appengine-maven-plugin</artifactId>
+          <version>${appengine.target.version}</version>
+      </plugin>
     </plugins>
   </build>
-
-  <repositories>
-    <repository><!-- To access Google App Engine jars -->
-      <id>www.mvnsearch.org</id>
-      <name>www.mvnsearch.org</name>
-      <url>http://www.mvnsearch.org/maven2/</url>
-    </repository>
-    <repository>
-      <id>DataNucleus_Repos2</id>
-      <name>DataNucleus Repository</name>
-      <url>http://www.datanucleus.org/downloads/maven2</url>
-    </repository>
-
-    <repository>
-      <id>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</id>
-      <url>http://repository.springsource.com/maven/bundles/release</url>
-    </repository>
-    <repository>
-      <id>SpringSource Enterprise Bundle Repository - External Bundle Releases</id>
-      <url>http://repository.springsource.com/maven/bundles/external</url>
-    </repository>
-
-    <repository>
-      <id>maven2-repository.dev.java.net</id>
-      <name>Java.net Repository for Maven</name>
-      <url>http://download.java.net/maven/2/</url>
-      <layout>default</layout>
-    </repository>
-    <repository>
-      <id>maven-repository.dev.java.net</id>
-      <name>Java.net Maven 1 Repository (legacy)</name>
-      <url>http://download.java.net/maven/1</url>
-      <layout>legacy</layout>
-    </repository>
-
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>maven-repository.dev.java.net</id>
-      <name>Java.net Maven 1 Repository (legacy)</name>
-      <url>http://download.java.net/maven/1</url>
-      <layout>legacy</layout>
-    </pluginRepository>
-    <pluginRepository>
-      <id>DataNucleus_Repos2</id>
-      <url>http://www.datanucleus.org/downloads/maven2</url>
-    </pluginRepository>
-
-  </pluginRepositories>
-
 </project>
