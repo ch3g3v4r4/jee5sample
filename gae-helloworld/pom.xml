@@ -125,12 +125,6 @@
       <version>${appengine.target.version}</version>
       <scope>${appengine-api-stubs.scope}</scope>
     </dependency>
-<!--     <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-endpoints</artifactId>
-      <version>${appengine.target.version}</version>
-    </dependency> -->
-
 
     <!-- Logging -->
     <dependency>
