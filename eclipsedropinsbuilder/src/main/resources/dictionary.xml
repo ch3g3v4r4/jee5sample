@@ -500,5 +500,12 @@
       <featureId>com.google.appengine.eclipse.sdkbundle.feature.feature.group</featureId>
     </plugin>
 
+    <plugin>
+      <name>datanucleus</name>
+      <updateSite>http://www.datanucleus.org/downloads/eclipse-update/</updateSite>
+      <featureId>org.datanucleus.ide.eclipse.feature.feature.group</featureId>
+    </plugin>
+
+
   </plugins>
 </eclipse>
