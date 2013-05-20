@@ -284,6 +284,9 @@
               com.google.gdt.eclipse.core.webAppProjectValidator
             </buildcommand>
             <buildcommand>
+              com.google.appengine.eclipse.core.gaeProjectChangeNotifier
+            </buildcommand>
+            <buildcommand>
                 org.springframework.ide.eclipse.core.springbuilder
             </buildcommand>
           </additionalBuildcommands>
