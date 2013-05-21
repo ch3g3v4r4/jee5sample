@@ -9,20 +9,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>3.2.2.RELEASE</spring.version>
-    <jta.scope>compile</jta.scope>
     <appengine.target.version>1.8.0</appengine.target.version>
-    <appengine-local-runtime.scope>provided</appengine-local-runtime.scope>
-    <appengine-api-stubs.scope>provided</appengine-api-stubs.scope>
   </properties>
 
   <dependencies>
-    <!-- Unit test -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
 
     <!-- Web server APIs -->
     <dependency>
@@ -96,12 +86,7 @@
       <version>3.1.3</version>
       <scope>runtime</scope>
     </dependency>
-    <dependency>
-      <groupId>org.datanucleus</groupId>
-      <artifactId>datanucleus-api-jdo</artifactId>
-      <version>3.1.3</version>
-      <scope>runtime</scope>
-    </dependency>
+
 
     <!-- Google App Engine persistence runtime -->
     <dependency>
@@ -111,20 +96,6 @@
       <scope>runtime</scope>
     </dependency>
 
-
-    <!-- Below two dependencies + LocalApiProxyServletFilter  are used to simulate GAE dev env on Jetty server  -->
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-testing</artifactId>
-      <version>${appengine.target.version}</version>
-      <scope>${appengine-local-runtime.scope}</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.appengine</groupId>
-      <artifactId>appengine-api-stubs</artifactId>
-      <version>${appengine.target.version}</version>
-      <scope>${appengine-api-stubs.scope}</scope>
-    </dependency>
 
     <!-- Logging -->
     <dependency>
@@ -169,11 +140,30 @@
       <artifactId>aspectjweaver</artifactId>
       <version>1.7.2</version>
     </dependency>
+
+    <!-- Unit test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-testing</artifactId>
+      <version>${appengine.target.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-stubs</artifactId>
+      <version>${appengine.target.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <finalName>${project.artifactId}</finalName>
-    <outputDirectory>war/WEB-INF/classes</outputDirectory>
 
     <plugins>
 
@@ -181,9 +171,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>2.3</version>
-        <configuration>
-          <warSourceDirectory>${basedir}/war</warSourceDirectory>
-        </configuration>
       </plugin>
 
 
@@ -226,66 +213,23 @@
         </dependencies>
       </plugin>
 
-      <!-- Jetty server for development -->
-      <plugin>
-        <groupId>org.mortbay.jetty</groupId>
-        <artifactId>maven-jetty-plugin</artifactId>
-        <version>6.0.2</version>
-        <configuration>
-          <webAppSourceDirectory>${basedir}/war</webAppSourceDirectory>
-          <scanIntervalSeconds>10</scanIntervalSeconds>
-          <overrideWebXml>src/main/config/jetty/web.xml</overrideWebXml>
-        </configuration>
-      </plugin>
 
       <!-- Generate Eclipse project files -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
         <version>2.9</version>
-        <configuration><!-- GAE_CONTAINER already have these jars -->
-
-          <excludes>
-            <exclude>org.datanucleus:datanucleus-core</exclude>
-            <exclude>org.datanucleus:datanucleus-jpa</exclude>
-            <exclude>com.google.appengine:datanucleus-appengine</exclude>
-            <exclude>org.apache.geronimo.specs:geronimo-servlet_2.5_spec</exclude>
-            <exclude>org.apache.geronimo.specs:geronimo-jsp_2.1_spec</exclude>
-            <exclude>org.apache.geronimo.specs:geronimo-el_1.0_spec</exclude>
-            <exclude>org.apache.geronimo.specs:geronimo-jpa_3.0_spec</exclude>
-            <exclude>org.apache.geronimo.specs:geronimo-jta_1.1_spec</exclude>
-            <exclude>javax.jdo:jdo2-api</exclude>
-            <exclude>com.google.appengine:appengine-api</exclude>
-          </excludes>
+        <configuration>
 
           <downloadSources>true</downloadSources>
-          <buildOutputDirectory>${basedir}/war/WEB-INF/classes</buildOutputDirectory>
           <wtpversion>1.5</wtpversion>
           <wtpapplicationxml>true</wtpapplicationxml>
           <additionalProjectnatures>
-            <projectnature>
-              com.google.appengine.eclipse.core.gaeNature
-            </projectnature>
-            <projectnature>
-              com.google.gdt.eclipse.core.webAppNature
-            </projectnature>
             <projectnature>
                 org.springframework.ide.eclipse.core.springnature
             </projectnature>
           </additionalProjectnatures>
           <additionalBuildcommands>
-            <buildcommand>
-              com.google.appengine.eclipse.core.enhancerbuilder
-            </buildcommand>
-            <buildcommand>
-              com.google.appengine.eclipse.core.projectValidator
-            </buildcommand>
-            <buildcommand>
-              com.google.gdt.eclipse.core.webAppProjectValidator
-            </buildcommand>
-            <buildcommand>
-              com.google.appengine.eclipse.core.gaeProjectChangeNotifier
-            </buildcommand>
             <buildcommand>
                 org.springframework.ide.eclipse.core.springbuilder
             </buildcommand>
@@ -295,7 +239,6 @@
           </additionalProjectFacets>
           <classpathContainers>
             <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-            <classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer>
           </classpathContainers>
           <additionalConfig>
               <file>
@@ -328,35 +271,6 @@
         </configuration>
       </plugin>
 
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>install </phase>
-            <configuration>
-              <tasks>
-                <echo message="Will download Google App Engine for Java and run appcfg tool to upload the application." />
-                <mkdir dir="${java.io.tmpdir}/gaej${appengine.target.version}"/>
-                <get src="http://googleappengine.googlecode.com/files/appengine-java-sdk-${appengine.target.version}.zip" dest="${java.io.tmpdir}/gaej${appengine.target.version}/appengine-java-sdk-${appengine.target.version}.zip" verbose="yes" usetimestamp="true"/>
-                <unzip src="${java.io.tmpdir}/gaej${appengine.target.version}/appengine-java-sdk-${appengine.target.version}.zip" dest="${java.io.tmpdir}/gaej${appengine.target.version}" overwrite="false"/>
-                <java fork="false" classname="com.google.appengine.tools.admin.AppCfg">
-                  <sysproperty key="appengine.sdk.root" value="${java.io.tmpdir}/gaej${appengine.target.version}/appengine-java-sdk-${appengine.target.version}"/>
-                  <classpath>
-                    <fileset dir="${java.io.tmpdir}/gaej${appengine.target.version}">
-                      <include name="**/*.jar"/>
-                    </fileset>
-                  </classpath>
-                  <arg value="update"/>
-                  <arg value="${basedir}/target/${project.artifactId}"/>
-                </java>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
           <groupId>com.google.appengine</groupId>
           <artifactId>appengine-maven-plugin</artifactId>
