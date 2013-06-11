@@ -276,11 +276,13 @@
       <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
       <featureId>org.tigris.subversion.clientadapter.svnkit.feature.feature.group</featureId>
       <featureId>org.tmatesoft.svnkit.feature.group</featureId>
+      <featureId>org.tigris.subversion.subclipse.mylyn.feature.group</featureId>
     </plugin>
     <plugin>
       <name>egit</name>
       <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
       <featureId>org.eclipse.egit.feature.group</featureId>
+      <featureId>org.eclipse.egit.mylyn.feature.group</featureId>
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
