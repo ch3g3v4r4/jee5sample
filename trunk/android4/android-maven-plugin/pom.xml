@@ -52,7 +52,7 @@
       <!-- http://www.jfrog.org/artifactory/plugins-releases/org/jfrog/maven/annomojo/maven-plugin-anno/ -->
       <groupId>org.jfrog.maven.annomojo</groupId>
       <artifactId>maven-plugin-anno</artifactId>
-      <version>1.4.0</version>
+      <version>1.4.1</version>
       <scope>compile</scope>
     </dependency>
 
@@ -199,7 +199,7 @@
             <!-- http://www.jfrog.org/artifactory/plugins-releases/org/jfrog/maven/annomojo/maven-plugin-tools-anno/ -->
             <groupId>org.jfrog.maven.annomojo</groupId>
             <artifactId>maven-plugin-tools-anno</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.1</version>
             <scope>runtime</scope>
           </dependency>
         </dependencies>
@@ -209,13 +209,13 @@
   <pluginRepositories>
     <pluginRepository>
       <id>jfrog</id>
-      <url>http://www.jfrog.org/artifactory/plugins-releases/</url>
+      <url>http://repo.jfrog.org/artifactory/plugins-releases</url>
     </pluginRepository>
   </pluginRepositories>
   <repositories>
     <repository>
       <id>jfrog</id>
-      <url>http://www.jfrog.org/artifactory/plugins-releases/</url>
+      <url>http://repo.jfrog.org/artifactory/plugins-releases</url>
     </repository>
   </repositories>
 </project>
