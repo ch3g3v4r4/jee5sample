@@ -5,7 +5,8 @@
     <plugin>
       <name>Groovy</name>
       <embeded>true</embeded>
-      <url>http://dist.springsource.org/release/GRECLIPSE/e4.2/archive-2.7.2.xx-RELEASE-20121219-0800-e42.zip</url>
+      <url>http://dist.springsource.org/release/GRECLIPSE/e4.2/archive-2.8.0.xx-20130703-1700-e42-RELEASE.zip</url>
+      <featureId>org.codehaus.groovy21.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy20.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
@@ -245,7 +246,7 @@
     <!-- android -->
     <plugin>
       <name>Android</name>
-      <url>http://dl.google.com/android/ADT-22.0.1.zip</url>
+      <url>http://dl.google.com/android/ADT-22.2.1.zip</url>
       <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
       <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
       <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
@@ -286,7 +287,7 @@
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
-      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.3.201211022220.jar</url>
+      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.4.201307082032.jar</url>
     </plugin>
     <plugin>
       <name>ContextMenu</name>
@@ -399,7 +400,7 @@
     </plugin>
     <plugin>
       <name>Spring</name>
-      <url>http://dist.springsource.com/release/TOOLS/update/3.1.0.RELEASE/e3.8/springsource-tool-suite-3.1.0.RELEASE-e3.8-updatesite.zip</url>
+      <url>http://download.springsource.com/release/TOOLS/update/3.3.0.RELEASE/e3.8/springsource-tool-suite-3.3.0.RELEASE-e3.8.2-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
