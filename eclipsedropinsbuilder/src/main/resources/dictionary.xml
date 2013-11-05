@@ -243,6 +243,17 @@
       <featureId>org.zend.php.debug_feature.feature.group</featureId>
     </plugin>
 
+    <!-- C++ -->
+    <plugin>
+      <name>cpp</name>
+      <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
+      <featureId>org.eclipse.cdt.feature.group</featureId>
+      <featureId>org.eclipse.cdt.autotools.feature.group</featureId>
+      <featureId>org.eclipse.cdt.build.crossgcc.feature.group</featureId>
+      <featureId>org.eclipse.cdt.debug.ui.memory.feature.group</featureId>
+      <featureId>org.eclipse.cdt.launch.remote.feature.group</featureId>
+    </plugin>
+
     <!-- android -->
     <plugin>
       <name>Android</name>
