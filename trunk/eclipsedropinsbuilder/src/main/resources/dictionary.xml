@@ -253,6 +253,12 @@
       <featureId>org.eclipse.cdt.debug.ui.memory.feature.group</featureId>
       <featureId>org.eclipse.cdt.launch.remote.feature.group</featureId>
     </plugin>
+    <plugin>
+      <name>cmakeed</name>
+      <updateSite>http://master.dl.sourceforge.net/project/cmakeed/eclipse/site.xml</updateSite>
+      <featureId>com.cthing.cmakeed.feature.feature.group</featureId>
+    </plugin>
+
 
     <!-- android -->
     <plugin>
