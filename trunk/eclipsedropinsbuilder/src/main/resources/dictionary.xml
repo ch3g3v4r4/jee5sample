@@ -439,6 +439,12 @@
       <featureId>org.jboss.tools.struts.feature.feature.group</featureId>
     </plugin>
     <plugin>
+      <name>FreeMarker</name>
+      <updateSite>http://download.jboss.org/jbosstools/updates/stable/juno/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
+      <featureId>org.jboss.ide.eclipse.freemarker.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
       <name>JAXRS</name>
       <updateSite>http://download.jboss.org/jbosstools/updates/stable/juno/</updateSite>
       <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
