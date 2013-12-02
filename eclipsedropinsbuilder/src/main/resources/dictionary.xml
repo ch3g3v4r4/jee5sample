@@ -532,6 +532,14 @@
       <featureId>org.datanucleus.ide.eclipse.feature.feature.group</featureId>
     </plugin>
 
+    <plugin>
+      <name>WordWrap</name>
+      <updateSite>http://dev.cdhq.de/eclipse/updatesite/juno/</updateSite>
+      <featureId>de.cdhq.eclipse.linenumberfix.juno.feature.feature.group</featureId>
+      <featureId>de.cdhq.eclipse.wordwrap.feature.feature.group</featureId>
+    </plugin>
+
+
 
   </plugins>
 </eclipse>
