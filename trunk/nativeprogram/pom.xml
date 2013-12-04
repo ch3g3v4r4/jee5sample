@@ -15,18 +15,11 @@
 		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
+				<groupId>com.github.maven-nar</groupId>
 				<artifactId>nar-maven-plugin</artifactId>
-				<version>3.0.0-scijava-2</version>
+				<version>3.0.0-rc-2</version>
 				<extensions>true</extensions>
 				<configuration>
-				    <!--  https://github.com/maven-nar/nar-maven-plugin/pull/33 -->
-					<c>
-						<includes>
-							<include>**/*.c</include>
-						</includes>
-					</c>
-
 					<libraries>
 						<library>
 							<type>executable</type>
@@ -37,12 +30,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>imagej.thirdparty</id>
-			<url>http://maven.imagej.net/content/repositories/thirdparty</url>
-		</pluginRepository>
-	</pluginRepositories>
 
 </project>
