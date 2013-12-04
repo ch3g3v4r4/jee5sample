@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/Users/thaiha/tmp</workDir>
-  <url>http://eclipse.stu.edu.tw//eclipse/downloads/drops/R-3.8.2-201301310800/eclipse-SDK-3.8.2-macosx-cocoa-x86_64.tar.gz</url>
+  <url>http://archive.eclipse.org/eclipse/downloads/drops/R-3.8.2-201301310800/eclipse-SDK-3.8.2-macosx-cocoa-x86_64.tar.gz</url>
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
@@ -25,7 +25,7 @@
     <plugin>
       <name>AnyEditTools</name>
     </plugin>
-<!-- 
+<!--
     <plugin>
       <name>ContextMenu</name>
     </plugin>
@@ -50,4 +50,3 @@
     </plugin>
   </plugins>
 </eclipse>
- 
