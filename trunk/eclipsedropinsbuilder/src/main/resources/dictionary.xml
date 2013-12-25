@@ -263,7 +263,7 @@
     <!-- android -->
     <plugin>
       <name>Android</name>
-      <url>http://dl.google.com/android/ADT-22.2.1.zip</url>
+      <url>http://dl.google.com/android/ADT-22.3.0.zip</url>
       <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
       <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
       <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
@@ -304,7 +304,7 @@
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
-      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.4.201307082032.jar</url>
+      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.5.201312221551.jar</url>
     </plugin>
     <plugin>
       <name>ContextMenu</name>
