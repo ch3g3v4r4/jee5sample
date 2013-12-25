@@ -417,7 +417,7 @@
     </plugin>
     <plugin>
       <name>Spring</name>
-      <url>http://download.springsource.com/release/TOOLS/update/3.3.0.RELEASE/e3.8/springsource-tool-suite-3.3.0.RELEASE-e3.8.2-updatesite.zip</url>
+      <url>http://download.springsource.com/release/TOOLS/update/3.4.0.RELEASE/e3.8/springsource-tool-suite-3.4.0.RELEASE-e3.8.2-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
