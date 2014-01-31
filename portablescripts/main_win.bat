@@ -16,8 +16,8 @@ wget -nc -P "%DOWNLOADS%" http://download.springsource.com/release/STS/3.4.0/dis
 
 rem JDK
 IF EXIST "%DOWNLOADS%\jdk-7u51-windows-x64.exe" goto jdkexists
-pushd "%DOWNLOADS%"
+PUSHD "%DOWNLOADS%"
 rem wget -O - --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F" "http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-windows-x64.exe" > "%DOWNLOADS%\jdk-7u51-windows-x64.exe"
 wget -nc -O jdk-7u51-windows-x64.exe --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F" "http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-windows-x64.exe"
-popd
+POPD
 :jdkexists
