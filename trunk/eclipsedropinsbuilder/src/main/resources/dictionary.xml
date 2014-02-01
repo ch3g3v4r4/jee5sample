@@ -13,6 +13,7 @@
       <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
     </plugin>
+
     <plugin>
       <name>AJDT</name>
       <embeded>true</embeded>
@@ -288,7 +289,7 @@
     <!-- tools -->
     <plugin>
       <name>Subclipse</name>
-      <updateSite>http://subclipse.tigris.org/update_1.8.x/</updateSite>
+      <updateSite>http://subclipse.tigris.org/update_1.10.x</updateSite>
       <featureId>org.tigris.subversion.subclipse.feature.group</featureId>
       <featureId>org.tigris.subversion.clientadapter.feature.feature.group</featureId>
       <featureId>org.tigris.subversion.clientadapter.javahl.feature.feature.group</featureId>
@@ -539,6 +540,11 @@
       <featureId>de.cdhq.eclipse.wordwrap.feature.feature.group</featureId>
     </plugin>
 
+    <plugin>
+      <name>Gradle</name>
+      <updateSite>http://dist.springsource.com/snapshot/TOOLS/gradle/nightly</updateSite>
+      <featureId>org.springsource.ide.eclipse.gradle.feature.feature.group</featureId>
+    </plugin>
 
 
   </plugins>
