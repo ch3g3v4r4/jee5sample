@@ -14,6 +14,8 @@ wget -nc -P "%DOWNLOADS%" http://download.tuxfamily.org/notepadplus/6.5.3/npp.6.
 
 rem Groovy/Grails Tool Suite (GGTS 3.4.0.RELEASE) based on Eclipse 3.8 http://spring.io/tools/ggts/all
 wget -nc -P "%DOWNLOADS%" http://download.springsource.com/release/STS/3.4.0/dist/e3.8/groovy-grails-tool-suite-3.4.0.RELEASE-e3.8.2-win32-x86_64.zip
+rem spring tool suite
+wget -nc -P "%DOWNLOADS%" http://download.springsource.com/release/STS/3.4.0/dist/e3.8/spring-tool-suite-3.4.0.RELEASE-e3.8.2-win32.zip
 
 rem JDK7
 IF EXIST "%DOWNLOADS%\jdk-7u51-windows-x64.exe" goto jdk7exists
@@ -41,4 +43,3 @@ rem Gradle
 wget -nc -P "%DOWNLOADS%" http://services.gradle.org/distributions/gradle-1.11-rc-1-bin.zip
 
 
-wget -nc -P "%DOWNLOADS%" http://download.springsource.com/release/STS/3.4.0/dist/e3.8/spring-tool-suite-3.4.0.RELEASE-e3.8.2-win32.zip
