@@ -29,6 +29,9 @@
       <name>AnyEditTools</name>
     </plugin>
     <plugin>
+      <name>StartExplorer</name>
+    </plugin>
+    <plugin>
       <name>JavaSourceAttacher</name>
     </plugin>
     <plugin>
@@ -38,7 +41,13 @@
       <name>JavaExamplesSearch</name>
     </plugin>
     <plugin>
+      <name>FileSync</name>
+    </plugin>
+    <plugin>
       <name>Gradle</name>
+    </plugin>
+    <plugin>
+      <name>WebLogic</name>
     </plugin>
   </plugins>
 </eclipse>
