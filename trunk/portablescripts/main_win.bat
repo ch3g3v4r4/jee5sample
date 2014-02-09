@@ -40,6 +40,6 @@ rem Maven
 wget -nc -P "%DOWNLOADS%" http://www.us.apache.org/dist/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.zip
 
 rem Gradle
-wget -nc -P "%DOWNLOADS%" http://services.gradle.org/distributions/gradle-1.11-rc-1-bin.zip
+wget -nc -P "%DOWNLOADS%" http://services.gradle.org/distributions/gradle-1.10-bin.zip
 
 
