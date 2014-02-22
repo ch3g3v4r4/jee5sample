@@ -7,7 +7,9 @@ import java.net.URL;
 
 class Downloader {
 
-	void install(AntBuilder ant, URL downloadSDKUrl, File sdkDir) {
+	void install(URL downloadSDKUrl, File sdkDir) {
+		AntBuilder ant = new AntBuilder()
+
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
 
 			def tempDir = System.getProperty("java.io.tmpdir")
