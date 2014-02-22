@@ -8,7 +8,6 @@ class AndroidSDKManager {
 	public File sdkDir = null
 	String optionalFilter
 
-	AntBuilder ant = new AntBuilder()
 	Downloader downloader = new Downloader()
 
 	void installSDK() {
@@ -21,7 +20,7 @@ class AndroidSDKManager {
 
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
 			// Install SDK
-			downloader.install(ant, downloadSDKUrl, sdkDir)
+			downloader.install(downloadSDKUrl, sdkDir)
 		}
 		// Download more components
 		downloadAndroidSDKComponents()
