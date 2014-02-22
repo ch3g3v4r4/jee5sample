@@ -4,7 +4,7 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class AndroidSDKManager {
-	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r21-windows.zip')
+	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r22.3-windows.zip')
 	public File sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
 	String optionalFilter
 
