@@ -122,7 +122,7 @@ public class AndroidProductCreator {
 	public static void main(String[] args) {
 		AndroidProductCreator main = new AndroidProductCreator()
 		main.sdk.sdkDir = new File('d:\\programs\\android-sdk')
-		main.createProject('myapp', new File("d:\\projects\\"), 'com.myapp', 'MainController')
+		main.createProject('myapp', new File("d:\\projects\\myapp"), 'com.myapp', 'MainController')
 	}
 
 }
