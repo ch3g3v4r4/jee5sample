@@ -13,7 +13,7 @@ class AndroidSDKManager {
 	void installSDK() {
 		def env = System.getenv()
 		if (env['ANDROID_HOME']) {
-			sdkDir = env['ANDROID_HOME']
+			sdkDir = new File(env['ANDROID_HOME'])
 		} else {
 			sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
 		}
