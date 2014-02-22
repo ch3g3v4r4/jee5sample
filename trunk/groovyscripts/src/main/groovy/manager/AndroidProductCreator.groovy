@@ -22,13 +22,13 @@ public class AndroidProductCreator {
 
 		// Create Android project
 		String cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + path.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
-		sdk.ant.echo(message: 'Executing ' + cmd)
+		println  'Executing ' + cmd
 		Process p = cmd.execute(null, toolsDir)
 		def out = new StringBuilder()
 		def err = new StringBuilder()
 		p.waitForProcessOutput(out, err)
-		sdk.ant.echo(message: err.toString())
-		sdk.ant.echo(message: out.toString())
+		println err.toString()
+		println  out.toString()
 
 		// ADT Eclipse Plugin support - .project
 		String projectText = getClass().getResourceAsStream("/project").text
@@ -54,13 +54,13 @@ public class AndroidProductCreator {
 		String targetID;
 		// Create Android project
 		String cmd = androidCmd + ' list targets'
-		sdk.ant.echo(message: 'Executing ' + cmd)
+		println  'Executing ' + cmd
 		Process p = cmd.execute(null, toolsDir)
 		def out = new StringBuilder()
 		def err = new StringBuilder()
 		p.waitForProcessOutput(out, err)
-		sdk.ant.echo(message: err.toString())
-		sdk.ant.echo(message: out.toString())
+		println err.toString()
+		println  out.toString()
 		Pattern pattern = Pattern.compile("android-([0-9]+)")
 		Matcher matcher = pattern.matcher(out.toString())
 		while (matcher.find()) {
@@ -73,16 +73,15 @@ public class AndroidProductCreator {
 		File projectPath = new File(path, projectName)
 		projectPath.mkdirs()
 		cmd = androidCmd + ' create project --name "' + projectName + '" --target "' + targetID + '" --path "' + projectPath.absolutePath + '" --package "' +  packageName + '" --activity "' +  activityName + '"'
-		sdk.ant.echo(message: 'Executing ' + cmd)
+		println  'Executing ' + cmd
 		p = cmd.execute(null, toolsDir)
 		out = new StringBuilder()
 		err = new StringBuilder()
 		p.waitForProcessOutput(out, err)
-		sdk.ant.echo(message: err.toString())
-		sdk.ant.echo(message: out.toString())
-		sdk.ant.delete{
-			fileset(dir: projectPath, includes: "ant.properties, build.xml")
-		}
+		println  err.toString()
+		println  out.toString()
+		new File(projectPath, 'ant.properties').delete()
+		new File(projectPath, 'build.xml').delete()
 
 		// add <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="15" /> to manifest file before <application> tag if it is missing
 		def manifest = new File(projectPath, "AndroidManifest.xml").text
@@ -99,31 +98,31 @@ public class AndroidProductCreator {
 		new File(projectPath, "build.bat").text = 'call mvn package'
 
 		// modify Activity class to use SherlockActivity and modify Activity declaration to use android:theme="@style/Theme.Sherlock.Light"
-		if (new File(projectPath, "pom.xml").text.indexOf('actionbarsherlock') != -1 && new File(projectPath, "AndroidManifest.xml").text.indexOf('SherlockActivity') == -1) {
-			sdk.ant.replaceregexp(match: "import.+Activity;", replace: "import com.actionbarsherlock.app.SherlockActivity;", byline: "true") {
-				fileset(dir:projectPath) {
-					include(name: '**/' + activityName + ".java")
-				}
-			}
-			sdk.ant.replaceregexp(match: "extends\\s+Activity", replace: "extends SherlockActivity", byline: "true") {
-				fileset(dir:projectPath) {
-					include(name: '**/' + activityName + ".java")
-				}
-			}
-			// add android:theme="@style/Theme.Sherlock.Light" to Activity declaration
-			sdk.ant.replaceregexp(match: "<activity ", replace: '<activity android:theme="@style/Theme.Sherlock.Light" ', byline: "true") {
-				fileset(dir:projectPath) {
-					include(name: 'AndroidManifest.xml')
-				}
-			}
-		}
+//		if (new File(projectPath, "pom.xml").text.indexOf('actionbarsherlock') != -1 && new File(projectPath, "AndroidManifest.xml").text.indexOf('SherlockActivity') == -1) {
+//			sdk.ant.replaceregexp(match: "import.+Activity;", replace: "import com.actionbarsherlock.app.SherlockActivity;", byline: "true") {
+//				fileset(dir:projectPath) {
+//					include(name: '**/' + activityName + ".java")
+//				}
+//			}
+//			sdk.ant.replaceregexp(match: "extends\\s+Activity", replace: "extends SherlockActivity", byline: "true") {
+//				fileset(dir:projectPath) {
+//					include(name: '**/' + activityName + ".java")
+//				}
+//			}
+//			// add android:theme="@style/Theme.Sherlock.Light" to Activity declaration
+//			sdk.ant.replaceregexp(match: "<activity ", replace: '<activity android:theme="@style/Theme.Sherlock.Light" ', byline: "true") {
+//				fileset(dir:projectPath) {
+//					include(name: 'AndroidManifest.xml')
+//				}
+//			}
+//		}
 
 	}
 
 	public static void main(String[] args) {
 		AndroidProductCreator main = new AndroidProductCreator()
 		main.sdk.sdkDir = new File('d:\\programs\\android-sdk')
-		main.createProject('myapp', new File("d:\\projects\\myapp\\"), 'com.myapp', 'MainController')
+		main.createProject('myapp', new File("d:\\projects\\"), 'com.myapp', 'MainController')
 	}
 
 }
