@@ -11,11 +11,13 @@ class AndroidSDKManager {
 	Downloader downloader = new Downloader()
 
 	void installSDK() {
-		def env = System.getenv()
-		if (env['ANDROID_HOME']) {
-			sdkDir = new File(env['ANDROID_HOME'])
-		} else {
-			sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
+		if (sdkDir == null) {
+			def env = System.getenv()
+			if (env['ANDROID_HOME']) {
+				sdkDir = new File(env['ANDROID_HOME'])
+			} else {
+				sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
+			}
 		}
 
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
