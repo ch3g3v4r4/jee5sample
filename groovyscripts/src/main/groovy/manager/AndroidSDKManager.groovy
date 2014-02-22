@@ -28,6 +28,8 @@ class AndroidSDKManager {
 
 	public void downloadAndroidSDKComponents() {
 		File toolsDir = new File(sdkDir, "tools")
+		AntBuilder ant = new AntBuilder()
+
 		String androidCmd = 'cmd.exe /c android.bat'
 		String adbCmd = new File(sdkDir, "platform-tools/adb.exe").absolutePath
 		if (!System.properties['os.name'].toLowerCase().contains('windows')) {
