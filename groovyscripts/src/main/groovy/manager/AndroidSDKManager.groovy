@@ -21,9 +21,9 @@ class AndroidSDKManager {
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
 			// Install SDK
 			downloader.install(downloadSDKUrl, sdkDir)
+			// Download more components
+			downloadAndroidSDKComponents()
 		}
-		// Download more components
-		downloadAndroidSDKComponents()
 	}
 
 	public void downloadAndroidSDKComponents() {
