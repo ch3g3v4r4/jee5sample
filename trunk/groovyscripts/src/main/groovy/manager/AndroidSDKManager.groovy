@@ -5,13 +5,20 @@ import java.util.regex.Pattern
 
 class AndroidSDKManager {
 	URL downloadSDKUrl = new URL('http://dl.google.com/android/android-sdk_r22.3-windows.zip')
-	public File sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
+	public File sdkDir = null
 	String optionalFilter
 
 	AntBuilder ant = new AntBuilder()
 	Downloader downloader = new Downloader()
 
 	void installSDK() {
+		def env = System.getenv()
+		if (env['ANDROID_HOME']) {
+			sdkDir = env['ANDROID_HOME']
+		} else {
+			sdkDir = new File(System.getProperty("java.io.tmpdir"), 'android_sdk')
+		}
+
 		if (!sdkDir.exists() || sdkDir.isDirectory() && sdkDir.listFiles().length == 0) {
 			// Install SDK
 			downloader.install(ant, downloadSDKUrl, sdkDir)
