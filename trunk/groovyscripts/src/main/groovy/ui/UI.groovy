@@ -1,7 +1,7 @@
 package ui
-@GrabResolver(name='eclipse', root='http://maven.eclipse.org/nexus/content/repositories/testing/', m2Compatible='true')
-//@Grab(group='org.eclipse.swt', module='org.eclipse.swt.win32.win32.x86', version='3.6.2')
-@Grab(group='org.eclipse.swt', module='org.eclipse.swt.win32.win32.x86_64', version='3.6.2')
+@GrabResolver(name='eclipse', root='https://swt-repo.googlecode.com/svn/repo/', m2Compatible='true')
+//@Grab(group='org.eclipse.swt', module='org.eclipse.swt.win32.win32.x86', version='4.3')
+@Grab(group='org.eclipse.swt', module='org.eclipse.swt.win32.win32.x86_64', version='4.3')
 
 //@Grab(group='org.eclipse.swt.win32.win32', module='x86', version='3.3.0-v3346')
 
