@@ -365,6 +365,11 @@
       <featureId>org.freejava.windowstools.feature.feature.group</featureId>
     </plugin>
     <plugin>
+      <name>ProjectImpport</name>
+      <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
+      <featureId>org.freejava.projectimpport.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
       <name>ClassDependencyViewer</name>
       <updateSite>http://svn.codespot.com/a/eclipselabs.org/free-plugins/trunk/site/</updateSite>
       <featureId>org.freejava.dependencyviewer.feature.feature.group</featureId>
