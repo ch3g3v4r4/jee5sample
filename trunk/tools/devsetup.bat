@@ -1,1 +1,1 @@
-mvn groovy:execute -Dsource=src/main/groovy/devenvsetup.groovy -Dtools_dir=%~dp0 -Ddev_root=t:/eng/ccroot/thai_11.2new
+mvn -f %~dp0pom.xml -Dsource=%~dp0src/main/groovy/devenvsetup.groovy -Dtools_dir=%~dp0 -Ddev_root=t:/eng/ccroot/thai_11.2new groovy:execute

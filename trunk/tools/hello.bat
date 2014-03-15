@@ -1,1 +1,1 @@
-mvn groovy:execute -Dsource=src/main/groovy/hello.groovy
+mvn -f %~dp0pom.xml -Dsource=%~dp0src/main/groovy/hello.groovy groovy:execute
