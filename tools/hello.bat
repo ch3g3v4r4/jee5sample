@@ -1,4 +1,4 @@
-:; export MAVEN_OPTS=-XstartOnFirstThread; /bin/sh `which mvn` -f "$(dirname $0)/pom.xml" "-Dsource=$(dirname $0)/src/main/groovy/hello.groovy" "-Dscriptdir=$(dirname $0)" groovy:execute; exit $?
+:; if [ "$(uname)" == "Darwin" ]; then export MAVEN_OPTS=-XstartOnFirstThread fi; /bin/sh `which mvn` -f "$(dirname $0)/pom.xml" "-Dsource=$(dirname $0)/src/main/groovy/hello.groovy" "-Dscriptdir=$(dirname $0)" groovy:execute; exit $?
 
 @echo off
 
