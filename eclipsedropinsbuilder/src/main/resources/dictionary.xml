@@ -479,7 +479,7 @@
     <plugin>
       <name>WebLogic</name>
       <updateSite>http://download.oracle.com/otn_software/oepe/juno</updateSite>
-      <updateSite>http://download.eclipse.org/releases/juno/</updateSite>      
+      <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
       <featureId>oracle.eclipse.tools.juno.weblogic.feature.group</featureId>
     </plugin>
     <plugin>
@@ -558,6 +558,24 @@
       <featureId>org.springsource.ide.eclipse.gradle.feature.feature.group</featureId>
     </plugin>
 
+    <plugin>
+      <name>JRockitMC</name>
+      <updateSite>http://download.oracle.com/technology/products/missioncontrol/updatesites/base/4.1.0/eclipse/</updateSite>
+      <featureId>com.jrockit.mc.feature.ide.feature.group</featureId>
+    </plugin>
 
+    <plugin>
+      <name>JRockitMCExperimental</name>
+      <updateSite>http://download.oracle.com/technology/products/missioncontrol/updatesites/experimental/4.1.0/eclipse/</updateSite>
+      <featureId>com.jrockit.mc.feature.console.ext.coherence.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.console.action.hprof.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.jconsole.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.dtrace.recorder.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.dtrace.ide.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.dtrace.samples.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.flightrecorder.backgroundrendering.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.flightrecorder.ext.wls.feature.group</featureId>
+      <featureId>com.jrockit.mc.feature.wls.feature.group</featureId>
+    </plugin>
   </plugins>
 </eclipse>
