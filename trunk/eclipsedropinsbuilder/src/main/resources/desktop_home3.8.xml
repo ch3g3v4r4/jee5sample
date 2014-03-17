@@ -69,13 +69,19 @@
     </plugin>
     <plugin>
       <name>ClassDependencyViewer</name>
-    </plugin>    
+    </plugin>
     <plugin>
       <name>CodePro</name>
-    </plugin>  
+    </plugin>
     <plugin>
       <name>Spring</name>
-    </plugin> 
+    </plugin>
+    <plugin>
+      <name>JRockitMC</name>
+    </plugin>
+    <plugin>
+      <name>JRockitMCExperimental</name>
+    </plugin>
     <plugin>
       <name>ProjectImpport</name>
 	</plugin>
