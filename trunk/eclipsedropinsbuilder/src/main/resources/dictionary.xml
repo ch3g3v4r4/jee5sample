@@ -577,5 +577,17 @@
       <featureId>com.jrockit.mc.feature.flightrecorder.ext.wls.feature.group</featureId>
       <featureId>com.jrockit.mc.feature.wls.feature.group</featureId>
     </plugin>
+
+    <plugin>
+      <name>TPTP</name>
+      <updateSite>http://download.eclipse.org/tptp/updates/</updateSite>
+      <featureId>org.eclipse.tptp.monitoring.runtime.feature.group</featureId>
+      <featureId>org.eclipse.tptp.platform.runtime.feature.group</featureId>
+      <featureId>org.eclipse.tptp.wtp.feature.group</featureId>
+      <featureId>org.eclipse.tptp.examples.feature.group</featureId>
+      <featureId>org.eclipse.tptp.birt.feature.group</featureId>
+      <featureId>org.eclipse.tptp.test.runtime.feature.group</featureId>
+      <featureId>org.eclipse.tptp.trace.runtime.feature.group</featureId>
+    </plugin>
   </plugins>
 </eclipse>
