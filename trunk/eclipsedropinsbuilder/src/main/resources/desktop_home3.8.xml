@@ -47,9 +47,6 @@
       <name>FileSync</name>
     </plugin>
     <plugin>
-      <name>Gradle</name>
-    </plugin>
-    <plugin>
       <name>WebLogic</name>
     </plugin>
     <plugin>
@@ -68,19 +65,7 @@
       <name>ClassDependencyViewer</name>
     </plugin>
     <plugin>
-      <name>CodePro</name>
-    </plugin>
-    <plugin>
       <name>Spring</name>
     </plugin>
-    <plugin>
-      <name>JRockitMC</name>
-    </plugin>
-    <plugin>
-      <name>JRockitMCExperimental</name>
-    </plugin>
-    <plugin>
-      <name>ProjectImpport</name>
-	</plugin>
   </plugins>
 </eclipse>
