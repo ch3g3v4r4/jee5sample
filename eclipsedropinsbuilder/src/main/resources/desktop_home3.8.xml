@@ -15,7 +15,7 @@
     </plugin>
     <plugin>
       <name>Android</name>
-    </plugin>    
+    </plugin>
     <plugin>
       <name>Mylyn</name>
     </plugin>
@@ -25,9 +25,11 @@
     <plugin>
       <name>AnyEditTools</name>
     </plugin>
+    <!--
     <plugin>
       <name>ContextMenu</name>
     </plugin>
+     -->
     <plugin>
       <name>StartExplorer</name>
     </plugin>
