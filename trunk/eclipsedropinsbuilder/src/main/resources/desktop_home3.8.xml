@@ -14,16 +14,19 @@
       <name>JSP</name>
     </plugin>
     <plugin>
-      <name>Mylyn</name>
-    </plugin>
+      <name>Android</name>
+    </plugin>    
     <plugin>
-      <name>egit</name>
+      <name>Mylyn</name>
     </plugin>
     <plugin>
       <name>Subclipse</name>
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
+    </plugin>
+    <plugin>
+      <name>ContextMenu</name>
     </plugin>
     <plugin>
       <name>StartExplorer</name>
@@ -45,9 +48,6 @@
     </plugin>
     <plugin>
       <name>FileSync</name>
-    </plugin>
-    <plugin>
-      <name>WebLogic</name>
     </plugin>
     <plugin>
       <name>FindBugs</name>
