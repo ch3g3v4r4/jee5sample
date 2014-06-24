@@ -305,7 +305,7 @@
     </plugin>
     <plugin>
       <name>AnyEditTools</name>
-      <url>http://anyedittools.eclipselabs.org.codespot.com/files/de.loskutov.anyedit.AnyEditTools_2.4.5.201312221551.jar</url>
+      <url>http://dl.bintray.com/iloveeclipse/plugins/de.loskutov.anyedit.AnyEditTools_2.4.6.201402042330.jar</url>
     </plugin>
     <plugin>
       <name>ContextMenu</name>
@@ -423,7 +423,7 @@
     </plugin>
     <plugin>
       <name>Spring</name>
-      <url>http://download.springsource.com/release/TOOLS/update/3.5.0.RELEASE/e3.8/springsource-tool-suite-3.5.0.RELEASE-e3.8.2-updatesite.zip</url>
+      <url>http://download.springsource.com/release/TOOLS/update/3.4.0.RELEASE/e3.8/springsource-tool-suite-3.4.0.RELEASE-e3.8.2-updatesite.zip</url>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
     </plugin>
     <plugin>
