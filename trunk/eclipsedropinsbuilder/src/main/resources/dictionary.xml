@@ -589,5 +589,12 @@
       <featureId>org.eclipse.tptp.test.runtime.feature.group</featureId>
       <featureId>org.eclipse.tptp.trace.runtime.feature.group</featureId>
     </plugin>
+    <plugin>
+      <name>TestNG</name>
+      <updateSite>http://beust.com/eclipse</updateSite>
+      <featureId>org.testng.eclipse.feature.group</featureId>
+    </plugin>
+
+
   </plugins>
 </eclipse>
