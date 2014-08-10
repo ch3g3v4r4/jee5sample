@@ -264,7 +264,7 @@
     <!-- android -->
     <plugin>
       <name>Android</name>
-      <url>http://dl.google.com/android/ADT-22.6.3.zip</url>
+      <url>http://dl.google.com/android/ADT-23.0.3.zip</url>
       <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
       <featureId>com.android.ide.eclipse.ddms.feature.group</featureId>
       <featureId>com.android.ide.eclipse.adt.feature.group</featureId>
