@@ -69,9 +69,6 @@
       <name>ClassDependencyViewer</name>
     </plugin>
     <plugin>
-      <name>CodePro</name>
-    </plugin>
-    <plugin>
       <name>Spring</name>
     </plugin>
     <plugin>
