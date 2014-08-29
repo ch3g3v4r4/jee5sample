@@ -559,13 +559,13 @@
     </plugin>
 
     <plugin>
-      <name>JRockitMC</name>
+      <name>JRockitMC</name><!--  for JRockit VM only -->
       <updateSite>http://download.oracle.com/technology/products/missioncontrol/updatesites/base/4.1.0/eclipse/</updateSite>
       <featureId>com.jrockit.mc.feature.ide.feature.group</featureId>
     </plugin>
 
     <plugin>
-      <name>JRockitMCExperimental</name>
+      <name>JRockitMCExperimental</name><!--  for JRockit VM only -->
       <updateSite>http://download.oracle.com/technology/products/missioncontrol/updatesites/experimental/4.1.0/eclipse/</updateSite>
       <featureId>com.jrockit.mc.feature.console.ext.coherence.feature.group</featureId>
       <featureId>com.jrockit.mc.feature.console.action.hprof.feature.group</featureId>
@@ -578,7 +578,16 @@
       <featureId>com.jrockit.mc.feature.wls.feature.group</featureId>
     </plugin>
 
-    <plugin>
+    <plugin><!--  for HotSpot VM only, target JVM must be started with  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -->
+      <name>JavaMC4HotSpotVM</name>
+      <updateSite>http://download.oracle.com/technology/products/missioncontrol/updatesites/base/5.4.0/eclipse/</updateSite>
+      <featureId>com.jrockit.mc.feature.ide.feature.group</featureId>
+    </plugin>
+    <!-- JavaMCExperimental needed http://download.oracle.com/technology/products/missioncontrol/updatesites/experimental/5.4.0/eclipse/
+com.jrockit.mc.feature.ide.launch.feature.group
+com.jrockit.mc.feature.flightrecorder.ext.wls.feature.group-->
+
+    <plugin><!--  for HotSpot VM only -->
       <name>TPTP</name>
       <updateSite>http://download.eclipse.org/tptp/updates/</updateSite>
       <featureId>org.eclipse.tptp.monitoring.runtime.feature.group</featureId>
