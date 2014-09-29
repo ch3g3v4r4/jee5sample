@@ -604,6 +604,11 @@ com.jrockit.mc.feature.flightrecorder.ext.wls.feature.group-->
       <featureId>org.testng.eclipse.feature.group</featureId>
     </plugin>
 
+    <plugin>
+      <name>Sonar</name>
+      <updateSite>http://dist.sonar-ide.codehaus.org/eclipse/</updateSite>
+      <featureId>org.sonar.ide.eclipse.jdt.feature.feature.group</featureId>
+    </plugin>
 
   </plugins>
 </eclipse>
