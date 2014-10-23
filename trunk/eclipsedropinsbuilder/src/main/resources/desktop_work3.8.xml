@@ -78,9 +78,6 @@
       <name>JRockitMCExperimental</name>
     </plugin>
     <plugin>
-      <name>ProjectImpport</name>
-	</plugin>
-    <plugin>
       <name>TestNG</name>
     </plugin>
     <plugin>
