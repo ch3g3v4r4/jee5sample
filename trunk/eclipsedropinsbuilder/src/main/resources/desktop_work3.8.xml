@@ -86,5 +86,8 @@
     <plugin>
       <name>Sonar</name>
     </plugin>
+    <plugin>
+      <name>m2e</name>
+    </plugin>
   </plugins>
 </eclipse>
