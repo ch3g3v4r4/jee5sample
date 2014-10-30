@@ -6,12 +6,13 @@
       <name>Groovy</name>
       <embeded>true</embeded>
       <url>http://dist.springsource.org/release/GRECLIPSE/2.9.0/e4.2/org.codehaus.groovy-2.9.0.xx-201407142131-e42-RELEASE-updatesite.zip</url>
-      <featureId>org.codehaus.groovy21.feature.feature.group</featureId>
-      <featureId>org.codehaus.groovy20.feature.feature.group</featureId>
-      <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
-      <featureId>org.codehaus.groovy.jdt.patch.source.feature.group</featureId>
-      <featureId>org.codehaus.groovy.eclipse.feature.source.feature.group</featureId>
+      <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy20.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy21.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy22.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy23.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy.jdt.patch.feature.group</featureId>
     </plugin>
 
     <plugin>
@@ -459,9 +460,8 @@
     <plugin>
       <name>m2e</name>
       <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
-      <updateSite>http://download.jboss.org/jbosstools/updates/m2eclipse-wtp/</updateSite>
+      <updateSite>http://download.eclipse.org/m2e-wtp/releases/juno/</updateSite>
       <featureId>org.eclipse.m2e.feature.feature.group</featureId>
-      <featureId>org.maven.ide.eclipse.wtp.feature.feature.group</featureId>
     </plugin>
 
     <plugin>
