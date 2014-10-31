@@ -393,7 +393,7 @@
     </plugin>
     <plugin>
       <name>eSpell</name>
-      <url>http://www.bdaum.de/eclipse/eSpell3/eSpell_3.2.1_site.zip</url>
+      <url>http://www.bdaum.de/eclipse/eSpell3/eSpell_3.2.4_site.zip</url>
       <featureId>com.bdaum.SpellChecker3.feature.group</featureId>
     </plugin>
     <plugin>
