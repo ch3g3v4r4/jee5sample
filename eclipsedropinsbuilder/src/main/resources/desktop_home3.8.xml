@@ -25,11 +25,6 @@
     <plugin>
       <name>AnyEditTools</name>
     </plugin>
-    <!--
-    <plugin>
-      <name>ContextMenu</name>
-    </plugin>
-     -->
     <plugin>
       <name>StartExplorer</name>
     </plugin>
@@ -68,6 +63,16 @@
     </plugin>
     <plugin>
       <name>Spring</name>
+    </plugin>
+    <plugin>
+      <name>m2e</name>
+    </plugin>
+    <plugin>
+      <name>GoogleAppEngine</name>
+      <updateSite>https://dl.google.com/eclipse/plugin/4.2</updateSite>
+      <featureId>com.google.appengine.eclipse.wtp.maven.feature.feature.group</featureId>
+      <featureId>com.google.gdt.eclipse.suite.e42.feature.feature.group</featureId>
+      <featureId>com.google.appengine.eclipse.sdkbundle.feature.feature.group</featureId>
     </plugin>
   </plugins>
 </eclipse>
