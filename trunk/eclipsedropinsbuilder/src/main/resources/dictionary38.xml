@@ -464,6 +464,7 @@
       <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
       <updateSite>http://download.eclipse.org/m2e-wtp/releases/juno/</updateSite>
       <featureId>org.eclipse.m2e.feature.feature.group</featureId>
+      <featureId>org.eclipse.m2e.wtp.feature.feature.group</featureId>
     </plugin>
 
     <plugin>
@@ -537,6 +538,9 @@
     <plugin>
       <name>GoogleAppEngine</name>
       <updateSite>https://dl.google.com/eclipse/plugin/4.2</updateSite>
+      <updateSite>http://download.eclipse.org/releases/juno/</updateSite>
+      <updateSite>http://download.eclipse.org/m2e-wtp/releases/juno/</updateSite>
+      <featureId>com.google.appengine.eclipse.wtp.maven.feature.feature.group</featureId>
       <featureId>com.google.gdt.eclipse.suite.e42.feature.feature.group</featureId>
       <featureId>com.google.appengine.eclipse.sdkbundle.feature.feature.group</featureId>
     </plugin>

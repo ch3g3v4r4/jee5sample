@@ -36,7 +36,7 @@ class EclipseDropInsBuilder {
     if (!platformEclipseDir.exists()) {
       ant.get (src: platformUrl, dest: workDir, usetimestamp: false, skipexisting: true, verbose: true)
       try {
-		  
+
 		FileInputStream fin = new FileInputStream(new File(workDir, zipFileName))
 		byte[] bytes = new byte[2]
 		fin.read(bytes)
@@ -53,7 +53,7 @@ class EclipseDropInsBuilder {
         throw e;
       }
     }
-	def javaDir =  config.javaDir
+    def javaDir =  config.javaDir
     def eclipseDir = new File(workDir, "eclipse")
     ant.delete (dir: eclipseDir)
     ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
@@ -157,7 +157,7 @@ class EclipseDropInsBuilder {
       ant.replaceregexp (file: new File(workDir, "plugin.xml"),  match:"<key[^<]+M1\\+M2\\+U[^<]+</key>", replace:"", flags:"s");
       ant.jar(destfile:files.get(0), basedir:workDir,includes:"plugin.xml",update:true)
     }
-	
+
 	// 6. set execution permission for eclipse binaries
 	ant.chmod(perm:"uog+x") { fileset(dir:eclipseDir, includes:"**/eclipse, **/eclipse.exe, **/eclipsec.exe, **/eclipsec")}
 

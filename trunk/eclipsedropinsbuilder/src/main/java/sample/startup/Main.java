@@ -59,7 +59,8 @@ public class Main {
         xstream.addImplicitCollection(Plugin.class, "updateSites", "updateSite", String.class);
         xstream.addImplicitCollection(Plugin.class, "featureIds", "featureId", String.class);
         Eclipse profile = (Eclipse) xstream.fromXML(config.getInputStream());
-        Eclipse dictionary = (Eclipse) xstream.fromXML(new ClassPathResource("/dictionary.xml").getInputStream());
+        String dictionaryXml = (profile.getDictionary() != null) ? profile.getDictionary() : "/dictionary.xml";
+        Eclipse dictionary = (Eclipse) xstream.fromXML(new ClassPathResource(dictionaryXml).getInputStream());
         int exitValue;
         do {
             exitValue = 0;
@@ -84,6 +85,23 @@ public class Main {
     }
 
     private static void merge(Eclipse profile, Eclipse dictionary) {
+        // workDir javaDir dictionary url profile;
+        if (profile.getWorkDir() == null) {
+            profile.setWorkDir(dictionary.getWorkDir());
+        }
+        if (profile.getJavaDir() == null) {
+            profile.setJavaDir(dictionary.getJavaDir());
+        }
+        if (profile.getDictionary() == null) {
+            profile.setDictionary(dictionary.getDictionary());
+        }
+        if (profile.getUrl() == null) {
+            profile.setUrl(dictionary.getUrl());
+        }
+        if (profile.getProfile() == null) {
+            profile.setProfile(dictionary.getProfile());
+        }
+
         for (Plugin plugin : profile.getPlugins()) {
             if (plugin.getUrl() == null && (plugin.getUpdateSites() == null || plugin.getUpdateSites().isEmpty())) {
                 for (Plugin term : dictionary.getPlugins()) {

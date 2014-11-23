@@ -2,6 +2,7 @@
 <eclipse>
   <workDir>/Users/tha/tmp</workDir>
   <url>http://archive.eclipse.org/eclipse/downloads/drops/R-3.8.2-201301310800/eclipse-SDK-3.8.2-macosx-cocoa-x86_64.tar.gz</url>
+  <dictionary>/dictionary38.xml</dictionary>
   <profile>SDKProfile</profile>
   <plugins>
     <plugin>
