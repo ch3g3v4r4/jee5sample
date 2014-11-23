@@ -588,7 +588,10 @@
 
     <plugin>
       <name>Gradle</name>
-      <updateSite>http://dist.springsource.com/snapshot/TOOLS/gradle/nightly</updateSite>
+      <url>http://download.springsource.com/release/TOOLS/update/3.6.2.RELEASE/e4.4/springsource-tool-suite-3.6.2.RELEASE-e4.4.1-updatesite.zip</url>
+      <updateSite>http://download.eclipse.org/webtools/downloads/drops/R3.6.2/R-3.6.2-20141030155022/repository/</updateSite>
+      <updateSite>http://dist.springsource.com/release/TOOLS/update/e4.4/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
       <featureId>org.springsource.ide.eclipse.gradle.feature.feature.group</featureId>
     </plugin>
 
