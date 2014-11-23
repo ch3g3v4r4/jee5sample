@@ -2,6 +2,7 @@
 <eclipse>
   <workDir>/tmp</workDir>
   <javaDir>d:/MarketLive/tools/jdk1.6.0_04/bin/java.exe</javaDir>
+  <dictionary>/dictionary38.xml</dictionary>
   <url>http://download.nus.edu.sg/mirror/eclipse//eclipse/downloads/drops/R-3.8.1-201209141540/eclipse-SDK-3.8.1-win32.zip</url>
   <profile>SDKProfile</profile>
   <plugins>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp</workDir>
+  <dictionary>/dictionary38.xml</dictionary>
   <url>http://mirror-fpt-telecom.fpt.net/eclipse/technology/epp/downloads/release/indigo/SR1/eclipse-jee-indigo-SR1-win32.zip</url>
   <profile>epp.package.jee</profile>
   <plugins>

@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
-  <workDir>/tmp</workDir>
-  <profile>SDKProfile</profile>
-  <dictionary>/dictionary38.xml</dictionary>
-  <url>http://archive.eclipse.org/eclipse/downloads/drops/R-3.8.2-201301310800/eclipse-SDK-3.8.2-win32-x86_64.zip</url>
+  <dictionary>/dictionary4.xml</dictionary>
   <plugins>
     <plugin>
       <name>Groovy</name>
     </plugin>
     <plugin>
-      <name>Web</name>
-    </plugin>
-    <plugin>
-      <name>JSP</name>
+      <name>JEE</name>
     </plugin>
     <plugin>
       <name>Android</name>
-    </plugin>
-    <plugin>
-      <name>Mylyn</name>
     </plugin>
     <plugin>
       <name>Subclipse</name>
@@ -66,10 +57,8 @@
       <name>Spring</name>
     </plugin>
     <plugin>
-      <name>m2e</name>
-    </plugin>
-    <plugin>
       <name>GoogleAppEngine</name>
     </plugin>
+
   </plugins>
 </eclipse>
