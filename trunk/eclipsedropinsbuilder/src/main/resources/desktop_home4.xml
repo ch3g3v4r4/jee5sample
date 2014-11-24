@@ -39,6 +39,9 @@
       <name>FileSync</name>
     </plugin>
     <plugin>
+      <name>Gradle</name>
+    </plugin>
+    <plugin>
       <name>FindBugs</name>
     </plugin>
     <plugin>

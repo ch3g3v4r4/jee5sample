@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp64</workDir>
-  <javaDir>c:/Users/tha/home/programs/jdk1.7.0_51/bin/java.exe</javaDir>
   <dictionary>/dictionary4.xml</dictionary>
   <plugins>
     <plugin>
