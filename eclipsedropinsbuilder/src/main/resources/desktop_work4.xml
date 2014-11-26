@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <workDir>/tmp64</workDir>
+  <javaDir>c:/Users/tha/home/programs/jdk1.7.0_51/bin/java.exe</javaDir>
   <dictionary>/dictionary4.xml</dictionary>
   <plugins>
     <plugin>
@@ -40,7 +41,7 @@
       <name>Gradle</name>
     </plugin>
     <plugin>
-      <name>WebLogic</name>
+      <name>OracleServers</name>
     </plugin>
     <plugin>
       <name>FindBugs</name>
@@ -61,10 +62,7 @@
       <name>Spring</name>
     </plugin>
     <plugin>
-      <name>JRockitMC</name>
-    </plugin>
-    <plugin>
-      <name>JRockitMCExperimental</name>
+      <name>JavaMC4HotSpotVM</name>
     </plugin>
     <plugin>
       <name>TestNG</name>
