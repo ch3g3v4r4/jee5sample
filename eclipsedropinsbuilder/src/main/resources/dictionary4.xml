@@ -16,7 +16,17 @@
       <featureId>org.codehaus.groovy23.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.feature.group</featureId>
     </plugin>
-
+    <plugin>
+      <name>m2e</name>
+      <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
+      <featureId>org.eclipse.m2e.feature.feature.group</featureId>
+    </plugin>
+    <plugin>
+      <name>m2e-wtp</name>
+      <updateSite>http://download.eclipse.org/m2e-wtp/releases/luna/</updateSite>
+      <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
+      <featureId>org.eclipse.m2e.wtp.feature.feature.group</featureId>
+    </plugin>
     <plugin>
       <name>AJDT</name>
       <embeded>true</embeded>

@@ -11,6 +11,12 @@
       <name>JEE</name>
     </plugin>
     <plugin>
+      <name>m2e</name>
+    </plugin>
+    <plugin>
+      <name>m2e-wtp</name>
+    </plugin>
+    <plugin>
       <name>Subclipse</name>
     </plugin>
     <plugin>
