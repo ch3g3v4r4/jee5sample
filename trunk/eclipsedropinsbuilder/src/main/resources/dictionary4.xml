@@ -502,17 +502,26 @@
       <featureId>com.aptana.feature.feature.group</featureId>
     </plugin>
     <plugin>
-      <name>GlassFish</name>
+      <name>OracleServers</name>
       <updateSite>http://download.oracle.com/otn_software/oepe/luna</updateSite>
+      <!-- Automatic added after above url added -->
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/eclipse-efxclipse-1</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/eclipse-egit-3.5.2</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/eclipse-luna-sr1</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/eclipse-sapphire-8.1</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/eclipse-wtp-3.6.2</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/jackson-1.9.13</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/jersey-1.17.1-p002</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/mimepull-1.9.4</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/oracle-cloud-developer-service-api-1.1.0.20141013-093151</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/pydev-2.7.5</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/oracle-cloud-java-service-sdk-14.1.12</updateSite>
+      <!-- Available url -->
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
-      <featureId>oracle.eclipse.tools.luna.glassfish.feature.group</featureId>
-    </plugin>
-    <plugin>
-      <name>WebLogic</name>
-      <updateSite>http://download.oracle.com/otn_software/oepe/luna</updateSite>
-      <updateSite>http://download.eclipse.org/sapphire/8.1/repository</updateSite>
-      <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
+      <!-- Glassfish and WebLogic -->
+      <featureId>oracle.eclipse.tools.glassfish.feature.group</featureId>
       <featureId>oracle.eclipse.tools.weblogic.feature.group</featureId>
+
     </plugin>
     <plugin>
       <name>Mylyn</name>
