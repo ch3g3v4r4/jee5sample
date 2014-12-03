@@ -166,10 +166,6 @@ class EclipseDropInsBuilder {
         // 6. set execution permission for eclipse binaries
         ant.chmod(perm:"uog+x") { fileset(dir:eclipseDir, includes:"**/eclipse, **/eclipse.exe, **/eclipsec.exe, **/eclipsec")}
 
-        println "Congratulations! Your Eclipse IDE is ready. Location: " + eclipseDir.absolutePath
-        println "Remember to remove spring-uaa, spring-roo plugins/features and change Aptana theme to eclipse theme"
-        println "You may want to use Envy Code R font (http://damieng.com/blog/2008/05/26/envy-code-r-preview-7-coding-font-released)"
-        println "Or consolas font (on WinXP): 1. http://www.hanselman.com/blog/ConsolasFontFamilyNowAvailableForDownload.aspx  2.turn on ClearType(http://blogs.microsoft.co.il/blogs/kim/archive/2006/05/03/289.aspx)"
     }
 
     void installFromUpdateSite(javaDir, eclipseDir, ant, profile, updateSites, featureIds) {
@@ -195,6 +191,11 @@ class EclipseDropInsBuilder {
         directorCmd.addArgument("-destination")
         directorCmd.addArgument("\"" + eclipseDir.absolutePath + "\"")
         directorCmd.addArgument("-consoleLog")
+        
+        // Must be last args
+        directorCmd.addArgument("-vmargs")
+        directorCmd.addArgument("-Declipse.p2.mirrors=false")
+        
         def executor = new DefaultExecutor();
         executor.setExitValue(0);
         println directorCmd
