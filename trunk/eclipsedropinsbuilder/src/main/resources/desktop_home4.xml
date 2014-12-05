@@ -66,9 +66,7 @@
     <plugin>
       <name>ClassDependencyViewer</name>
     </plugin>
-    <plugin>
-      <name>CodePro</name>
-    </plugin>
+
 
   </plugins>
 </eclipse>

@@ -236,7 +236,7 @@
     </plugin>
     <plugin>
       <name>CodePro</name>
-      <updateSite>http://download.eclipse.org/windowbuilder/WB/release/R201406251200/4.4/</updateSite>
+      <updateSite>http://dl.google.com/eclipse/inst/codepro/latest/3.7</updateSite>
       <featureId>com.instantiations.eclipse.coverage.codepro.feature.group</featureId>
       <featureId>com.instantiations.assist.eclipse.coverage.feature.group</featureId>
       <featureId>com.instantiations.assist.eclipse.ant.feature.group</featureId>
