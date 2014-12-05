@@ -19,13 +19,7 @@
     </plugin>
 
 
-    <plugin>
-      <name>Android</name>
-    </plugin>
 
-    <plugin>
-      <name>GoogleAppEngine</name>
-    </plugin>
 
     <plugin>
       <name>Subclipse</name>
@@ -81,5 +75,13 @@
     <plugin>
       <name>Sonar</name>
     </plugin>
+<!--
+    <plugin>
+      <name>GoogleAppEngine</name>
+    </plugin>
+    <plugin>
+      <name>Android</name>
+    </plugin>
+ -->
   </plugins>
 </eclipse>
