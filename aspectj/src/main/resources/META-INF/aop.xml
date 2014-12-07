@@ -1,0 +1,10 @@
+<aspectj>
+  <aspects>
+    <aspect name="aspects.TestAspect" />
+  </aspects>
+  <weaver options="-verbose">
+    <include within="mypackage..*"/>
+    <include within="aspects.*"/>
+  </weaver>
+
+</aspectj>
