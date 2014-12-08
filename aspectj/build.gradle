@@ -11,8 +11,12 @@ repositories {
 
 dependencies {
     compile 'org.aspectj:aspectjrt:1.8.4'
+    compile 'net.spy:spymemcached:2.11.5'
+
     testCompile 'org.aspectj:aspectjweaver:1.8.4'
 }
+
+
 
 run.doFirst {
     applicationDefaultJvmArgs = ["-javaagent:" + project.configurations.testCompile.find { it.name.startsWith("aspectjweaver-") }]
