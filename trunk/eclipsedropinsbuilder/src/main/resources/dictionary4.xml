@@ -254,8 +254,8 @@
     </plugin>
     <plugin>
       <name>Spring</name>
-      <url>http://download.springsource.com/release/TOOLS/update/3.6.2.RELEASE/e4.4/springsource-tool-suite-3.6.2.RELEASE-e4.4.1-updatesite.zip</url>
-      <updateSite>http://download.eclipse.org/webtools/downloads/drops/R3.6.2/R-3.6.2-20141030155022/repository/</updateSite>
+      <url>http://download.springsource.com/release/TOOLS/update/3.6.3.SR1/e4.4/springsource-tool-suite-3.6.3.SR1-e4.4.1-updatesite.zip</url>
+<!--       <updateSite>http://download.eclipse.org/webtools/downloads/drops/R3.6.2/R-3.6.2-20141030155022/repository/</updateSite> -->
       <updateSite>http://dist.springsource.com/release/TOOLS/update/e4.4/</updateSite>
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
       <featureId>org.springframework.ide.eclipse.feature.feature.group</featureId>
