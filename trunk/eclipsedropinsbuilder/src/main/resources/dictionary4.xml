@@ -458,6 +458,10 @@ com.jrockit.mc.feature.flightrecorder.ext.wls.feature.group-->
       <featureId>org.sonar.ide.eclipse.jdt.feature.feature.group</featureId>
       <featureId>org.sonar.ide.eclipse.m2e.feature.feature.group</featureId>
     </plugin>
-
+    <plugin>
+      <name>Optimizer</name>
+      <updateSite>http://update.zeroturnaround.com/free-tools/site/</updateSite>
+      <featureId>com.zeroturnaround.eclipse.optimizer.feature.feature.group</featureId>
+    </plugin>
   </plugins>
 </eclipse>

@@ -15,6 +15,9 @@
     <plugin>
       <name>Gradle</name>
     </plugin>
+    <plugin>
+      <name>Optimizer</name>
+    </plugin>
 
      <plugin>
       <name>Android</name>
