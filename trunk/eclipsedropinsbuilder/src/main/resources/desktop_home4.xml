@@ -5,16 +5,22 @@
     <plugin>
       <name>package.jee</name>
     </plugin>
-      <plugin>
+
+    <plugin>
       <name>Spring</name>
     </plugin>
 
     <plugin>
       <name>Groovy</name>
     </plugin>
+
     <plugin>
       <name>Gradle</name>
     </plugin>
+    <plugin>
+      <name>m2e-wtp</name>
+    </plugin>
+
     <plugin>
       <name>Optimizer</name>
     </plugin>

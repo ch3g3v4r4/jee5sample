@@ -7,13 +7,14 @@
     <plugin>
       <name>Groovy</name>
       <embeded>true</embeded>
-      <url>http://dist.springsource.org/release/GRECLIPSE/2.9.1/e4.4/org.codehaus.groovy-2.9.1.xx-201411061335-e44-RELEASE-updatesite.zip</url>
+      <updateSite>http://dist.springsource.org/snapshot/GRECLIPSE/e4.4/</updateSite>
       <featureId>org.codehaus.groovy.eclipse.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy18.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy20.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy21.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy22.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy23.feature.feature.group</featureId>
+      <featureId>org.codehaus.groovy24.feature.feature.group</featureId>
       <featureId>org.codehaus.groovy.jdt.patch.feature.group</featureId>
     </plugin>
     <plugin>
@@ -27,6 +28,7 @@
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
       <featureId>org.eclipse.m2e.wtp.feature.feature.group</featureId>
     </plugin>
+
     <plugin>
       <name>AJDT</name>
       <embeded>true</embeded>
@@ -92,7 +94,7 @@
     <!-- android -->
     <plugin>
       <name>Android</name>
-      <url>http://dl.google.com/android/ADT-23.0.3.zip</url>
+      <url>http://dl.google.com/android/ADT-23.0.6.zip</url>
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
       <featureId>com.android.ide.eclipse.ddms.feature.feature.group</featureId>
       <featureId>com.android.ide.eclipse.adt.feature.feature.group</featureId>
@@ -289,13 +291,7 @@
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
       <featureId>org.jboss.tools.ws.jaxrs.feature.feature.group</featureId>
     </plugin>
-    <plugin>
-      <name>m2e</name>
-      <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
-      <updateSite>http://download.eclipse.org/m2e-wtp/releases/luna/</updateSite>
-      <featureId>org.eclipse.m2e.feature.feature.group</featureId>
-      <featureId>org.eclipse.m2e.wtp.feature.feature.group</featureId>
-    </plugin>
+
 
     <plugin>
       <name>Aptana-Nightly</name>
