@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
   <dictionary>/dictionary4.xml</dictionary>
+  <jdkUrl>http://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-windows-x64.exe</jdkUrl>
+  <jdkSrcUrl>http://hg.openjdk.java.net/jdk8u/jdk8u40/jdk/archive/tip.zip</jdkSrcUrl>
   <plugins>
     <plugin>
       <name>package.jee</name>
