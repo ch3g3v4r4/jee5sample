@@ -5,6 +5,8 @@ import java.util.List;
 public class Eclipse {
     private String workDir;
     private String javaDir;
+    private String jdkUrl;
+    private String jdkSrcUrl;
     private String dictionary;
     private String url;
     private String profile;
@@ -21,6 +23,18 @@ public class Eclipse {
     }
     public void setJavaDir(String javaDir) {
         this.javaDir = javaDir;
+    }
+    public String getJdkUrl() {
+        return jdkUrl;
+    }
+    public void setJdkUrl(String jdkUrl) {
+        this.jdkUrl = jdkUrl;
+    }
+    public String getJdkSrcUrl() {
+        return jdkSrcUrl;
+    }
+    public void setJdkSrcUrl(String jdkSrcUrl) {
+        this.jdkSrcUrl = jdkSrcUrl;
     }
     public String getDictionary() {
         return dictionary;

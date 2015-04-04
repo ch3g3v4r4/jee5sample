@@ -59,11 +59,22 @@ class EclipseDropInsBuilder {
             }
         }
         def javaDir =  config.javaDir
+
         def eclipseDir = new File(workDir, "eclipse")
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
+
+        if (config.jdkUrl != null) {
+            File jdkDir = new JdkDownloader().installJDK(workDir, config.jdkUrl, config.jdkSrcUrl)
+            ant.copy(todir: new File(eclipseDir, "jre")) {fileset(dir: jdkDir)}
+            if (javaDir == null) {
+                javaDir = new File(jdkDir, "bin/javaw.exe").absolutePath
+            }
+        }
+
         def snapshotDir = new File(workDir, "snapshot")
         ant.delete (dir: snapshotDir)
+
         Map<Plugin, File> cachedPlugins = new Hashtable<Plugin, File>();
         MessageDigest md = MessageDigest.getInstance("SHA");
         md.update(platformUrl.getBytes("UTF-8"))
@@ -127,6 +138,10 @@ class EclipseDropInsBuilder {
 
         ant.delete (dir: eclipseDir)
         ant.copy(todir: eclipseDir) {fileset(dir: platformEclipseDir)}
+        if (config.jdkUrl != null) {
+            File jdkDir = new JdkDownloader().installJDK(workDir, config.jdkUrl, config.jdkSrcUrl)
+            ant.copy(todir: new File(eclipseDir, "jre")) {fileset(dir: jdkDir)}
+        }
 
         for (Plugin plugin : config.plugins) {
             File cachedPlugin = cachedPlugins.get(plugin);
@@ -191,11 +206,11 @@ class EclipseDropInsBuilder {
         directorCmd.addArgument("-destination")
         directorCmd.addArgument("\"" + eclipseDir.absolutePath + "\"")
         directorCmd.addArgument("-consoleLog")
-        
+
         // Must be last args
         directorCmd.addArgument("-vmargs")
         directorCmd.addArgument("-Declipse.p2.mirrors=false")
-        
+
         def executor = new DefaultExecutor();
         executor.setExitValue(0);
         println directorCmd
