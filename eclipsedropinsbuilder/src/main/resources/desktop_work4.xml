@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse>
-  <workDir>/tmp64</workDir>
-  <javaDir>c:/Users/tha/home/programs/jdk1.7.0_51/bin/java.exe</javaDir>
+  <workDir>E:/tmp64</workDir>
+  <jdkUrl>http://download.oracle.com/otn-pub/java/jdk/8u40-b26/jdk-8u40-windows-x64.exe</jdkUrl>
+  <jdkSrcUrl>http://hg.openjdk.java.net/jdk8u/jdk8u40/jdk/archive/tip.zip</jdkSrcUrl>
   <dictionary>/dictionary4.xml</dictionary>
   <plugins>
     <plugin>
