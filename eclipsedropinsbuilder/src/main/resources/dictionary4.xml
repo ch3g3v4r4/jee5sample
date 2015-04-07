@@ -302,7 +302,10 @@
     <plugin>
       <name>OracleServers</name>
       <updateSite>http://download.oracle.com/otn_software/oepe/12.1.3.4/luna/repository/</updateSite>
-      <updateSite>http://download.eclipse.org/sapphire/8.1.2/repository/</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/12.1.3.4/luna/repository/dependencies/</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/eclipse-4.4.2</updateSite>
+      <updateSite>http://download.oracle.com/otn_software/oepe/library/eclipse-luna-sr2</updateSite>
+
       <!-- Available url -->
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
       <!-- Glassfish and WebLogic -->
@@ -412,14 +415,10 @@
 
     <plugin><!--  for HotSpot VM only, target JVM must be started with  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -->
       <name>JavaMC4HotSpotVM</name>
-      <updateSite>http://download.oracle.com/technology/products/missioncontrol/updatesites/base/5.5.0/eclipse/</updateSite>
+      <url>https://download.oracle.com/technology/products/missioncontrol/updatesites/jmc-updatesite-5.5.0.zip</url>
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
-      <updateSite>http://download.oracle.com/otn_software/oepe/12.1.3.4/luna/repository/</updateSite>
       <featureId>com.jrockit.mc.feature.ide.feature.group</featureId>
     </plugin>
-    <!-- JavaMCExperimental needed http://download.oracle.com/technology/products/missioncontrol/updatesites/experimental/5.4.0/eclipse/
-com.jrockit.mc.feature.ide.launch.feature.group
-com.jrockit.mc.feature.flightrecorder.ext.wls.feature.group-->
 
     <plugin><!--  for HotSpot VM only -->
       <name>TPTP</name>
