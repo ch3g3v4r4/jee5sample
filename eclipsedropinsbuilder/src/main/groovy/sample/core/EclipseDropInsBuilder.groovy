@@ -121,7 +121,7 @@ class EclipseDropInsBuilder {
                     }
                 }
                 ant.copy(todir: new File(cachedPlugin, "configuration")) {
-                    fileset(dir: new File(eclipseDir, "configuration"))
+                    fileset(dir: new File(eclipseDir, "configuration"), includes: "org.eclipse.equinox.simpleconfigurator/**, org.eclipse.equinox.source/**, org.eclipse.update/**, config.ini")
                 }
                 // 4. test new jar/zip files broken or not
                 try {

@@ -326,6 +326,14 @@
       <featureId>org.eclipse.mylyn_feature.feature.group</featureId>
     </plugin>
     <plugin>
+      <name>MylynGerrit</name>
+      <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
+      <updateSite>http://download.eclipse.org/mylyn/releases/latest</updateSite>
+      <featureId>org.eclipse.mylyn.gerrit.feature.feature.group</featureId>
+      <featureId>org.eclipse.mylyn.gerrit.dashboard.feature.feature.group</featureId>
+    </plugin>
+
+    <plugin>
       <name>JIRA</name>
       <updateSite>http://update.atlassian.com/atlassian-eclipse-plugin/e3.7</updateSite>
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
@@ -415,7 +423,7 @@
 
     <plugin><!--  for HotSpot VM only, target JVM must be started with  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -->
       <name>JavaMC4HotSpotVM</name>
-      <url>https://download.oracle.com/technology/products/missioncontrol/updatesites/jmc-updatesite-5.5.0.zip</url>
+      <url>http://download.oracle.com/technology/products/missioncontrol/updatesites/jmc-updatesite-5.5.0.zip</url>
       <updateSite>http://download.eclipse.org/releases/luna/</updateSite>
       <featureId>com.jrockit.mc.feature.ide.feature.group</featureId>
     </plugin>
