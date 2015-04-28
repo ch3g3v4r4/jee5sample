@@ -12,11 +12,25 @@
   <packaging>eclipse-repository</packaging>
   <build>
     <plugins>
-	  <!-- The eclipse-repository packaging will create repository only, below plugin will materialize products and zip the products -->
+	  <!-- The eclipse-repository packaging will create repository only, below plugin will materialize products and archive the products -->
       <plugin>
          <groupId>org.eclipse.tycho</groupId>
          <artifactId>tycho-p2-director-plugin</artifactId>
          <version>${tycho-version}</version>
+		 <configuration>
+		    <!-- Archive products under a root directory -->
+			<products>
+			  <product>
+				<id>org.freejava.scanner.product.id</id>
+				<rootFolder>scanner</rootFolder>
+			  </product>
+			</products>		 
+			<formats>
+				<win32>zip</win32>
+				<linux>tar.gz</linux>
+				<macosx>tar.gz</macosx>
+			</formats>
+		 </configuration>
          <executions>
             <execution>
                <id>create-product-distributions</id>
